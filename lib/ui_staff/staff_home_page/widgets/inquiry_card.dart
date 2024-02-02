@@ -21,7 +21,7 @@ class InquiryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime date = DateTime.fromMillisecondsSinceEpoch(model[index].created_date);
+    DateTime date = DateTime.fromMillisecondsSinceEpoch(model[index].created_date ?? 0);
     String formattedDate = DateFormat('d-MMMM, HH:mm').format(date);
 
     Color textColor = AppColors.textMain;
@@ -41,7 +41,7 @@ class InquiryCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 4.w),
         width: double.infinity,
-        height: 102.h,
+        height: 238.h,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.onBackground,
           borderRadius: BorderRadius.circular(16.r),
@@ -56,7 +56,11 @@ class InquiryCard extends StatelessWidget {
                 children: [
                   Expanded(
                     flex: 2,
-                    child: Column(
+                    child:
+
+                        // Row(children: [],),
+
+                        Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _TitleAndTime(formattedDate),
@@ -144,20 +148,7 @@ class InquiryCard extends StatelessWidget {
 
   Text _Description() {
     return Text(
-      model[index]
-          .description
-          .replaceAll('<p>', '')
-          .replaceAll('</p>', '')
-          .replaceAll('<br>', '')
-          .replaceAll('</br>', '')
-          .replaceAll('<strong>', '')
-          .replaceAll('</strong>', '')
-          .replaceAll('<em>', '')
-          .replaceAll('</em>', '')
-          .replaceAll('<u>', '')
-          .replaceAll('</u>', '')
-          .replaceAll('<p style="text-align: justify">', '')
-          .replaceAll('</p style="text-align: justify">', ''),
+      model[index].description,
       style: TextStyle(
         fontSize: 14.sp,
         overflow: TextOverflow.ellipsis,
@@ -170,6 +161,19 @@ class InquiryCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.background,
+              borderRadius: BorderRadius.circular(8.r),
+              border: Border.all(
+                color: AppColors.outline,
+                width: 0.5.w,
+              ),
+            ),
+            child: Assets.icons.deliveryIcon.image(),
+          ),
+        ),
         Expanded(
           flex: 3,
           child: Text(

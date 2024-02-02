@@ -120,6 +120,14 @@ class $AssetsIconsGen {
 
   $AssetsIconsAppBarIconsGen get appBarIcons =>
       const $AssetsIconsAppBarIconsGen();
+
+  /// File path: assets/icons/car_tab.png
+  AssetGenImage get carTab => const AssetGenImage('assets/icons/car_tab.png');
+
+  /// File path: assets/icons/delivery_icon.png
+  AssetGenImage get deliveryIcon =>
+      const AssetGenImage('assets/icons/delivery_icon.png');
+
   $AssetsIconsHomePageIconsGen get homePageIcons =>
       const $AssetsIconsHomePageIconsGen();
 
@@ -141,7 +149,8 @@ class $AssetsIconsGen {
   $AssetsIconsStaffIconsGen get staffIcons => const $AssetsIconsStaffIconsGen();
 
   /// List of all assets
-  List<AssetGenImage> get values => [icLauncher, staffIconInquiryCard];
+  List<AssetGenImage> get values =>
+      [carTab, deliveryIcon, icLauncher, staffIconInquiryCard];
 }
 
 class $AssetsImagesGen {

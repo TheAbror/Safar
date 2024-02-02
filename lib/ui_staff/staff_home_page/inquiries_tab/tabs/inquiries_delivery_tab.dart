@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_card.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/search_and_filter.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/loader_and_wrong_widgets.dart';
+import '../../model/inquiry_list_model.dart';
 import '../../widgets/filter_card.dart';
 
 class InquiriesDeliveryTab extends StatelessWidget {
@@ -23,6 +23,27 @@ class InquiriesDeliveryTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<InquiryListItemResponse> myInquiries = [
+      InquiryListItemResponse(
+        id: 0,
+        title: 'Package name',
+        description: 'Some more details',
+        items: [Items(id: 0, name: 'dsaà', quantity: 9)],
+        created_date: 0,
+        updated_date: 0,
+        editable: false,
+        history: const [],
+        buttons: const [],
+        created: Created(email: '+99899999999', firstname: 'Abror', lastname: 'Shamuradov'),
+        authorDepartment: AuthorDepartment(value: 0, label: ''),
+        authorPosition: AuthorPosition(value: 0, label: ''),
+        recipient: Recipient(value: 0, label: ''),
+        recipientGroup: RecipientGroupType(value: '', label: ''),
+        recipientCustom: '',
+        recipientPostion: '',
+        recipientDepartment: '',
+      ),
+    ];
     return RefreshIndicator(
       color: Theme.of(context).colorScheme.primaryContainer,
       onRefresh: () async {
@@ -63,26 +84,15 @@ class InquiriesDeliveryTab extends StatelessWidget {
                     TabsLoader()
                   // else if (state.assigned.blocProgress == BlocProgress.FAILED)
                   //   const SomethingWentWrong()
-                  else if (state.assignedFiltered.isNotEmpty)
+                  else if (myInquiries.isNotEmpty)
                     ListView.builder(
-                      itemCount: state.assignedFiltered.length + 1,
+                      itemCount: myInquiries.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        if (index < state.assignedFiltered.length) {
-                          return InquiryCard(model: state.assignedFiltered, index: index);
-                        } else if (state.assigned.blocProgress == BlocProgress.IS_LOADING) {
-                          return Padding(
-                            padding: EdgeInsets.only(top: 40.h),
-                            child: PrimaryLoader(),
-                          );
-                        } else {
-                          return SizedBox();
-                        }
+                        return InquiryCard(model: myInquiries, index: index);
                       },
                     )
-                  else if (state.assignedFiltered.isEmpty)
-                    TabsNoData()
                 ],
               ),
             ),
