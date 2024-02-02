@@ -30,8 +30,8 @@ AppBar inquiries_appbar(context, String fullName, String shortName, String role)
             borderRadius: BorderRadius.all(Radius.circular(corex * 2.r)),
           ),
           tabs: const [
-            AppBarItem(text: 'Assigned'),
-            AppBarItem(text: 'Created'),
+            AppBarItem(text: 'Delivery'),
+            AppBarItem(text: 'Taxi'),
           ],
         ),
       ),

@@ -37,11 +37,6 @@ class _StaffHomePageState extends State<StaffHomePage> {
       }
     });
 
-    // final accountType = PreferencesServices.getAccountType();
-
-    // if (accountType == AccountType.director) {
-    //   isDirector = true;
-    // }
     super.initState();
   }
 
@@ -56,14 +51,7 @@ class _StaffHomePageState extends State<StaffHomePage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: inquiries_appbar(
-          context,
-          'currentUser',
-          'currentUser',
-          'currentUser',
-          // currentUser?.shortName ?? errorOccured,
-          // currentUser?.roles.first ?? errorOccured,
-        ),
+        appBar: inquiries_appbar(context, 'Abror Shamuradov', 'AS', 'Driver'),
         backgroundColor: Theme.of(context).colorScheme.background,
         resizeToAvoidBottomInset: false,
         floatingActionButton: isDirector ? const SizedBox() : const CreateButton(),

@@ -3,20 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_card.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/search_and_filter.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/loader_and_wrong_widgets.dart';
-
 import '../../widgets/filter_card.dart';
 
-class InquiriesAssignedTab extends StatelessWidget {
+class InquiriesDeliveryTab extends StatelessWidget {
   final List<String> statusesList;
   final TextEditingController searchAssigned;
   final ScrollController scrollController;
 
-  const InquiriesAssignedTab({
+  const InquiriesDeliveryTab({
     super.key,
     required this.statusesList,
     required this.searchAssigned,
@@ -63,8 +61,8 @@ class InquiriesAssignedTab extends StatelessWidget {
                   if (state.assigned.blocProgress == BlocProgress.IS_LOADING &&
                       state.assignedFiltered.isEmpty)
                     TabsLoader()
-                  else if (state.assigned.blocProgress == BlocProgress.FAILED)
-                    const SomethingWentWrong()
+                  // else if (state.assigned.blocProgress == BlocProgress.FAILED)
+                  //   const SomethingWentWrong()
                   else if (state.assignedFiltered.isNotEmpty)
                     ListView.builder(
                       itemCount: state.assignedFiltered.length + 1,
