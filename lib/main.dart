@@ -10,7 +10,6 @@ import 'package:safar/core/routes/main_route_generator.dart';
 import 'package:safar/core/utils/api_logging.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
-
 import 'core/app_themes.dart';
 
 void main() async {
