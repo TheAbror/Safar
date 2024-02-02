@@ -1,22 +1,20 @@
-// ignore_for_file: unused_field
+// ignore_for_file: unused_field, unused_local_variable
 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/bottomsheet/default_bottom_sheet.dart';
 import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/bottomsheet/widgets/bottomsheet_top_radius.dart';
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/core/db/preferences_services.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
-import 'package:safar/core/utils/account_type.dart';
 import 'package:safar/ui_staff/bildirgi_page/action/bloc/action_bloc.dart';
 import 'package:safar/ui_staff/bildirgi_page/action/options/comments_option.dart';
 import 'package:safar/ui_staff/bildirgi_page/action/options/date_option.dart';
 import 'package:safar/ui_staff/bildirgi_page/action/widgets/choose_date_box.dart';
 import 'package:safar/ui_staff/widgets/bottom_sheets/bottom_sheet_decoration.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 class ActionBottomSheet extends StatefulWidget {
   final String title;
@@ -145,12 +143,12 @@ class _ActionBottomSheetState extends State<ActionBottomSheet> {
 
                         bool isStatusDirector = false;
 
-                        final accountType = PreferencesServices.getAccountType();
+                        // final accountType = PreferencesServices.getAccountType();
 
-                        if (accountType == AccountType.superAdmin ||
-                            accountType == AccountType.director) {
-                          isStatusDirector = true;
-                        }
+                        // if (accountType == AccountType.superAdmin ||
+                        //     accountType == AccountType.director) {
+                        //   isStatusDirector = true;
+                        // }
 
                         if (state.blocProgress == BlocProgress.IS_LOADING) {
                           return const Expanded(child: Center(child: PrimaryLoader()));
@@ -164,11 +162,12 @@ class _ActionBottomSheetState extends State<ActionBottomSheet> {
                               decoration: ActionBottomDecoration(context),
                               child: Column(
                                 children: [
-                                  approveForDirectorOnly
-                                      ? isStatusDirector
-                                          ? SizedBox(height: 10.h)
-                                          : const SizedBox()
-                                      : const SizedBox(),
+                                  // approveForDirectorOnly
+                                  //     ?
+                                  // isStatusDirector
+                                  //     ? SizedBox(height: 10.h)
+                                  //     : const SizedBox()
+                                  // SizedBox()
                                   statusExceptions ? SizedBox(height: 10.h) : const SizedBox(),
                                   statusExceptions
                                       ? assignedViewer

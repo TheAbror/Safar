@@ -3,7 +3,6 @@ import 'text_form_fields/new_inquiry_title.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'text_form_fields/new_inquiry_description.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safar/ui_staff/manage_inquiry_page/widgets/texts_and_titles/recipient_field.dart';
 
 class TitleAndDescription extends StatefulWidget {
   final TextEditingController titleController;
@@ -39,8 +38,6 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
           NewInquiryDescription(decriptionController: widget.descriptionController),
           SizedBox(height: 8.h),
           _PleaseEnterTitleAndDescription(),
-          SizedBox(height: 8.h),
-          RecipientField(recipientController: widget.recipientController),
           SizedBox(height: 10.h),
         ],
       ),

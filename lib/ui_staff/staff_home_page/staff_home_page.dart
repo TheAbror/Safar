@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safar/core/db/shared_keys.dart';
-import 'package:safar/core/utils/account_type.dart';
-import 'package:safar/core/db/preferences_services.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
-import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/inquiries_tab.dart';
-import 'package:safar/ui_staff/staff_home_page/model/box/current_user_box.dart';
-import 'package:safar/ui_staff/staff_home_page/widgets/buttons/create_button.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/app_bar/staff_inquiries_appbar.dart';
+import 'package:safar/ui_staff/staff_home_page/widgets/buttons/create_button.dart';
 
 class StaffHomePage extends StatefulWidget {
   const StaffHomePage({super.key});
@@ -42,18 +37,18 @@ class _StaffHomePageState extends State<StaffHomePage> {
       }
     });
 
-    final accountType = PreferencesServices.getAccountType();
+    // final accountType = PreferencesServices.getAccountType();
 
-    if (accountType == AccountType.director) {
-      isDirector = true;
-    }
+    // if (accountType == AccountType.director) {
+    //   isDirector = true;
+    // }
     super.initState();
   }
 
   final ScrollController _scrollControllerAssigned = ScrollController();
   final ScrollController _scrollControllerCreated = ScrollController();
 
-  CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
+  // CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
   String errorOccured = 'Error occured';
 
   @override
@@ -63,9 +58,11 @@ class _StaffHomePageState extends State<StaffHomePage> {
       child: Scaffold(
         appBar: inquiries_appbar(
           context,
-          currentUser?.fullName ?? errorOccured,
-          currentUser?.shortName ?? errorOccured,
-          currentUser?.roles.first ?? errorOccured,
+          'currentUser',
+          'currentUser',
+          'currentUser',
+          // currentUser?.shortName ?? errorOccured,
+          // currentUser?.roles.first ?? errorOccured,
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
         resizeToAvoidBottomInset: false,
