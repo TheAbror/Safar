@@ -11,6 +11,8 @@ import 'package:safar/core/utils/api_logging.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
 
+import 'core/app_themes.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -53,6 +55,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           themeMode: ThemeMode.system,
+          theme: lightTheme(),
           debugShowCheckedModeBanner: false,
           builder: BotToastInit(),
           navigatorObservers: [BotToastNavigatorObserver()],
