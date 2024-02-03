@@ -64,3 +64,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+//TODO add splash page
+//TODO add sign in page
+//TODO add terms and conditons page
