@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/unit_selection.dart';
@@ -133,9 +132,9 @@ class _BodyState extends State<_Body> {
             ),
           );
         }
-        if (state.blocProgress == BlocProgress.FAILED) {
-          return const SomethingWentWrong();
-        }
+        // if (state.blocProgress == BlocProgress.FAILED) {
+        //   return const SomethingWentWrong();
+        // }
 
         return SingleChildScrollView(
           child: Column(

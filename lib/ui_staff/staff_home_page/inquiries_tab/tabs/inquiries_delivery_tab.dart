@@ -33,7 +33,12 @@ class InquiriesDeliveryTab extends StatelessWidget {
         updated_date: 0,
         editable: false,
         history: const [],
-        buttons: const [],
+        buttons: [
+          InquiryActionButtons(title: 'Assigned', type: 'type', color_scheme: 'color_scheme'),
+          InquiryActionButtons(title: 'Assigned', type: 'type', color_scheme: 'color_scheme'),
+          InquiryActionButtons(title: 'Assigned', type: 'type', color_scheme: 'color_scheme'),
+          InquiryActionButtons(title: 'Assigned', type: 'type', color_scheme: 'color_scheme'),
+        ],
         status: Status(title: 'Approved', color_scheme: 'olor(0xff3CA15F)', type: ''),
         created: Created(email: '+99899999999', firstname: 'Abror', lastname: 'Shamuradov'),
         authorDepartment: AuthorDepartment(value: 0, label: ''),
