@@ -61,12 +61,9 @@ class InquiryListItemResponse extends Equatable {
   final AuthorPosition authorPosition;
   @JsonKey()
   final Recipient recipient;
-  @JsonKey(name: 'recipient_group_type')
-  final RecipientGroupType recipientGroup;
+
   @JsonKey(defaultValue: '', name: 'recipient_custom')
   final String from;
-  @JsonKey(defaultValue: '', name: 'recipient_position')
-  final String recipientPostion;
   @JsonKey(defaultValue: '', name: 'recipient_department')
   final String to;
 
@@ -85,9 +82,7 @@ class InquiryListItemResponse extends Equatable {
     required this.authorDepartment,
     required this.authorPosition,
     required this.recipient,
-    required this.recipientGroup,
     required this.from,
-    required this.recipientPostion,
     required this.to,
   });
 

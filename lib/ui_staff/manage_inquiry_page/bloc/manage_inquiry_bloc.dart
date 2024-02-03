@@ -37,7 +37,6 @@ class ManageInquiryBloc extends Cubit<ManageInquiryState> {
             state.copyWith(
               data: data,
               title: data.title,
-              recipientGroup: data.recipientGroup.label,
               description: data.description,
               listofItems: items,
               isInitialValuesLoaded: true,

@@ -115,14 +115,7 @@ class _BodyState extends State<_Body> {
           titleController.text = state.data.title;
           descriptionController.text = state.data.description;
 
-          state.data.recipientGroup.label == 'Staff'
-              ? recipientController.text = state.data.recipient.label
-              : recipientController.text = state.data.recipientGroup.label;
-          var recipientID = state.data.recipient.value;
-
           context.read<ManageInquiryBloc>().initialValuesDisplayed();
-
-          context.read<ManageInquiryBloc>().recipientIdForEdit(recipientID);
         } else if (state.blocProgress == BlocProgress.IS_SUCCESS) {
           //
           context.read<InquiryBloc>().getInitiallyCreated();

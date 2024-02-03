@@ -39,9 +39,7 @@ class InquiriesDeliveryTab extends StatelessWidget {
         authorDepartment: AuthorDepartment(value: 0, label: ''),
         authorPosition: AuthorPosition(value: 0, label: ''),
         recipient: Recipient(value: 0, label: ''),
-        recipientGroup: RecipientGroupType(value: '', label: ''),
         from: 'Oloy bozori, Tashkent',
-        recipientPostion: '',
         to: 'Urganch 9A, Khorazm',
       ),
       InquiryListItemResponse(
@@ -59,9 +57,7 @@ class InquiriesDeliveryTab extends StatelessWidget {
         authorDepartment: AuthorDepartment(value: 0, label: ''),
         authorPosition: AuthorPosition(value: 0, label: ''),
         recipient: Recipient(value: 0, label: ''),
-        recipientGroup: RecipientGroupType(value: '', label: ''),
         from: 'Aral, Nukus',
-        recipientPostion: '',
         to: 'Kitob Andijon',
       ),
       InquiryListItemResponse(
@@ -79,9 +75,7 @@ class InquiriesDeliveryTab extends StatelessWidget {
         authorDepartment: AuthorDepartment(value: 0, label: ''),
         authorPosition: AuthorPosition(value: 0, label: ''),
         recipient: Recipient(value: 0, label: ''),
-        recipientGroup: RecipientGroupType(value: '', label: ''),
         from: ' Suvchilar shaxarchasi, Buxoro',
-        recipientPostion: '',
         to: '2-sonli maktab, Namangan',
       ),
     ];
