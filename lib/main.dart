@@ -8,6 +8,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:safar/core/api/api_provider.dart';
 import 'package:safar/core/routes/main_route_generator.dart';
 import 'package:safar/core/utils/api_logging.dart';
+import 'package:safar/ui_staff/splash_page/bloc/splash_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
 import 'core/app_themes.dart';
@@ -34,6 +35,7 @@ void main() async {
         MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => InquiryBloc()),
+            BlocProvider(create: (context) => SplashBloc()),
           ],
           child: const MyApp(),
         ),

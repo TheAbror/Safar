@@ -135,6 +135,17 @@ class $AssetsIconsGen {
   AssetGenImage get icLauncher =>
       const AssetGenImage('assets/icons/ic_launcher.png');
 
+  /// File path: assets/icons/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/icons/logo.png');
+
+  /// File path: assets/icons/logoGreen.png
+  AssetGenImage get logoGreen =>
+      const AssetGenImage('assets/icons/logoGreen.png');
+
+  /// File path: assets/icons/logoShort.png
+  AssetGenImage get logoShort =>
+      const AssetGenImage('assets/icons/logoShort.png');
+
   $AssetsIconsPinPageIconsGen get pinPageIcons =>
       const $AssetsIconsPinPageIconsGen();
   $AssetsIconsProfilePageGen get profilePage =>
@@ -153,8 +164,16 @@ class $AssetsIconsGen {
       const AssetGenImage('assets/icons/time_line.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [carTab, deliveryIcon, icLauncher, staffIconInquiryCard, timeLine];
+  List<AssetGenImage> get values => [
+        carTab,
+        deliveryIcon,
+        icLauncher,
+        logo,
+        logoGreen,
+        logoShort,
+        staffIconInquiryCard,
+        timeLine
+      ];
 }
 
 class $AssetsImagesGen {
