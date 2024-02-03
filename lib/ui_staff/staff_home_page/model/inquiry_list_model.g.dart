@@ -6,22 +6,18 @@ part of 'inquiry_list_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-InquiryListResponse _$InquiryListResponseFromJson(Map<String, dynamic> json) =>
-    InquiryListResponse(
+InquiryListResponse _$InquiryListResponseFromJson(Map<String, dynamic> json) => InquiryListResponse(
       last: json['last'] as bool? ?? false,
       totalElements: json['total_elements'] as int? ?? 0,
       totalPages: json['total_pages'] as int? ?? 0,
       pageable: Pageable.fromJson(json['pageable'] as Map<String, dynamic>),
       content: (json['content'] as List<dynamic>?)
-              ?.map((e) =>
-                  InquiryListItemResponse.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => InquiryListItemResponse.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
     );
 
-Map<String, dynamic> _$InquiryListResponseToJson(
-        InquiryListResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$InquiryListResponseToJson(InquiryListResponse instance) => <String, dynamic>{
       'content': instance.content.map((e) => e.toJson()).toList(),
       'last': instance.last,
       'total_elements': instance.totalElements,
@@ -29,8 +25,7 @@ Map<String, dynamic> _$InquiryListResponseToJson(
       'pageable': instance.pageable.toJson(),
     };
 
-InquiryListItemResponse _$InquiryListItemResponseFromJson(
-        Map<String, dynamic> json) =>
+InquiryListItemResponse _$InquiryListItemResponseFromJson(Map<String, dynamic> json) =>
     InquiryListItemResponse(
       id: json['id'] as int? ?? 0,
       title: json['title'] as String? ?? '',
@@ -39,9 +34,8 @@ InquiryListItemResponse _$InquiryListItemResponseFromJson(
               ?.map((e) => Items.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      status: json['status'] == null
-          ? null
-          : Status.fromJson(json['status'] as Map<String, dynamic>),
+      status:
+          json['status'] == null ? null : Status.fromJson(json['status'] as Map<String, dynamic>),
       created_date: json['created_date'] as int? ?? 0,
       updated_date: json['updated_date'] as int? ?? 0,
       created: json['created'] == null
@@ -53,24 +47,21 @@ InquiryListItemResponse _$InquiryListItemResponseFromJson(
               .toList() ??
           [],
       buttons: (json['buttons'] as List<dynamic>?)
-              ?.map((e) =>
-                  InquiryActionButtons.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => InquiryActionButtons.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      authorDepartment: AuthorDepartment.fromJson(
-          json['author_department'] as Map<String, dynamic>),
-      authorPosition: AuthorPosition.fromJson(
-          json['author_position'] as Map<String, dynamic>),
+      authorDepartment:
+          AuthorDepartment.fromJson(json['author_department'] as Map<String, dynamic>),
+      authorPosition: AuthorPosition.fromJson(json['author_position'] as Map<String, dynamic>),
       recipient: Recipient.fromJson(json['recipient'] as Map<String, dynamic>),
-      recipientGroup: RecipientGroupType.fromJson(
-          json['recipient_group_type'] as Map<String, dynamic>),
-      recipientCustom: json['recipient_custom'] as String? ?? '',
+      recipientGroup:
+          RecipientGroupType.fromJson(json['recipient_group_type'] as Map<String, dynamic>),
+      from: json['recipient_custom'] as String? ?? '',
       recipientPostion: json['recipient_position'] as String? ?? '',
-      recipientDepartment: json['recipient_department'] as String? ?? '',
+      to: json['recipient_department'] as String? ?? '',
     );
 
-Map<String, dynamic> _$InquiryListItemResponseToJson(
-        InquiryListItemResponse instance) =>
+Map<String, dynamic> _$InquiryListItemResponseToJson(InquiryListItemResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
@@ -87,9 +78,9 @@ Map<String, dynamic> _$InquiryListItemResponseToJson(
       'author_position': instance.authorPosition.toJson(),
       'recipient': instance.recipient.toJson(),
       'recipient_group_type': instance.recipientGroup.toJson(),
-      'recipient_custom': instance.recipientCustom,
+      'recipient_custom': instance.from,
       'recipient_position': instance.recipientPostion,
-      'recipient_department': instance.recipientDepartment,
+      'recipient_department': instance.to,
     };
 
 Pageable _$PageableFromJson(Map<String, dynamic> json) => Pageable(
@@ -132,38 +123,32 @@ Map<String, dynamic> _$RecipientToJson(Recipient instance) => <String, dynamic>{
       'label': instance.label,
     };
 
-RecipientGroupType _$RecipientGroupTypeFromJson(Map<String, dynamic> json) =>
-    RecipientGroupType(
+RecipientGroupType _$RecipientGroupTypeFromJson(Map<String, dynamic> json) => RecipientGroupType(
       value: json['value'] as String? ?? '',
       label: json['label'] as String? ?? '',
     );
 
-Map<String, dynamic> _$RecipientGroupTypeToJson(RecipientGroupType instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$RecipientGroupTypeToJson(RecipientGroupType instance) => <String, dynamic>{
       'value': instance.value,
       'label': instance.label,
     };
 
-AuthorDepartment _$AuthorDepartmentFromJson(Map<String, dynamic> json) =>
-    AuthorDepartment(
+AuthorDepartment _$AuthorDepartmentFromJson(Map<String, dynamic> json) => AuthorDepartment(
       value: json['value'] as int? ?? 0,
       label: json['label'] as String? ?? '',
     );
 
-Map<String, dynamic> _$AuthorDepartmentToJson(AuthorDepartment instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AuthorDepartmentToJson(AuthorDepartment instance) => <String, dynamic>{
       'value': instance.value,
       'label': instance.label,
     };
 
-AuthorPosition _$AuthorPositionFromJson(Map<String, dynamic> json) =>
-    AuthorPosition(
+AuthorPosition _$AuthorPositionFromJson(Map<String, dynamic> json) => AuthorPosition(
       value: json['value'] as int? ?? 0,
       label: json['label'] as String? ?? '',
     );
 
-Map<String, dynamic> _$AuthorPositionToJson(AuthorPosition instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$AuthorPositionToJson(AuthorPosition instance) => <String, dynamic>{
       'value': instance.value,
       'label': instance.label,
     };
@@ -174,8 +159,7 @@ Items _$ItemsFromJson(Map<String, dynamic> json) => Items(
       quantity: (json['quantity'] as num?)?.toDouble() ?? 0,
     )..measurement = json['measurement'] == null
         ? null
-        : MeasurementResponse.fromJson(
-            json['measurement'] as Map<String, dynamic>);
+        : MeasurementResponse.fromJson(json['measurement'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$ItemsToJson(Items instance) => <String, dynamic>{
       'id': instance.id,
@@ -220,9 +204,8 @@ History _$HistoryFromJson(Map<String, dynamic> json) => History(
           : CreatedBy.fromJson(json['created_by'] as Map<String, dynamic>),
       created_date: json['created_date'] as int? ?? 0,
       deadline: json['deadline'] as int? ?? 0,
-      status: json['status'] == null
-          ? null
-          : Status.fromJson(json['status'] as Map<String, dynamic>),
+      status:
+          json['status'] == null ? null : Status.fromJson(json['status'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$HistoryToJson(History instance) => <String, dynamic>{
@@ -235,15 +218,13 @@ Map<String, dynamic> _$HistoryToJson(History instance) => <String, dynamic>{
       'involved_users': instance.involvedUsers.map((e) => e.toJson()).toList(),
     };
 
-InvolvedUsers _$InvolvedUsersFromJson(Map<String, dynamic> json) =>
-    InvolvedUsers(
+InvolvedUsers _$InvolvedUsersFromJson(Map<String, dynamic> json) => InvolvedUsers(
       email: json['email'] as String? ?? '',
       firstname: json['firstname'] as String? ?? '',
       lastname: json['lastname'] as String? ?? '',
     );
 
-Map<String, dynamic> _$InvolvedUsersToJson(InvolvedUsers instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$InvolvedUsersToJson(InvolvedUsers instance) => <String, dynamic>{
       'email': instance.email,
       'firstname': instance.firstname,
       'lastname': instance.lastname,
@@ -261,31 +242,27 @@ Map<String, dynamic> _$CreatedByToJson(CreatedBy instance) => <String, dynamic>{
       'lastname': instance.lastname,
     };
 
-InquiryActionButtons _$InquiryActionButtonsFromJson(
-        Map<String, dynamic> json) =>
+InquiryActionButtons _$InquiryActionButtonsFromJson(Map<String, dynamic> json) =>
     InquiryActionButtons(
       title: json['title'] as String? ?? '',
       type: json['type'] as String? ?? '',
       color_scheme: json['color_scheme'] as String? ?? '',
     );
 
-Map<String, dynamic> _$InquiryActionButtonsToJson(
-        InquiryActionButtons instance) =>
+Map<String, dynamic> _$InquiryActionButtonsToJson(InquiryActionButtons instance) =>
     <String, dynamic>{
       'title': instance.title,
       'type': instance.type,
       'color_scheme': instance.color_scheme,
     };
 
-InquiryButtons _$InquiryButtonsFromJson(Map<String, dynamic> json) =>
-    InquiryButtons(
+InquiryButtons _$InquiryButtonsFromJson(Map<String, dynamic> json) => InquiryButtons(
       label: json['label'] as String? ?? '',
       value: json['value'] as String? ?? '',
       reason: json['reason'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$InquiryButtonsToJson(InquiryButtons instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$InquiryButtonsToJson(InquiryButtons instance) => <String, dynamic>{
       'label': instance.label,
       'value': instance.value,
       'reason': instance.reason,

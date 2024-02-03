@@ -64,11 +64,11 @@ class InquiryListItemResponse extends Equatable {
   @JsonKey(name: 'recipient_group_type')
   final RecipientGroupType recipientGroup;
   @JsonKey(defaultValue: '', name: 'recipient_custom')
-  final String recipientCustom;
+  final String from;
   @JsonKey(defaultValue: '', name: 'recipient_position')
   final String recipientPostion;
   @JsonKey(defaultValue: '', name: 'recipient_department')
-  final String recipientDepartment;
+  final String to;
 
   InquiryListItemResponse({
     required this.id,
@@ -86,9 +86,9 @@ class InquiryListItemResponse extends Equatable {
     required this.authorPosition,
     required this.recipient,
     required this.recipientGroup,
-    required this.recipientCustom,
+    required this.from,
     required this.recipientPostion,
-    required this.recipientDepartment,
+    required this.to,
   });
 
   factory InquiryListItemResponse.fromJson(Map<String, dynamic> json) =>

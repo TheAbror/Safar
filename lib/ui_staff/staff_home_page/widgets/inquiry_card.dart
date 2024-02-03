@@ -41,7 +41,7 @@ class InquiryCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 4.w),
         width: double.infinity,
-        height: 238.h,
+        // height: 238.h,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.onBackground,
           borderRadius: BorderRadius.circular(16.r),
@@ -54,13 +54,10 @@ class InquiryCard extends StatelessWidget {
               child: _TitleAndTime(formattedDate),
             ),
             SizedBox(height: 5.h),
+            _FromTo(model[index].from, model[index].to),
+            SizedBox(height: 10.h),
             Padding(
-              padding: EdgeInsets.only(left: 51.w),
-              child: Assets.icons.timeLine.image(),
-            ),
-            SizedBox(height: 5.h),
-            Padding(
-              padding: EdgeInsets.only(left: 12.w, right: 12.w),
+              padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 16.h),
               child: _IconNameStatus(context, backgroundColor, textColor),
             ),
           ],
@@ -69,12 +66,58 @@ class InquiryCard extends StatelessWidget {
     );
   }
 
+  Padding _FromTo(String from, String to) {
+    return Padding(
+      padding: EdgeInsets.only(left: 51.w),
+      child: Row(
+        children: [
+          Assets.icons.timeLine.image(),
+          SizedBox(width: 10.h),
+          SizedBox(
+            height: 90.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'From',
+                  style: TextStyle(color: AppColors.iconSecondary),
+                ),
+                Text(
+                  from,
+                  style: TextStyle(
+                    color: AppColors.textMain,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Spacer(),
+                Text(
+                  'To',
+                  style: TextStyle(color: AppColors.iconSecondary),
+                ),
+                Text(
+                  to,
+                  style: TextStyle(
+                    color: AppColors.textMain,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Row _IconNameStatus(BuildContext context, Color backgroundColor, Color textColor) {
     return Row(
       children: [
         Container(
-          width: 40.w,
-          height: 40.w,
+          height: 38.w,
+          width: 38.w,
+          margin: EdgeInsets.only(left: 4.w),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(50.r)),
             border: Border.all(
@@ -93,13 +136,13 @@ class InquiryCard extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 5.w),
+        SizedBox(width: 12.w),
         Expanded(
           flex: 5,
           child: Column(
             children: [
               Divider(height: 1.h, thickness: 0.5),
-              SizedBox(height: 2.h),
+              SizedBox(height: 6.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -111,7 +154,7 @@ class InquiryCard extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14.sp,
                           overflow: TextOverflow.ellipsis,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                       Text(
@@ -193,7 +236,7 @@ class InquiryCard extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(height: 4.h),
+              SizedBox(height: 8.h),
               Divider(height: 1.h, thickness: 0.5),
             ],
           ),
