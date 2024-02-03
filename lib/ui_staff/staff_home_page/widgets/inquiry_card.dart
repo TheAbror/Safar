@@ -21,7 +21,7 @@ class InquiryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime date = DateTime.fromMillisecondsSinceEpoch(model[index].created_date ?? 0);
+    DateTime date = DateTime.fromMillisecondsSinceEpoch(model[index].created_date);
     String formattedDate = DateFormat('d-MMMM, HH:mm').format(date);
 
     Color textColor = AppColors.textMain;
@@ -47,34 +47,18 @@ class InquiryCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.r),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 12.w, right: 12.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child:
-
-                        // Row(children: [],),
-
-                        Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _TitleAndTime(formattedDate),
-                        _Description(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+              padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
+              child: _TitleAndTime(formattedDate),
             ),
-            Divider(
-              height: 1.h,
-              thickness: 0.5,
+            SizedBox(height: 5.h),
+            Padding(
+              padding: EdgeInsets.only(left: 51.w),
+              child: Assets.icons.timeLine.image(),
             ),
+            SizedBox(height: 5.h),
             Padding(
               padding: EdgeInsets.only(left: 12.w, right: 12.w),
               child: _IconNameStatus(context, backgroundColor, textColor),
@@ -89,8 +73,8 @@ class InquiryCard extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: 24.w,
-          height: 24.w,
+          width: 40.w,
+          height: 40.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(50.r)),
             border: Border.all(
@@ -113,89 +97,105 @@ class InquiryCard extends StatelessWidget {
         Expanded(
           flex: 5,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                '${model[index].created?.firstname} ${model[index].created?.lastname}',
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  overflow: TextOverflow.ellipsis,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              Text(
-                model[index].created?.email ?? '',
-                style: TextStyle(
-                  fontSize: 10.sp,
-                  overflow: TextOverflow.ellipsis,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.textSecondary,
-                ),
+              Divider(height: 1.h, thickness: 0.5),
+              SizedBox(height: 2.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${model[index].created?.firstname} ${model[index].created?.lastname}',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          overflow: TextOverflow.ellipsis,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        model[index].created?.email ?? '',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          overflow: TextOverflow.ellipsis,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  StatusWidget(
+                    radius: 8,
+                    backgroundColor: backgroundColor,
+                    textColor: textColor,
+                    status: model[index].status?.title ?? '',
+                  ),
+                ],
               ),
             ],
           ),
         ),
         SizedBox(width: 4.w),
-        StatusWidget(
-          radius: 8,
-          backgroundColor: backgroundColor,
-          textColor: textColor,
-          status: model[index].status?.title ?? '',
-        ),
       ],
-    );
-  }
-
-  Text _Description() {
-    return Text(
-      model[index].description,
-      style: TextStyle(
-        fontSize: 14.sp,
-        overflow: TextOverflow.ellipsis,
-        fontWeight: FontWeight.w700,
-      ),
     );
   }
 
   Row _TitleAndTime(String formattedDate) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Container(
+          height: 40.w,
+          width: 40.w,
+          decoration: BoxDecoration(
+            color: AppColors.background,
+            borderRadius: BorderRadius.circular(8.r),
+            border: Border.all(
+              color: AppColors.outline,
+              width: 0.5.w,
+            ),
+          ),
+          child: Assets.icons.deliveryIcon.image(),
+        ),
+        SizedBox(width: 12.w),
         Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              color: AppColors.background,
-              borderRadius: BorderRadius.circular(8.r),
-              border: Border.all(
-                color: AppColors.outline,
-                width: 0.5.w,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    model[index].title,
+                    style: TextStyle(
+                      fontSize: 11.sp,
+                      overflow: TextOverflow.ellipsis,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  Text(
+                    formattedDate,
+                    style: TextStyle(
+                      fontSize: 11.sp,
+                      overflow: TextOverflow.ellipsis,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),
+                    textAlign: TextAlign.end,
+                  ),
+                ],
               ),
-            ),
-            child: Assets.icons.deliveryIcon.image(),
-          ),
-        ),
-        Expanded(
-          flex: 3,
-          child: Text(
-            model[index].title,
-            style: TextStyle(
-              fontSize: 11.sp,
-              overflow: TextOverflow.ellipsis,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Text(
-            formattedDate,
-            style: TextStyle(
-              fontSize: 11.sp,
-              overflow: TextOverflow.ellipsis,
-              fontWeight: FontWeight.w400,
-              color: AppColors.textSecondary,
-            ),
-            textAlign: TextAlign.end,
+              Text(
+                model[index].description,
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  overflow: TextOverflow.ellipsis,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              SizedBox(height: 4.h),
+              Divider(height: 1.h, thickness: 0.5),
+            ],
           ),
         ),
       ],

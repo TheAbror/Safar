@@ -148,9 +148,13 @@ class $AssetsIconsGen {
 
   $AssetsIconsStaffIconsGen get staffIcons => const $AssetsIconsStaffIconsGen();
 
+  /// File path: assets/icons/time_line.png
+  AssetGenImage get timeLine =>
+      const AssetGenImage('assets/icons/time_line.png');
+
   /// List of all assets
   List<AssetGenImage> get values =>
-      [carTab, deliveryIcon, icLauncher, staffIconInquiryCard];
+      [carTab, deliveryIcon, icLauncher, staffIconInquiryCard, timeLine];
 }
 
 class $AssetsImagesGen {

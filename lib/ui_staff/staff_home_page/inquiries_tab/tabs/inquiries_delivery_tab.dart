@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
+import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_card.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/search_and_filter.dart';
@@ -34,6 +35,7 @@ class InquiriesDeliveryTab extends StatelessWidget {
         editable: false,
         history: const [],
         buttons: const [],
+        status: Status(title: 'Assigned', color_scheme: 'olor(0xff3CA15F)', type: ''),
         created: Created(email: '+99899999999', firstname: 'Abror', lastname: 'Shamuradov'),
         authorDepartment: AuthorDepartment(value: 0, label: ''),
         authorPosition: AuthorPosition(value: 0, label: ''),

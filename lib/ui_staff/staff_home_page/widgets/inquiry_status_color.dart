@@ -78,7 +78,7 @@ StatusColors _getStatusColors(String? statusTitle) {
       textColor = AppColors.float;
       break;
     default:
-      backgroundColor = const Color.fromARGB(255, 178, 172, 172);
+      backgroundColor = AppColors.primary;
       textColor = AppColors.float;
   }
 
