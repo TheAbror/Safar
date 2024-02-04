@@ -237,7 +237,7 @@ class InquiryBloc extends Cubit<InquiryState> {
     }
   }
 
-  void changeStatusCreated(String status) async {
+  void changeStatusTaxi(String status) async {
     if (status.isNotEmpty) {
       Random random = Random();
       int randomNumber = random.nextInt(100);
@@ -255,11 +255,11 @@ class InquiryBloc extends Cubit<InquiryState> {
         emit(
             state.copyWith(listOfSelectedStatusesCreated: updatedList, randomNumber: randomNumber));
       }
-      _reFilterContentListCreated();
+      _reFilterContentListTaxi();
     }
   }
 
-  void _reFilterContentListCreated() {
+  void _reFilterContentListTaxi() {
     final allContent = state.created;
     final selectedStatuses = state.listOfSelectedStatusesCreated.map((e) => e.toLowerCase());
 
@@ -277,7 +277,7 @@ class InquiryBloc extends Cubit<InquiryState> {
     }
   }
 
-  void changeStatusAssigned(String status) async {
+  void changeStatusDelivery(String status) async {
     if (status.isNotEmpty) {
       Random random = Random();
       int randomNumber = random.nextInt(100);
@@ -295,11 +295,11 @@ class InquiryBloc extends Cubit<InquiryState> {
         emit(state.copyWith(
             listOfSelectedStatusesAssigned: updatedList, randomNumber: randomNumber));
       }
-      _reFilterContentListAssigned();
+      _reFilterContentListDelivery();
     }
   }
 
-  void _reFilterContentListAssigned() {
+  void _reFilterContentListDelivery() {
     final allContent = state.assigned;
     final selectedStatuses = state.listOfSelectedStatusesAssigned.map((e) => e.toLowerCase());
 

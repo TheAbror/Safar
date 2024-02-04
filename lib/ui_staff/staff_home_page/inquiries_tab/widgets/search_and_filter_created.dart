@@ -48,7 +48,7 @@ class SearchAndFilterTaxi extends StatelessWidget {
 
             if (result != null) {
               if (!context.mounted) return;
-              context.read<InquiryBloc>().changeStatusCreated(result);
+              context.read<InquiryBloc>().changeStatusTaxi(result);
             }
           },
         ),

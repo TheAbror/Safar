@@ -32,13 +32,13 @@ class InquiriesTabState extends State<InquiriesTab> {
               searchDelivery: searchDelivery,
               scrollController: widget.scrollControllerAssigned,
               // statusesList: state.buttons.model.map((e) => e.label).toList(),
-              statusesList: const ['Delivered', 'In process', 'Accepted'],
+              statusesList: const ['Доставлено', 'В пути', 'В ожидании'],
             ),
             InquiriesTaxiTab(
               searchTaxi: searchTaxi,
               scrollController: widget.scrollControllerCreated,
               // statusesList: state.buttons.model.map((e) => e.label).toList(),
-              statusesList: const ['Delivered', 'In process', 'Accepted'],
+              statusesList: const ['Доставлено', 'В пути', 'В ожидании'],
             ),
           ],
         );

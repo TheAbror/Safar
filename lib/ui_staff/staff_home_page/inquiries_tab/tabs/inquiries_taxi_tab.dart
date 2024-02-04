@@ -133,10 +133,10 @@ class InquiriesTaxiTab extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
-            for (var status in state.listOfSelectedStatusesAssigned)
+            for (var status in state.listOfSelectedStatusesCreated)
               FilterCard(
                 text: status,
-                onTap: () => context.read<InquiryBloc>().changeStatusAssigned(status),
+                onTap: () => context.read<InquiryBloc>().changeStatusTaxi(status),
               ),
           ],
         ),

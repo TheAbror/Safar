@@ -80,7 +80,7 @@ class InquiryCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'From',
+                  'Из',
                   style: TextStyle(color: AppColors.iconSecondary),
                 ),
                 Text(
@@ -93,7 +93,7 @@ class InquiryCard extends StatelessWidget {
                 ),
                 Spacer(),
                 Text(
-                  'To',
+                  'В',
                   style: TextStyle(color: AppColors.iconSecondary),
                 ),
                 Text(
