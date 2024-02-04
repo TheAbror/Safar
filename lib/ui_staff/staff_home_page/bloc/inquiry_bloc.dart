@@ -318,7 +318,7 @@ class InquiryBloc extends Cubit<InquiryState> {
     }
   }
 
-  void searchCreated(String value) {
+  void searchTaxi(String value) {
     final filteredContent = state.created.model.content
         .where(
           (element) => (element.title).toLowerCase().contains(value.toLowerCase()),
@@ -328,7 +328,7 @@ class InquiryBloc extends Cubit<InquiryState> {
     emit(state.copyWith(createdFiltered: filteredContent));
   }
 
-  void searchAssigned(String value) {
+  void searchDelivery(String value) {
     final filtered = state.assigned.model.content
         .where(
           (element) => (element.title).toLowerCase().contains(value.toLowerCase()),

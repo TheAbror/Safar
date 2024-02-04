@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/auth_bloc.dart';
@@ -130,6 +131,7 @@ class _SignInPageState extends State<SignInPage> {
   GestureDetector _ContinueButton(BuildContext context, AuthState state) {
     return GestureDetector(
       onTap: () {
+        Navigator.pushNamed(context, AppRoutes.staffHome);
         final username = _usernameController.text.trim();
         final password = _passwordController.text.trim();
         if (_formKey.currentState!.validate()) {

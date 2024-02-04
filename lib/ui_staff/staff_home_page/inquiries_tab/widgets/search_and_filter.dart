@@ -7,16 +7,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 
-class SearchAndFilterAssigned extends StatelessWidget {
+class SearchAndFilterDelivery extends StatelessWidget {
   final InquiryState state;
   final List<String> statusesList;
-  final TextEditingController searchAssigned;
+  final TextEditingController searchDelivery;
 
-  const SearchAndFilterAssigned({
+  const SearchAndFilterDelivery({
     super.key,
     required this.state,
     required this.statusesList,
-    required this.searchAssigned,
+    required this.searchDelivery,
   });
 
   @override
@@ -52,9 +52,9 @@ class SearchAndFilterAssigned extends StatelessWidget {
             }
           },
         ),
-        controller: searchAssigned,
+        controller: searchDelivery,
         onChanged: (val) {
-          context.read<InquiryBloc>().searchAssigned(val);
+          context.read<InquiryBloc>().searchDelivery(val);
         },
       ),
     );

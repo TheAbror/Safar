@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safar/core/bloc_progress/bloc_progress.dart';
+import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
-import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_card.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/search_and_filter.dart';
-import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/loader_and_wrong_widgets.dart';
+import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_card.dart';
+
 import '../../model/inquiry_list_model.dart';
 import '../../widgets/filter_card.dart';
 
 class InquiriesDeliveryTab extends StatelessWidget {
   final List<String> statusesList;
-  final TextEditingController searchAssigned;
+  final TextEditingController searchDelivery;
   final ScrollController scrollController;
 
   const InquiriesDeliveryTab({
     super.key,
     required this.statusesList,
-    required this.searchAssigned,
+    required this.searchDelivery,
     required this.scrollController,
   });
 
@@ -49,7 +49,7 @@ class InquiriesDeliveryTab extends StatelessWidget {
       ),
       InquiryListItemResponse(
         id: 0,
-        title: 'Package name',
+        title: 'Delivery name',
         description: 'Some more details',
         items: [Items(id: 0, name: 'dsaà', quantity: 9)],
         created_date: 0,
@@ -67,7 +67,7 @@ class InquiriesDeliveryTab extends StatelessWidget {
       ),
       InquiryListItemResponse(
         id: 0,
-        title: 'Package name',
+        title: 'Item name',
         description: 'Some more details',
         items: [Items(id: 0, name: 'dsaà', quantity: 9)],
         created_date: 0,
@@ -99,38 +99,23 @@ class InquiriesDeliveryTab extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SearchAndFilterAssigned(
+                  SearchAndFilterDelivery(
                     state: state,
                     statusesList: statusesList,
-                    searchAssigned: searchAssigned,
+                    searchDelivery: searchDelivery,
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          for (var status in state.listOfSelectedStatusesAssigned)
-                            FilterCard(
-                              text: status,
-                              onTap: () => context.read<InquiryBloc>().changeStatusAssigned(status),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  if (state.assigned.blocProgress == BlocProgress.IS_LOADING &&
-                      state.assignedFiltered.isEmpty)
-                    TabsLoader()
-                  // else if (state.assigned.blocProgress == BlocProgress.FAILED)
-                  //   const SomethingWentWrong()
-                  else if (myInquiries.isNotEmpty)
+                  _FilterCards(state, context),
+                  if (myInquiries.isNotEmpty)
                     ListView.builder(
                       itemCount: myInquiries.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return InquiryCard(model: myInquiries, index: index);
+                        return InquiryCard(
+                          model: myInquiries,
+                          index: index,
+                          child: Assets.icons.deliveryIcon.image(),
+                        );
                       },
                     )
                 ],
@@ -138,6 +123,24 @@ class InquiriesDeliveryTab extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Padding _FilterCards(InquiryState state, BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            for (var status in state.listOfSelectedStatusesAssigned)
+              FilterCard(
+                text: status,
+                onTap: () => context.read<InquiryBloc>().changeStatusAssigned(status),
+              ),
+          ],
+        ),
       ),
     );
   }

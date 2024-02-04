@@ -19,8 +19,8 @@ class InquiriesTab extends StatefulWidget {
 }
 
 class InquiriesTabState extends State<InquiriesTab> {
-  final searchAssigned = TextEditingController();
-  final searchCreated = TextEditingController();
+  final searchDelivery = TextEditingController();
+  final searchTaxi = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +29,12 @@ class InquiriesTabState extends State<InquiriesTab> {
         return TabBarView(
           children: [
             InquiriesDeliveryTab(
-              searchAssigned: searchAssigned,
+              searchDelivery: searchDelivery,
               scrollController: widget.scrollControllerAssigned,
               statusesList: state.buttons.model.map((e) => e.label).toList(),
             ),
             InquiriesTaxiTab(
-              searchCreated: searchCreated,
+              searchTaxi: searchTaxi,
               scrollController: widget.scrollControllerCreated,
               statusesList: state.buttons.model.map((e) => e.label).toList(),
             ),

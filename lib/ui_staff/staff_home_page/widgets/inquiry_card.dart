@@ -12,11 +12,13 @@ import 'status_widget.dart';
 class InquiryCard extends StatelessWidget {
   final int index;
   final List<InquiryListItemResponse> model;
+  final Widget child;
 
   const InquiryCard({
     super.key,
     required this.model,
     required this.index,
+    required this.child,
   });
 
   @override
@@ -41,7 +43,6 @@ class InquiryCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 4.w),
         width: double.infinity,
-        // height: 238.h,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.onBackground,
           borderRadius: BorderRadius.circular(16.r),
@@ -51,7 +52,7 @@ class InquiryCard extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
-              child: _TitleAndTime(formattedDate),
+              child: _TitleAndTime(formattedDate, child),
             ),
             SizedBox(height: 5.h),
             _FromTo(model[index].from, model[index].to),
@@ -184,7 +185,7 @@ class InquiryCard extends StatelessWidget {
     );
   }
 
-  Row _TitleAndTime(String formattedDate) {
+  Row _TitleAndTime(String formattedDate, Widget child) {
     return Row(
       children: [
         Container(
@@ -198,7 +199,7 @@ class InquiryCard extends StatelessWidget {
               width: 0.5.w,
             ),
           ),
-          child: Assets.icons.deliveryIcon.image(),
+          child: child,
         ),
         SizedBox(width: 12.w),
         Expanded(
