@@ -5,6 +5,7 @@ import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/core/utils/navigation_utils.dart';
 import 'package:safar/gen/assets.gen.dart';
+import 'package:safar/ui_staff/signin_page/signin_page.dart';
 import 'auth_status/splash_auth_status.dart';
 import 'bloc/splash_bloc.dart';
 
@@ -16,6 +17,18 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+    // Add a delay of 2 seconds before navigating to the next page
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SignInPage()),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SplashBloc, SplashState>(
