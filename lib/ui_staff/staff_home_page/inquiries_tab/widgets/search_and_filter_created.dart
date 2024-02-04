@@ -7,17 +7,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 
-class SearchAndFilterTexi extends StatelessWidget {
-  const SearchAndFilterTexi({
+class SearchAndFilterTaxi extends StatelessWidget {
+  final InquiryState state;
+  final List<String> statusesList;
+  final TextEditingController searchTaxi;
+
+  const SearchAndFilterTaxi({
     super.key,
     required this.state,
     required this.statusesList,
     required this.searchTaxi,
   });
-
-  final InquiryState state;
-  final List<String> statusesList;
-  final TextEditingController searchTaxi;
 
   @override
   Widget build(BuildContext context) {

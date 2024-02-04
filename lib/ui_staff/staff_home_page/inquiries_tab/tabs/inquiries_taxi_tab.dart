@@ -98,7 +98,7 @@ class InquiriesTaxiTab extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SearchAndFilterTexi(
+                  SearchAndFilterTaxi(
                     state: state,
                     statusesList: statusesList,
                     searchTaxi: searchTaxi,
@@ -113,7 +113,7 @@ class InquiriesTaxiTab extends StatelessWidget {
                         return InquiryCard(
                           model: myInquiries,
                           index: index,
-                          child: Assets.icons.deliveryIcon.image(),
+                          child: Assets.icons.carTab.image(),
                         );
                       },
                     )
