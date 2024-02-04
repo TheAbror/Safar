@@ -75,7 +75,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         SizedBox(height: 5.h),
                         Text(
-                          'Sign in',
+                          'Войти',
                           style: TextStyle(
                             fontSize: 24.sp,
                             fontWeight: FontWeight.w500,
@@ -84,7 +84,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         SizedBox(height: 8.h),
                         Text(
-                          'Enter you credentials to access the platform',
+                          'Введите свои учетные данные для доступа к платформе',
                           style: TextStyle(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w400,
@@ -93,7 +93,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         SizedBox(height: 20.h),
                         Text(
-                          'Login',
+                          'Логин',
                           style: TextStyle(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
@@ -104,7 +104,7 @@ class _SignInPageState extends State<SignInPage> {
                         SignInUsernameField(usernameController: _usernameController),
                         SizedBox(height: 24.h),
                         Text(
-                          'Password',
+                          'Пароль',
                           style: TextStyle(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
@@ -157,7 +157,7 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 )
               : Text(
-                  'Continue',
+                  'Продолжить',
                   style: TextStyle(
                     letterSpacing: 0.5,
                     fontSize: 15.sp,

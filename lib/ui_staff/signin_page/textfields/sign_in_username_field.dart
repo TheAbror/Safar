@@ -42,7 +42,7 @@ class SignInUsernameField extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         fillColor: Theme.of(context).colorScheme.surfaceTint,
-        hintText: 'ID',
+        hintText: 'Логин',
       ),
     );
   }

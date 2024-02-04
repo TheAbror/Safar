@@ -44,14 +44,14 @@ class _StaffHomePageState extends State<StaffHomePage> {
   final ScrollController _scrollControllerCreated = ScrollController();
 
   // CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
-  String errorOccured = 'Error occured';
+  String errorOccured = 'Произошла ошибка';
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: inquiries_appbar(context, 'Abror Shamuradov', 'AS', 'Driver'),
+        appBar: inquiries_appbar(context, 'Аброр Шамурадов', 'АБ', 'Водитель'),
         backgroundColor: Theme.of(context).colorScheme.background,
         resizeToAvoidBottomInset: false,
         floatingActionButton: isDirector ? const SizedBox() : const CreateButton(),

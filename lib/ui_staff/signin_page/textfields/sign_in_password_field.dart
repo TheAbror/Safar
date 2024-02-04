@@ -49,7 +49,7 @@ class SignInPasswordField extends StatelessWidget {
               ),
               fillColor: Theme.of(context).colorScheme.surfaceTint,
 
-              hintText: 'Password',
+              hintText: 'Пароль',
               suffixIcon: InkWell(
                 onTap: () {
                   context.read<AuthBloc>().isPasswordHidden();

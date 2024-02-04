@@ -67,7 +67,7 @@ class SearchInput extends StatelessWidget {
           hintStyle: TextStyle(
             fontSize: 16.sp,
             color: AppColors.iconSecondary,
-            fontFamily: FontFamily.roboto,
+            fontFamily: FontFamily.lato,
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.stroke, width: 0.33.w),

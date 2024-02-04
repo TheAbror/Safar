@@ -26,7 +26,7 @@ class SearchAndFilterDelivery extends StatelessWidget {
       child: SearchInput(
         fillColor: Theme.of(context).colorScheme.onBackground,
         width: 344.w,
-        hintText: 'Search',
+        hintText: 'Поиск',
         suffixIcon: SearchSettings(
           color: state.listOfSelectedStatusesAssigned.isEmpty
               ? AppColors.iconSecondary
