@@ -52,7 +52,7 @@ class _AppUpdatesViewState extends State<AppUpdatesView> {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.all(24.w),
-                child: Assets.images.logoWhiteBg.image(
+                child: Assets.icons.logo.image(
                   width: 260.w,
                   fit: BoxFit.fill,
                 ),
