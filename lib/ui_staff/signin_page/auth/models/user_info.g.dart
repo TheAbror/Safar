@@ -77,3 +77,24 @@ Map<String, dynamic> _$DriverRegistrationToJson(DriverRegistration instance) =>
       'car_year': instance.carYear,
       'license_plate': instance.licencePlate,
     };
+
+DriverProfie _$DriverProfieFromJson(Map<String, dynamic> json) => DriverProfie(
+      id: json['id'] as int? ?? 0,
+      user: json['user'] as int? ?? 0,
+      carModel: json['car_model'] as String? ?? '',
+      carColor: json['car_color'] as String? ?? '',
+      carYear: json['car_year'] as int? ?? 0,
+      licencePlate: json['license_plate'] as String? ?? '',
+      registeredAt: json['registered_at'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$DriverProfieToJson(DriverProfie instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'user': instance.user,
+      'car_model': instance.carModel,
+      'car_color': instance.carColor,
+      'car_year': instance.carYear,
+      'license_plate': instance.licencePlate,
+      'registered_at': instance.registeredAt,
+    };

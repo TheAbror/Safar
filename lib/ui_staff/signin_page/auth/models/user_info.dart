@@ -113,3 +113,39 @@ class DriverRegistration {
 
   Map<String, dynamic> toJson() => _$DriverRegistrationToJson(this);
 }
+
+// --- Driver profile ---
+// endpoint: /api/driver_profile/
+// allowed requests: GET, PATCH
+
+@JsonSerializable(includeIfNull: true, explicitToJson: true)
+class DriverProfie {
+  @JsonKey(defaultValue: 0)
+  int id;
+  @JsonKey(defaultValue: 0)
+  int user;
+  @JsonKey(defaultValue: '', name: 'car_model')
+  String carModel;
+  @JsonKey(defaultValue: '', name: 'car_color')
+  String carColor;
+  @JsonKey(defaultValue: 0, name: 'car_year')
+  int carYear;
+  @JsonKey(defaultValue: '', name: 'license_plate')
+  String licencePlate;
+  @JsonKey(defaultValue: '', name: 'registered_at')
+  String registeredAt;
+
+  DriverProfie({
+    required this.id,
+    required this.user,
+    required this.carModel,
+    required this.carColor,
+    required this.carYear,
+    required this.licencePlate,
+    required this.registeredAt,
+  });
+
+  factory DriverProfie.fromJson(Map<String, dynamic> json) => _$DriverProfieFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DriverProfieToJson(this);
+}
