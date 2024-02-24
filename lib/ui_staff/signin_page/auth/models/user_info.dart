@@ -149,3 +149,21 @@ class DriverProfie {
 
   Map<String, dynamic> toJson() => _$DriverProfieToJson(this);
 }
+
+
+// --- Orders ---
+// endpoint: /api/orders/
+// allowed requests: GET, POST
+
+// POST:
+// {
+//     'pickup': 'Location A',
+//     'destination': 'Location B',
+//     'number_passenger': number of passengers,
+//     'desired_pickup_time': 'datetime',
+//     'desired_car_model': None,
+//     'offered_price': offered price,
+//     'pickup_reference': detailed address of pickup,
+//     'destination_reference': detailed address of destination,
+//     'comments_for_driver': comments for driver,
+// }
