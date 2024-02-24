@@ -6,7 +6,7 @@ part 'user_info.g.dart';
 class SignInResponse {
   @JsonKey()
   String token;
-  @JsonKey(name: 'user_info')
+  @JsonKey(name: 'user')
   UserInfoResponse userInfo;
 
   SignInResponse({required this.token, required this.userInfo});

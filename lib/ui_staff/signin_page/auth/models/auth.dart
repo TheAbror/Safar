@@ -6,12 +6,12 @@ part 'auth.g.dart';
 class SignInRequest {
   final String username;
   final String password;
-  final String type;
+  final String contacts;
 
   SignInRequest({
     required this.username,
     required this.password,
-    required this.type,
+    required this.contacts,
   });
 
   factory SignInRequest.fromJson(Map<String, dynamic> json) => _$SignInRequestFromJson(json);
