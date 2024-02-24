@@ -23,8 +23,6 @@ class _SignInPageState extends State<SignInPage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  bool isPasscodeOnDefault = false;
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -128,13 +126,14 @@ class _SignInPageState extends State<SignInPage> {
 
   GestureDetector _ContinueButton(BuildContext context, AuthState state) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         final username = _usernameController.text.trim();
         final password = _passwordController.text.trim();
         if (_formKey.currentState!.validate()) {
           context.read<AuthBloc>().signIn(username, password, '998914309090');
         }
-        Navigator.pushNamed(context, AppRoutes.staffHome);
+        if (!state.isWaiting && state.blocProgress == BlocProgress.IS_SUCCESS)
+          Navigator.pushNamed(context, AppRoutes.staffHome);
       },
       child: Container(
         height: 48.h,

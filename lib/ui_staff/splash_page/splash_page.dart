@@ -65,14 +65,17 @@ class _SplashView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        SizedBox(height: 100.h),
-        Center(
-          child: Assets.icons.logo.image(
-            width: double.infinity,
-            fit: BoxFit.fill,
+        SizedBox(height: 150.h),
+        Padding(
+          padding: EdgeInsets.all(16.w),
+          child: Center(
+            child: Assets.icons.logoGreen.image(
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
           ),
         ),
-        SizedBox(height: 30.h),
+        SizedBox(height: 150.h),
         const Center(
           child: CircularProgressIndicator(color: AppColors.primary),
         ),
