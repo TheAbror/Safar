@@ -235,10 +235,6 @@ class $AssetsIconsHomePageIconsGen {
 class $AssetsIconsStaffIconsGen {
   const $AssetsIconsStaffIconsGen();
 
-  /// File path: assets/icons/staff_icons/Avatars.svg
-  SvgGenImage get avatars =>
-      const SvgGenImage('assets/icons/staff_icons/Avatars.svg');
-
   /// File path: assets/icons/staff_icons/Button.svg
   SvgGenImage get button =>
       const SvgGenImage('assets/icons/staff_icons/Button.svg');
@@ -255,33 +251,9 @@ class $AssetsIconsStaffIconsGen {
   SvgGenImage get flags =>
       const SvgGenImage('assets/icons/staff_icons/Flags.svg');
 
-  /// File path: assets/icons/staff_icons/add-circle.svg
-  SvgGenImage get addCircle =>
-      const SvgGenImage('assets/icons/staff_icons/add-circle.svg');
-
-  /// File path: assets/icons/staff_icons/addIconLesson.svg
-  SvgGenImage get addIconLesson =>
-      const SvgGenImage('assets/icons/staff_icons/addIconLesson.svg');
-
   /// File path: assets/icons/staff_icons/additem.svg
   SvgGenImage get additem =>
       const SvgGenImage('assets/icons/staff_icons/additem.svg');
-
-  /// File path: assets/icons/staff_icons/arrow-swap-horizontal.svg
-  SvgGenImage get arrowSwapHorizontal =>
-      const SvgGenImage('assets/icons/staff_icons/arrow-swap-horizontal.svg');
-
-  /// File path: assets/icons/staff_icons/binIcon.svg
-  SvgGenImage get binIcon =>
-      const SvgGenImage('assets/icons/staff_icons/binIcon.svg');
-
-  /// File path: assets/icons/staff_icons/bottomNavigationExam.svg
-  SvgGenImage get bottomNavigationExam =>
-      const SvgGenImage('assets/icons/staff_icons/bottomNavigationExam.svg');
-
-  /// File path: assets/icons/staff_icons/bottomNavigationInquiries.svg
-  SvgGenImage get bottomNavigationInquiries => const SvgGenImage(
-      'assets/icons/staff_icons/bottomNavigationInquiries.svg');
 
   /// File path: assets/icons/staff_icons/calendar.svg
   SvgGenImage get calendar =>
@@ -323,9 +295,6 @@ class $AssetsIconsStaffIconsGen {
   SvgGenImage get menuAssessmentInfo =>
       const SvgGenImage('assets/icons/staff_icons/menu_assessment_info.svg');
 
-  $AssetsIconsStaffIconsNavbarGen get navbar =>
-      const $AssetsIconsStaffIconsNavbarGen();
-
   /// File path: assets/icons/staff_icons/search-normal.svg
   SvgGenImage get searchNormal =>
       const SvgGenImage('assets/icons/staff_icons/search-normal.svg');
@@ -344,18 +313,11 @@ class $AssetsIconsStaffIconsGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [
-        avatars,
         button,
         chevronRight,
         closeIcn,
         flags,
-        addCircle,
-        addIconLesson,
         additem,
-        arrowSwapHorizontal,
-        binIcon,
-        bottomNavigationExam,
-        bottomNavigationInquiries,
         calendar,
         changeLogDot,
         closeCircle,
@@ -370,69 +332,6 @@ class $AssetsIconsStaffIconsGen {
         search,
         settingIcon,
         threeDots
-      ];
-}
-
-class $AssetsIconsStaffIconsNavbarGen {
-  const $AssetsIconsStaffIconsNavbarGen();
-
-  /// File path: assets/icons/staff_icons/navbar/Icons.svg
-  SvgGenImage get icons =>
-      const SvgGenImage('assets/icons/staff_icons/navbar/Icons.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/calendar-2.svg
-  SvgGenImage get calendar2 =>
-      const SvgGenImage('assets/icons/staff_icons/navbar/calendar-2.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/calendar-selected.svg
-  SvgGenImage get calendarSelected => const SvgGenImage(
-      'assets/icons/staff_icons/navbar/calendar-selected.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/home-2.svg
-  SvgGenImage get home2 =>
-      const SvgGenImage('assets/icons/staff_icons/navbar/home-2.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/home_unselected.svg
-  SvgGenImage get homeUnselected =>
-      const SvgGenImage('assets/icons/staff_icons/navbar/home_unselected.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/marks_selected.svg
-  SvgGenImage get marksSelected =>
-      const SvgGenImage('assets/icons/staff_icons/navbar/marks_selected.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/menu.svg
-  SvgGenImage get menu =>
-      const SvgGenImage('assets/icons/staff_icons/navbar/menu.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/more_selected.svg
-  SvgGenImage get moreSelected =>
-      const SvgGenImage('assets/icons/staff_icons/navbar/more_selected.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/scan-barcode.svg
-  SvgGenImage get scanBarcode =>
-      const SvgGenImage('assets/icons/staff_icons/navbar/scan-barcode.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/scan_selected.svg
-  SvgGenImage get scanSelected =>
-      const SvgGenImage('assets/icons/staff_icons/navbar/scan_selected.svg');
-
-  /// File path: assets/icons/staff_icons/navbar/timetable_selected.svg
-  SvgGenImage get timetableSelected => const SvgGenImage(
-      'assets/icons/staff_icons/navbar/timetable_selected.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values => [
-        icons,
-        calendar2,
-        calendarSelected,
-        home2,
-        homeUnselected,
-        marksSelected,
-        menu,
-        moreSelected,
-        scanBarcode,
-        scanSelected,
-        timetableSelected
       ];
 }
 
