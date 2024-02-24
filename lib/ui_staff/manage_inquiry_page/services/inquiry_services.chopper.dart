@@ -18,8 +18,8 @@ final class _$MeasurementService extends MeasurementService {
 
   @override
   Future<Response<List<MeasurementResponse>>> getMeasures() {
-    final Uri $url = Uri.parse(
-        'https://api.edulab.app/edulab_udea/api/v1/types/measurement');
+    final Uri $url =
+        Uri.parse('https://safarapi.pythonanywhere.com/types/measurement');
     final Request $request = Request(
       'GET',
       $url,

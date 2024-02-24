@@ -9,14 +9,13 @@ part of 'user_info.dart';
 SignInResponse _$SignInResponseFromJson(Map<String, dynamic> json) =>
     SignInResponse(
       token: json['token'] as String,
-      userInfo:
-          UserInfoResponse.fromJson(json['user_info'] as Map<String, dynamic>),
+      userInfo: UserInfoResponse.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SignInResponseToJson(SignInResponse instance) =>
     <String, dynamic>{
       'token': instance.token,
-      'user_info': instance.userInfo.toJson(),
+      'user': instance.userInfo.toJson(),
     };
 
 UserInfoResponse _$UserInfoResponseFromJson(Map<String, dynamic> json) =>

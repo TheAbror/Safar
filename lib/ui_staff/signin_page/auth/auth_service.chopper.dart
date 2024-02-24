@@ -19,7 +19,7 @@ final class _$AuthService extends AuthService {
   @override
   Future<Response<SignInResponse>> signIn(SignInRequest body) {
     final Uri $url =
-        Uri.parse('https://api.edulab.app/edulab_udea/api/v1/signin');
+        Uri.parse('https://safarapi.pythonanywhere.com/api/signup/');
     final $body = body;
     final Request $request = Request(
       'POST',

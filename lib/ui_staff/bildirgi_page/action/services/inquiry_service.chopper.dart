@@ -19,7 +19,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<List<InquiryButtons>>> getButtons() {
     final Uri $url = Uri.parse(
-        'https://api.edulab.app/edulab_udea/api/v1/types/inquiry_status?variable=inquiry_status');
+        'https://safarapi.pythonanywhere.com/types/inquiry_status?variable=inquiry_status');
     final Request $request = Request(
       'GET',
       $url,
@@ -31,8 +31,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<InquiryListItemResponse>> postNewInquiry(
       CreateInquiryRequest body) {
-    final Uri $url =
-        Uri.parse('https://api.edulab.app/edulab_udea/api/v1/inquiry/');
+    final Uri $url = Uri.parse('https://safarapi.pythonanywhere.com/inquiry/');
     final $body = body;
     final Request $request = Request(
       'POST',
@@ -47,7 +46,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<List<CommentsResponse>>> getCommentsList() {
     final Uri $url = Uri.parse(
-        'https://api.edulab.app/edulab_udea/api/v1/inquiry/comment-template/');
+        'https://safarapi.pythonanywhere.com/inquiry/comment-template/');
     final Request $request = Request(
       'GET',
       $url,
@@ -59,7 +58,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<CommentsResponse>> postComment(CommentsModelRequest body) {
     final Uri $url = Uri.parse(
-        'https://api.edulab.app/edulab_udea/api/v1/inquiry/comment-template/');
+        'https://safarapi.pythonanywhere.com/inquiry/comment-template/');
     final $body = body;
     final Request $request = Request(
       'POST',
@@ -73,7 +72,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<InquiryListItemResponse>> getInquiryById(int id) {
     final Uri $url =
-        Uri.parse('https://api.edulab.app/edulab_udea/api/v1/inquiry/${id}');
+        Uri.parse('https://safarapi.pythonanywhere.com/inquiry/${id}');
     final Request $request = Request(
       'GET',
       $url,
@@ -86,7 +85,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<InquiryListItemResponse>> getInquiryByIdForEdit(int id) {
     final Uri $url =
-        Uri.parse('https://api.edulab.app/edulab_udea/api/v1/inquiry/${id}');
+        Uri.parse('https://safarapi.pythonanywhere.com/inquiry/${id}');
     final Request $request = Request(
       'GET',
       $url,
@@ -99,8 +98,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<InquiryListItemResponse>> editInquiryByID(
       CreateInquiryRequest model) {
-    final Uri $url =
-        Uri.parse('https://api.edulab.app/edulab_udea/api/v1/inquiry/');
+    final Uri $url = Uri.parse('https://safarapi.pythonanywhere.com/inquiry/');
     final $body = model;
     final Request $request = Request(
       'POST',
@@ -115,8 +113,8 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<InquiryListItemResponse>> postInquiry(
       InquiryActionRequestModel model) {
-    final Uri $url = Uri.parse(
-        'https://api.edulab.app/edulab_udea/api/v1/inquiry/update-status');
+    final Uri $url =
+        Uri.parse('https://safarapi.pythonanywhere.com/inquiry/update-status');
     final $body = model;
     final Request $request = Request(
       'POST',
@@ -130,8 +128,8 @@ final class _$InquiryService extends InquiryService {
 
   @override
   Future<Response<DeleteInquiryByIdModel>> deleteInquiryById(int id) {
-    final Uri $url = Uri.parse(
-        'https://api.edulab.app/edulab_udea/api/v1/inquiry/mobile/${id}');
+    final Uri $url =
+        Uri.parse('https://safarapi.pythonanywhere.com/inquiry/mobile/${id}');
     final Request $request = Request(
       'DELETE',
       $url,
@@ -144,7 +142,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<InquiryListResponse>> getInitiallyAssigned() {
     final Uri $url =
-        Uri.parse('https://api.edulab.app/edulab_udea/api/v1/inquiry/assigned');
+        Uri.parse('https://safarapi.pythonanywhere.com/inquiry/assigned');
     final Request $request = Request(
       'GET',
       $url,
@@ -156,7 +154,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<InquiryListResponse>> getAssignedWithPageable(int id) {
     final Uri $url = Uri.parse(
-        'https://api.edulab.app/edulab_udea/api/v1/inquiry/assigned?page=${id}&size=20');
+        'https://safarapi.pythonanywhere.com/inquiry/assigned?page=${id}&size=20');
     final Request $request = Request(
       'GET',
       $url,
@@ -167,8 +165,7 @@ final class _$InquiryService extends InquiryService {
 
   @override
   Future<Response<InquiryListResponse>> getInitiallyCreated() {
-    final Uri $url =
-        Uri.parse('https://api.edulab.app/edulab_udea/api/v1/inquiry/');
+    final Uri $url = Uri.parse('https://safarapi.pythonanywhere.com/inquiry/');
     final Request $request = Request(
       'GET',
       $url,
@@ -180,7 +177,7 @@ final class _$InquiryService extends InquiryService {
   @override
   Future<Response<InquiryListResponse>> getCreatedWithPageable(int id) {
     final Uri $url = Uri.parse(
-        'https://api.edulab.app/edulab_udea/api/v1/inquiry/?page=${id}&size=20');
+        'https://safarapi.pythonanywhere.com/inquiry/?page=${id}&size=20');
     final Request $request = Request(
       'GET',
       $url,

@@ -18,8 +18,7 @@ final class _$StaffListService extends StaffListService {
 
   @override
   Future<Response<List<StaffResponse>>> getStaffList() {
-    final Uri $url =
-        Uri.parse('https://api.edulab.app/edulab_udea/api/v1/staff/all');
+    final Uri $url = Uri.parse('https://safarapi.pythonanywhere.com/staff/all');
     final Request $request = Request(
       'GET',
       $url,

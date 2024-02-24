@@ -18,8 +18,8 @@ final class _$SettingsService extends SettingsService {
 
   @override
   Future<Response<AppVersionResponse>> getAppVersions() {
-    final Uri $url = Uri.parse(
-        'https://api.edulab.app/edulab_udea/api/v1/mobile/settings/versions');
+    final Uri $url =
+        Uri.parse('https://safarapi.pythonanywhere.com/settings/versions');
     final Request $request = Request(
       'GET',
       $url,
