@@ -193,3 +193,79 @@ class OrdersRequest {
 
   Map<String, dynamic> toJson() => _$OrdersRequestToJson(this);
 }
+
+// GET:
+
+@JsonSerializable(includeIfNull: true, explicitToJson: true)
+class OrdersResponse {
+  @JsonKey(defaultValue: 0)
+  int id;
+  @JsonKey(defaultValue: '')
+  String pickup;
+  @JsonKey(defaultValue: '')
+  String destination;
+  @JsonKey(defaultValue: 0, name: 'number_passenger')
+  int numberOfPassengers;
+  @JsonKey(defaultValue: '', name: 'desired_pickup_time')
+  String desiredPickupTime;
+  @JsonKey(defaultValue: '', name: 'desired_car_model')
+  String desiredCarModel;
+  @JsonKey(defaultValue: 0, name: 'offered_price')
+  int offeredPrice;
+  @JsonKey(defaultValue: '', name: 'pickup_reference')
+  String pickupReference;
+  @JsonKey(defaultValue: '', name: 'destination_reference')
+  String destinationReference;
+  @JsonKey(defaultValue: '', name: 'comments_for_driver')
+  String commentForDriver;
+  @JsonKey(defaultValue: false)
+  bool created;
+  @JsonKey(defaultValue: '', name: 'created_at')
+  String createdAt;
+  @JsonKey(defaultValue: false)
+  bool assigned;
+  @JsonKey(defaultValue: '', name: 'assigned_at')
+  String assignedAt;
+  @JsonKey(defaultValue: false, name: 'in_process')
+  bool inProcess;
+  @JsonKey(defaultValue: '', name: 'in_process_at')
+  String inProcessAt;
+  @JsonKey(defaultValue: false, name: 'update_required')
+  bool updateRequired;
+  @JsonKey(defaultValue: false)
+  bool delivered;
+  @JsonKey(defaultValue: '', name: 'delivered_at')
+  String deliveredAt;
+  @JsonKey(defaultValue: 0)
+  int user;
+  @JsonKey(defaultValue: 0)
+  int driver;
+
+  OrdersResponse({
+    required this.id,
+    required this.pickup,
+    required this.destination,
+    required this.numberOfPassengers,
+    required this.desiredPickupTime,
+    required this.desiredCarModel,
+    required this.offeredPrice,
+    required this.pickupReference,
+    required this.destinationReference,
+    required this.commentForDriver,
+    required this.assignedAt,
+    required this.assigned,
+    required this.created,
+    required this.createdAt,
+    required this.delivered,
+    required this.deliveredAt,
+    required this.driver,
+    required this.inProcess,
+    required this.inProcessAt,
+    required this.updateRequired,
+    required this.user,
+  });
+
+  factory OrdersResponse.fromJson(Map<String, dynamic> json) => _$OrdersResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrdersResponseToJson(this);
+}
