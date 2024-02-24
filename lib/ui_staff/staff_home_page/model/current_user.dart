@@ -9,7 +9,6 @@ class CurrentUser {
     required this.shortName,
     required this.token,
     required this.userID,
-    required this.roles,
   });
 
   @HiveField(0)
@@ -23,7 +22,4 @@ class CurrentUser {
 
   @HiveField(4)
   String userID;
-
-  @HiveField(5)
-  List<String> roles;
 }

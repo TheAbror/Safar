@@ -12,6 +12,8 @@ import 'package:safar/ui_staff/splash_page/bloc/splash_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
 import 'core/app_themes.dart';
+import 'core/box/current_user_box.dart';
+import 'core/db/shared_keys.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +22,7 @@ void main() async {
 
   Hive.registerAdapter(CurrentUserAdapter());
 
-  // boxCurrentUser = await Hive.openBox<CurrentUser>(ShPrefKeys.currentUser);
+  boxCurrentUser = await Hive.openBox<CurrentUser>(ShPrefKeys.currentUser);
 
   ApiProvider.create();
 
@@ -66,8 +68,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-//TODO add splash page
-//TODO add sign in page
-//TODO add terms and conditons page

@@ -19,5 +19,5 @@ abstract class ShPrefKeys {
 //   static var userAccountType = 'userAccountType';
 //   static var isLightMode = 'isLightMode';
 //   static var themeMode = 'themeMode';
-  // static var currentUser = 'currentUser';
+  static var currentUser = 'currentUser';
 }

@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/utils/account_type.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
+import 'package:safar/ui_staff/staff_home_page/model/box/current_user_box.dart';
 import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
 
 import '../../../core/api/api_provider.dart';
@@ -17,30 +19,21 @@ class SplashBloc extends Cubit<SplashState> {
     emit(SplashState.initial());
   }
 
-//TODO
-  // Future setupInitialSettings() async {
-  //   CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
+  Future setupInitialSettings() async {
+    CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
 
-  //   ApiProvider.create(token: currentUser?.token ?? '');
+    ApiProvider.create(token: currentUser?.token ?? '');
 
-  //   if (currentUser?.token == null) {
-  //     emit(
-  //       state.copyWith(
-  //         authStatus: SplashAuthStatus.notAuthorized,
-  //       ),
-  //     );
-  //   } else {
-  //     final accountType = PreferencesServices.getAccountType();
-  //     final passcode = PreferencesServices.getPasscode();
-  //     emit(
-  //       state.copyWith(
-  //         authStatus: SplashAuthStatus.authorized,
-  //         accountType: accountType,
-  //         passcode: passcode,
-  //       ),
-  //     );
-  //   }
-  // }
+    if (currentUser?.token == null) {
+      emit(
+        state.copyWith(
+          authStatus: SplashAuthStatus.notAuthorized,
+        ),
+      );
+    } else {
+      emit(state.copyWith(authStatus: SplashAuthStatus.authorized));
+    }
+  }
 
   // void getMinimumAppVersion() async {
   //   bool showMaintanance = false;

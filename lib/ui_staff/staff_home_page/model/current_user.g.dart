@@ -21,14 +21,13 @@ class CurrentUserAdapter extends TypeAdapter<CurrentUser> {
       shortName: fields[1] as String,
       token: fields[3] as String,
       userID: fields[4] as String,
-      roles: (fields[5] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, CurrentUser obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.fullName)
       ..writeByte(1)
@@ -36,9 +35,7 @@ class CurrentUserAdapter extends TypeAdapter<CurrentUser> {
       ..writeByte(3)
       ..write(obj.token)
       ..writeByte(4)
-      ..write(obj.userID)
-      ..writeByte(5)
-      ..write(obj.roles);
+      ..write(obj.userID);
   }
 
   @override

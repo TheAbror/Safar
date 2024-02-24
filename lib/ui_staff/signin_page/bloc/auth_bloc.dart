@@ -4,7 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/api/api_provider.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/constants/app_strings.dart';
+import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/utils/account_type.dart';
+import 'package:safar/ui_staff/staff_home_page/model/box/current_user_box.dart';
+import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
 
 import '../auth/models/auth.dart';
 import '../auth/models/user_info.dart';
@@ -39,6 +42,17 @@ class AuthBloc extends Cubit<AuthState> {
               data: data,
               blocProgress: BlocProgress.IS_SUCCESS,
               isWaiting: false,
+            ),
+          );
+
+          var user = data.userInfo;
+          boxCurrentUser.put(
+            ShPrefKeys.currentUser,
+            CurrentUser(
+              fullName: '${user.firstname} ${user.lastname}',
+              shortName: '${user.firstname[0].toUpperCase()} ${user.lastname[0].toUpperCase()}',
+              token: token,
+              userID: username,
             ),
           );
         }
