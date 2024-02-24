@@ -128,9 +128,6 @@ class $AssetsIconsGen {
   AssetGenImage get deliveryIcon =>
       const AssetGenImage('assets/icons/delivery_icon.png');
 
-  $AssetsIconsHomePageIconsGen get homePageIcons =>
-      const $AssetsIconsHomePageIconsGen();
-
   /// File path: assets/icons/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/icons/logo.png');
 
@@ -187,49 +184,6 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values =>
       [googlePlay, iosAppStore, personMale, personIcon];
-}
-
-class $AssetsIconsHomePageIconsGen {
-  const $AssetsIconsHomePageIconsGen();
-
-  /// File path: assets/icons/home_page_icons/Indicator.svg
-  SvgGenImage get indicator =>
-      const SvgGenImage('assets/icons/home_page_icons/Indicator.svg');
-
-  /// File path: assets/icons/home_page_icons/No data.svg
-  SvgGenImage get noData =>
-      const SvgGenImage('assets/icons/home_page_icons/No data.svg');
-
-  /// File path: assets/icons/home_page_icons/arrow-down.svg
-  SvgGenImage get arrowDown =>
-      const SvgGenImage('assets/icons/home_page_icons/arrow-down.svg');
-
-  /// File path: assets/icons/home_page_icons/arrow-right.svg
-  SvgGenImage get arrowRight =>
-      const SvgGenImage('assets/icons/home_page_icons/arrow-right.svg');
-
-  /// File path: assets/icons/home_page_icons/maintenance.svg
-  SvgGenImage get maintenance =>
-      const SvgGenImage('assets/icons/home_page_icons/maintenance.svg');
-
-  /// File path: assets/icons/home_page_icons/notifications.svg
-  SvgGenImage get notifications =>
-      const SvgGenImage('assets/icons/home_page_icons/notifications.svg');
-
-  /// File path: assets/icons/home_page_icons/settings-filter_timetable.svg
-  SvgGenImage get settingsFilterTimetable => const SvgGenImage(
-      'assets/icons/home_page_icons/settings-filter_timetable.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values => [
-        indicator,
-        noData,
-        arrowDown,
-        arrowRight,
-        maintenance,
-        notifications,
-        settingsFilterTimetable
-      ];
 }
 
 class $AssetsIconsStaffIconsGen {

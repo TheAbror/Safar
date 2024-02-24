@@ -6,7 +6,6 @@ import 'bloc/auth_bloc.dart';
 import 'textfields/sign_in_password_field.dart';
 import 'textfields/sign_in_username_field.dart';
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/core/utils/navigation_utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
@@ -21,7 +20,6 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
 
-//todo3
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -38,13 +36,13 @@ class _SignInPageState extends State<SignInPage> {
           resizeToAvoidBottomInset: false,
           body: BlocConsumer<AuthBloc, AuthState>(
             listener: (context, state) async {
-              if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-                NavigationUtils.navigateToNextRouteByAccountType(
-                  context,
-                  state.accountType,
-                  'isPasscodeOnDefault',
-                );
-              }
+              // if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+              //   NavigationUtils.navigateToNextRouteByAccountType(
+              //     context,
+              //     state.accountType,
+              //     'isPasscodeOnDefault',
+              //   );
+              // }
               if (state.blocProgress == BlocProgress.IS_LOADING) {
                 Center(
                   child: CircularProgressIndicator(color: AppColors.primary),
@@ -131,12 +129,12 @@ class _SignInPageState extends State<SignInPage> {
   GestureDetector _ContinueButton(BuildContext context, AuthState state) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, AppRoutes.staffHome);
         final username = _usernameController.text.trim();
         final password = _passwordController.text.trim();
         if (_formKey.currentState!.validate()) {
           context.read<AuthBloc>().signIn(username, password, '998914309090');
         }
+        Navigator.pushNamed(context, AppRoutes.staffHome);
       },
       child: Container(
         height: 48.h,

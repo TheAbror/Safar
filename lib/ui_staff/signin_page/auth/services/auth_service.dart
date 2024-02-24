@@ -3,7 +3,6 @@ import 'package:safar/core/constants/app_strings.dart';
 import 'package:safar/ui_staff/signin_page/auth/models/auth.dart';
 import 'package:safar/ui_staff/signin_page/auth/models/user_info.dart';
 
-
 part 'auth_service.chopper.dart';
 
 @ChopperApi(baseUrl: AppStrings.baseLive)
@@ -13,3 +12,8 @@ abstract class AuthService extends ChopperService {
   @Post(path: AppStrings.signIn)
   Future<Response<SignInResponse>> signIn(@Body() SignInRequest body);
 }
+
+
+
+
+//TODO remove my udea

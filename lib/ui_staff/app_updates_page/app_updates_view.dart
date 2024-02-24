@@ -67,11 +67,11 @@ class _AppUpdatesViewState extends State<AppUpdatesView> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(height: 40.h),
-                  showMaintenance
-                      ? Assets.icons.homePageIcons.maintenance.svg(width: 170.w)
-                      : Platform.isAndroid
-                          ? Assets.images.googlePlay.image(width: 80.w)
-                          : Assets.images.iosAppStore.image(width: 80.w),
+                  // showMaintenance
+                  //     ? Assets.icons.homePageIcons.maintenance.svg(width: 170.w)
+                  //     : Platform.isAndroid
+                  //         ? Assets.images.googlePlay.image(width: 80.w)
+                  //         : Assets.images.iosAppStore.image(width: 80.w),
                   SizedBox(height: 40.h),
                   Text(
                     title,

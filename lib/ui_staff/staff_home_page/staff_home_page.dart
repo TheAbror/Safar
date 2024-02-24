@@ -13,14 +13,12 @@ class StaffHomePage extends StatefulWidget {
 }
 
 class _StaffHomePageState extends State<StaffHomePage> {
-  bool isDirector = false;
-
   @override
   void initState() {
-    context.read<InquiryBloc>()
-      ..getButons()
-      ..getInitiallyCreated()
-      ..getInitiallyAssigned();
+    // context.read<InquiryBloc>()
+    //   ..getButons()
+    //   ..getInitiallyCreated()
+    //   ..getInitiallyAssigned();
 
     _scrollControllerAssigned.addListener(() {
       if (_scrollControllerAssigned.position.maxScrollExtent -
@@ -54,7 +52,7 @@ class _StaffHomePageState extends State<StaffHomePage> {
         appBar: inquiries_appbar(context, 'Аброр Шамурадов', 'АБ', 'Водитель'),
         backgroundColor: Theme.of(context).colorScheme.background,
         resizeToAvoidBottomInset: false,
-        floatingActionButton: isDirector ? const SizedBox() : const CreateButton(),
+        floatingActionButton: const CreateButton(),
         body: InquiriesTab(
           scrollControllerAssigned: _scrollControllerAssigned,
           scrollControllerCreated: _scrollControllerCreated,

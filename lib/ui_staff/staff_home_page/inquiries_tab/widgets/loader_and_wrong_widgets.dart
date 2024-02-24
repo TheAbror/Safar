@@ -1,7 +1,6 @@
-import 'package:safar/core/bottomsheet/primary_loader.dart';
-import 'package:safar/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/core/bottomsheet/primary_loader.dart';
 
 class TabsNoData extends StatelessWidget {
   const TabsNoData({
@@ -14,10 +13,10 @@ class TabsNoData extends StatelessWidget {
       height: 400.h,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Assets.icons.homePageIcons.noData.svg(),
-          ),
+        children: const [
+          // Center(
+          //   child: Assets.icons.homePageIcons.noData.svg(),
+          // ),
         ],
       ),
     );

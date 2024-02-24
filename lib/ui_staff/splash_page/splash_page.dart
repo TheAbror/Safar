@@ -20,7 +20,6 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    // Add a delay of 2 seconds before navigating to the next page
     Future.delayed(Duration(seconds: 2), () {
       Navigator.push(
         context,
