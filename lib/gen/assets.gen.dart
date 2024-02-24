@@ -199,10 +199,6 @@ class $AssetsIconsHomePageIconsGen {
   SvgGenImage get indicator =>
       const SvgGenImage('assets/icons/home_page_icons/Indicator.svg');
 
-  /// File path: assets/icons/home_page_icons/Module name.svg
-  SvgGenImage get moduleName =>
-      const SvgGenImage('assets/icons/home_page_icons/Module name.svg');
-
   /// File path: assets/icons/home_page_icons/No data.svg
   SvgGenImage get noData =>
       const SvgGenImage('assets/icons/home_page_icons/No data.svg');
@@ -215,40 +211,8 @@ class $AssetsIconsHomePageIconsGen {
   SvgGenImage get arrowRight =>
       const SvgGenImage('assets/icons/home_page_icons/arrow-right.svg');
 
-  /// File path: assets/icons/home_page_icons/books_on_top_each_other.svg
-  SvgGenImage get booksOnTopEachOther => const SvgGenImage(
-      'assets/icons/home_page_icons/books_on_top_each_other.svg');
-
-  /// File path: assets/icons/home_page_icons/building-3.svg
-  SvgGenImage get building3 =>
-      const SvgGenImage('assets/icons/home_page_icons/building-3.svg');
-
-  /// File path: assets/icons/home_page_icons/close_24px copy.svg
-  SvgGenImage get close24pxCopy =>
-      const SvgGenImage('assets/icons/home_page_icons/close_24px copy.svg');
-
-  /// File path: assets/icons/home_page_icons/courses.svg
-  SvgGenImage get courses =>
-      const SvgGenImage('assets/icons/home_page_icons/courses.svg');
-
-  /// File path: assets/icons/home_page_icons/iconamoon_arrow-down-2.svg
-  SvgGenImage get iconamoonArrowDown2 => const SvgGenImage(
-      'assets/icons/home_page_icons/iconamoon_arrow-down-2.svg');
-
   $AssetsIconsHomePageIconsIconsGen get icons =>
       const $AssetsIconsHomePageIconsIconsGen();
-
-  /// File path: assets/icons/home_page_icons/module_icon_1.svg
-  SvgGenImage get moduleIcon1 =>
-      const SvgGenImage('assets/icons/home_page_icons/module_icon_1.svg');
-
-  /// File path: assets/icons/home_page_icons/module_icon_2.svg
-  SvgGenImage get moduleIcon2 =>
-      const SvgGenImage('assets/icons/home_page_icons/module_icon_2.svg');
-
-  /// File path: assets/icons/home_page_icons/module_icon_3.svg
-  SvgGenImage get moduleIcon3 =>
-      const SvgGenImage('assets/icons/home_page_icons/module_icon_3.svg');
 
   /// File path: assets/icons/home_page_icons/notifications.svg
   SvgGenImage get notifications =>
@@ -258,38 +222,14 @@ class $AssetsIconsHomePageIconsGen {
   SvgGenImage get settingsFilterTimetable => const SvgGenImage(
       'assets/icons/home_page_icons/settings-filter_timetable.svg');
 
-  /// File path: assets/icons/home_page_icons/teacher.svg
-  SvgGenImage get teacher =>
-      const SvgGenImage('assets/icons/home_page_icons/teacher.svg');
-
-  /// File path: assets/icons/home_page_icons/timetable_Line.svg
-  SvgGenImage get timetableLine =>
-      const SvgGenImage('assets/icons/home_page_icons/timetable_Line.svg');
-
-  /// File path: assets/icons/home_page_icons/user_avatar.svg
-  SvgGenImage get userAvatar =>
-      const SvgGenImage('assets/icons/home_page_icons/user_avatar.svg');
-
   /// List of all assets
   List<SvgGenImage> get values => [
         indicator,
-        moduleName,
         noData,
         arrowDown,
         arrowRight,
-        booksOnTopEachOther,
-        building3,
-        close24pxCopy,
-        courses,
-        iconamoonArrowDown2,
-        moduleIcon1,
-        moduleIcon2,
-        moduleIcon3,
         notifications,
-        settingsFilterTimetable,
-        teacher,
-        timetableLine,
-        userAvatar
+        settingsFilterTimetable
       ];
 }
 
@@ -477,76 +417,12 @@ class $AssetsIconsHomePageIconsIconsGen {
   SvgGenImage get deleteIcon =>
       const SvgGenImage('assets/icons/home_page_icons/icons/delete_icon.svg');
 
-  /// File path: assets/icons/home_page_icons/icons/docx.svg
-  SvgGenImage get docx =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/docx.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/down_icon.svg
-  SvgGenImage get downIcon =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/down_icon.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/face_id_icon.svg
-  SvgGenImage get faceIdIcon =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/face_id_icon.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/heart_icon.svg
-  SvgGenImage get heartIcon =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/heart_icon.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/logout_icon.svg
-  SvgGenImage get logoutIcon =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/logout_icon.svg');
-
   /// File path: assets/icons/home_page_icons/icons/maintenance.svg
   SvgGenImage get maintenance =>
       const SvgGenImage('assets/icons/home_page_icons/icons/maintenance.svg');
 
-  /// File path: assets/icons/home_page_icons/icons/moon.svg
-  SvgGenImage get moon =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/moon.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/no_data.svg
-  SvgGenImage get noData =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/no_data.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/other.svg
-  SvgGenImage get other =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/other.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/pdf.svg
-  SvgGenImage get pdf =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/pdf.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/ppt.svg
-  SvgGenImage get ppt =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/ppt.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/xlsx.svg
-  SvgGenImage get xlsx =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/xlsx.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/zip.svg
-  SvgGenImage get zip =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/zip.svg');
-
   /// List of all assets
-  List<SvgGenImage> get values => [
-        closeSvgrepoCom,
-        deleteIcon,
-        docx,
-        downIcon,
-        faceIdIcon,
-        heartIcon,
-        logoutIcon,
-        maintenance,
-        moon,
-        noData,
-        other,
-        pdf,
-        ppt,
-        xlsx,
-        zip
-      ];
+  List<SvgGenImage> get values => [closeSvgrepoCom, deleteIcon, maintenance];
 }
 
 class $AssetsIconsStaffIconsNavbarGen {
