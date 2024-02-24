@@ -7,6 +7,8 @@ import 'package:safar/ui_staff/bildirgi_page/action/model/staff_model.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/model/delete_inquiry_by_id.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_item_request.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_model.dart';
+import 'package:safar/ui_staff/signin_page/auth/models/auth.dart';
+import 'package:safar/ui_staff/signin_page/auth/models/user_info.dart';
 import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
 
 class CustomDataConverter extends JsonConverter {
@@ -47,6 +49,12 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
 
     case InquiryListResponse:
       return InquiryListResponse.fromJson(json);
+
+    case SignInResponse:
+      return SignInResponse.fromJson(json);
+
+    case SignInRequest:
+      return SignInRequest.fromJson(json);
 
     case InquiryListItemResponse:
       return InquiryListItemResponse.fromJson(json);
