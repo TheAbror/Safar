@@ -91,7 +91,7 @@ class Account {
 // allowed requests: POST
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
-class DriverRegistration {
+class DriverRegistrationRequest {
   @JsonKey(defaultValue: '', name: 'car_model')
   String carModel;
   @JsonKey(defaultValue: '', name: 'car_color')
@@ -101,17 +101,17 @@ class DriverRegistration {
   @JsonKey(defaultValue: '', name: 'license_plate')
   String licencePlate;
 
-  DriverRegistration({
+  DriverRegistrationRequest({
     required this.carModel,
     required this.carColor,
     required this.carYear,
     required this.licencePlate,
   });
 
-  factory DriverRegistration.fromJson(Map<String, dynamic> json) =>
-      _$DriverRegistrationFromJson(json);
+  factory DriverRegistrationRequest.fromJson(Map<String, dynamic> json) =>
+      _$DriverRegistrationRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DriverRegistrationToJson(this);
+  Map<String, dynamic> toJson() => _$DriverRegistrationRequestToJson(this);
 }
 
 // --- Driver profile ---
