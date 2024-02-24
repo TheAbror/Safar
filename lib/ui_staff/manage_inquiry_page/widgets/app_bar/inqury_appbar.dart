@@ -33,7 +33,7 @@ AppBar staff_inruiry_appbar(
             IconButton(
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
-              icon: Assets.icons.appBarIcons.arrowLeft.svg(
+              icon: Assets.icons.arrowLeft.svg(
                 colorFilter: ColorFilter.mode(
                   Theme.of(context).colorScheme.tertiary,
                   BlendMode.srcIn,

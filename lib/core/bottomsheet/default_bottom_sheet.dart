@@ -78,7 +78,7 @@ class DefaultBottomSheet extends StatelessWidget {
                                 behavior: HitTestBehavior.opaque,
                                 child: Padding(
                                   padding: EdgeInsets.only(top: 8.h, bottom: 8.h, right: 8.h),
-                                  child: Assets.icons.appBarIcons.arrowLeft.svg(
+                                  child: Assets.icons.arrowLeft.svg(
                                     colorFilter: ColorFilter.mode(
                                       Theme.of(context).colorScheme.tertiary,
                                       BlendMode.srcIn,

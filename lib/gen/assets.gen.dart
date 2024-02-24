@@ -118,8 +118,8 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  $AssetsIconsAppBarIconsGen get appBarIcons =>
-      const $AssetsIconsAppBarIconsGen();
+  /// File path: assets/icons/arrow-left.svg
+  SvgGenImage get arrowLeft => const SvgGenImage('assets/icons/arrow-left.svg');
 
   /// File path: assets/icons/car_tab.png
   AssetGenImage get carTab => const AssetGenImage('assets/icons/car_tab.png');
@@ -130,10 +130,6 @@ class $AssetsIconsGen {
 
   $AssetsIconsHomePageIconsGen get homePageIcons =>
       const $AssetsIconsHomePageIconsGen();
-
-  /// File path: assets/icons/ic_launcher.png
-  AssetGenImage get icLauncher =>
-      const AssetGenImage('assets/icons/ic_launcher.png');
 
   /// File path: assets/icons/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/icons/logo.png');
@@ -146,10 +142,6 @@ class $AssetsIconsGen {
   AssetGenImage get logoShort =>
       const AssetGenImage('assets/icons/logoShort.png');
 
-  $AssetsIconsPinPageIconsGen get pinPageIcons =>
-      const $AssetsIconsPinPageIconsGen();
-  $AssetsIconsProfilePageGen get profilePage =>
-      const $AssetsIconsProfilePageGen();
   $AssetsIconsSplashPageIconsGen get splashPageIcons =>
       const $AssetsIconsSplashPageIconsGen();
 
@@ -164,10 +156,10 @@ class $AssetsIconsGen {
       const AssetGenImage('assets/icons/time_line.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
+  List<dynamic> get values => [
+        arrowLeft,
         carTab,
         deliveryIcon,
-        icLauncher,
         logo,
         logoGreen,
         logoShort,
@@ -179,8 +171,6 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  $AssetsImagesCoursesGen get courses => const $AssetsImagesCoursesGen();
-
   /// File path: assets/images/google_play.png
   AssetGenImage get googlePlay =>
       const AssetGenImage('assets/images/google_play.png');
@@ -188,17 +178,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/ios_app_store.png
   AssetGenImage get iosAppStore =>
       const AssetGenImage('assets/images/ios_app_store.png');
-
-  /// File path: assets/images/logo.png
-  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
-
-  /// File path: assets/images/logo_black_bg.png
-  AssetGenImage get logoBlackBg =>
-      const AssetGenImage('assets/images/logo_black_bg.png');
-
-  /// File path: assets/images/logo_white_bg.png
-  AssetGenImage get logoWhiteBg =>
-      const AssetGenImage('assets/images/logo_white_bg.png');
 
   /// File path: assets/images/person-male.png
   AssetGenImage get personMale =>
@@ -208,36 +187,9 @@ class $AssetsImagesGen {
   AssetGenImage get personIcon =>
       const AssetGenImage('assets/images/person_icon.png');
 
-  /// File path: assets/images/udea_logo_for_dark.png
-  AssetGenImage get udeaLogoForDark =>
-      const AssetGenImage('assets/images/udea_logo_for_dark.png');
-
   /// List of all assets
-  List<AssetGenImage> get values => [
-        googlePlay,
-        iosAppStore,
-        logo,
-        logoBlackBg,
-        logoWhiteBg,
-        personMale,
-        personIcon,
-        udeaLogoForDark
-      ];
-}
-
-class $AssetsIconsAppBarIconsGen {
-  const $AssetsIconsAppBarIconsGen();
-
-  /// File path: assets/icons/app_bar_icons/arrow-left.svg
-  SvgGenImage get arrowLeft =>
-      const SvgGenImage('assets/icons/app_bar_icons/arrow-left.svg');
-
-  /// File path: assets/icons/app_bar_icons/logout.svg
-  SvgGenImage get logout =>
-      const SvgGenImage('assets/icons/app_bar_icons/logout.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values => [arrowLeft, logout];
+  List<AssetGenImage> get values =>
+      [googlePlay, iosAppStore, personMale, personIcon];
 }
 
 class $AssetsIconsHomePageIconsGen {
@@ -341,87 +293,6 @@ class $AssetsIconsHomePageIconsGen {
       ];
 }
 
-class $AssetsIconsPinPageIconsGen {
-  const $AssetsIconsPinPageIconsGen();
-
-  /// File path: assets/icons/pin_page_icons/delete_icon.svg
-  SvgGenImage get deleteIcon =>
-      const SvgGenImage('assets/icons/pin_page_icons/delete_icon.svg');
-
-  /// File path: assets/icons/pin_page_icons/finger_print.svg
-  SvgGenImage get fingerPrint =>
-      const SvgGenImage('assets/icons/pin_page_icons/finger_print.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values => [deleteIcon, fingerPrint];
-}
-
-class $AssetsIconsProfilePageGen {
-  const $AssetsIconsProfilePageGen();
-
-  /// File path: assets/icons/profile_page/Group.svg
-  SvgGenImage get group =>
-      const SvgGenImage('assets/icons/profile_page/Group.svg');
-
-  /// File path: assets/icons/profile_page/Layer 2.svg
-  SvgGenImage get layer2 =>
-      const SvgGenImage('assets/icons/profile_page/Layer 2.svg');
-
-  /// File path: assets/icons/profile_page/Photo.jpg
-  AssetGenImage get photo =>
-      const AssetGenImage('assets/icons/profile_page/Photo.jpg');
-
-  /// File path: assets/icons/profile_page/Vector.svg
-  SvgGenImage get vector =>
-      const SvgGenImage('assets/icons/profile_page/Vector.svg');
-
-  /// File path: assets/icons/profile_page/arrow-right.svg
-  SvgGenImage get arrowRight =>
-      const SvgGenImage('assets/icons/profile_page/arrow-right.svg');
-
-  /// File path: assets/icons/profile_page/light.svg
-  SvgGenImage get light =>
-      const SvgGenImage('assets/icons/profile_page/light.svg');
-
-  /// File path: assets/icons/profile_page/map.svg
-  SvgGenImage get map => const SvgGenImage('assets/icons/profile_page/map.svg');
-
-  /// File path: assets/icons/profile_page/mobile.svg
-  SvgGenImage get mobile =>
-      const SvgGenImage('assets/icons/profile_page/mobile.svg');
-
-  /// File path: assets/icons/profile_page/scan.svg
-  SvgGenImage get scan =>
-      const SvgGenImage('assets/icons/profile_page/scan.svg');
-
-  /// File path: assets/icons/profile_page/sms.svg
-  SvgGenImage get sms => const SvgGenImage('assets/icons/profile_page/sms.svg');
-
-  /// File path: assets/icons/profile_page/user-edit.svg
-  SvgGenImage get userEdit =>
-      const SvgGenImage('assets/icons/profile_page/user-edit.svg');
-
-  /// File path: assets/icons/profile_page/user-tick.svg
-  SvgGenImage get userTick =>
-      const SvgGenImage('assets/icons/profile_page/user-tick.svg');
-
-  /// List of all assets
-  List<dynamic> get values => [
-        group,
-        layer2,
-        photo,
-        vector,
-        arrowRight,
-        light,
-        map,
-        mobile,
-        scan,
-        sms,
-        userEdit,
-        userTick
-      ];
-}
-
 class $AssetsIconsSplashPageIconsGen {
   const $AssetsIconsSplashPageIconsGen();
 
@@ -457,25 +328,9 @@ class $AssetsIconsSplashPageIconsGen {
 class $AssetsIconsStaffIconsGen {
   const $AssetsIconsStaffIconsGen();
 
-  /// File path: assets/icons/staff_icons/Avatars.png
-  AssetGenImage get avatarsPng =>
-      const AssetGenImage('assets/icons/staff_icons/Avatars.png');
-
   /// File path: assets/icons/staff_icons/Avatars.svg
-  SvgGenImage get avatarsSvg =>
+  SvgGenImage get avatars =>
       const SvgGenImage('assets/icons/staff_icons/Avatars.svg');
-
-  /// File path: assets/icons/staff_icons/Avatarsfirst.svg
-  SvgGenImage get avatarsfirst =>
-      const SvgGenImage('assets/icons/staff_icons/Avatarsfirst.svg');
-
-  /// File path: assets/icons/staff_icons/Avatarssecond.svg
-  SvgGenImage get avatarssecond =>
-      const SvgGenImage('assets/icons/staff_icons/Avatarssecond.svg');
-
-  /// File path: assets/icons/staff_icons/Avatarsthird.svg
-  SvgGenImage get avatarsthird =>
-      const SvgGenImage('assets/icons/staff_icons/Avatarsthird.svg');
 
   /// File path: assets/icons/staff_icons/Button.svg
   SvgGenImage get button =>
@@ -557,18 +412,6 @@ class $AssetsIconsStaffIconsGen {
   SvgGenImage get indicator =>
       const SvgGenImage('assets/icons/staff_icons/indicator.svg');
 
-  /// File path: assets/icons/staff_icons/mark-1.svg
-  SvgGenImage get mark1 =>
-      const SvgGenImage('assets/icons/staff_icons/mark-1.svg');
-
-  /// File path: assets/icons/staff_icons/mark-2.svg
-  SvgGenImage get mark2 =>
-      const SvgGenImage('assets/icons/staff_icons/mark-2.svg');
-
-  /// File path: assets/icons/staff_icons/mark-3.svg
-  SvgGenImage get mark3 =>
-      const SvgGenImage('assets/icons/staff_icons/mark-3.svg');
-
   /// File path: assets/icons/staff_icons/menu_assessment_info.svg
   SvgGenImage get menuAssessmentInfo =>
       const SvgGenImage('assets/icons/staff_icons/menu_assessment_info.svg');
@@ -593,12 +436,8 @@ class $AssetsIconsStaffIconsGen {
       const SvgGenImage('assets/icons/staff_icons/three_dots.svg');
 
   /// List of all assets
-  List<dynamic> get values => [
-        avatarsPng,
-        avatarsSvg,
-        avatarsfirst,
-        avatarssecond,
-        avatarsthird,
+  List<SvgGenImage> get values => [
+        avatars,
         button,
         chevronRight,
         closeIcn,
@@ -619,43 +458,12 @@ class $AssetsIconsStaffIconsGen {
         groupListEdit,
         iconPlus,
         indicator,
-        mark1,
-        mark2,
-        mark3,
         menuAssessmentInfo,
         searchNormal,
         search,
         settingIcon,
         threeDots
       ];
-}
-
-class $AssetsImagesCoursesGen {
-  const $AssetsImagesCoursesGen();
-
-  /// File path: assets/images/courses/Photo.png
-  AssetGenImage get photo =>
-      const AssetGenImage('assets/images/courses/Photo.png');
-
-  /// File path: assets/images/courses/avatar.jpg
-  AssetGenImage get avatarJpg =>
-      const AssetGenImage('assets/images/courses/avatar.jpg');
-
-  /// File path: assets/images/courses/avatar.svg
-  SvgGenImage get avatarSvg =>
-      const SvgGenImage('assets/images/courses/avatar.svg');
-
-  /// File path: assets/images/courses/photoshop-history-860x573.jpg
-  AssetGenImage get photoshopHistory860x573 => const AssetGenImage(
-      'assets/images/courses/photoshop-history-860x573.jpg');
-
-  /// File path: assets/images/courses/profile_avatar.jpg
-  AssetGenImage get profileAvatar =>
-      const AssetGenImage('assets/images/courses/profile_avatar.jpg');
-
-  /// List of all assets
-  List<dynamic> get values =>
-      [photo, avatarJpg, avatarSvg, photoshopHistory860x573, profileAvatar];
 }
 
 class $AssetsIconsHomePageIconsIconsGen {
