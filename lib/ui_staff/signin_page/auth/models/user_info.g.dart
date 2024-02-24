@@ -21,25 +21,29 @@ Map<String, dynamic> _$SignInResponseToJson(SignInResponse instance) =>
 UserInfoResponse _$UserInfoResponseFromJson(Map<String, dynamic> json) =>
     UserInfoResponse(
       id: json['id'] as int? ?? 0,
-      firstname: json['firstname'] as String? ?? 'error occured',
-      lastname: json['lastname'] as String? ?? '',
-      accountType: json['account_type'] as String? ?? '',
-      status: json['status'] as String? ?? '',
-      username: json['username'] as int? ?? 0,
+      firstname: json['first_name'] as String? ?? 'error occured',
+      lastname: json['last_name'] as String? ?? '',
+      dateJoined: json['date_joined'] as String? ?? '',
+      lastLogin: json['last_login'] as String? ?? '',
+      isStaff: json['is_staff'] as bool? ?? false,
       email: json['email'] as String? ?? '',
-      roles:
-          (json['roles'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              [''],
+      isActive: json['is_active'] as bool? ?? false,
+      isSuperUser: json['is_superuser'] as bool? ?? false,
+      username: json['username'] as String? ?? '',
+      password: json['password'] as String? ?? '',
     );
 
 Map<String, dynamic> _$UserInfoResponseToJson(UserInfoResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'firstname': instance.firstname,
-      'lastname': instance.lastname,
-      'username': instance.username,
-      'account_type': instance.accountType,
-      'status': instance.status,
+      'first_name': instance.firstname,
+      'last_name': instance.lastname,
       'email': instance.email,
-      'roles': instance.roles,
+      'date_joined': instance.dateJoined,
+      'last_login': instance.lastLogin,
+      'is_superuser': instance.isSuperUser,
+      'is_staff': instance.isStaff,
+      'is_active': instance.isActive,
+      'username': instance.username,
+      'password': instance.password,
     };

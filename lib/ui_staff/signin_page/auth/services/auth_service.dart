@@ -1,8 +1,8 @@
 import 'package:chopper/chopper.dart';
 import 'package:safar/core/constants/app_strings.dart';
+import 'package:safar/ui_staff/signin_page/auth/models/auth.dart';
+import 'package:safar/ui_staff/signin_page/auth/models/user_info.dart';
 
-import 'models/auth.dart';
-import 'models/user_info.dart';
 
 part 'auth_service.chopper.dart';
 

@@ -20,31 +20,39 @@ class SignInResponse {
 class UserInfoResponse {
   @JsonKey(defaultValue: 0)
   int id;
-  @JsonKey(defaultValue: 'error occured')
+  @JsonKey(defaultValue: 'error occured', name: 'first_name')
   String firstname;
-  @JsonKey(defaultValue: '')
+  @JsonKey(defaultValue: '', name: 'last_name')
   String lastname;
-  //udea§
-  @JsonKey(defaultValue: 0)
-  int username;
-  @JsonKey(name: 'account_type', defaultValue: '')
-  String accountType;
-  @JsonKey(defaultValue: '')
-  String status;
   @JsonKey(defaultValue: '')
   String email;
-  @JsonKey(defaultValue: [''])
-  List<String> roles;
+  @JsonKey(defaultValue: '', name: 'date_joined')
+  String dateJoined;
+  @JsonKey(defaultValue: '', name: 'last_login')
+  String lastLogin;
+  @JsonKey(defaultValue: false, name: 'is_superuser')
+  bool isSuperUser;
+  @JsonKey(defaultValue: false, name: 'is_staff')
+  bool isStaff;
+  @JsonKey(defaultValue: false, name: 'is_active')
+  bool isActive;
+  @JsonKey(defaultValue: '')
+  String username;
+  @JsonKey(defaultValue: '')
+  String password;
 
   UserInfoResponse({
     required this.id,
     required this.firstname,
     required this.lastname,
-    required this.accountType,
-    required this.status,
-    required this.username,
+    required this.dateJoined,
+    required this.lastLogin,
+    required this.isStaff,
     required this.email,
-    required this.roles,
+    required this.isActive,
+    required this.isSuperUser,
+    required this.username,
+    required this.password,
   });
 
   factory UserInfoResponse.fromJson(Map<String, dynamic> json) => _$UserInfoResponseFromJson(json);
