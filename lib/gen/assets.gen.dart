@@ -142,9 +142,6 @@ class $AssetsIconsGen {
   AssetGenImage get logoShort =>
       const AssetGenImage('assets/icons/logoShort.png');
 
-  $AssetsIconsSplashPageIconsGen get splashPageIcons =>
-      const $AssetsIconsSplashPageIconsGen();
-
   /// File path: assets/icons/staff_icon_inquiry_card.png
   AssetGenImage get staffIconInquiryCard =>
       const AssetGenImage('assets/icons/staff_icon_inquiry_card.png');
@@ -233,38 +230,6 @@ class $AssetsIconsHomePageIconsGen {
         notifications,
         settingsFilterTimetable
       ];
-}
-
-class $AssetsIconsSplashPageIconsGen {
-  const $AssetsIconsSplashPageIconsGen();
-
-  /// File path: assets/icons/splash_page_icons/Component 1.svg
-  SvgGenImage get component1 =>
-      const SvgGenImage('assets/icons/splash_page_icons/Component 1.svg');
-
-  /// File path: assets/icons/splash_page_icons/edu_lab.svg
-  SvgGenImage get eduLab =>
-      const SvgGenImage('assets/icons/splash_page_icons/edu_lab.svg');
-
-  /// File path: assets/icons/splash_page_icons/logo_white.svg
-  SvgGenImage get logoWhite =>
-      const SvgGenImage('assets/icons/splash_page_icons/logo_white.svg');
-
-  /// File path: assets/icons/splash_page_icons/powered_by.svg
-  SvgGenImage get poweredBy =>
-      const SvgGenImage('assets/icons/splash_page_icons/powered_by.svg');
-
-  /// File path: assets/icons/splash_page_icons/siginPage.svg
-  SvgGenImage get siginPage =>
-      const SvgGenImage('assets/icons/splash_page_icons/siginPage.svg');
-
-  /// File path: assets/icons/splash_page_icons/slash.svg
-  SvgGenImage get slash =>
-      const SvgGenImage('assets/icons/splash_page_icons/slash.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values =>
-      [component1, eduLab, logoWhite, poweredBy, siginPage, slash];
 }
 
 class $AssetsIconsStaffIconsGen {
