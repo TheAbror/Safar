@@ -62,15 +62,17 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'about_user': instance.aboutUser,
     };
 
-DriverRegistration _$DriverRegistrationFromJson(Map<String, dynamic> json) =>
-    DriverRegistration(
+DriverRegistrationRequest _$DriverRegistrationRequestFromJson(
+        Map<String, dynamic> json) =>
+    DriverRegistrationRequest(
       carModel: json['car_model'] as String? ?? '',
       carColor: json['car_color'] as String? ?? '',
       carYear: json['car_year'] as int? ?? 0,
       licencePlate: json['license_plate'] as String? ?? '',
     );
 
-Map<String, dynamic> _$DriverRegistrationToJson(DriverRegistration instance) =>
+Map<String, dynamic> _$DriverRegistrationRequestToJson(
+        DriverRegistrationRequest instance) =>
     <String, dynamic>{
       'car_model': instance.carModel,
       'car_color': instance.carColor,
@@ -97,4 +99,30 @@ Map<String, dynamic> _$DriverProfieToJson(DriverProfie instance) =>
       'car_year': instance.carYear,
       'license_plate': instance.licencePlate,
       'registered_at': instance.registeredAt,
+    };
+
+OrdersRequest _$OrdersRequestFromJson(Map<String, dynamic> json) =>
+    OrdersRequest(
+      pickup: json['pickup'] as String? ?? '',
+      destination: json['destination'] as String? ?? '',
+      numberOfPassengers: json['number_passenger'] as int? ?? 0,
+      desiredPickupTime: json['desired_pickup_time'] as String? ?? '',
+      desiredCarModel: json['desired_car_model'] as String? ?? '',
+      offeredPrice: json['offered_price'] as int? ?? 0,
+      pickupReference: json['pickup_reference'] as String? ?? '',
+      destinationReference: json['destination_reference'] as String? ?? '',
+      commentForDriver: json['comments_for_driver'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$OrdersRequestToJson(OrdersRequest instance) =>
+    <String, dynamic>{
+      'pickup': instance.pickup,
+      'destination': instance.destination,
+      'number_passenger': instance.numberOfPassengers,
+      'desired_pickup_time': instance.desiredPickupTime,
+      'desired_car_model': instance.desiredCarModel,
+      'offered_price': instance.offeredPrice,
+      'pickup_reference': instance.pickupReference,
+      'destination_reference': instance.destinationReference,
+      'comments_for_driver': instance.commentForDriver,
     };
