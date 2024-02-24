@@ -22,7 +22,7 @@ class AuthBloc extends Cubit<AuthState> {
 
   void signIn(String username, String password) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING, isWaiting: true));
-//udea§ change to 'USERNAME'
+
     final request = SignInRequest(username: username, password: password, type: 'ID');
 
     try {

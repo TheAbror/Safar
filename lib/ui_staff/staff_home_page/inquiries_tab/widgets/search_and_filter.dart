@@ -48,7 +48,7 @@ class SearchAndFilterDelivery extends StatelessWidget {
 
             if (result != null) {
               if (!context.mounted) return;
-              context.read<InquiryBloc>().changeStatusAssigned(result);
+              context.read<InquiryBloc>().changeStatusDelivery(result);
             }
           },
         ),

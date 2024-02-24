@@ -5,7 +5,7 @@ import '../models/app_version_response.dart';
 
 part 'settings_service.chopper.dart';
 
-@ChopperApi(baseUrl: AppStrings.base)
+@ChopperApi(baseUrl: AppStrings.baseLive)
 abstract class SettingsService extends ChopperService {
   static SettingsService create([ChopperClient? client]) =>
       _$SettingsService(client ?? ChopperClient());
