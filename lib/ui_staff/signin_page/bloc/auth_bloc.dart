@@ -45,12 +45,10 @@ class AuthBloc extends Cubit<AuthState> {
           );
         }
       } else {
-        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
-
         emit(state.copyWith(
           blocProgress: BlocProgress.FAILED,
           isWaiting: false,
-          failureMessage: error.message,
+          failureMessage: response.error.toString(),
         ));
       }
     } catch (e) {

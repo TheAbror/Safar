@@ -34,13 +34,14 @@ class _SignInPageState extends State<SignInPage> {
           resizeToAvoidBottomInset: false,
           body: BlocConsumer<AuthBloc, AuthState>(
             listener: (context, state) async {
-              // if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-              //   NavigationUtils.navigateToNextRouteByAccountType(
-              //     context,
-              //     state.accountType,
-              //     'isPasscodeOnDefault',
-              //   );
-              // }
+              if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+                // NavigationUtils.navigateToNextRouteByAccountType(
+                //   context,
+                //   state.accountType,
+                //   'isPasscodeOnDefault',
+                // );
+                Navigator.pushNamed(context, AppRoutes.staffHome);
+              }
               if (state.blocProgress == BlocProgress.IS_LOADING) {
                 Center(
                   child: CircularProgressIndicator(color: AppColors.primary),
@@ -132,8 +133,10 @@ class _SignInPageState extends State<SignInPage> {
         if (_formKey.currentState!.validate()) {
           context.read<AuthBloc>().signIn(username, password, '998914309090');
         }
-        if (!state.isWaiting && state.blocProgress == BlocProgress.IS_SUCCESS)
-          Navigator.pushNamed(context, AppRoutes.staffHome);
+        // if (
+        //     // state.isWaiting == false &&
+        //     state.blocProgress == BlocProgress.IS_SUCCESS) {
+        // }
       },
       child: Container(
         height: 48.h,
