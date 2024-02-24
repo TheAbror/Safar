@@ -150,20 +150,46 @@ class DriverProfie {
   Map<String, dynamic> toJson() => _$DriverProfieToJson(this);
 }
 
-
 // --- Orders ---
 // endpoint: /api/orders/
 // allowed requests: GET, POST
 
 // POST:
-// {
-//     'pickup': 'Location A',
-//     'destination': 'Location B',
-//     'number_passenger': number of passengers,
-//     'desired_pickup_time': 'datetime',
-//     'desired_car_model': None,
-//     'offered_price': offered price,
-//     'pickup_reference': detailed address of pickup,
-//     'destination_reference': detailed address of destination,
-//     'comments_for_driver': comments for driver,
-// }
+
+@JsonSerializable(includeIfNull: true, explicitToJson: true)
+class OrdersRequest {
+  @JsonKey(defaultValue: '')
+  String pickup;
+  @JsonKey(defaultValue: '')
+  String destination;
+  @JsonKey(defaultValue: 0, name: 'number_passenger')
+  int numberOfPassengers;
+  @JsonKey(defaultValue: '', name: 'desired_pickup_time')
+  String desiredPickupTime;
+  @JsonKey(defaultValue: '', name: 'desired_car_model')
+  String desiredCarModel;
+  @JsonKey(defaultValue: 0, name: 'offered_price')
+  int offeredPrice;
+  @JsonKey(defaultValue: '', name: 'pickup_reference')
+  String pickupReference;
+  @JsonKey(defaultValue: '', name: 'destination_reference')
+  String destinationReference;
+  @JsonKey(defaultValue: '', name: 'comments_for_driver')
+  String commentForDriver;
+
+  OrdersRequest({
+    required this.pickup,
+    required this.destination,
+    required this.numberOfPassengers,
+    required this.desiredPickupTime,
+    required this.desiredCarModel,
+    required this.offeredPrice,
+    required this.pickupReference,
+    required this.destinationReference,
+    required this.commentForDriver,
+  });
+
+  factory OrdersRequest.fromJson(Map<String, dynamic> json) => _$OrdersRequestFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrdersRequestToJson(this);
+}
