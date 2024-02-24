@@ -126,3 +126,53 @@ Map<String, dynamic> _$OrdersRequestToJson(OrdersRequest instance) =>
       'destination_reference': instance.destinationReference,
       'comments_for_driver': instance.commentForDriver,
     };
+
+OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) =>
+    OrdersResponse(
+      id: json['id'] as int? ?? 0,
+      pickup: json['pickup'] as String? ?? '',
+      destination: json['destination'] as String? ?? '',
+      numberOfPassengers: json['number_passenger'] as int? ?? 0,
+      desiredPickupTime: json['desired_pickup_time'] as String? ?? '',
+      desiredCarModel: json['desired_car_model'] as String? ?? '',
+      offeredPrice: json['offered_price'] as int? ?? 0,
+      pickupReference: json['pickup_reference'] as String? ?? '',
+      destinationReference: json['destination_reference'] as String? ?? '',
+      commentForDriver: json['comments_for_driver'] as String? ?? '',
+      assignedAt: json['assigned_at'] as String? ?? '',
+      assigned: json['assigned'] as bool? ?? false,
+      created: json['created'] as bool? ?? false,
+      createdAt: json['created_at'] as String? ?? '',
+      delivered: json['delivered'] as bool? ?? false,
+      deliveredAt: json['delivered_at'] as String? ?? '',
+      driver: json['driver'] as int? ?? 0,
+      inProcess: json['in_process'] as bool? ?? false,
+      inProcessAt: json['in_process_at'] as String? ?? '',
+      updateRequired: json['update_required'] as bool? ?? false,
+      user: json['user'] as int? ?? 0,
+    );
+
+Map<String, dynamic> _$OrdersResponseToJson(OrdersResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'pickup': instance.pickup,
+      'destination': instance.destination,
+      'number_passenger': instance.numberOfPassengers,
+      'desired_pickup_time': instance.desiredPickupTime,
+      'desired_car_model': instance.desiredCarModel,
+      'offered_price': instance.offeredPrice,
+      'pickup_reference': instance.pickupReference,
+      'destination_reference': instance.destinationReference,
+      'comments_for_driver': instance.commentForDriver,
+      'created': instance.created,
+      'created_at': instance.createdAt,
+      'assigned': instance.assigned,
+      'assigned_at': instance.assignedAt,
+      'in_process': instance.inProcess,
+      'in_process_at': instance.inProcessAt,
+      'update_required': instance.updateRequired,
+      'delivered': instance.delivered,
+      'delivered_at': instance.deliveredAt,
+      'user': instance.user,
+      'driver': instance.driver,
+    };
