@@ -4,7 +4,7 @@ part 'user_info.g.dart';
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
 class SignInResponse {
-  @JsonKey()
+  @JsonKey(defaultValue: '')
   String token;
   @JsonKey(name: 'user')
   UserInfoResponse userInfo;
@@ -58,4 +58,30 @@ class UserInfoResponse {
   factory UserInfoResponse.fromJson(Map<String, dynamic> json) => _$UserInfoResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserInfoResponseToJson(this);
+}
+
+// --- Account ---
+// endpoint: /api/account/
+
+@JsonSerializable(includeIfNull: true, explicitToJson: true)
+class Account {
+  @JsonKey(defaultValue: 0)
+  int id;
+  @JsonKey(defaultValue: '')
+  String contacts;
+  @JsonKey(defaultValue: '')
+  String photo;
+  @JsonKey(defaultValue: '', name: 'about_user')
+  String aboutUser;
+
+  Account({
+    required this.id,
+    required this.contacts,
+    required this.photo,
+    required this.aboutUser,
+  });
+
+  factory Account.fromJson(Map<String, dynamic> json) => _$AccountFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AccountToJson(this);
 }
