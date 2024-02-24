@@ -68,7 +68,7 @@ class _AppUpdatesViewState extends State<AppUpdatesView> {
                 children: [
                   SizedBox(height: 40.h),
                   showMaintenance
-                      ? Assets.icons.homePageIcons.icons.maintenance.svg(width: 170.w)
+                      ? Assets.icons.homePageIcons.maintenance.svg(width: 170.w)
                       : Platform.isAndroid
                           ? Assets.images.googlePlay.image(width: 80.w)
                           : Assets.images.iosAppStore.image(width: 80.w),

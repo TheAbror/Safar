@@ -211,8 +211,9 @@ class $AssetsIconsHomePageIconsGen {
   SvgGenImage get arrowRight =>
       const SvgGenImage('assets/icons/home_page_icons/arrow-right.svg');
 
-  $AssetsIconsHomePageIconsIconsGen get icons =>
-      const $AssetsIconsHomePageIconsIconsGen();
+  /// File path: assets/icons/home_page_icons/maintenance.svg
+  SvgGenImage get maintenance =>
+      const SvgGenImage('assets/icons/home_page_icons/maintenance.svg');
 
   /// File path: assets/icons/home_page_icons/notifications.svg
   SvgGenImage get notifications =>
@@ -228,6 +229,7 @@ class $AssetsIconsHomePageIconsGen {
         noData,
         arrowDown,
         arrowRight,
+        maintenance,
         notifications,
         settingsFilterTimetable
       ];
@@ -404,25 +406,6 @@ class $AssetsIconsStaffIconsGen {
         settingIcon,
         threeDots
       ];
-}
-
-class $AssetsIconsHomePageIconsIconsGen {
-  const $AssetsIconsHomePageIconsIconsGen();
-
-  /// File path: assets/icons/home_page_icons/icons/close-svgrepo-com.svg
-  SvgGenImage get closeSvgrepoCom => const SvgGenImage(
-      'assets/icons/home_page_icons/icons/close-svgrepo-com.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/delete_icon.svg
-  SvgGenImage get deleteIcon =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/delete_icon.svg');
-
-  /// File path: assets/icons/home_page_icons/icons/maintenance.svg
-  SvgGenImage get maintenance =>
-      const SvgGenImage('assets/icons/home_page_icons/icons/maintenance.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values => [closeSvgrepoCom, deleteIcon, maintenance];
 }
 
 class $AssetsIconsStaffIconsNavbarGen {
