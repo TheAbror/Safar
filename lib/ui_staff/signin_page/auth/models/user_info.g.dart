@@ -61,3 +61,19 @@ Map<String, dynamic> _$AccountToJson(Account instance) => <String, dynamic>{
       'photo': instance.photo,
       'about_user': instance.aboutUser,
     };
+
+DriverRegistration _$DriverRegistrationFromJson(Map<String, dynamic> json) =>
+    DriverRegistration(
+      carModel: json['car_model'] as String? ?? '',
+      carColor: json['car_color'] as String? ?? '',
+      carYear: json['car_year'] as int? ?? 0,
+      licencePlate: json['license_plate'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$DriverRegistrationToJson(DriverRegistration instance) =>
+    <String, dynamic>{
+      'car_model': instance.carModel,
+      'car_color': instance.carColor,
+      'car_year': instance.carYear,
+      'license_plate': instance.licencePlate,
+    };
