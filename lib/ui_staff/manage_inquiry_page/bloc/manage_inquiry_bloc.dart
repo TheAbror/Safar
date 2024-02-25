@@ -1,12 +1,6 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safar/core/api/api_provider.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/core/bloc_progress/error.dart';
-import 'package:safar/core/constants/app_strings.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_item.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_model.dart';
 import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
@@ -349,37 +343,37 @@ class ManageInquiryBloc extends Cubit<ManageInquiryState> {
   //   }
   // }
 
-  void getMeausures() async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+  // void getMeausures() async {
+  //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    try {
-      final response = await ApiProvider.measurementService.getMeasures();
+  //   try {
+  //     final response = await ApiProvider.measurementService.getMeasures();
 
-      if (response.isSuccessful) {
-        final data = response.body;
+  //     if (response.isSuccessful) {
+  //       final data = response.body;
 
-        if (data != null) {
-          emit(
-            state.copyWith(
-              measurementsList: data,
-              blocProgress: BlocProgress.LOADED,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+  //       if (data != null) {
+  //         emit(
+  //           state.copyWith(
+  //             measurementsList: data,
+  //             blocProgress: BlocProgress.LOADED,
+  //           ),
+  //         );
+  //       }
+  //     } else {
+  //       final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-        emit(state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: error.message,
-        ));
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
-      emit(state.copyWith(
-        blocProgress: BlocProgress.FAILED,
-        failureMessage: AppStrings.internalErrorMessage,
-      ));
-    }
-  }
+  //       emit(state.copyWith(
+  //         blocProgress: BlocProgress.FAILED,
+  //         failureMessage: error.message,
+  //       ));
+  //     }
+  //   } catch (e) {
+  //     debugPrint('Error getting inquiries: $e');
+  //     emit(state.copyWith(
+  //       blocProgress: BlocProgress.FAILED,
+  //       failureMessage: AppStrings.internalErrorMessage,
+  //     ));
+  //   }
+  // }
 }

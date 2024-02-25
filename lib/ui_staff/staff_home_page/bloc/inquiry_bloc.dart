@@ -95,14 +95,7 @@ class InquiryBloc extends Cubit<InquiryState> {
         final data = response.body;
 
         if (data != null) {
-          emit(
-            state.copyWith(
-              orders: data,
-              // assigned: state.assigned.copyWith(model: data, blocProgress: BlocProgress.LOADED),
-              // assignedFiltered: data.content,
-              // assignedTotalElements: data.totalElements,
-            ),
-          );
+          emit(state.copyWith(orders: data));
         }
       } else {
         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
@@ -339,48 +332,6 @@ class InquiryBloc extends Cubit<InquiryState> {
 
     emit(state.copyWith(assignedFiltered: filtered));
   }
-
-  // void getButons() async {
-  //   emit(state.copyWith(buttons: state.buttons.copyWith(blocProgress: BlocProgress.IS_LOADING)));
-
-  //   try {
-  //     final response = await ApiProvider.inquiryService.getButtons();
-
-  //     if (response.isSuccessful) {
-  //       final data = response.body;
-
-  //       if (data != null) {
-  //         emit(state.copyWith(
-  //           buttons: state.buttons.copyWith(
-  //             blocProgress: BlocProgress.LOADED,
-  //             model: data,
-  //           ),
-  //         ));
-  //       }
-  //     } else {
-  //       final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
-
-  //       emit(
-  //         state.copyWith(
-  //           buttons: state.buttons.copyWith(
-  //             blocProgress: BlocProgress.FAILED,
-  //             failureMessage: error.message,
-  //           ),
-  //         ),
-  //       );
-  //     }
-  //   } catch (e) {
-  //     debugPrint('Error getting inquiries: $e');
-  //     emit(
-  //       state.copyWith(
-  //         buttons: state.buttons.copyWith(
-  //           blocProgress: BlocProgress.FAILED,
-  //           failureMessage: AppStrings.internalErrorMessage,
-  //         ),
-  //       ),
-  //     );
-  //   }
-  // }
 
   void clearAll() {
     emit(InquiryState.initial());

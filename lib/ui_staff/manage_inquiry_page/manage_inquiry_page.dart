@@ -102,7 +102,7 @@ class _BodyState extends State<_Body> {
       context.read<ManageInquiryBloc>().isButtonEnabled();
     }
 
-    context.read<ManageInquiryBloc>().getMeausures();
+    // context.read<ManageInquiryBloc>().getMeausures();
   }
 
   @override

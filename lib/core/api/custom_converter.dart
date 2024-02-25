@@ -50,6 +50,9 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case InquiryListResponse:
       return InquiryListResponse.fromJson(json);
 
+    case OrdersResponse:
+      return OrdersResponse.fromJson(json);
+
     case SignInResponse:
       return SignInResponse.fromJson(json);
 
