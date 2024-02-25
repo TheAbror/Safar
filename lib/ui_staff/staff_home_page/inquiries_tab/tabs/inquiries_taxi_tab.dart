@@ -86,7 +86,7 @@ class InquiriesTaxiTab extends StatelessWidget {
     return RefreshIndicator(
       color: Theme.of(context).colorScheme.primaryContainer,
       onRefresh: () async {
-        context.read<InquiryBloc>().getInitiallyCreated();
+        // context.read<InquiryBloc>().getInitiallyCreated();
       },
       child: BlocBuilder<InquiryBloc, InquiryState>(
         builder: (context, state) {

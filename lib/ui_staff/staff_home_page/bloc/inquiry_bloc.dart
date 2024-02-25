@@ -15,74 +15,74 @@ part 'inquiry_state.dart';
 class InquiryBloc extends Cubit<InquiryState> {
   InquiryBloc() : super(InquiryState.initial());
 
-  void getAssignedWithPageable() async {
-    if (state.assigned.blocProgress == BlocProgress.IS_LOADING ||
-        state.listOfSelectedStatusesAssigned.isNotEmpty) {
-      return;
-    }
+  // void getAssignedWithPageable() async {
+  //   if (state.assigned.blocProgress == BlocProgress.IS_LOADING ||
+  //       state.listOfSelectedStatusesAssigned.isNotEmpty) {
+  //     return;
+  //   }
 
-    if (state.assignedTotalElements > state.assigned.model.content.length) {
-      int thisCounter = state.assignedCounter;
-      thisCounter++;
+  //   if (state.assignedTotalElements > state.assigned.model.content.length) {
+  //     int thisCounter = state.assignedCounter;
+  //     thisCounter++;
 
-      try {
-        emit(
-          state.copyWith(
-            assignedCounter: thisCounter,
-            assigned: state.assigned.copyWith(
-              blocProgress: BlocProgress.IS_LOADING,
-            ),
-          ),
-        );
+  //     try {
+  //       emit(
+  //         state.copyWith(
+  //           assignedCounter: thisCounter,
+  //           assigned: state.assigned.copyWith(
+  //             blocProgress: BlocProgress.IS_LOADING,
+  //           ),
+  //         ),
+  //       );
 
-        final response = await ApiProvider.inquiryService.getAssignedWithPageable(thisCounter);
+  //       final response = await ApiProvider.inquiryService.getAssignedWithPageable(thisCounter);
 
-        if (response.isSuccessful) {
-          final data = response.body;
+  //       if (response.isSuccessful) {
+  //         final data = response.body;
 
-          if (data != null) {
-            final assigned = state.assigned;
-            assigned.model.content.addAll(data.content);
+  //         if (data != null) {
+  //           final assigned = state.assigned;
+  //           assigned.model.content.addAll(data.content);
 
-            emit(
-              state.copyWith(
-                assigned: state.assigned.copyWith(
-                  model: assigned.model,
-                  blocProgress: BlocProgress.LOADED,
-                ),
-                assignedFiltered: assigned.model.content,
-              ),
-            );
-          } else {
-            emit(
-              state.copyWith(assigned: state.assigned.copyWith(blocProgress: BlocProgress.LOADED)),
-            );
-          }
-        } else {
-          final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+  //           emit(
+  //             state.copyWith(
+  //               assigned: state.assigned.copyWith(
+  //                 model: assigned.model,
+  //                 blocProgress: BlocProgress.LOADED,
+  //               ),
+  //               assignedFiltered: assigned.model.content,
+  //             ),
+  //           );
+  //         } else {
+  //           emit(
+  //             state.copyWith(assigned: state.assigned.copyWith(blocProgress: BlocProgress.LOADED)),
+  //           );
+  //         }
+  //       } else {
+  //         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-          emit(
-            state.copyWith(
-              assigned: state.assigned.copyWith(
-                blocProgress: BlocProgress.FAILED,
-                failureMessage: error.message,
-              ),
-            ),
-          );
-        }
-      } catch (e) {
-        debugPrint('Error getting inquiries: $e');
-        emit(
-          state.copyWith(
-            assigned: state.assigned.copyWith(
-              blocProgress: BlocProgress.FAILED,
-              failureMessage: AppStrings.internalErrorMessage,
-            ),
-          ),
-        );
-      }
-    }
-  }
+  //         emit(
+  //           state.copyWith(
+  //             assigned: state.assigned.copyWith(
+  //               blocProgress: BlocProgress.FAILED,
+  //               failureMessage: error.message,
+  //             ),
+  //           ),
+  //         );
+  //       }
+  //     } catch (e) {
+  //       debugPrint('Error getting inquiries: $e');
+  //       emit(
+  //         state.copyWith(
+  //           assigned: state.assigned.copyWith(
+  //             blocProgress: BlocProgress.FAILED,
+  //             failureMessage: AppStrings.internalErrorMessage,
+  //           ),
+  //         ),
+  //       );
+  //     }
+  //   }
+  // }
 
   void getInitiallyAssigned() async {
     emit(state.copyWith(assigned: state.assigned.copyWith(blocProgress: BlocProgress.IS_LOADING)));
@@ -127,115 +127,115 @@ class InquiryBloc extends Cubit<InquiryState> {
     }
   }
 
-  void getInitiallyCreated() async {
-    emit(state.copyWith(created: state.created.copyWith(blocProgress: BlocProgress.IS_LOADING)));
+  // void getInitiallyCreated() async {
+  //   emit(state.copyWith(created: state.created.copyWith(blocProgress: BlocProgress.IS_LOADING)));
 
-    try {
-      final response = await ApiProvider.inquiryService.getInitiallyCreated();
+  //   try {
+  //     final response = await ApiProvider.inquiryService.getInitiallyCreated();
 
-      if (response.isSuccessful) {
-        final data = response.body;
+  //     if (response.isSuccessful) {
+  //       final data = response.body;
 
-        if (data != null) {
-          emit(
-            state.copyWith(
-              created: state.created.copyWith(model: data, blocProgress: BlocProgress.LOADED),
-              createdFiltered: data.content,
-              createdTotalElements: data.totalElements,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+  //       if (data != null) {
+  //         emit(
+  //           state.copyWith(
+  //             created: state.created.copyWith(model: data, blocProgress: BlocProgress.LOADED),
+  //             createdFiltered: data.content,
+  //             createdTotalElements: data.totalElements,
+  //           ),
+  //         );
+  //       }
+  //     } else {
+  //       final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-        emit(
-          state.copyWith(
-            created: state.created.copyWith(
-              blocProgress: BlocProgress.FAILED,
-              failureMessage: error.message,
-            ),
-          ),
-        );
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
-      emit(
-        state.copyWith(
-          created: state.created.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: AppStrings.internalErrorMessage,
-          ),
-        ),
-      );
-    }
-  }
+  //       emit(
+  //         state.copyWith(
+  //           created: state.created.copyWith(
+  //             blocProgress: BlocProgress.FAILED,
+  //             failureMessage: error.message,
+  //           ),
+  //         ),
+  //       );
+  //     }
+  //   } catch (e) {
+  //     debugPrint('Error getting inquiries: $e');
+  //     emit(
+  //       state.copyWith(
+  //         created: state.created.copyWith(
+  //           blocProgress: BlocProgress.FAILED,
+  //           failureMessage: AppStrings.internalErrorMessage,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  // }
 
-  void getCreatedWithPageable() async {
-    if (state.created.blocProgress == BlocProgress.IS_LOADING ||
-        state.listOfSelectedStatusesCreated.isNotEmpty) {
-      return;
-    }
+  // void getCreatedWithPageable() async {
+  //   if (state.created.blocProgress == BlocProgress.IS_LOADING ||
+  //       state.listOfSelectedStatusesCreated.isNotEmpty) {
+  //     return;
+  //   }
 
-    if (state.createdTotalElements > state.created.model.content.length) {
-      int thisCounter = state.counterCreated;
-      thisCounter++;
+  //   if (state.createdTotalElements > state.created.model.content.length) {
+  //     int thisCounter = state.counterCreated;
+  //     thisCounter++;
 
-      try {
-        emit(
-          state.copyWith(
-            counterCreated: thisCounter,
-            created: state.created.copyWith(blocProgress: BlocProgress.IS_LOADING),
-          ),
-        );
+  //     try {
+  //       emit(
+  //         state.copyWith(
+  //           counterCreated: thisCounter,
+  //           created: state.created.copyWith(blocProgress: BlocProgress.IS_LOADING),
+  //         ),
+  //       );
 
-        final response = await ApiProvider.inquiryService.getCreatedWithPageable(thisCounter);
+  //       final response = await ApiProvider.inquiryService.getCreatedWithPageable(thisCounter);
 
-        if (response.isSuccessful) {
-          final data = response.body;
+  //       if (response.isSuccessful) {
+  //         final data = response.body;
 
-          if (data != null) {
-            final created = state.created;
-            created.model.content.addAll(data.content);
+  //         if (data != null) {
+  //           final created = state.created;
+  //           created.model.content.addAll(data.content);
 
-            emit(
-              state.copyWith(
-                created: state.created.copyWith(
-                  model: created.model,
-                  blocProgress: BlocProgress.LOADED,
-                ),
-                createdFiltered: created.model.content,
-              ),
-            );
-          } else {
-            emit(
-              state.copyWith(created: state.created.copyWith(blocProgress: BlocProgress.LOADED)),
-            );
-          }
-        } else {
-          final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+  //           emit(
+  //             state.copyWith(
+  //               created: state.created.copyWith(
+  //                 model: created.model,
+  //                 blocProgress: BlocProgress.LOADED,
+  //               ),
+  //               createdFiltered: created.model.content,
+  //             ),
+  //           );
+  //         } else {
+  //           emit(
+  //             state.copyWith(created: state.created.copyWith(blocProgress: BlocProgress.LOADED)),
+  //           );
+  //         }
+  //       } else {
+  //         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-          emit(
-            state.copyWith(
-              created: state.created.copyWith(
-                blocProgress: BlocProgress.FAILED,
-                failureMessage: error.message,
-              ),
-            ),
-          );
-        }
-      } catch (e) {
-        debugPrint('Error getting inquiries: $e');
-        emit(
-          state.copyWith(
-            created: state.created.copyWith(
-              blocProgress: BlocProgress.FAILED,
-              failureMessage: AppStrings.internalErrorMessage,
-            ),
-          ),
-        );
-      }
-    }
-  }
+  //         emit(
+  //           state.copyWith(
+  //             created: state.created.copyWith(
+  //               blocProgress: BlocProgress.FAILED,
+  //               failureMessage: error.message,
+  //             ),
+  //           ),
+  //         );
+  //       }
+  //     } catch (e) {
+  //       debugPrint('Error getting inquiries: $e');
+  //       emit(
+  //         state.copyWith(
+  //           created: state.created.copyWith(
+  //             blocProgress: BlocProgress.FAILED,
+  //             failureMessage: AppStrings.internalErrorMessage,
+  //           ),
+  //         ),
+  //       );
+  //     }
+  //   }
+  // }
 
   void changeStatusTaxi(String status) async {
     if (status.isNotEmpty) {
@@ -338,47 +338,47 @@ class InquiryBloc extends Cubit<InquiryState> {
     emit(state.copyWith(assignedFiltered: filtered));
   }
 
-  void getButons() async {
-    emit(state.copyWith(buttons: state.buttons.copyWith(blocProgress: BlocProgress.IS_LOADING)));
+  // void getButons() async {
+  //   emit(state.copyWith(buttons: state.buttons.copyWith(blocProgress: BlocProgress.IS_LOADING)));
 
-    try {
-      final response = await ApiProvider.inquiryService.getButtons();
+  //   try {
+  //     final response = await ApiProvider.inquiryService.getButtons();
 
-      if (response.isSuccessful) {
-        final data = response.body;
+  //     if (response.isSuccessful) {
+  //       final data = response.body;
 
-        if (data != null) {
-          emit(state.copyWith(
-            buttons: state.buttons.copyWith(
-              blocProgress: BlocProgress.LOADED,
-              model: data,
-            ),
-          ));
-        }
-      } else {
-        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+  //       if (data != null) {
+  //         emit(state.copyWith(
+  //           buttons: state.buttons.copyWith(
+  //             blocProgress: BlocProgress.LOADED,
+  //             model: data,
+  //           ),
+  //         ));
+  //       }
+  //     } else {
+  //       final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-        emit(
-          state.copyWith(
-            buttons: state.buttons.copyWith(
-              blocProgress: BlocProgress.FAILED,
-              failureMessage: error.message,
-            ),
-          ),
-        );
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
-      emit(
-        state.copyWith(
-          buttons: state.buttons.copyWith(
-            blocProgress: BlocProgress.FAILED,
-            failureMessage: AppStrings.internalErrorMessage,
-          ),
-        ),
-      );
-    }
-  }
+  //       emit(
+  //         state.copyWith(
+  //           buttons: state.buttons.copyWith(
+  //             blocProgress: BlocProgress.FAILED,
+  //             failureMessage: error.message,
+  //           ),
+  //         ),
+  //       );
+  //     }
+  //   } catch (e) {
+  //     debugPrint('Error getting inquiries: $e');
+  //     emit(
+  //       state.copyWith(
+  //         buttons: state.buttons.copyWith(
+  //           blocProgress: BlocProgress.FAILED,
+  //           failureMessage: AppStrings.internalErrorMessage,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  // }
 
   void clearAll() {
     emit(InquiryState.initial());

@@ -1,12 +1,12 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/api/api_provider.dart';
+import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/bloc_progress/error.dart';
 import 'package:safar/core/constants/app_strings.dart';
-import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_item.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_model.dart';
 import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
@@ -16,51 +16,51 @@ part 'manage_inquiry_state.dart';
 class ManageInquiryBloc extends Cubit<ManageInquiryState> {
   ManageInquiryBloc() : super(ManageInquiryState.initial());
 
-  void getInquiryByIdForEdit(int id) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+  // void getInquiryByIdForEdit(int id) async {
+  //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    try {
-      final response = await ApiProvider.inquiryService.getInquiryByIdForEdit(id);
+  //   try {
+  //     final response = await ApiProvider.inquiryService.getInquiryByIdForEdit(id);
 
-      if (response.isSuccessful) {
-        final data = response.body;
+  //     if (response.isSuccessful) {
+  //       final data = response.body;
 
-        if (data != null) {
-          List<InquiryItem> items = data.items
-              .map((item) => InquiryItem(
-                    name: item.name,
-                    quantity: item.quantity,
-                    measurement: item.measurement,
-                  ))
-              .toList();
-          emit(
-            state.copyWith(
-              data: data,
-              title: data.title,
-              description: data.description,
-              listofItems: items,
-              isInitialValuesLoaded: true,
-              blocProgress: BlocProgress.LOADED,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+  //       if (data != null) {
+  //         List<InquiryItem> items = data.items
+  //             .map((item) => InquiryItem(
+  //                   name: item.name,
+  //                   quantity: item.quantity,
+  //                   measurement: item.measurement,
+  //                 ))
+  //             .toList();
+  //         emit(
+  //           state.copyWith(
+  //             data: data,
+  //             title: data.title,
+  //             description: data.description,
+  //             listofItems: items,
+  //             isInitialValuesLoaded: true,
+  //             blocProgress: BlocProgress.LOADED,
+  //           ),
+  //         );
+  //       }
+  //     } else {
+  //       final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-        emit(state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: error.message,
-        ));
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
+  //       emit(state.copyWith(
+  //         blocProgress: BlocProgress.FAILED,
+  //         failureMessage: error.message,
+  //       ));
+  //     }
+  //   } catch (e) {
+  //     debugPrint('Error getting inquiries: $e');
 
-      emit(state.copyWith(
-        blocProgress: BlocProgress.FAILED,
-        failureMessage: AppStrings.internalErrorMessage,
-      ));
-    }
-  }
+  //     emit(state.copyWith(
+  //       blocProgress: BlocProgress.FAILED,
+  //       failureMessage: AppStrings.internalErrorMessage,
+  //     ));
+  //   }
+  // }
 
   void initialValuesDisplayed() {
     emit(state.copyWith(isInitialValuesLoaded: false));
@@ -84,136 +84,136 @@ class ManageInquiryBloc extends Cubit<ManageInquiryState> {
     emit(state.copyWith(listofItems: list));
   }
 
-//
-  void postNewInquiry(
-    String title,
-    String description,
-    int recipient,
-  ) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+// //
+//   void postNewInquiry(
+//     String title,
+//     String description,
+//     int recipient,
+//   ) async {
+//     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    final itemsRequest = state.listofItems
-        .map((item) => item.toInquiryRequest(
-              item.name,
-              item.quantity,
-              item.measurement?.value,
-            ))
-        .toList();
+//     final itemsRequest = state.listofItems
+//         .map((item) => item.toInquiryRequest(
+//               item.name,
+//               item.quantity,
+//               item.measurement?.value,
+//             ))
+//         .toList();
 
-    final request = CreateInquiryRequest(
-      title: title,
-      description: description,
-      recipient: recipient,
-      recipient_group_type: state.recipientGroup,
-      items: itemsRequest,
-    );
+//     final request = CreateInquiryRequest(
+//       title: title,
+//       description: description,
+//       recipient: recipient,
+//       recipient_group_type: state.recipientGroup,
+//       items: itemsRequest,
+//     );
 
-    try {
-      final response = await ApiProvider.inquiryService.postNewInquiry(request);
+//     try {
+//       final response = await ApiProvider.inquiryService.postNewInquiry(request);
 
-      if (response.isSuccessful) {
-        final data = response.body;
+//       if (response.isSuccessful) {
+//         final data = response.body;
 
-        if (data != null) {
-          final items = data.items.map((itemRequest) {
-            return InquiryItem(
-              name: itemRequest.name,
-              quantity: itemRequest.quantity,
-              measurement: itemRequest.measurement,
-            );
-          }).toList();
+//         if (data != null) {
+//           final items = data.items.map((itemRequest) {
+//             return InquiryItem(
+//               name: itemRequest.name,
+//               quantity: itemRequest.quantity,
+//               measurement: itemRequest.measurement,
+//             );
+//           }).toList();
 
-          emit(
-            state.copyWith(
-              data: data,
-              listofItems: items,
-              blocProgress: BlocProgress.IS_SUCCESS,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+//           emit(
+//             state.copyWith(
+//               data: data,
+//               listofItems: items,
+//               blocProgress: BlocProgress.IS_SUCCESS,
+//             ),
+//           );
+//         }
+//       } else {
+//         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-        emit(state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: error.message,
-        ));
-      }
-    } catch (e) {
-      showMessage('$e');
-      debugPrint('Error getting inquiries: $e');
-      emit(state.copyWith(
-        blocProgress: BlocProgress.FAILED,
-        failureMessage: AppStrings.internalErrorMessage,
-      ));
-    }
-  }
+//         emit(state.copyWith(
+//           blocProgress: BlocProgress.FAILED,
+//           failureMessage: error.message,
+//         ));
+//       }
+//     } catch (e) {
+//       showMessage('$e');
+//       debugPrint('Error getting inquiries: $e');
+//       emit(state.copyWith(
+//         blocProgress: BlocProgress.FAILED,
+//         failureMessage: AppStrings.internalErrorMessage,
+//       ));
+//     }
+//   }
 
-  //for edit only
-  void editInquiryByID(
-    int id,
-    String title,
-    String description,
-    int recipient,
-  ) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+  // //for edit only
+  // void editInquiryByID(
+  //   int id,
+  //   String title,
+  //   String description,
+  //   int recipient,
+  // ) async {
+  //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    final itemsRequest = state.listofItems
-        .map((item) => item.toInquiryRequest(
-              item.name,
-              item.quantity,
-              item.measurement?.value,
-            ))
-        .toList();
+  //   final itemsRequest = state.listofItems
+  //       .map((item) => item.toInquiryRequest(
+  //             item.name,
+  //             item.quantity,
+  //             item.measurement?.value,
+  //           ))
+  //       .toList();
 
-    final request = CreateInquiryRequest(
-      id: id,
-      title: state.title,
-      description: state.description,
-      recipient: recipient,
-      recipient_group_type: recipient == 0 ? state.recipientGroup : 'STAFF',
-      items: itemsRequest,
-    );
+  //   final request = CreateInquiryRequest(
+  //     id: id,
+  //     title: state.title,
+  //     description: state.description,
+  //     recipient: recipient,
+  //     recipient_group_type: recipient == 0 ? state.recipientGroup : 'STAFF',
+  //     items: itemsRequest,
+  //   );
 
-    try {
-      final response = await ApiProvider.inquiryService.editInquiryByID(request);
+  //   try {
+  //     final response = await ApiProvider.inquiryService.editInquiryByID(request);
 
-      if (response.isSuccessful) {
-        final data = response.body;
+  //     if (response.isSuccessful) {
+  //       final data = response.body;
 
-        if (data != null) {
-          List<InquiryItem> items = data.items
-              .map((item) => InquiryItem(
-                    name: item.name,
-                    quantity: item.quantity,
-                    measurement: item.measurement,
-                  ))
-              .toList();
-          emit(
-            state.copyWith(
-              data: data,
-              listofItems: items,
-              blocProgress: BlocProgress.IS_SUCCESS,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+  //       if (data != null) {
+  //         List<InquiryItem> items = data.items
+  //             .map((item) => InquiryItem(
+  //                   name: item.name,
+  //                   quantity: item.quantity,
+  //                   measurement: item.measurement,
+  //                 ))
+  //             .toList();
+  //         emit(
+  //           state.copyWith(
+  //             data: data,
+  //             listofItems: items,
+  //             blocProgress: BlocProgress.IS_SUCCESS,
+  //           ),
+  //         );
+  //       }
+  //     } else {
+  //       final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-        emit(state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: error.message,
-        ));
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
+  //       emit(state.copyWith(
+  //         blocProgress: BlocProgress.FAILED,
+  //         failureMessage: error.message,
+  //       ));
+  //     }
+  //   } catch (e) {
+  //     debugPrint('Error getting inquiries: $e');
 
-      emit(state.copyWith(
-        blocProgress: BlocProgress.FAILED,
-        failureMessage: AppStrings.internalErrorMessage,
-      ));
-    }
-  }
+  //     emit(state.copyWith(
+  //       blocProgress: BlocProgress.FAILED,
+  //       failureMessage: AppStrings.internalErrorMessage,
+  //     ));
+  //   }
+  // }
 
   void addInquiryItem() {
     final list = List<InquiryItem>.from(state.listofItems);
@@ -280,74 +280,74 @@ class ManageInquiryBloc extends Cubit<ManageInquiryState> {
     emit(state.copyWith(isButtonEnabled: isFormValid));
   }
 
-  void getInquiryById(int id) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+  // void getInquiryById(int id) async {
+  //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    try {
-      final response = await ApiProvider.inquiryService.getInquiryById(id);
+  //   try {
+  //     final response = await ApiProvider.inquiryService.getInquiryById(id);
 
-      if (response.isSuccessful) {
-        final data = response.body;
+  //     if (response.isSuccessful) {
+  //       final data = response.body;
 
-        if (data != null) {
-          emit(
-            state.copyWith(
-              item: data,
-              blocProgress: BlocProgress.LOADED,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+  //       if (data != null) {
+  //         emit(
+  //           state.copyWith(
+  //             item: data,
+  //             blocProgress: BlocProgress.LOADED,
+  //           ),
+  //         );
+  //       }
+  //     } else {
+  //       final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-        emit(state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: error.message,
-        ));
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
+  //       emit(state.copyWith(
+  //         blocProgress: BlocProgress.FAILED,
+  //         failureMessage: error.message,
+  //       ));
+  //     }
+  //   } catch (e) {
+  //     debugPrint('Error getting inquiries: $e');
 
-      emit(state.copyWith(
-        blocProgress: BlocProgress.FAILED,
-        failureMessage: AppStrings.internalErrorMessage,
-      ));
-    }
-  }
+  //     emit(state.copyWith(
+  //       blocProgress: BlocProgress.FAILED,
+  //       failureMessage: AppStrings.internalErrorMessage,
+  //     ));
+  //   }
+  // }
 
-  void deleteInquiryById(int id) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+  // void deleteInquiryById(int id) async {
+  //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    try {
-      final response = await ApiProvider.inquiryService.deleteInquiryById(id);
+  //   try {
+  //     final response = await ApiProvider.inquiryService.deleteInquiryById(id);
 
-      if (response.isSuccessful) {
-        final data = response.body;
+  //     if (response.isSuccessful) {
+  //       final data = response.body;
 
-        if (data != null) {
-          emit(
-            state.copyWith(
-              blocProgress: BlocProgress.IS_SUCCESS,
-            ),
-          );
-        }
-      } else {
-        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+  //       if (data != null) {
+  //         emit(
+  //           state.copyWith(
+  //             blocProgress: BlocProgress.IS_SUCCESS,
+  //           ),
+  //         );
+  //       }
+  //     } else {
+  //       final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
 
-        emit(state.copyWith(
-          blocProgress: BlocProgress.FAILED,
-          failureMessage: error.message,
-        ));
-      }
-    } catch (e) {
-      debugPrint('Error getting inquiries: $e');
+  //       emit(state.copyWith(
+  //         blocProgress: BlocProgress.FAILED,
+  //         failureMessage: error.message,
+  //       ));
+  //     }
+  //   } catch (e) {
+  //     debugPrint('Error getting inquiries: $e');
 
-      emit(state.copyWith(
-        blocProgress: BlocProgress.FAILED,
-        failureMessage: AppStrings.internalErrorMessage,
-      ));
-    }
-  }
+  //     emit(state.copyWith(
+  //       blocProgress: BlocProgress.FAILED,
+  //       failureMessage: AppStrings.internalErrorMessage,
+  //     ));
+  //   }
+  // }
 
   void getMeausures() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));

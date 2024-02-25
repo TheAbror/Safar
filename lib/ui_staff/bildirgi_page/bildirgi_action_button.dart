@@ -1,11 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/buttons/action_button.dart';
-import 'package:safar/ui_staff/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
 import 'package:safar/ui_staff/widgets/bottom_sheets/action_bottom_sheet.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore_for_file: use_build_context_synchronously
 
 class BildirgiActionButton extends StatelessWidget {
@@ -62,7 +60,7 @@ class BildirgiActionButton extends StatelessWidget {
                 );
 
                 if (result != null && result) {
-                  context.read<ManageInquiryBloc>().getInquiryById(id);
+                  // context.read<ManageInquiryBloc>().getInquiryById(id);
                 }
               }
             }

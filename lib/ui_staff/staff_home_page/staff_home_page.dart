@@ -19,23 +19,20 @@ class StaffHomePage extends StatefulWidget {
 class _StaffHomePageState extends State<StaffHomePage> {
   @override
   void initState() {
-    // context.read<InquiryBloc>()
-    //   ..getButons()
-    //   ..getInitiallyCreated()
-    //   ..getInitiallyAssigned();
+    context.read<InquiryBloc>().getInitiallyAssigned();
 
     _scrollControllerAssigned.addListener(() {
       if (_scrollControllerAssigned.position.maxScrollExtent -
               _scrollControllerAssigned.position.pixels <=
           300) {
-        context.read<InquiryBloc>().getAssignedWithPageable();
+        // context.read<InquiryBloc>().getAssignedWithPageable();
       }
     });
     _scrollControllerCreated.addListener(() {
       if (_scrollControllerCreated.position.maxScrollExtent -
               _scrollControllerCreated.position.pixels <=
           300) {
-        context.read<InquiryBloc>().getCreatedWithPageable();
+        // context.read<InquiryBloc>().getCreatedWithPageable();
       }
     });
 

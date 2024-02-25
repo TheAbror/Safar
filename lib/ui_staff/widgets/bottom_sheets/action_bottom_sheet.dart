@@ -53,7 +53,9 @@ class ActionBottomSheet extends StatefulWidget {
       isScrollControlled: true,
       builder: (context) {
         return BlocProvider(
-          create: (context) => ActionBloc()..getCommentsList(),
+          create: (context) => ActionBloc()
+          // ..getCommentsList()
+          ,
           child: ActionBottomSheet(
             title: title,
             isSearchNeeded: isSearchNeeded,
@@ -120,13 +122,13 @@ class _ActionBottomSheetState extends State<ActionBottomSheet> {
                     widget.status.toLowerCase() == 'assigned') {
                   //Validation
                   if (_formKey.currentState!.validate()) {
-                    context.read<ActionBloc>().postInquiry(
-                          widget.id,
-                          widget.status,
-                        );
+                    // context.read<ActionBloc>().postInquiry(
+                    //       widget.id,
+                    //       widget.status,
+                    //     );
                   }
                 } else {
-                  context.read<ActionBloc>().postInquiry(widget.id, widget.status);
+                  // context.read<ActionBloc>().postInquiry(widget.id, widget.status);
                 }
               },
               child: Form(

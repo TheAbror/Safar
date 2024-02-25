@@ -108,7 +108,7 @@ class _CommentsOptionState extends State<CommentsOption> {
           onTap: () {
             var text = widget._titleController.text.trim();
             if (text.isNotEmpty) {
-              context.read<ActionBloc>().postComment(text);
+              // context.read<ActionBloc>().postComment(text);
             } else {
               return showMessage('Can`t be empty', isError: true);
             }

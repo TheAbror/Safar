@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:safar/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safar/core/routes/route_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
+import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
+import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
-import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
-import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
+import 'package:safar/core/routes/route_constants.dart';
+import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui_staff/bildirgi_page/bildirgi_action_button.dart';
-import 'package:safar/ui_staff/manage_inquiry_page/manage_inquiry_page.dart';
 import 'package:safar/ui_staff/bildirgi_page/modalPopups/delete_dialog.dart';
-import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
-import 'package:safar/ui_staff/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
 import 'package:safar/ui_staff/bildirgi_page/widgets/change_log/change_log_item.dart';
+import 'package:safar/ui_staff/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
+import 'package:safar/ui_staff/manage_inquiry_page/manage_inquiry_page.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/app_bar/inqury_appbar.dart';
+import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
 
 class BildirgiPageViewModel {
   final int index;
@@ -39,7 +38,8 @@ class BildirgiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ManageInquiryBloc()..getInquiryById(viewModel.model[viewModel.index].id),
+      create: (context) => ManageInquiryBloc(),
+      // ..getInquiryById(viewModel.model[viewModel.index].id),
       child: _Body(model: viewModel.model[viewModel.index], index: viewModel.index),
     );
   }
@@ -88,9 +88,9 @@ class _BodyState extends State<_Body> {
                                   ManageInquiryPageViewModel(id: widget.model.id, isEdit: true))
                           : delete_dialog(context).then((value) {
                               if (value) {
-                                context
-                                    .read<ManageInquiryBloc>()
-                                    .deleteInquiryById(widget.model.id);
+                                // context
+                                //     .read<ManageInquiryBloc>()
+                                //     .deleteInquiryById(widget.model.id);
                                 // Navigator.pop(context);
                               } else if (value == false) {}
                             });
@@ -106,7 +106,7 @@ class _BodyState extends State<_Body> {
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
             //
-            context.read<InquiryBloc>().getInitiallyCreated();
+            // context.read<InquiryBloc>().getInitiallyCreated();
 
             Navigator.pushNamed(context, AppRoutes.staffHome);
 
@@ -126,7 +126,7 @@ class _BodyState extends State<_Body> {
             children: [
               RefreshIndicator(
                 onRefresh: () async {
-                  context.read<ManageInquiryBloc>().getInquiryById(state.item.id);
+                  // context.read<ManageInquiryBloc>().getInquiryById(state.item.id);
                 },
                 child: ListView(
                   physics: const AlwaysScrollableScrollPhysics(),

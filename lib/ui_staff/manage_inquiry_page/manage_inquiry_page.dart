@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safar/core/routes/route_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
-import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
-import 'package:safar/ui_staff/manage_inquiry_page/widgets/unit_selection.dart';
+import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/amount_selection.dart';
-import 'package:safar/ui_staff/staff_home_page/widgets/buttons/add_item_button.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/card_number_and_remove.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/texts_and_titles/item_inquiry_title.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/texts_and_titles/submit_inquiry_button.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/texts_and_titles/title_and_description.dart';
+import 'package:safar/ui_staff/manage_inquiry_page/widgets/unit_selection.dart';
+import 'package:safar/ui_staff/staff_home_page/widgets/buttons/add_item_button.dart';
 
 class ManageInquiryPageViewModel {
   final int id;
@@ -55,18 +54,18 @@ class _ManageInquiryPageState extends State<ManageInquiryPage> {
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () {
                     if (widget.viewModel.isEdit) {
-                      bloc.editInquiryByID(
-                        widget.viewModel.id,
-                        state.title.trim(),
-                        state.description.trim(),
-                        state.recipientID,
-                      );
-                    } else {
-                      bloc.postNewInquiry(
-                        state.title.trim(),
-                        state.description.trim(),
-                        state.recipientID,
-                      );
+                      //   bloc.editInquiryByID(
+                      //     widget.viewModel.id,
+                      //     state.title.trim(),
+                      //     state.description.trim(),
+                      //     state.recipientID,
+                      //   );
+                      // } else {
+                      //   bloc.postNewInquiry(
+                      //     state.title.trim(),
+                      //     state.description.trim(),
+                      //     state.recipientID,
+                      //   );
                     }
                   },
                 ),
@@ -99,7 +98,7 @@ class _BodyState extends State<_Body> {
     super.initState();
 
     if (widget.viewModel.isEdit) {
-      context.read<ManageInquiryBloc>().getInquiryByIdForEdit(widget.viewModel.id);
+      // context.read<ManageInquiryBloc>().getInquiryByIdForEdit(widget.viewModel.id);
       context.read<ManageInquiryBloc>().isButtonEnabled();
     }
 
@@ -117,7 +116,7 @@ class _BodyState extends State<_Body> {
           context.read<ManageInquiryBloc>().initialValuesDisplayed();
         } else if (state.blocProgress == BlocProgress.IS_SUCCESS) {
           //
-          context.read<InquiryBloc>().getInitiallyCreated();
+          // context.read<InquiryBloc>().getInitiallyCreated();
 
           Navigator.pushNamed(context, AppRoutes.staffHome);
 
