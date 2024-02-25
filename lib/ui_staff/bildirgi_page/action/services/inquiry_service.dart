@@ -1,6 +1,6 @@
 import 'package:chopper/chopper.dart';
 import 'package:safar/core/constants/app_strings.dart';
-import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
+import 'package:safar/ui_staff/signin_page/auth/models/user_info.dart';
 
 part 'inquiry_service.chopper.dart';
 
@@ -39,7 +39,7 @@ abstract class InquiryService extends ChopperService {
   //   --- pageable assigned ---   //
 
   @Get(path: AppStrings.orders)
-  Future<Response<InquiryListResponse>> getInitiallyAssigned();
+  Future<Response<OrdersResponse>> getInitiallyAssigned();
 
   // @Get(path: '${AppStrings.inquiry}/assigned?page={page}&size=20')
   // Future<Response<InquiryListResponse>> getAssignedWithPageable(@Path('page') int id);

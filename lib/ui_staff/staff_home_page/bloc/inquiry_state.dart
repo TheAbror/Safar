@@ -19,6 +19,7 @@ class InquiryState extends Equatable {
 
   final int randomNumber;
   final SuperBlocProgress<List<InquiryButtons>> buttons;
+  final OrdersResponse orders;
 
   const InquiryState({
     required this.assignedCounter,
@@ -33,6 +34,7 @@ class InquiryState extends Equatable {
     required this.listOfSelectedStatusesCreated,
     required this.randomNumber,
     required this.buttons,
+    required this.orders,
   });
 
   factory InquiryState.initial() {
@@ -69,6 +71,29 @@ class InquiryState extends Equatable {
       randomNumber: 0,
       buttons: SuperBlocProgress(model: const []),
       createdFiltered: const [],
+      orders: OrdersResponse(
+        id: 0,
+        pickup: '',
+        destination: '',
+        numberOfPassengers: 0,
+        desiredPickupTime: '',
+        desiredCarModel: '',
+        offeredPrice: 0,
+        pickupReference: '',
+        destinationReference: '',
+        commentForDriver: '',
+        assignedAt: '',
+        assigned: false,
+        created: false,
+        createdAt: '',
+        delivered: false,
+        deliveredAt: '',
+        driver: 0,
+        inProcess: false,
+        inProcessAt: '',
+        updateRequired: false,
+        user: 0,
+      ),
     );
   }
 
@@ -85,6 +110,7 @@ class InquiryState extends Equatable {
     List<String>? listOfSelectedStatusesCreated,
     int? randomNumber,
     SuperBlocProgress<List<InquiryButtons>>? buttons,
+    OrdersResponse? orders,
     String? failureMessage,
   }) {
     return InquiryState(
@@ -101,6 +127,7 @@ class InquiryState extends Equatable {
           listOfSelectedStatusesCreated ?? this.listOfSelectedStatusesCreated,
       randomNumber: randomNumber ?? this.randomNumber,
       buttons: buttons ?? this.buttons,
+      orders: orders ?? this.orders,
       assignedTotalElements: assignedTotalElements ?? this.assignedTotalElements,
     );
   }
@@ -119,5 +146,6 @@ class InquiryState extends Equatable {
         listOfSelectedStatusesCreated,
         randomNumber,
         buttons,
+        orders,
       ];
 }
