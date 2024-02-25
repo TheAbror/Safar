@@ -5,9 +5,7 @@ import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/search_and_filter.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_card.dart';
-
 import '../../model/inquiry_list_model.dart';
-import '../../widgets/filter_card.dart';
 
 class InquiriesDeliveryTab extends StatelessWidget {
   final List<String> statusesList;
@@ -133,12 +131,12 @@ class InquiriesDeliveryTab extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: [
-            for (var status in state.listOfSelectedStatusesAssigned)
-              FilterCard(
-                text: status,
-                onTap: () => context.read<InquiryBloc>().changeStatusDelivery(status),
-              ),
+          children: const [
+            // for (var status in state.listOfSelectedStatusesAssigned)
+            //   FilterCard(
+            //     text: status,
+            //     onTap: () => context.read<InquiryBloc>().changeStatusDelivery(status),
+            //   ),
           ],
         ),
       ),

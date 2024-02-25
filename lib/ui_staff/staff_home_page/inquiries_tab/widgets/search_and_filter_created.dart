@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/widgets/search_input.dart';
 import 'package:safar/core/widgets/search_settings.dart';
@@ -28,13 +27,11 @@ class SearchAndFilterTaxi extends StatelessWidget {
         width: 344.w,
         hintText: 'Поиск',
         suffixIcon: SearchSettings(
-          color: state.listOfSelectedStatusesCreated.isEmpty
-              ? AppColors.iconSecondary
-              : AppColors.primary,
+          color: AppColors.primary,
           onTap: () async {
-            final selectedValue = state.listOfSelectedStatusesCreated.isNotEmpty
-                ? state.listOfSelectedStatusesCreated.last
-                : '';
+            // final selectedValue = state.listOfSelectedStatusesCreated.isNotEmpty
+            //     ? state.listOfSelectedStatusesCreated.last
+            //     : '';
 
             final result = await PrimaryBottomSheet.show(
               context,
@@ -42,19 +39,19 @@ class SearchAndFilterTaxi extends StatelessWidget {
               isConfirmationNeeded: false,
               heightRatio: 0.7,
               title: 'Filter by status',
-              selectedValue: selectedValue,
+              selectedValue: 'selectedValue',
               initialList: statusesList,
             );
 
             if (result != null) {
               if (!context.mounted) return;
-              context.read<InquiryBloc>().changeStatusTaxi(result);
+              // context.read<InquiryBloc>().changeStatusTaxi(result);
             }
           },
         ),
         controller: searchTaxi,
         onChanged: (val) {
-          context.read<InquiryBloc>().searchTaxi(val);
+          // context.read<InquiryBloc>().searchTaxi(val);
         },
       ),
     );

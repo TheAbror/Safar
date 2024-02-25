@@ -6,11 +6,16 @@ import 'package:safar/core/api/custom_converter.dart';
 import 'package:safar/ui_staff/bildirgi_page/action/services/inquiry_service.dart';
 import 'package:safar/ui_staff/signin_page/auth/services/auth_service.dart';
 
+// CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
+// print(currentUser.token)
+
 class ApiProvider {
   static late ChopperClient _client;
   static late InquiryService inquiryService;
   // static late MeasurementService measurementService;
   static late AuthService authService;
+
+  // var asd = currentUser?.token;
 
   ///Services
   static create({String? token}) {

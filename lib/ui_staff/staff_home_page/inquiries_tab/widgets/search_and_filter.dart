@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/widgets/search_input.dart';
 import 'package:safar/core/widgets/search_settings.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
@@ -28,13 +27,11 @@ class SearchAndFilterDelivery extends StatelessWidget {
         width: 344.w,
         hintText: 'Поиск',
         suffixIcon: SearchSettings(
-          color: state.listOfSelectedStatusesAssigned.isEmpty
-              ? AppColors.iconSecondary
-              : AppColors.primary,
+          color: AppColors.primary,
           onTap: () async {
-            final selectedValue = state.listOfSelectedStatusesAssigned.isNotEmpty
-                ? state.listOfSelectedStatusesAssigned.last
-                : '';
+            // final selectedValue = state.listOfSelectedStatusesAssigned.isNotEmpty
+            //     ? state.listOfSelectedStatusesAssigned.last
+            //     : '';
 
             final result = await PrimaryBottomSheet.show(
               context,
@@ -42,19 +39,19 @@ class SearchAndFilterDelivery extends StatelessWidget {
               isConfirmationNeeded: false,
               heightRatio: 0.7,
               title: 'Filter by status',
-              selectedValue: selectedValue,
+              selectedValue: 'selectedValue',
               initialList: statusesList,
             );
 
             if (result != null) {
               if (!context.mounted) return;
-              context.read<InquiryBloc>().changeStatusDelivery(result);
+              // context.read<InquiryBloc>().changeStatusDelivery(result);
             }
           },
         ),
         controller: searchDelivery,
         onChanged: (val) {
-          context.read<InquiryBloc>().searchDelivery(val);
+          // context.read<InquiryBloc>().searchDelivery(val);
         },
       ),
     );

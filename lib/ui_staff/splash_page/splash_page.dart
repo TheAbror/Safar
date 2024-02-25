@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/core/box/current_user_box.dart';
 import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/routes/route_constants.dart';
-import 'package:safar/core/utils/navigation_utils.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui_staff/signin_page/signin_page.dart';
+import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
 import 'auth_status/splash_auth_status.dart';
 import 'bloc/splash_bloc.dart';
 
@@ -30,13 +32,15 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
+    var token = currentUser?.token;
+
     return BlocConsumer<SplashBloc, SplashState>(
       listener: (context, state) {
-        if (state.authStatus == SplashAuthStatus.authorized) {
-          NavigationUtils.navigateToNextRouteByAccountType(
-            context,
-            state.accountType,
-            state.passcode,
+        if (token != null) {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            AppRoutes.staffHome,
+            (route) => false,
           );
         } else if (state.authStatus == SplashAuthStatus.initial) {
           Navigator.of(context).pushNamedAndRemoveUntil(
