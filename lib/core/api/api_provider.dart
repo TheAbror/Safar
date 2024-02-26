@@ -3,19 +3,16 @@ import 'dart:io';
 import 'package:chopper/chopper.dart';
 import 'package:http/io_client.dart' as http;
 import 'package:safar/core/api/custom_converter.dart';
-import 'package:safar/ui_staff/bildirgi_page/action/services/inquiry_service.dart';
 import 'package:safar/ui_staff/signin_page/auth/services/auth_service.dart';
-
-// CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
-// print(currentUser.token)
+import 'package:safar/ui_staff/bildirgi_page/action/services/inquiry_service.dart';
 
 class ApiProvider {
   static late ChopperClient _client;
   static late InquiryService inquiryService;
-  // static late MeasurementService measurementService;
   static late AuthService authService;
 
-  // var asd = currentUser?.token;
+//   CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
+// currentUser
 
   ///Services
   static create({String? token}) {
@@ -25,7 +22,6 @@ class ApiProvider {
       ),
       services: [
         InquiryService.create(),
-        // MeasurementService.create(),
         AuthService.create(),
       ],
       interceptors: getInterceptors(token),
@@ -33,7 +29,6 @@ class ApiProvider {
     );
 
     inquiryService = _client.getService<InquiryService>();
-    // measurementService = _client.getService<MeasurementService>();
     authService = _client.getService<AuthService>();
   }
 

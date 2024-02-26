@@ -25,7 +25,10 @@ class InquiryBloc extends Cubit<InquiryState> {
         final data = response.body;
 
         if (data != null) {
-          emit(state.copyWith(orders: data, blocProgress: BlocProgress.LOADED));
+          emit(state.copyWith(
+            orders: data,
+            blocProgress: BlocProgress.IS_SUCCESS,
+          ));
         }
       } else {
         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));

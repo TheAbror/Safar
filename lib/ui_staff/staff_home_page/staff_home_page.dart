@@ -21,21 +21,6 @@ class _StaffHomePageState extends State<StaffHomePage> {
   void initState() {
     context.read<InquiryBloc>().getInitiallyAssigned();
 
-    _scrollControllerAssigned.addListener(() {
-      if (_scrollControllerAssigned.position.maxScrollExtent -
-              _scrollControllerAssigned.position.pixels <=
-          300) {
-        // context.read<InquiryBloc>().getAssignedWithPageable();
-      }
-    });
-    _scrollControllerCreated.addListener(() {
-      if (_scrollControllerCreated.position.maxScrollExtent -
-              _scrollControllerCreated.position.pixels <=
-          300) {
-        // context.read<InquiryBloc>().getCreatedWithPageable();
-      }
-    });
-
     super.initState();
   }
 

@@ -43,9 +43,7 @@ class MainRouteGenerator {
 
       default:
         return CustomCupertinoStyleNavigationRoute(
-          // builder: (_) => const MainModuleLessonsQuestionsPage(),
           builder: (_) => const SplashPage(),
-          // builder: (_) => const AssessmentInfoEditPage(),
         );
     }
   }
