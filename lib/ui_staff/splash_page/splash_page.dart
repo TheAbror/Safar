@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safar/core/box/current_user_box.dart';
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/core/utils/navigation_utils.dart';
 import 'package:safar/gen/assets.gen.dart';
-import 'package:safar/ui_staff/signin_page/signin_page.dart';
-import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
+
 import '../app_updates_page/app_updates_view.dart';
 import 'auth_status/splash_auth_status.dart';
 import 'bloc/splash_bloc.dart';
@@ -26,13 +23,6 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     context.read<SplashBloc>().getMinimumAppVersion();
-
-    // Future.delayed(Duration(seconds: 2), () {
-    //   Navigator.push(
-    //     context,
-    //     MaterialPageRoute(builder: (context) => SignInPage()),
-    //   );
-    // });
   }
 
   @override
@@ -71,15 +61,15 @@ class _SplashView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         SizedBox(height: 150.h),
-        // Padding(
-        //   padding: EdgeInsets.all(16.w),
-        //   child: Center(
-        //     child: Assets.icons.logoGreen.image(
-        //       width: double.infinity,
-        //       fit: BoxFit.fill,
-        //     ),
-        //   ),
-        // ),
+        Padding(
+          padding: EdgeInsets.all(16.w),
+          child: Center(
+            child: Assets.icons.logoGreen.image(
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
+          ),
+        ),
         SizedBox(height: 150.h),
         const Center(
           child: CircularProgressIndicator(color: AppColors.primary),

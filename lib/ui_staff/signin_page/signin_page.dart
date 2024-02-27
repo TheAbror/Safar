@@ -64,12 +64,12 @@ class _SignInPageState extends State<SignInPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 30.h),
-                        // Center(
-                        //   child: Assets.icons.logoGreen.image(
-                        //     width: double.infinity,
-                        //     fit: BoxFit.fill,
-                        //   ),
-                        // ),
+                        Center(
+                          child: Assets.icons.logoGreen.image(
+                            width: double.infinity,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                         SizedBox(height: 5.h),
                         Text(
                           'Войти',
@@ -133,10 +133,6 @@ class _SignInPageState extends State<SignInPage> {
         if (_formKey.currentState!.validate()) {
           context.read<AuthBloc>().signIn(username, password, '998914309090');
         }
-        // if (
-        //     // state.isWaiting == false &&
-        //     state.blocProgress == BlocProgress.IS_SUCCESS) {
-        // }
       },
       child: Container(
         height: 48.h,

@@ -1,17 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/bloc_progress/error.dart';
-import 'package:safar/core/box/current_user_box.dart';
 import 'package:safar/core/constants/app_strings.dart';
 import 'package:safar/core/db/preferences_services.dart';
-import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/utils/account_type.dart';
-import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
 import '../../../core/api/api_provider.dart';
 import '../../app_updates_page/models/app_version_response.dart';
 import '../auth_status/splash_auth_status.dart';
@@ -27,7 +23,6 @@ class SplashBloc extends Cubit<SplashState> {
 
   Future setupInitialSettings() async {
     await PreferencesServices.init();
-    // CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
     final token = PreferencesServices.getToken();
 
     ApiProvider.create(token: token ?? '');
@@ -39,7 +34,6 @@ class SplashBloc extends Cubit<SplashState> {
         ),
       );
     } else {
-      // final accountType = PreferencesServices.getAccountType();
       final passcode = PreferencesServices.getPasscode();
       emit(
         state.copyWith(
