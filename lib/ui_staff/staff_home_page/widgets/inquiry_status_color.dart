@@ -1,5 +1,6 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors
 import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/ui_staff/signin_page/auth/models/user_info.dart';
 import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +17,9 @@ class StatusColors {
 class InquiryItemStatusColor {
   static StatusColors displayColorByStatus(
     int index,
-    List<InquiryListItemResponse> model,
+    List<OrdersResponse> model,
   ) {
-    return _getStatusColors(model[index].status?.title);
+    return _getStatusColors(model[index].destination);
   }
 }
 

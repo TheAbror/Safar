@@ -2,6 +2,7 @@ import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui_staff/bildirgi_page/bildirgi_page.dart';
+import 'package:safar/ui_staff/signin_page/auth/models/user_info.dart';
 import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_status_color.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ import 'status_widget.dart';
 
 class InquiryCard extends StatelessWidget {
   final int index;
-  final List<InquiryListItemResponse> model;
+  final List<OrdersResponse> model;
   final Widget child;
 
   const InquiryCard({
@@ -23,8 +24,8 @@ class InquiryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime date = DateTime.fromMillisecondsSinceEpoch(model[index].created_date);
-    String formattedDate = DateFormat('d-MMMM, HH:mm').format(date);
+    // DateTime date = DateTime.fromMillisecondsSinceEpoch(int.parse(model[index].createdAt));
+    // String formattedDate = DateFormat('d-MMMM, HH:mm').format(date);
 
     Color textColor = AppColors.textMain;
     Color backgroundColor = AppColors.background;
@@ -34,12 +35,12 @@ class InquiryCard extends StatelessWidget {
     backgroundColor = statusColors.backgroundColor;
 
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pushNamed(
-          AppRoutes.bildirgi,
-          arguments: BildirgiPageViewModel(model: model, index: index),
-        );
-      },
+      // onTap: () {
+      //   Navigator.of(context).pushNamed(
+      //     AppRoutes.bildirgi,
+      //     arguments: BildirgiPageViewModel(model: model, index: index),
+      //   );
+      // },
       child: Container(
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 4.w),
         width: double.infinity,
@@ -52,10 +53,10 @@ class InquiryCard extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
-              child: _TitleAndTime(formattedDate, child),
+              child: _TitleAndTime('formattedDate', child),
             ),
             SizedBox(height: 5.h),
-            _FromTo(model[index].from, model[index].to),
+            _FromTo(model[index].pickup, model[index].destination),
             SizedBox(height: 10.h),
             Padding(
               padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 16.h),
@@ -151,7 +152,7 @@ class InquiryCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${model[index].created?.firstname} ${model[index].created?.lastname}',
+                        'Abror Shamuradov',
                         style: TextStyle(
                           fontSize: 14.sp,
                           overflow: TextOverflow.ellipsis,
@@ -159,7 +160,7 @@ class InquiryCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        model[index].created?.email ?? '',
+                        'oyjddkvj@gmail.com',
                         style: TextStyle(
                           fontSize: 12.sp,
                           overflow: TextOverflow.ellipsis,
@@ -173,7 +174,7 @@ class InquiryCard extends StatelessWidget {
                     radius: 8,
                     backgroundColor: backgroundColor,
                     textColor: textColor,
-                    status: model[index].status?.title ?? '',
+                    status: 'In process',
                   ),
                 ],
               ),
@@ -210,7 +211,7 @@ class InquiryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    model[index].title,
+                    model[index].pickup,
                     style: TextStyle(
                       fontSize: 11.sp,
                       overflow: TextOverflow.ellipsis,
@@ -218,7 +219,7 @@ class InquiryCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    formattedDate,
+                    'formattedDate',
                     style: TextStyle(
                       fontSize: 11.sp,
                       overflow: TextOverflow.ellipsis,
@@ -230,7 +231,7 @@ class InquiryCard extends StatelessWidget {
                 ],
               ),
               Text(
-                model[index].description,
+                model[index].destination,
                 style: TextStyle(
                   fontSize: 14.sp,
                   overflow: TextOverflow.ellipsis,

@@ -103,19 +103,19 @@ class InquiriesTaxiTab extends StatelessWidget {
                     searchTaxi: searchTaxi,
                   ),
                   _FilterCards(state, context),
-                  if (myInquiries.isNotEmpty)
-                    ListView.builder(
-                      itemCount: myInquiries.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return InquiryCard(
-                          model: myInquiries,
-                          index: index,
-                          child: Assets.icons.carTab.image(),
-                        );
-                      },
-                    )
+                  // if (myInquiries.isNotEmpty)
+                  // ListView.builder(
+                  //   itemCount: myInquiries.length,
+                  //   shrinkWrap: true,
+                  //   physics: const NeverScrollableScrollPhysics(),
+                  //   itemBuilder: (context, index) {
+                  //     return InquiryCard(
+                  //       model: myInquiries,
+                  //       index: index,
+                  //       child: Assets.icons.carTab.image(),
+                  //     );
+                  //   },
+                  // )
                 ],
               ),
             ),

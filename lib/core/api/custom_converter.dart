@@ -92,6 +92,9 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case InquiryButtons:
       return InquiryButtons.fromJson(json);
 
+    case DeliveryOrdersResponse:
+      return DeliveryOrdersResponse.fromJson(json);
+
     default:
       return null;
   }

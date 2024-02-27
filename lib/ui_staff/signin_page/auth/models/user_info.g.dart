@@ -101,6 +101,23 @@ Map<String, dynamic> _$DriverProfieToJson(DriverProfie instance) =>
       'registered_at': instance.registeredAt,
     };
 
+DeliveryOrdersResponse _$DeliveryOrdersResponseFromJson(
+        Map<String, dynamic> json) =>
+    DeliveryOrdersResponse(
+      count: json['count'] as int? ?? 0,
+      results: (json['results'] as List<dynamic>?)
+              ?.map((e) => OrdersResponse.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$DeliveryOrdersResponseToJson(
+        DeliveryOrdersResponse instance) =>
+    <String, dynamic>{
+      'count': instance.count,
+      'results': instance.results.map((e) => e.toJson()).toList(),
+    };
+
 OrdersRequest _$OrdersRequestFromJson(Map<String, dynamic> json) =>
     OrdersRequest(
       pickup: json['pickup'] as String? ?? '',
@@ -135,7 +152,7 @@ OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) =>
       numberOfPassengers: json['number_passenger'] as int? ?? 0,
       desiredPickupTime: json['desired_pickup_time'] as String? ?? '',
       desiredCarModel: json['desired_car_model'] as String? ?? '',
-      offeredPrice: json['offered_price'] as int? ?? 0,
+      offeredPrice: json['offered_price'] as String? ?? '',
       pickupReference: json['pickup_reference'] as String? ?? '',
       destinationReference: json['destination_reference'] as String? ?? '',
       commentForDriver: json['comments_for_driver'] as String? ?? '',

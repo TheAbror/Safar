@@ -17,7 +17,7 @@ final class _$InquiryService extends InquiryService {
   final definitionType = InquiryService;
 
   @override
-  Future<Response<OrdersResponse>> getInitiallyAssigned() {
+  Future<Response<DeliveryOrdersResponse>> getInitiallyAssigned() {
     final Uri $url =
         Uri.parse('https://safarapi.pythonanywhere.com/api/orders/');
     final Request $request = Request(
@@ -25,6 +25,7 @@ final class _$InquiryService extends InquiryService {
       $url,
       client.baseUrl,
     );
-    return client.send<OrdersResponse, OrdersResponse>($request);
+    return client
+        .send<DeliveryOrdersResponse, DeliveryOrdersResponse>($request);
   }
 }

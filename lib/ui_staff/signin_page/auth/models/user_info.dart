@@ -154,6 +154,24 @@ class DriverProfie {
 // endpoint: /api/orders/
 // allowed requests: GET, POST
 
+@JsonSerializable(includeIfNull: true, explicitToJson: true)
+class DeliveryOrdersResponse {
+  @JsonKey(defaultValue: 0)
+  int count;
+  @JsonKey(defaultValue: [])
+  List<OrdersResponse> results;
+
+  DeliveryOrdersResponse({
+    required this.count,
+    required this.results,
+  });
+
+  factory DeliveryOrdersResponse.fromJson(Map<String, dynamic> json) =>
+      _$DeliveryOrdersResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DeliveryOrdersResponseToJson(this);
+}
+
 // POST:
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
@@ -210,8 +228,8 @@ class OrdersResponse {
   String desiredPickupTime;
   @JsonKey(defaultValue: '', name: 'desired_car_model')
   String desiredCarModel;
-  @JsonKey(defaultValue: 0, name: 'offered_price')
-  int offeredPrice;
+  @JsonKey(defaultValue: '', name: 'offered_price')
+  String offeredPrice;
   @JsonKey(defaultValue: '', name: 'pickup_reference')
   String pickupReference;
   @JsonKey(defaultValue: '', name: 'destination_reference')
