@@ -5,9 +5,11 @@ import 'package:safar/core/box/current_user_box.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/routes/route_constants.dart';
+import 'package:safar/core/utils/navigation_utils.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui_staff/signin_page/signin_page.dart';
 import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
+import '../app_updates_page/app_updates_view.dart';
 import 'auth_status/splash_auth_status.dart';
 import 'bloc/splash_bloc.dart';
 
@@ -22,39 +24,38 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => SignInPage()),
-      );
-    });
+
+    context.read<SplashBloc>().getMinimumAppVersion();
+
+    // Future.delayed(Duration(seconds: 2), () {
+    //   Navigator.push(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => SignInPage()),
+    //   );
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
-    CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
-    var token = currentUser?.token;
-
     return BlocConsumer<SplashBloc, SplashState>(
       listener: (context, state) {
-        if (token != null) {
-          Navigator.of(context).pushNamedAndRemoveUntil(
-            AppRoutes.staffHome,
-            (route) => false,
+        if (state.authStatus == SplashAuthStatus.authorized) {
+          NavigationUtils.navigateToNextRouteByAccountType(
+            context,
+            state.accountType,
+            state.passcode,
           );
-        } else if (state.authStatus == SplashAuthStatus.initial) {
+        } else if (state.authStatus == SplashAuthStatus.notAuthorized) {
           Navigator.of(context).pushNamedAndRemoveUntil(
             AppRoutes.signIn,
             (route) => false,
           );
-        } else {
-          Navigator.pushNamed(context, AppRoutes.staffHome);
         }
       },
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.float,
-          body: _SplashView(),
+          body: state.showAppUpdatesPage ? const AppUpdatesView() : const _SplashView(),
         );
       },
     );
@@ -70,15 +71,15 @@ class _SplashView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         SizedBox(height: 150.h),
-        Padding(
-          padding: EdgeInsets.all(16.w),
-          child: Center(
-            child: Assets.icons.logoGreen.image(
-              width: double.infinity,
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
+        // Padding(
+        //   padding: EdgeInsets.all(16.w),
+        //   child: Center(
+        //     child: Assets.icons.logoGreen.image(
+        //       width: double.infinity,
+        //       fit: BoxFit.fill,
+        //     ),
+        //   ),
+        // ),
         SizedBox(height: 150.h),
         const Center(
           child: CircularProgressIndicator(color: AppColors.primary),

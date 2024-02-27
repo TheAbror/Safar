@@ -64,12 +64,12 @@ class _SignInPageState extends State<SignInPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 30.h),
-                        Center(
-                          child: Assets.icons.logoGreen.image(
-                            width: double.infinity,
-                            fit: BoxFit.fill,
-                          ),
-                        ),
+                        // Center(
+                        //   child: Assets.icons.logoGreen.image(
+                        //     width: double.infinity,
+                        //     fit: BoxFit.fill,
+                        //   ),
+                        // ),
                         SizedBox(height: 5.h),
                         Text(
                           'Войти',

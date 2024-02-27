@@ -1,18 +1,16 @@
 import 'dart:io';
-
 import 'package:chopper/chopper.dart';
 import 'package:http/io_client.dart' as http;
 import 'package:safar/core/api/custom_converter.dart';
 import 'package:safar/ui_staff/signin_page/auth/services/auth_service.dart';
 import 'package:safar/ui_staff/bildirgi_page/action/services/inquiry_service.dart';
+import '../../ui_staff/app_updates_page/services/settings_service.dart';
 
 class ApiProvider {
   static late ChopperClient _client;
+  static late SettingsService settingsService;
   static late InquiryService inquiryService;
   static late AuthService authService;
-
-//   CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
-// currentUser
 
   ///Services
   static create({String? token}) {
@@ -21,6 +19,7 @@ class ApiProvider {
         HttpClient()..connectionTimeout = const Duration(seconds: 40),
       ),
       services: [
+        SettingsService.create(),
         InquiryService.create(),
         AuthService.create(),
       ],
@@ -28,6 +27,7 @@ class ApiProvider {
       converter: CustomDataConverter(),
     );
 
+    settingsService = _client.getService<SettingsService>();
     inquiryService = _client.getService<InquiryService>();
     authService = _client.getService<AuthService>();
   }
@@ -40,7 +40,7 @@ class ApiProvider {
     interceptors.add(HeadersInterceptor({
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.contentTypeHeader: 'application/json',
-      HttpHeaders.authorizationHeader: token != null ? 'Bearer $token' : '',
+      HttpHeaders.authorizationHeader: token != null ? 'Token $token' : '',
     }));
 
     return interceptors;

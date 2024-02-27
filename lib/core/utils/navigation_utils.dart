@@ -10,32 +10,9 @@ class NavigationUtils {
     String? passcode,
   ) {
     switch (accountType) {
-      case AccountType.superAdmin:
-      case AccountType.director:
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          AppRoutes.staffHome,
-          (route) => false,
-        );
-        break;
-      case AccountType.staff:
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          AppRoutes.staffHome,
-          (route) => false,
-        );
-        break;
-      case AccountType.student:
-        passcode != null
-            ? Navigator.pushNamedAndRemoveUntil(context, AppRoutes.pinPage, (route) => false)
-            : Navigator.pushNamedAndRemoveUntil(context, AppRoutes.homePage, (route) => false);
-        break;
-
       // to be deleted
       case AccountType.unknown:
-        passcode != null
-            ? Navigator.pushNamedAndRemoveUntil(context, AppRoutes.pinPage, (route) => false)
-            : Navigator.pushNamedAndRemoveUntil(context, AppRoutes.staffHome, (route) => false);
+        Navigator.pushNamedAndRemoveUntil(context, AppRoutes.staffHome, (route) => false);
         break;
       //
       default:
