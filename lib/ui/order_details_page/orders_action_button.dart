@@ -4,18 +4,22 @@ import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/buttons/action_button.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 import 'package:safar/ui/widgets/bottom_sheets/action_bottom_sheet.dart';
-// ignore_for_file: use_build_context_synchronously
 
-class BildirgiActionButton extends StatelessWidget {
+class OrdersActionButton extends StatefulWidget {
   final List<InquiryActionButtons> buttons;
   final int id;
 
-  const BildirgiActionButton({
+  const OrdersActionButton({
     super.key,
     required this.buttons,
     required this.id,
   });
 
+  @override
+  State<OrdersActionButton> createState() => _OrdersActionButtonState();
+}
+
+class _OrdersActionButtonState extends State<OrdersActionButton> {
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -37,15 +41,17 @@ class BildirgiActionButton extends StatelessWidget {
               isConfirmationNeeded: false,
               title: 'Filter by status',
               selectedValue: '',
-              initialList: buttons.map((e) => e.title).toList(),
-              // buttons.first.title??[]
+              initialList: widget.buttons.map((e) => e.title).toList(),
             );
             if (status != null) {
-              final statusList = buttons.where((element) => element.title == status).toList();
+              final statusList =
+                  widget.buttons.where((element) => element.title == status).toList();
 
               if (statusList.isNotEmpty) {
                 final statusType = statusList.first.type;
                 final statusTitle = statusList.first.title;
+
+                if (!mounted) return;
 
                 final bool? result = await ActionBottomSheet.show(
                   context,
@@ -55,7 +61,7 @@ class BildirgiActionButton extends StatelessWidget {
                   title: statusTitle,
                   selectedValue: 'Room',
                   initialList: [],
-                  id: id,
+                  id: widget.id,
                   status: statusType,
                 );
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safar/core/routes/route_constants.dart';
-import 'package:safar/ui/order_details_page/bildirgi_page.dart';
+import 'package:safar/ui/order_details_page/order_details_page.dart';
 import 'package:safar/ui/signin_page/signin_page.dart';
 import 'package:safar/ui/splash_page/splash_page.dart';
 import 'package:safar/ui/home_page/staff_home_page.dart';
@@ -32,8 +32,8 @@ class MainRouteGenerator {
         );
       case AppRoutes.bildirgi:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (context) => BildirgiPage(
-            viewModel: settings.arguments as BildirgiPageViewModel,
+          builder: (context) => OrderDetailsPage(
+            viewModel: settings.arguments as OrderDetailsPageViewModel,
           ),
         );
 

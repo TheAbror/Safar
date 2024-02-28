@@ -8,7 +8,7 @@ import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
-import 'package:safar/ui/order_details_page/bildirgi_action_button.dart';
+import 'package:safar/ui/order_details_page/orders_action_button.dart';
 import 'package:safar/ui/order_details_page/modalPopups/delete_dialog.dart';
 import 'package:safar/ui/order_details_page/widgets/change_log/change_log_item.dart';
 import 'package:safar/ui/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
@@ -16,21 +16,21 @@ import 'package:safar/ui/manage_inquiry_page/manage_inquiry_page.dart';
 import 'package:safar/ui/manage_inquiry_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 
-class BildirgiPageViewModel {
+class OrderDetailsPageViewModel {
   final int index;
   final List<InquiryListItemResponse> model;
 
-  const BildirgiPageViewModel({
+  const OrderDetailsPageViewModel({
     Key? key,
     required this.model,
     this.index = 0,
   });
 }
 
-class BildirgiPage extends StatelessWidget {
-  final BildirgiPageViewModel viewModel;
+class OrderDetailsPage extends StatelessWidget {
+  final OrderDetailsPageViewModel viewModel;
 
-  const BildirgiPage({
+  const OrderDetailsPage({
     super.key,
     required this.viewModel,
   });
@@ -306,7 +306,7 @@ class _BodyState extends State<_Body> {
                 ),
               ),
               if (state.item.buttons.isNotEmpty)
-                BildirgiActionButton(
+                OrdersActionButton(
                   id: state.item.id,
                   buttons: state.item.buttons,
                 ),
