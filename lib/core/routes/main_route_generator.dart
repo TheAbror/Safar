@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:safar/core/routes/route_constants.dart';
-import 'package:safar/ui_staff/bildirgi_page/bildirgi_page.dart';
-import 'package:safar/ui_staff/signin_page/signin_page.dart';
-import 'package:safar/ui_staff/splash_page/splash_page.dart';
-import 'package:safar/ui_staff/home_page/staff_home_page.dart';
+import 'package:safar/ui/bildirgi_page/bildirgi_page.dart';
+import 'package:safar/ui/signin_page/signin_page.dart';
+import 'package:safar/ui/splash_page/splash_page.dart';
+import 'package:safar/ui/home_page/staff_home_page.dart';
 import 'package:safar/core/routes/cupertino_style_navigation_route.dart';
-import 'package:safar/ui_staff/manage_inquiry_page/manage_inquiry_page.dart';
+import 'package:safar/ui/manage_inquiry_page/manage_inquiry_page.dart';
 
 class MainRouteGenerator {
   Route<dynamic>? generateRoute(RouteSettings settings) {

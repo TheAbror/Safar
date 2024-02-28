@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:chopper/chopper.dart';
 import 'package:http/io_client.dart' as http;
 import 'package:safar/core/api/custom_converter.dart';
-import 'package:safar/ui_staff/signin_page/auth/services/auth_service.dart';
-import 'package:safar/ui_staff/bildirgi_page/action/services/inquiry_service.dart';
-import '../../ui_staff/app_updates_page/services/settings_service.dart';
+import 'package:safar/ui/signin_page/auth/services/auth_service.dart';
+import 'package:safar/ui/bildirgi_page/action/services/inquiry_service.dart';
+import '../../ui/app_updates_page/services/settings_service.dart';
 
 class ApiProvider {
   static late ChopperClient _client;
