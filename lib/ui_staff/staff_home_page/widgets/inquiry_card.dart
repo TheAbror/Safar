@@ -1,9 +1,6 @@
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
-import 'package:safar/ui_staff/bildirgi_page/bildirgi_page.dart';
 import 'package:safar/ui_staff/signin_page/auth/models/user_info.dart';
-import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_status_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,8 +52,30 @@ class InquiryCard extends StatelessWidget {
               padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
               child: _TitleAndTime(formattedDate, child),
             ),
-            SizedBox(height: 5.h),
-            _FromTo(model[index].pickup, model[index].destination),
+            SizedBox(height: 7.h),
+            Padding(
+              padding: EdgeInsets.only(right: 16.w),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _FromTo(model[index].pickup, model[index].destination),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Сумма: ',
+                        style: TextStyle(color: AppColors.iconSecondary),
+                      ),
+                      Text(
+                        model[index].offeredPrice,
+                        style: TextStyle(color: AppColors.primary),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
             SizedBox(height: 10.h),
             Padding(
               padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 16.h),
