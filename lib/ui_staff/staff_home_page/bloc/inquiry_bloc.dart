@@ -19,7 +19,7 @@ class InquiryBloc extends Cubit<InquiryState> {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final response = await ApiProvider.inquiryService.getInitiallyAssigned();
+      final response = await ApiProvider.ordersService.getInitiallyAssigned();
 
       if (response.isSuccessful) {
         final data = response.body;

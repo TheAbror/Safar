@@ -7,14 +7,14 @@ part of 'inquiry_service.dart';
 // **************************************************************************
 
 // ignore_for_file: type=lint
-final class _$InquiryService extends InquiryService {
-  _$InquiryService([ChopperClient? client]) {
+final class _$OrdersService extends OrdersService {
+  _$OrdersService([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
   }
 
   @override
-  final definitionType = InquiryService;
+  final definitionType = OrdersService;
 
   @override
   Future<Response<DeliveryOrdersResponse>> getInitiallyAssigned() {

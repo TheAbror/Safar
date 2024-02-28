@@ -9,7 +9,7 @@ import '../../ui_staff/app_updates_page/services/settings_service.dart';
 class ApiProvider {
   static late ChopperClient _client;
   static late SettingsService settingsService;
-  static late InquiryService inquiryService;
+  static late OrdersService ordersService;
   static late AuthService authService;
 
   ///Services
@@ -20,7 +20,7 @@ class ApiProvider {
       ),
       services: [
         SettingsService.create(),
-        InquiryService.create(),
+        OrdersService.create(),
         AuthService.create(),
       ],
       interceptors: getInterceptors(token),
@@ -28,7 +28,7 @@ class ApiProvider {
     );
 
     settingsService = _client.getService<SettingsService>();
-    inquiryService = _client.getService<InquiryService>();
+    ordersService = _client.getService<OrdersService>();
     authService = _client.getService<AuthService>();
   }
 

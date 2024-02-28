@@ -76,6 +76,7 @@ class InquiryCard extends StatelessWidget {
                       ),
                       Text(model[index].numberOfPassengers.toString()),
                       Text(model[index].desiredCarModel.toString()),
+                      //TODO make clean and easy design
                     ],
                   ),
                 ],
