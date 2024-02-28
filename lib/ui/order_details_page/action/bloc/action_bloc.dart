@@ -3,7 +3,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/ui/bildirgi_page/action/model/comments_model.dart';
+import 'package:safar/ui/order_details_page/action/model/comments_model.dart';
 
 part 'action_state.dart';
 

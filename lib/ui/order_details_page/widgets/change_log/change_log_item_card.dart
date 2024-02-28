@@ -1,5 +1,5 @@
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/ui/bildirgi_page/widgets/views/involved_user_view.dart';
+import 'package:safar/ui/order_details_page/widgets/views/involved_user_view.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 import 'package:safar/ui/home_page/widgets/inquiry_status_color.dart';
 import 'package:safar/ui/home_page/widgets/status_widget.dart';

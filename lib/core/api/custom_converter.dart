@@ -1,9 +1,9 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:chopper/chopper.dart';
-import 'package:safar/ui/bildirgi_page/action/model/comments_model.dart';
-import 'package:safar/ui/bildirgi_page/action/model/inquiry_action_request_model.dart';
-import 'package:safar/ui/bildirgi_page/action/model/staff_model.dart';
+import 'package:safar/ui/order_details_page/action/model/comments_model.dart';
+import 'package:safar/ui/order_details_page/action/model/inquiry_action_request_model.dart';
+import 'package:safar/ui/order_details_page/action/model/staff_model.dart';
 import 'package:safar/ui/manage_inquiry_page/model/delete_inquiry_by_id.dart';
 import 'package:safar/ui/manage_inquiry_page/model/inquiry_item_request.dart';
 import 'package:safar/ui/manage_inquiry_page/model/inquiry_model.dart';

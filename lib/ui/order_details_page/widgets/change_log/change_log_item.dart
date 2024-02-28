@@ -1,6 +1,6 @@
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/ui/bildirgi_page/widgets/change_log/chage_log_dot.dart';
-import 'package:safar/ui/bildirgi_page/widgets/change_log/change_log_item_card.dart';
+import 'package:safar/ui/order_details_page/widgets/change_log/chage_log_dot.dart';
+import 'package:safar/ui/order_details_page/widgets/change_log/change_log_item_card.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

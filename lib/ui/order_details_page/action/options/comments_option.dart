@@ -2,7 +2,7 @@ import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/gen/assets.gen.dart';
-import 'package:safar/ui/bildirgi_page/action/bloc/action_bloc.dart';
+import 'package:safar/ui/order_details_page/action/bloc/action_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

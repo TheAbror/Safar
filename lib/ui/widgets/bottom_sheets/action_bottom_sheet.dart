@@ -10,10 +10,10 @@ import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/bottomsheet/widgets/bottomsheet_top_radius.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
-import 'package:safar/ui/bildirgi_page/action/bloc/action_bloc.dart';
-import 'package:safar/ui/bildirgi_page/action/options/comments_option.dart';
-import 'package:safar/ui/bildirgi_page/action/options/date_option.dart';
-import 'package:safar/ui/bildirgi_page/action/widgets/choose_date_box.dart';
+import 'package:safar/ui/order_details_page/action/bloc/action_bloc.dart';
+import 'package:safar/ui/order_details_page/action/options/comments_option.dart';
+import 'package:safar/ui/order_details_page/action/options/date_option.dart';
+import 'package:safar/ui/order_details_page/action/widgets/choose_date_box.dart';
 import 'package:safar/ui/widgets/bottom_sheets/bottom_sheet_decoration.dart';
 
 class ActionBottomSheet extends StatefulWidget {
