@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'inquiry_services.dart';
+part of 'measurement_services.dart';
 
 // **************************************************************************
 // ChopperGenerator
