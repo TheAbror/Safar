@@ -1,4 +1,4 @@
-import 'package:safar/ui/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
+import 'package:safar/ui/manage_inquiry_page/bloc/manage_order_bloc.dart';
 import 'package:safar/ui/manage_inquiry_page/model/inquiry_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +44,7 @@ class _ItemInquiryTitleState extends State<ItemInquiryTitle> {
             );
 
             context
-                .read<ManageInquiryBloc>()
+                .read<ManageOrderBloc>()
                 .updateInquiryItem(index: widget.index, data: updatedItem);
           },
           validator: (username) {

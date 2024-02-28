@@ -1,5 +1,5 @@
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/ui/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
+import 'package:safar/ui/manage_inquiry_page/bloc/manage_order_bloc.dart';
 import 'package:safar/ui/manage_inquiry_page/model/inquiry_item.dart';
 import 'package:safar/ui/manage_inquiry_page/widgets/create_amount.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,7 @@ class AmountSelection extends StatelessWidget {
                     measurement: item.measurement,
                   );
                   context
-                      .read<ManageInquiryBloc>()
+                      .read<ManageOrderBloc>()
                       .updateInquiryItem(data: updatedItem, index: index);
                 },
               ),
@@ -63,7 +63,7 @@ class AmountSelection extends StatelessWidget {
                     measurement: item.measurement,
                   );
                   context
-                      .read<ManageInquiryBloc>()
+                      .read<ManageOrderBloc>()
                       .updateInquiryItem(data: updatedItem, index: index);
                 },
               ),

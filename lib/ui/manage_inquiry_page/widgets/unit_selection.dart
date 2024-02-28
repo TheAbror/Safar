@@ -1,5 +1,5 @@
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/ui/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
+import 'package:safar/ui/manage_inquiry_page/bloc/manage_order_bloc.dart';
 import 'package:safar/ui/manage_inquiry_page/inquiry_bottom_sheet.dart';
 import 'package:safar/ui/manage_inquiry_page/model/inquiry_item.dart';
 import 'package:safar/ui/manage_inquiry_page/model/inquiry_model.dart';
@@ -24,7 +24,7 @@ class UnitSelection extends StatefulWidget {
 class _UnitSelectionState extends State<UnitSelection> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ManageInquiryBloc, ManageInquiryState>(
+    return BlocBuilder<ManageOrderBloc, ManageOrderState>(
       builder: (context, state) {
         final measurement = widget.item.measurement ??
             (state.measurementsList.isNotEmpty
@@ -54,7 +54,7 @@ class _UnitSelectionState extends State<UnitSelection> {
               if (!mounted) return;
 
               context
-                  .read<ManageInquiryBloc>()
+                  .read<ManageOrderBloc>()
                   .updateInquiryItem(index: widget.index, data: updatedItem);
             }
           },

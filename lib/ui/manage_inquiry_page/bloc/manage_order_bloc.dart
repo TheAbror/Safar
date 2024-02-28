@@ -5,10 +5,10 @@ import 'package:safar/ui/manage_inquiry_page/model/inquiry_item.dart';
 import 'package:safar/ui/manage_inquiry_page/model/inquiry_model.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 
-part 'manage_inquiry_state.dart';
+part 'manage_order_state.dart';
 
-class ManageInquiryBloc extends Cubit<ManageInquiryState> {
-  ManageInquiryBloc() : super(ManageInquiryState.initial());
+class ManageOrderBloc extends Cubit<ManageOrderState> {
+  ManageOrderBloc() : super(ManageOrderState.initial());
 
   // void getInquiryByIdForEdit(int id) async {
   //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));

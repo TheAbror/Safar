@@ -1,6 +1,6 @@
-part of 'manage_inquiry_bloc.dart';
+part of 'manage_order_bloc.dart';
 
-class ManageInquiryState extends Equatable {
+class ManageOrderState extends Equatable {
   final String title;
   final String description;
   final int recipientID;
@@ -15,7 +15,7 @@ class ManageInquiryState extends Equatable {
   final BlocProgress blocProgress;
   final String failureMessage;
 
-  const ManageInquiryState({
+  const ManageOrderState({
     required this.title,
     required this.description,
     required this.recipientID,
@@ -31,8 +31,8 @@ class ManageInquiryState extends Equatable {
     required this.failureMessage,
   });
 
-  factory ManageInquiryState.initial() {
-    return ManageInquiryState(
+  factory ManageOrderState.initial() {
+    return ManageOrderState(
       title: '',
       description: '',
       recipientID: 0,
@@ -79,7 +79,7 @@ class ManageInquiryState extends Equatable {
     );
   }
 
-  ManageInquiryState copyWith({
+  ManageOrderState copyWith({
     String? title,
     String? description,
     int? recipientID,
@@ -94,7 +94,7 @@ class ManageInquiryState extends Equatable {
     BlocProgress? blocProgress,
     String? failureMessage,
   }) {
-    return ManageInquiryState(
+    return ManageOrderState(
       title: title ?? this.title,
       description: description ?? this.description,
       recipientID: recipientID ?? this.recipientID,

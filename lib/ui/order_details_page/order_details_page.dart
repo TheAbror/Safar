@@ -11,7 +11,7 @@ import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/order_details_page/widgets/orders_action_button.dart';
 import 'package:safar/ui/order_details_page/modalPopups/delete_dialog.dart';
 import 'package:safar/ui/order_details_page/widgets/change_log/change_log_item.dart';
-import 'package:safar/ui/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
+import 'package:safar/ui/manage_inquiry_page/bloc/manage_order_bloc.dart';
 import 'package:safar/ui/manage_inquiry_page/manage_orders_page.dart';
 import 'package:safar/ui/manage_inquiry_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
@@ -38,7 +38,7 @@ class OrderDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ManageInquiryBloc(),
+      create: (context) => ManageOrderBloc(),
       // ..getInquiryById(viewModel.model[viewModel.index].id),
       child: _Body(model: viewModel.model[viewModel.index], index: viewModel.index),
     );
@@ -89,7 +89,7 @@ class _BodyState extends State<_Body> {
                           : delete_dialog(context).then((value) {
                               if (value) {
                                 // context
-                                //     .read<ManageInquiryBloc>()
+                                //     .read<ManageOrderBloc>()
                                 //     .deleteInquiryById(widget.model.id);
                                 // Navigator.pop(context);
                               } else if (value == false) {}
@@ -102,7 +102,7 @@ class _BodyState extends State<_Body> {
                   ),
                 )
               : const SizedBox()),
-      body: BlocConsumer<ManageInquiryBloc, ManageInquiryState>(
+      body: BlocConsumer<ManageOrderBloc, ManageOrderState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
             //
@@ -126,7 +126,7 @@ class _BodyState extends State<_Body> {
             children: [
               RefreshIndicator(
                 onRefresh: () async {
-                  // context.read<ManageInquiryBloc>().getInquiryById(state.item.id);
+                  // context.read<ManageOrderBloc>().getInquiryById(state.item.id);
                 },
                 child: ListView(
                   physics: const AlwaysScrollableScrollPhysics(),

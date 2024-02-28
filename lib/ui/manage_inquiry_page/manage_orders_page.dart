@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
-import 'package:safar/ui/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
+import 'package:safar/ui/manage_inquiry_page/bloc/manage_order_bloc.dart';
 import 'package:safar/ui/manage_inquiry_page/widgets/amount_selection.dart';
 import 'package:safar/ui/manage_inquiry_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_inquiry_page/widgets/card_number_and_remove.dart';
@@ -34,13 +34,13 @@ class ManageOrdersPage extends StatefulWidget {
 }
 
 class _ManageOrdersPageState extends State<ManageOrdersPage> {
-  final bloc = ManageInquiryBloc();
+  final bloc = ManageOrderBloc();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => bloc,
-      child: BlocBuilder<ManageInquiryBloc, ManageInquiryState>(
+      child: BlocBuilder<ManageOrderBloc, ManageInquiryState>(
         builder: (context, state) {
           return GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
@@ -98,22 +98,22 @@ class _BodyState extends State<_Body> {
     super.initState();
 
     if (widget.viewModel.isEdit) {
-      // context.read<ManageInquiryBloc>().getInquiryByIdForEdit(widget.viewModel.id);
-      context.read<ManageInquiryBloc>().isButtonEnabled();
+      // context.read<ManageOrderBloc>().getInquiryByIdForEdit(widget.viewModel.id);
+      context.read<ManageOrderBloc>().isButtonEnabled();
     }
 
-    // context.read<ManageInquiryBloc>().getMeausures();
+    // context.read<ManageOrderBloc>().getMeausures();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ManageInquiryBloc, ManageInquiryState>(
+    return BlocConsumer<ManageOrderBloc, ManageInquiryState>(
       listener: (context, state) {
         if (state.isInitialValuesLoaded) {
           titleController.text = state.data.title;
           descriptionController.text = state.data.description;
 
-          context.read<ManageInquiryBloc>().initialValuesDisplayed();
+          context.read<ManageOrderBloc>().initialValuesDisplayed();
         } else if (state.blocProgress == BlocProgress.IS_SUCCESS) {
           //
           // context.read<InquiryBloc>().getInitiallyCreated();
@@ -172,7 +172,7 @@ class _BodyState extends State<_Body> {
               AddItemButton(
                 text: ' Add Item',
                 width: 135.w,
-                ontap: () => context.read<ManageInquiryBloc>().addInquiryItem(),
+                ontap: () => context.read<ManageOrderBloc>().addInquiryItem(),
               ),
               SizedBox(height: 60.h),
             ],
