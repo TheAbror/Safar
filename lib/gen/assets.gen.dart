@@ -118,6 +118,9 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/No data.svg
+  SvgGenImage get noData => const SvgGenImage('assets/icons/No data.svg');
+
   /// File path: assets/icons/arrow-left.svg
   SvgGenImage get arrowLeft => const SvgGenImage('assets/icons/arrow-left.svg');
 
@@ -151,6 +154,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        noData,
         arrowLeft,
         carTab,
         deliveryIcon,
