@@ -69,7 +69,10 @@ class InquiryCard extends StatelessWidget {
                       ),
                       Text(
                         model[index].offeredPrice,
-                        style: TextStyle(color: AppColors.primary),
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
