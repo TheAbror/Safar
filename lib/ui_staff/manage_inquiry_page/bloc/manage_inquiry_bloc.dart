@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_item.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_model.dart';
-import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
+import 'package:safar/ui_staff/home_page/model/inquiry_list_model.dart';
 
 part 'manage_inquiry_state.dart';
 

@@ -9,7 +9,7 @@ import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_item_request.da
 import 'package:safar/ui_staff/manage_inquiry_page/model/inquiry_model.dart';
 import 'package:safar/ui_staff/signin_page/auth/models/auth.dart';
 import 'package:safar/ui_staff/signin_page/auth/models/user_info.dart';
-import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
+import 'package:safar/ui_staff/home_page/model/inquiry_list_model.dart';
 
 class CustomDataConverter extends JsonConverter {
   @override

@@ -1,6 +1,6 @@
 import 'package:safar/core/constants/app_configs.dart';
-import 'package:safar/ui_staff/staff_home_page/widgets/app_bar/appbar_item.dart';
-import 'package:safar/ui_staff/staff_home_page/widgets/app_bar/staff_exam_appbar_title.dart';
+import 'package:safar/ui_staff/home_page/widgets/app_bar/appbar_item.dart';
+import 'package:safar/ui_staff/home_page/widgets/app_bar/staff_exam_appbar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -4,18 +4,18 @@ import 'package:safar/core/widgets/search_input.dart';
 import 'package:safar/core/widgets/search_settings.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
-import 'package:safar/ui_staff/staff_home_page/bloc/orders_bloc.dart';
+import 'package:safar/ui_staff/home_page/bloc/orders_bloc.dart';
 
-class SearchAndFilterTaxi extends StatelessWidget {
+class SearchAndFilterDelivery extends StatelessWidget {
   final OrdersState state;
   final List<String> statusesList;
-  final TextEditingController searchTaxi;
+  final TextEditingController searchDelivery;
 
-  const SearchAndFilterTaxi({
+  const SearchAndFilterDelivery({
     super.key,
     required this.state,
     required this.statusesList,
-    required this.searchTaxi,
+    required this.searchDelivery,
   });
 
   @override
@@ -29,8 +29,8 @@ class SearchAndFilterTaxi extends StatelessWidget {
         suffixIcon: SearchSettings(
           color: AppColors.primary,
           onTap: () async {
-            // final selectedValue = state.listOfSelectedStatusesCreated.isNotEmpty
-            //     ? state.listOfSelectedStatusesCreated.last
+            // final selectedValue = state.listOfSelectedStatusesAssigned.isNotEmpty
+            //     ? state.listOfSelectedStatusesAssigned.last
             //     : '';
 
             final result = await PrimaryBottomSheet.show(
@@ -45,13 +45,13 @@ class SearchAndFilterTaxi extends StatelessWidget {
 
             if (result != null) {
               if (!context.mounted) return;
-              // context.read<InquiryBloc>().changeStatusTaxi(result);
+              // context.read<InquiryBloc>().changeStatusDelivery(result);
             }
           },
         ),
-        controller: searchTaxi,
+        controller: searchDelivery,
         onChanged: (val) {
-          // context.read<InquiryBloc>().searchTaxi(val);
+          // context.read<InquiryBloc>().searchDelivery(val);
         },
       ),
     );

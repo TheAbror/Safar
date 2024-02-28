@@ -12,7 +12,7 @@ import 'package:safar/ui_staff/manage_inquiry_page/widgets/texts_and_titles/item
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/texts_and_titles/submit_inquiry_button.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/texts_and_titles/title_and_description.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/unit_selection.dart';
-import 'package:safar/ui_staff/staff_home_page/widgets/buttons/add_item_button.dart';
+import 'package:safar/ui_staff/home_page/widgets/buttons/add_item_button.dart';
 
 class ManageInquiryPageViewModel {
   final int id;

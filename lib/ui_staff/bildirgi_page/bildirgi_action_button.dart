@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/buttons/action_button.dart';
-import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
+import 'package:safar/ui_staff/home_page/model/inquiry_list_model.dart';
 import 'package:safar/ui_staff/widgets/bottom_sheets/action_bottom_sheet.dart';
 // ignore_for_file: use_build_context_synchronously
 

@@ -14,7 +14,7 @@ import 'package:safar/ui_staff/bildirgi_page/widgets/change_log/change_log_item.
 import 'package:safar/ui_staff/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/manage_inquiry_page.dart';
 import 'package:safar/ui_staff/manage_inquiry_page/widgets/app_bar/inqury_appbar.dart';
-import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
+import 'package:safar/ui_staff/home_page/model/inquiry_list_model.dart';
 
 class BildirgiPageViewModel {
   final int index;

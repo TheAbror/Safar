@@ -8,7 +8,7 @@ import 'package:safar/core/constants/app_strings.dart';
 import 'package:safar/core/db/preferences_services.dart';
 import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/utils/account_type.dart';
-import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
+import 'package:safar/ui_staff/home_page/model/current_user.dart';
 
 import '../auth/models/auth.dart';
 import '../auth/models/user_info.dart';

@@ -5,7 +5,7 @@ import 'package:safar/core/bloc_progress/error.dart';
 import 'package:safar/core/bloc_progress/super_bloc_progress.dart';
 import 'package:safar/core/constants/app_strings.dart';
 import 'package:safar/ui_staff/signin_page/auth/models/user_info.dart';
-import 'package:safar/ui_staff/staff_home_page/model/inquiry_list_model.dart';
+import 'package:safar/ui_staff/home_page/model/inquiry_list_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
