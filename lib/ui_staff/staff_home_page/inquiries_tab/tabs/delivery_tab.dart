@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/core/bloc_progress/bloc_progress.dart';
+import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/widgets/tabs_no_data.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui_staff/staff_home_page/bloc/orders_bloc.dart';
-import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/search_and_filter_created.dart';
+import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/search_and_filter.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_card.dart';
 
-class InquiriesTaxiTab extends StatelessWidget {
+class DeliveryTab extends StatelessWidget {
   final List<String> statusesList;
-  final TextEditingController searchTaxi;
+  final TextEditingController searchDelivery;
   final ScrollController scrollController;
 
-  const InquiriesTaxiTab({
+  const DeliveryTab({
     super.key,
     required this.statusesList,
-    required this.searchTaxi,
+    required this.searchDelivery,
     required this.scrollController,
   });
 
@@ -24,10 +27,18 @@ class InquiriesTaxiTab extends StatelessWidget {
     return RefreshIndicator(
       color: Theme.of(context).colorScheme.primaryContainer,
       onRefresh: () async {
-        // context.read<InquiryBloc>().getInitiallyCreated();
+        context.read<OrdersBloc>().getInitiallyAssigned();
       },
       child: BlocBuilder<OrdersBloc, OrdersState>(
         builder: (context, state) {
+          if (state.blocProgress == BlocProgress.IS_LOADING) {
+            return const Center(
+              child: CircularProgressIndicator(color: AppColors.primary),
+            );
+          }
+          if (state.blocProgress == BlocProgress.FAILED) {
+            return SomethingWentWrong();
+          }
           return SingleChildScrollView(
             controller: scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
@@ -36,10 +47,10 @@ class InquiriesTaxiTab extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SearchAndFilterTaxi(
+                  SearchAndFilterDelivery(
                     state: state,
                     statusesList: statusesList,
-                    searchTaxi: searchTaxi,
+                    searchDelivery: searchDelivery,
                   ),
                   _FilterCards(state, context),
                   if (state.orders.results.isNotEmpty)
@@ -72,10 +83,10 @@ class InquiriesTaxiTab extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: const [
-            // for (var status in state.listOfSelectedStatusesCreated)
+            // for (var status in state.listOfSelectedStatusesAssigned)
             //   FilterCard(
             //     text: status,
-            //     onTap: () => context.read<InquiryBloc>().changeStatusTaxi(status),
+            //     onTap: () => context.read<InquiryBloc>().changeStatusDelivery(status),
             //   ),
           ],
         ),
