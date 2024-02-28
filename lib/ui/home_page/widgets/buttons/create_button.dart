@@ -3,7 +3,7 @@ import 'package:safar/core/constants/app_configs.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/gen/fonts.gen.dart';
-import 'package:safar/ui/manage_inquiry_page/manage_inquiry_page.dart';
+import 'package:safar/ui/manage_inquiry_page/manage_orders_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +24,7 @@ class CreateButton extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).pushNamed(
             AppRoutes.manageInquiry,
-            arguments: ManageInquiryPageViewModel(id: 0, isEdit: false),
+            arguments: ManageOrdersPageViewModel(id: 0, isEdit: false),
           );
         },
         backgroundColor: Palette.grey850,

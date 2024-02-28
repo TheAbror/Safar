@@ -12,7 +12,7 @@ import 'package:safar/ui/order_details_page/widgets/orders_action_button.dart';
 import 'package:safar/ui/order_details_page/modalPopups/delete_dialog.dart';
 import 'package:safar/ui/order_details_page/widgets/change_log/change_log_item.dart';
 import 'package:safar/ui/manage_inquiry_page/bloc/manage_inquiry_bloc.dart';
-import 'package:safar/ui/manage_inquiry_page/manage_inquiry_page.dart';
+import 'package:safar/ui/manage_inquiry_page/manage_orders_page.dart';
 import 'package:safar/ui/manage_inquiry_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 
@@ -85,7 +85,7 @@ class _BodyState extends State<_Body> {
                       result.toLowerCase() == 'edit'
                           ? Navigator.of(context).pushNamed(AppRoutes.manageInquiry,
                               arguments:
-                                  ManageInquiryPageViewModel(id: widget.model.id, isEdit: true))
+                                  ManageOrdersPageViewModel(id: widget.model.id, isEdit: true))
                           : delete_dialog(context).then((value) {
                               if (value) {
                                 // context

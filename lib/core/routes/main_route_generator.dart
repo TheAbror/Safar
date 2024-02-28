@@ -5,7 +5,7 @@ import 'package:safar/ui/signin_page/signin_page.dart';
 import 'package:safar/ui/splash_page/splash_page.dart';
 import 'package:safar/ui/home_page/staff_home_page.dart';
 import 'package:safar/core/routes/cupertino_style_navigation_route.dart';
-import 'package:safar/ui/manage_inquiry_page/manage_inquiry_page.dart';
+import 'package:safar/ui/manage_inquiry_page/manage_orders_page.dart';
 
 class MainRouteGenerator {
   Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -26,8 +26,8 @@ class MainRouteGenerator {
 
       case AppRoutes.manageInquiry:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => ManageInquiryPage(
-            viewModel: settings.arguments as ManageInquiryPageViewModel,
+          builder: (_) => ManageOrdersPage(
+            viewModel: settings.arguments as ManageOrdersPageViewModel,
           ),
         );
       case AppRoutes.bildirgi:

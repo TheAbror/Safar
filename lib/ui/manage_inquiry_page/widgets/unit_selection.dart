@@ -33,7 +33,7 @@ class _UnitSelectionState extends State<UnitSelection> {
 
         return GestureDetector(
           onTap: () async {
-            var result = await InquiryBottomSheet.show(
+            var result = await OrdersBottomSheet.show(
               context,
               isSearchNeeded: true,
               heightRatio: 0.7,

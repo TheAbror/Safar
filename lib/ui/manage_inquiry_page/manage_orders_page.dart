@@ -14,26 +14,26 @@ import 'package:safar/ui/manage_inquiry_page/widgets/texts_and_titles/title_and_
 import 'package:safar/ui/manage_inquiry_page/widgets/unit_selection.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 
-class ManageInquiryPageViewModel {
+class ManageOrdersPageViewModel {
   final int id;
   final bool isEdit;
 
-  ManageInquiryPageViewModel({
+  ManageOrdersPageViewModel({
     required this.id,
     required this.isEdit,
   });
 }
 
-class ManageInquiryPage extends StatefulWidget {
-  final ManageInquiryPageViewModel viewModel;
+class ManageOrdersPage extends StatefulWidget {
+  final ManageOrdersPageViewModel viewModel;
 
-  const ManageInquiryPage({super.key, required this.viewModel});
+  const ManageOrdersPage({super.key, required this.viewModel});
 
   @override
-  State<ManageInquiryPage> createState() => _ManageInquiryPageState();
+  State<ManageOrdersPage> createState() => _ManageOrdersPageState();
 }
 
-class _ManageInquiryPageState extends State<ManageInquiryPage> {
+class _ManageOrdersPageState extends State<ManageOrdersPage> {
   final bloc = ManageInquiryBloc();
 
   @override
@@ -80,7 +80,7 @@ class _ManageInquiryPageState extends State<ManageInquiryPage> {
 }
 
 class _Body extends StatefulWidget {
-  final ManageInquiryPageViewModel viewModel;
+  final ManageOrdersPageViewModel viewModel;
 
   const _Body({required this.viewModel});
 

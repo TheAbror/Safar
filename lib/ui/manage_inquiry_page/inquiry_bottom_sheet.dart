@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class InquiryBottomSheet extends StatelessWidget {
+class OrdersBottomSheet extends StatelessWidget {
   final String title;
   final MeasurementResponse selectedValue;
   final List<MeasurementResponse> initialList;
@@ -15,7 +15,7 @@ class InquiryBottomSheet extends StatelessWidget {
   final bool? isConfirmationNeeded;
   final double heightRatio;
 
-  const InquiryBottomSheet({
+  const OrdersBottomSheet({
     super.key,
     required this.title,
     required this.selectedValue,
@@ -46,7 +46,7 @@ class InquiryBottomSheet extends StatelessWidget {
             initialValue: selectedValue.label,
             initialList: initialList.map((e) => e.label).toList(),
           ),
-          child: InquiryBottomSheet(
+          child: OrdersBottomSheet(
             title: title,
             selectedValue: selectedValue,
             initialList: initialList,
