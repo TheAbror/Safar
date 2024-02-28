@@ -14,7 +14,7 @@ class StatusColors {
   });
 }
 
-class InquiryItemStatusColor {
+class OrderItemStatusColor {
   static StatusColors displayColorByStatus(
     int index,
     List<OrdersResponse> model,

@@ -1,7 +1,7 @@
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/signin_page/auth/models/user_info.dart';
-import 'package:safar/ui/home_page/widgets/inquiry_status_color.dart';
+import 'package:safar/ui/home_page/widgets/order_status_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -27,7 +27,7 @@ class OrdersCard extends StatelessWidget {
     Color textColor = AppColors.textMain;
     Color backgroundColor = AppColors.background;
 
-    StatusColors statusColors = InquiryItemStatusColor.displayColorByStatus(index, model);
+    StatusColors statusColors = OrderItemStatusColor.displayColorByStatus(index, model);
     textColor = statusColors.textColor;
     backgroundColor = statusColors.backgroundColor;
 
