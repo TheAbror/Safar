@@ -35,12 +35,7 @@ class _SignInPageState extends State<SignInPage> {
           body: BlocConsumer<AuthBloc, AuthState>(
             listener: (context, state) async {
               if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-                // NavigationUtils.navigateToNextRouteByAccountType(
-                //   context,
-                //   state.accountType,
-                //   'isPasscodeOnDefault',
-                // );
-                Navigator.pushNamed(context, AppRoutes.staffHome);
+                Navigator.pushNamed(context, AppRoutes.homePage);
               }
               if (state.blocProgress == BlocProgress.IS_LOADING) {
                 Center(

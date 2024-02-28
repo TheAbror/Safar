@@ -21,13 +21,9 @@ class MainRouteGenerator {
         );
       case AppRoutes.homePage:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const StaffHomePage(),
+          builder: (_) => const HomePage(),
         );
 
-      case AppRoutes.staffHome:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const StaffHomePage(),
-        );
       case AppRoutes.manageInquiry:
         return CustomCupertinoStyleNavigationRoute(
           builder: (_) => ManageInquiryPage(

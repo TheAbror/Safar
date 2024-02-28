@@ -12,7 +12,7 @@ class NavigationUtils {
     switch (accountType) {
       // to be deleted
       case AccountType.unknown:
-        Navigator.pushNamedAndRemoveUntil(context, AppRoutes.staffHome, (route) => false);
+        Navigator.pushNamedAndRemoveUntil(context, AppRoutes.homePage, (route) => false);
         break;
       //
       default:

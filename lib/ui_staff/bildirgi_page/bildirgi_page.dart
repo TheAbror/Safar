@@ -108,7 +108,7 @@ class _BodyState extends State<_Body> {
             //
             // context.read<InquiryBloc>().getInitiallyCreated();
 
-            Navigator.pushNamed(context, AppRoutes.staffHome);
+            Navigator.pushNamed(context, AppRoutes.homePage);
 
             showMessage('Inquiry was successfully deleted');
           }
