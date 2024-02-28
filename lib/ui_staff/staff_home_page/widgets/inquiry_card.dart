@@ -74,6 +74,8 @@ class InquiryCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      Text(model[index].numberOfPassengers.toString()),
+                      Text(model[index].desiredCarModel.toString()),
                     ],
                   ),
                 ],
