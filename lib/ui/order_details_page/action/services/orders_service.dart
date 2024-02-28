@@ -2,7 +2,7 @@ import 'package:chopper/chopper.dart';
 import 'package:safar/core/constants/app_strings.dart';
 import 'package:safar/ui/signin_page/auth/models/user_info.dart';
 
-part 'inquiry_service.chopper.dart';
+part 'orders_service.chopper.dart';
 
 @ChopperApi(baseUrl: AppStrings.baseLive)
 abstract class OrdersService extends ChopperService {
