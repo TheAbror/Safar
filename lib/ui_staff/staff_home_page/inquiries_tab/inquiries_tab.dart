@@ -4,21 +4,21 @@ import 'package:safar/ui_staff/staff_home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/tabs/delivery_tab.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/tabs/taxi_tab.dart';
 
-class InquiriesTab extends StatefulWidget {
+class MainTab extends StatefulWidget {
   final ScrollController scrollControllerAssigned;
   final ScrollController scrollControllerCreated;
 
-  const InquiriesTab({
+  const MainTab({
     super.key,
     required this.scrollControllerAssigned,
     required this.scrollControllerCreated,
   });
 
   @override
-  State<InquiriesTab> createState() => InquiriesTabState();
+  State<MainTab> createState() => MainTabState();
 }
 
-class InquiriesTabState extends State<InquiriesTab> {
+class MainTabState extends State<MainTab> {
   final searchDelivery = TextEditingController();
   final searchTaxi = TextEditingController();
 

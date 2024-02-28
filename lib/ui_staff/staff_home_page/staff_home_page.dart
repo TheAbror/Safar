@@ -44,7 +44,7 @@ class _StaffHomePageState extends State<StaffHomePage> {
         backgroundColor: Theme.of(context).colorScheme.background,
         resizeToAvoidBottomInset: false,
         floatingActionButton: const CreateButton(),
-        body: InquiriesTab(
+        body: MainTab(
           scrollControllerAssigned: _scrollControllerAssigned,
           scrollControllerCreated: _scrollControllerCreated,
         ),
