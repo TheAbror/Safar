@@ -7,12 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'status_widget.dart';
 
-class InquiryCard extends StatelessWidget {
+class OrdersCard extends StatelessWidget {
   final int index;
   final List<OrdersResponse> model;
   final Widget child;
 
-  const InquiryCard({
+  const OrdersCard({
     super.key,
     required this.model,
     required this.index,
