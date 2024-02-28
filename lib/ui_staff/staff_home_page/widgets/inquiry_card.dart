@@ -61,7 +61,7 @@ class InquiryCard extends StatelessWidget {
                 children: [
                   _FromTo(model[index].pickup, model[index].destination),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
                         'Сумма: ',
