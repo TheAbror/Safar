@@ -24,8 +24,8 @@ class InquiryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // DateTime date = DateTime.fromMillisecondsSinceEpoch(int.parse(model[index].createdAt));
-    // String formattedDate = DateFormat('d-MMMM, HH:mm').format(date);
+    DateTime date = DateTime.parse(model[index].createdAt);
+    String formattedDate = DateFormat('d-MMMM, HH:mm').format(date);
 
     Color textColor = AppColors.textMain;
     Color backgroundColor = AppColors.background;
@@ -53,7 +53,7 @@ class InquiryCard extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
-              child: _TitleAndTime('formattedDate', child),
+              child: _TitleAndTime(formattedDate, child),
             ),
             SizedBox(height: 5.h),
             _FromTo(model[index].pickup, model[index].destination),
@@ -219,7 +219,7 @@ class InquiryCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'formattedDate',
+                    formattedDate,
                     style: TextStyle(
                       fontSize: 11.sp,
                       overflow: TextOverflow.ellipsis,
