@@ -1,4 +1,4 @@
-import 'package:safar/ui/manage_inquiry_page/model/inquiry_model.dart';
+import 'package:safar/ui/manage_order_page/model/inquiry_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 

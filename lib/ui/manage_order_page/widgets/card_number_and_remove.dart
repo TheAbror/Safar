@@ -1,4 +1,4 @@
-import 'package:safar/ui/manage_inquiry_page/widgets/buttons/remove_button.dart';
+import 'package:safar/ui/manage_order_page/widgets/buttons/remove_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

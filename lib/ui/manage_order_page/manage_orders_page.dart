@@ -4,14 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
-import 'package:safar/ui/manage_inquiry_page/bloc/manage_order_bloc.dart';
-import 'package:safar/ui/manage_inquiry_page/widgets/amount_selection.dart';
-import 'package:safar/ui/manage_inquiry_page/widgets/app_bar/inqury_appbar.dart';
-import 'package:safar/ui/manage_inquiry_page/widgets/card_number_and_remove.dart';
-import 'package:safar/ui/manage_inquiry_page/widgets/texts_and_titles/item_inquiry_title.dart';
-import 'package:safar/ui/manage_inquiry_page/widgets/texts_and_titles/submit_inquiry_button.dart';
-import 'package:safar/ui/manage_inquiry_page/widgets/texts_and_titles/title_and_description.dart';
-import 'package:safar/ui/manage_inquiry_page/widgets/unit_selection.dart';
+import 'package:safar/ui/manage_order_page/bloc/manage_order_bloc.dart';
+import 'package:safar/ui/manage_order_page/widgets/amount_selection.dart';
+import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
+import 'package:safar/ui/manage_order_page/widgets/card_number_and_remove.dart';
+import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/item_inquiry_title.dart';
+import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
+import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/title_and_description.dart';
+import 'package:safar/ui/manage_order_page/widgets/unit_selection.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 
 class ManageOrdersPageViewModel {
@@ -40,7 +40,7 @@ class _ManageOrdersPageState extends State<ManageOrdersPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => bloc,
-      child: BlocBuilder<ManageOrderBloc, ManageInquiryState>(
+      child: BlocBuilder<ManageOrderBloc, ManageOrderState>(
         builder: (context, state) {
           return GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
@@ -107,7 +107,7 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ManageOrderBloc, ManageInquiryState>(
+    return BlocConsumer<ManageOrderBloc, ManageOrderState>(
       listener: (context, state) {
         if (state.isInitialValuesLoaded) {
           titleController.text = state.data.title;

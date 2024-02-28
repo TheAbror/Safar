@@ -1,4 +1,4 @@
-import 'package:safar/ui/manage_inquiry_page/model/inquiry_item_request.dart';
+import 'package:safar/ui/manage_order_page/model/inquiry_item_request.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'inquiry_model.g.dart';

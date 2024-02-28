@@ -1,7 +1,7 @@
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/ui/manage_inquiry_page/bloc/manage_order_bloc.dart';
-import 'package:safar/ui/manage_inquiry_page/model/inquiry_item.dart';
-import 'package:safar/ui/manage_inquiry_page/widgets/create_amount.dart';
+import 'package:safar/ui/manage_order_page/bloc/manage_order_bloc.dart';
+import 'package:safar/ui/manage_order_page/model/inquiry_item.dart';
+import 'package:safar/ui/manage_order_page/widgets/create_amount.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

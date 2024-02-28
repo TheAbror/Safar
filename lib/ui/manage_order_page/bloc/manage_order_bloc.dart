@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/ui/manage_inquiry_page/model/inquiry_item.dart';
-import 'package:safar/ui/manage_inquiry_page/model/inquiry_model.dart';
+import 'package:safar/ui/manage_order_page/model/inquiry_item.dart';
+import 'package:safar/ui/manage_order_page/model/inquiry_model.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 
 part 'manage_order_state.dart';

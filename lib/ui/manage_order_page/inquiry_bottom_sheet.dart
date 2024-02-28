@@ -2,7 +2,7 @@ import 'package:safar/core/bottomsheet/bloc/bottom_sheet_data_bloc.dart';
 import 'package:safar/core/bottomsheet/default_bottom_sheet.dart';
 import 'package:safar/core/bottomsheet/widgets/bottomsheet_top_radius.dart';
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/ui/manage_inquiry_page/model/inquiry_model.dart';
+import 'package:safar/ui/manage_order_page/model/inquiry_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

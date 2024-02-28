@@ -11,9 +11,9 @@ import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/order_details_page/widgets/orders_action_button.dart';
 import 'package:safar/ui/order_details_page/modalPopups/delete_dialog.dart';
 import 'package:safar/ui/order_details_page/widgets/change_log/change_log_item.dart';
-import 'package:safar/ui/manage_inquiry_page/bloc/manage_order_bloc.dart';
-import 'package:safar/ui/manage_inquiry_page/manage_orders_page.dart';
-import 'package:safar/ui/manage_inquiry_page/widgets/app_bar/inqury_appbar.dart';
+import 'package:safar/ui/manage_order_page/bloc/manage_order_bloc.dart';
+import 'package:safar/ui/manage_order_page/manage_orders_page.dart';
+import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 
 class OrderDetailsPageViewModel {
