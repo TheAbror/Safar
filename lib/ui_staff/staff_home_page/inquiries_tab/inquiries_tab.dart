@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
+import 'package:safar/ui_staff/staff_home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/tabs/inquiries_delivery_tab.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/tabs/inquiries_taxi_tab.dart';
 
@@ -24,7 +24,7 @@ class InquiriesTabState extends State<InquiriesTab> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InquiryBloc, InquiryState>(
+    return BlocBuilder<OrdersBloc, OrdersState>(
       builder: (context, state) {
         return TabBarView(
           children: [

@@ -9,7 +9,7 @@ import 'package:safar/core/api/api_provider.dart';
 import 'package:safar/core/routes/main_route_generator.dart';
 import 'package:safar/core/utils/api_logging.dart';
 import 'package:safar/ui_staff/splash_page/bloc/splash_bloc.dart';
-import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
+import 'package:safar/ui_staff/staff_home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/model/current_user.dart';
 import 'core/app_themes.dart';
 import 'core/box/current_user_box.dart';
@@ -36,7 +36,7 @@ void main() async {
       runApp(
         MultiBlocProvider(
           providers: [
-            BlocProvider(create: (context) => InquiryBloc()),
+            BlocProvider(create: (context) => OrdersBloc()),
             BlocProvider(create: (context) => SplashBloc()),
           ],
           child: const MyApp(),

@@ -10,10 +10,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'inquiry_state.dart';
+part 'orders_state.dart';
 
-class InquiryBloc extends Cubit<InquiryState> {
-  InquiryBloc() : super(InquiryState.initial());
+class OrdersBloc extends Cubit<OrdersState> {
+  OrdersBloc() : super(OrdersState.initial());
 
   void getInitiallyAssigned() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
@@ -52,6 +52,6 @@ class InquiryBloc extends Cubit<InquiryState> {
   }
 
   void clearAll() {
-    emit(InquiryState.initial());
+    emit(OrdersState.initial());
   }
 }

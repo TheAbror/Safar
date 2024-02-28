@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/box/current_user_box.dart';
 import 'package:safar/core/db/shared_keys.dart';
-import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
+import 'package:safar/ui_staff/staff_home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/inquiries_tab.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/app_bar/staff_inquiries_appbar.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/buttons/create_button.dart';
@@ -19,7 +19,7 @@ class StaffHomePage extends StatefulWidget {
 class _StaffHomePageState extends State<StaffHomePage> {
   @override
   void initState() {
-    context.read<InquiryBloc>().getInitiallyAssigned();
+    context.read<OrdersBloc>().getInitiallyAssigned();
 
     super.initState();
   }

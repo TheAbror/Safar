@@ -4,10 +4,10 @@ import 'package:safar/core/widgets/search_input.dart';
 import 'package:safar/core/widgets/search_settings.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
-import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
+import 'package:safar/ui_staff/staff_home_page/bloc/orders_bloc.dart';
 
 class SearchAndFilterTaxi extends StatelessWidget {
-  final InquiryState state;
+  final OrdersState state;
   final List<String> statusesList;
   final TextEditingController searchTaxi;
 

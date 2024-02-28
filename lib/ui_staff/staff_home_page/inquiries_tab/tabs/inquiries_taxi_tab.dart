@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/widgets/tabs_no_data.dart';
 import 'package:safar/gen/assets.gen.dart';
-import 'package:safar/ui_staff/staff_home_page/bloc/inquiry_bloc.dart';
+import 'package:safar/ui_staff/staff_home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui_staff/staff_home_page/inquiries_tab/widgets/search_and_filter_created.dart';
 import 'package:safar/ui_staff/staff_home_page/widgets/inquiry_card.dart';
 
@@ -26,7 +26,7 @@ class InquiriesTaxiTab extends StatelessWidget {
       onRefresh: () async {
         // context.read<InquiryBloc>().getInitiallyCreated();
       },
-      child: BlocBuilder<InquiryBloc, InquiryState>(
+      child: BlocBuilder<OrdersBloc, OrdersState>(
         builder: (context, state) {
           return SingleChildScrollView(
             controller: scrollController,
@@ -65,7 +65,7 @@ class InquiriesTaxiTab extends StatelessWidget {
     );
   }
 
-  Padding _FilterCards(InquiryState state, BuildContext context) {
+  Padding _FilterCards(OrdersState state, BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: SingleChildScrollView(

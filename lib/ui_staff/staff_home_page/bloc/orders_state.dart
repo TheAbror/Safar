@@ -1,13 +1,13 @@
-part of 'inquiry_bloc.dart';
+part of 'orders_bloc.dart';
 
-class InquiryState extends Equatable {
+class OrdersState extends Equatable {
   final int randomNumber;
   final SuperBlocProgress<List<InquiryButtons>> buttons;
   final DeliveryOrdersResponse orders;
   final BlocProgress blocProgress;
   final String failureMessage;
 
-  const InquiryState({
+  const OrdersState({
     required this.randomNumber,
     required this.buttons,
     required this.orders,
@@ -15,8 +15,8 @@ class InquiryState extends Equatable {
     required this.failureMessage,
   });
 
-  factory InquiryState.initial() {
-    return InquiryState(
+  factory OrdersState.initial() {
+    return OrdersState(
       randomNumber: 0,
       buttons: SuperBlocProgress(model: const []),
       orders: DeliveryOrdersResponse(count: 0, results: []),
@@ -25,14 +25,14 @@ class InquiryState extends Equatable {
     );
   }
 
-  InquiryState copyWith({
+  OrdersState copyWith({
     int? randomNumber,
     SuperBlocProgress<List<InquiryButtons>>? buttons,
     DeliveryOrdersResponse? orders,
     BlocProgress? blocProgress,
     String? failureMessage,
   }) {
-    return InquiryState(
+    return OrdersState(
       randomNumber: randomNumber ?? this.randomNumber,
       buttons: buttons ?? this.buttons,
       orders: orders ?? this.orders,
