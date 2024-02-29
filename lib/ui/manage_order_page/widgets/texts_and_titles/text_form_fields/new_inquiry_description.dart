@@ -52,7 +52,7 @@ class NewInquiryDescription extends StatelessWidget {
             borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
             borderRadius: BorderRadius.circular(12),
           ),
-          hintText: 'Description',
+          hintText: 'Комментарии для водителя',
           fillColor: Theme.of(context).colorScheme.surfaceTint,
 
           hintStyle: const TextStyle(color: AppColors.textSecondary),

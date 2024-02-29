@@ -22,7 +22,7 @@ class AmountSelection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Amount',
+          'Количество пассажиров',
           style: TextStyle(
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
@@ -30,7 +30,7 @@ class AmountSelection extends StatelessWidget {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 4.h),
+          margin: EdgeInsets.only(top: 8.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

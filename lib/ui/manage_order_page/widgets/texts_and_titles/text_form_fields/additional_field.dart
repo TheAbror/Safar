@@ -24,12 +24,6 @@ class _TaxiToFieldState extends State<TaxiToField> {
         context.read<ManageOrderBloc>().updateData(title: value);
         print(value);
       },
-      validator: (username) {
-        if (username == null || username.isEmpty) {
-          return 'Please enter title';
-        }
-        return null;
-      },
       controller: widget.titleController,
       textInputAction: TextInputAction.next,
       decoration: _Decoration(context),

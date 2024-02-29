@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'text_form_fields/taxi_from_field copy.dart';
+import 'package:safar/ui/manage_order_page/model/inquiry_item.dart';
+import 'package:safar/ui/manage_order_page/model/inquiry_model.dart';
+import 'package:safar/ui/manage_order_page/widgets/amount_selection.dart';
+import 'text_form_fields/taxi_to_field.dart';
 import 'text_form_fields/taxi_from_field.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'text_form_fields/new_inquiry_description.dart';
@@ -38,22 +41,19 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
           SizedBox(height: 8.h),
           TaxiToField(titleController: widget.toController),
           SizedBox(height: 8.h),
+          AmountSelection(
+            item: InquiryItem(
+              name: '0',
+              quantity: 1,
+              measurement: MeasurementResponse(label: '', value: ''),
+            ),
+            index: 1,
+          ),
+          SizedBox(height: 8.h),
           NewInquiryDescription(decriptionController: widget.descriptionController),
           SizedBox(height: 8.h),
-          _PleaseEnterTitleAndDescription(),
           SizedBox(height: 10.h),
         ],
-      ),
-    );
-  }
-
-  Text _PleaseEnterTitleAndDescription() {
-    return Text(
-      ' Please enter title and description of the inquiry',
-      style: TextStyle(
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w500,
-        color: AppColors.textSecondary,
       ),
     );
   }
