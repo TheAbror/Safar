@@ -123,13 +123,13 @@ class _BodyState extends State<_Body> {
         }
       },
       builder: (context, state) {
-        if (state.blocProgress == BlocProgress.IS_LOADING) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Theme.of(context).colorScheme.primaryContainer,
-            ),
-          );
-        }
+        // if (state.blocProgress == BlocProgress.IS_LOADING) {
+        //   return Center(
+        //     child: CircularProgressIndicator(
+        //       color: Theme.of(context).colorScheme.primaryContainer,
+        //     ),
+        //   );
+        // }
         // if (state.blocProgress == BlocProgress.FAILED) {
         //   return const SomethingWentWrong();
         // }

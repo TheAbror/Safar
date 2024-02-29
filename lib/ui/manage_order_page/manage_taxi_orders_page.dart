@@ -12,7 +12,6 @@ import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/item_inquiry
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/title_and_description.dart';
 import 'package:safar/ui/manage_order_page/widgets/unit_selection.dart';
-import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 
 class ManageTaxiOrdersPageViewModel {
   final int id;
@@ -91,8 +90,9 @@ class _Body extends StatefulWidget {
 class _BodyState extends State<_Body> {
   var fromController = TextEditingController();
   var toController = TextEditingController();
-  var descriptionController = TextEditingController();
-  var recipientController = TextEditingController();
+  var commentsController = TextEditingController();
+  var exactLocationController = TextEditingController();
+  var exactDestinationController = TextEditingController();
 
   @override
   void initState() {
@@ -112,7 +112,7 @@ class _BodyState extends State<_Body> {
       listener: (context, state) {
         if (state.isInitialValuesLoaded) {
           fromController.text = state.data.title;
-          descriptionController.text = state.data.description;
+          commentsController.text = state.data.description;
 
           context.read<ManageOrderBloc>().initialValuesDisplayed();
         } else if (state.blocProgress == BlocProgress.IS_SUCCESS) {
@@ -136,13 +136,32 @@ class _BodyState extends State<_Body> {
         //   return const SomethingWentWrong();
         // }
 
+        //TODO 1
+
+        // 'pickup': 'Location A',
+        // 'destination': 'Location B',
+        // 'number_passenger': number of passengers,
+        // 'desired_pickup_time': 'datetime',
+        // 'desired_car_model': None,
+        // 'offered_price': offered price,
+        // 'pickup_reference': detailed address of pickup,
+        // 'destination_reference': detailed address of destination,
+        // 'comments_for_driver': comments for driver,
+
+        //TODO 2
+
+        // --- Orders detail ---
+        // endpoint: /api/orders_detail/<int:pk>/
+
         return SingleChildScrollView(
           child: Column(
             children: [
               TitleAndDescription(
                 fromController: fromController,
                 toController: toController,
-                descriptionController: descriptionController,
+                commentsController: commentsController,
+                exactLocationController: exactLocationController,
+                exactDestinationController: exactDestinationController,
               ),
               ListView.builder(
                 scrollDirection: Axis.vertical,
@@ -169,13 +188,6 @@ class _BodyState extends State<_Body> {
                   );
                 },
               ),
-              SizedBox(height: 20.h),
-              AddItemButton(
-                text: ' Add Item',
-                width: 135.w,
-                ontap: () => context.read<ManageOrderBloc>().addInquiryItem(),
-              ),
-              SizedBox(height: 60.h),
             ],
           ),
         );

@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class NewInquiryDescription extends StatelessWidget {
-  final TextEditingController decriptionController;
+class CommentsForDrier extends StatelessWidget {
+  final TextEditingController commentsController;
 
-  const NewInquiryDescription({
+  const CommentsForDrier({
     super.key,
-    required this.decriptionController,
+    required this.commentsController,
   });
 
   @override
@@ -31,7 +31,7 @@ class NewInquiryDescription extends StatelessWidget {
           context.read<ManageOrderBloc>().updateData(description: value);
           print(value);
         },
-        controller: decriptionController,
+        controller: commentsController,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           filled: true,
