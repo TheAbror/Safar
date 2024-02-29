@@ -14,26 +14,26 @@ import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/title_and_de
 import 'package:safar/ui/manage_order_page/widgets/unit_selection.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 
-class ManageOrdersPageViewModel {
+class ManagDeliveryOrdersPageViewModel {
   final int id;
   final bool isEdit;
 
-  ManageOrdersPageViewModel({
+  ManagDeliveryOrdersPageViewModel({
     required this.id,
     required this.isEdit,
   });
 }
 
-class ManageOrdersPage extends StatefulWidget {
-  final ManageOrdersPageViewModel viewModel;
+class ManagDeliveryOrdersPage extends StatefulWidget {
+  final ManagDeliveryOrdersPageViewModel viewModel;
 
-  const ManageOrdersPage({super.key, required this.viewModel});
+  const ManagDeliveryOrdersPage({super.key, required this.viewModel});
 
   @override
-  State<ManageOrdersPage> createState() => _ManageOrdersPageState();
+  State<ManagDeliveryOrdersPage> createState() => _ManagDeliveryOrdersPageState();
 }
 
-class _ManageOrdersPageState extends State<ManageOrdersPage> {
+class _ManagDeliveryOrdersPageState extends State<ManagDeliveryOrdersPage> {
   final bloc = ManageOrderBloc();
 
   @override
@@ -80,7 +80,7 @@ class _ManageOrdersPageState extends State<ManageOrdersPage> {
 }
 
 class _Body extends StatefulWidget {
-  final ManageOrdersPageViewModel viewModel;
+  final ManagDeliveryOrdersPageViewModel viewModel;
 
   const _Body({required this.viewModel});
 

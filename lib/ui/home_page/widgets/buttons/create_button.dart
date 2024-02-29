@@ -3,9 +3,9 @@ import 'package:safar/core/constants/app_configs.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/gen/fonts.gen.dart';
-import 'package:safar/ui/manage_order_page/manage_orders_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
 
 class CreateButton extends StatelessWidget {
   const CreateButton({
@@ -23,8 +23,8 @@ class CreateButton extends StatelessWidget {
         ),
         onPressed: () {
           Navigator.of(context).pushNamed(
-            AppRoutes.manageOrder,
-            arguments: ManageOrdersPageViewModel(id: 0, isEdit: false),
+            AppRoutes.manageTaxiOrder,
+            arguments: ManageTaxiOrdersPageViewModel(id: 0, isEdit: false),
           );
         },
         backgroundColor: Palette.grey850,
