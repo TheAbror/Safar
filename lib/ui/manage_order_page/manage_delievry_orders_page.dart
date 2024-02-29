@@ -49,7 +49,7 @@ class _ManagDeliveryOrdersPageState extends State<ManagDeliveryOrdersPage> {
               backgroundColor: Theme.of(context).colorScheme.inverseSurface,
               appBar: staff_inruiry_appbar(
                 context,
-                widget.viewModel.isEdit ? 'Edit an inquiry' : 'Create an inquiry',
+                widget.viewModel.isEdit ? 'Изменить детали доставки' : 'Заказать доставку',
                 SubmitInquiryButton(
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () {

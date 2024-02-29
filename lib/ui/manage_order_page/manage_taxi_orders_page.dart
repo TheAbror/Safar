@@ -49,7 +49,7 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
               backgroundColor: Theme.of(context).colorScheme.inverseSurface,
               appBar: staff_inruiry_appbar(
                 context,
-                widget.viewModel.isEdit ? 'Edit an inquiry' : 'Create an inquiry',
+                widget.viewModel.isEdit ? 'Изменить детали заказа' : 'Заказать такси',
                 SubmitInquiryButton(
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () {

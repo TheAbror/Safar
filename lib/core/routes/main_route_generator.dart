@@ -4,7 +4,7 @@ import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
 import 'package:safar/ui/order_details_page/order_details_page.dart';
 import 'package:safar/ui/signin_page/signin_page.dart';
 import 'package:safar/ui/splash_page/splash_page.dart';
-import 'package:safar/ui/home_page/staff_home_page.dart';
+import 'package:safar/ui/home_page/home_page.dart';
 import 'package:safar/core/routes/cupertino_style_navigation_route.dart';
 import 'package:safar/ui/manage_order_page/manage_delievry_orders_page.dart';
 
