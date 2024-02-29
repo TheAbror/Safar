@@ -4,7 +4,7 @@ import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/bloc_progress/error.dart';
 import 'package:safar/core/bloc_progress/super_bloc_progress.dart';
 import 'package:safar/core/constants/app_strings.dart';
-import 'package:safar/ui/signin_page/auth/models/user_info.dart';
+import 'package:safar/ui/signin_page/auth/models/all_models.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';

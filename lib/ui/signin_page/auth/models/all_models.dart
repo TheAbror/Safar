@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'user_info.g.dart';
+part 'all_models.g.dart';
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
 class SignInResponse {

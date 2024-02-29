@@ -8,7 +8,7 @@ import 'package:safar/ui/manage_order_page/model/delete_inquiry_by_id.dart';
 import 'package:safar/ui/manage_order_page/model/inquiry_item_request.dart';
 import 'package:safar/ui/manage_order_page/model/inquiry_model.dart';
 import 'package:safar/ui/signin_page/auth/models/auth.dart';
-import 'package:safar/ui/signin_page/auth/models/user_info.dart';
+import 'package:safar/ui/signin_page/auth/models/all_models.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 
 class CustomDataConverter extends JsonConverter {
