@@ -4,19 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TaxiToField extends StatefulWidget {
-  final TextEditingController titleController;
+class AdditionalField extends StatefulWidget {
+  final String hintText;
+  final TextEditingController thisController;
 
-  const TaxiToField({
+  const AdditionalField({
     super.key,
-    required this.titleController,
+    required this.thisController,
+    required this.hintText,
   });
 
   @override
-  State<TaxiToField> createState() => _TaxiToFieldState();
+  State<AdditionalField> createState() => _AdditionalFieldState();
 }
 
-class _TaxiToFieldState extends State<TaxiToField> {
+class _AdditionalFieldState extends State<AdditionalField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -24,7 +26,7 @@ class _TaxiToFieldState extends State<TaxiToField> {
         context.read<ManageOrderBloc>().updateData(title: value);
         print(value);
       },
-      controller: widget.titleController,
+      controller: widget.thisController,
       textInputAction: TextInputAction.next,
       decoration: _Decoration(context),
     );
@@ -50,7 +52,7 @@ class _TaxiToFieldState extends State<TaxiToField> {
         borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
         borderRadius: BorderRadius.circular(12),
       ),
-      hintText: 'В',
+      hintText: widget.hintText,
       fillColor: Theme.of(context).colorScheme.surfaceTint,
       hintStyle: const TextStyle(color: AppColors.textSecondary),
     );
