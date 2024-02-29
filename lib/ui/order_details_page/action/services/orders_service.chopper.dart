@@ -17,7 +17,7 @@ final class _$OrdersService extends OrdersService {
   final definitionType = OrdersService;
 
   @override
-  Future<Response<DeliveryOrdersResponse>> getInitiallyAssigned() {
+  Future<Response<DeliveryOrdersResponse>> getTaxiOrders() {
     final Uri $url =
         Uri.parse('https://safarapi.pythonanywhere.com/api/orders/');
     final Request $request = Request(

@@ -15,11 +15,11 @@ part 'orders_state.dart';
 class OrdersBloc extends Cubit<OrdersState> {
   OrdersBloc() : super(OrdersState.initial());
 
-  void getInitiallyAssigned() async {
+  void getTaxiOrders() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final response = await ApiProvider.ordersService.getInitiallyAssigned();
+      final response = await ApiProvider.ordersService.getTaxiOrders();
 
       if (response.isSuccessful) {
         final data = response.body;

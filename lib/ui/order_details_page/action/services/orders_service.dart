@@ -10,5 +10,5 @@ abstract class OrdersService extends ChopperService {
       _$OrdersService(client ?? ChopperClient());
 
   @Get(path: AppStrings.orders)
-  Future<Response<DeliveryOrdersResponse>> getInitiallyAssigned();
+  Future<Response<DeliveryOrdersResponse>> getTaxiOrders();
 }

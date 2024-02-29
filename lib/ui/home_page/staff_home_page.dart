@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    context.read<OrdersBloc>().getInitiallyAssigned();
+    context.read<OrdersBloc>().getTaxiOrders();
 
     super.initState();
   }
