@@ -4,14 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class NewInquiryTitle extends StatelessWidget {
+class TaxiToField extends StatefulWidget {
   final TextEditingController titleController;
 
-  const NewInquiryTitle({
+  const TaxiToField({
     super.key,
     required this.titleController,
   });
 
+  @override
+  State<TaxiToField> createState() => _TaxiToFieldState();
+}
+
+class _TaxiToFieldState extends State<TaxiToField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -25,7 +30,7 @@ class NewInquiryTitle extends StatelessWidget {
         }
         return null;
       },
-      controller: titleController,
+      controller: widget.titleController,
       textInputAction: TextInputAction.next,
       decoration: _Decoration(context),
     );
@@ -51,7 +56,7 @@ class NewInquiryTitle extends StatelessWidget {
         borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
         borderRadius: BorderRadius.circular(12),
       ),
-      hintText: 'Title',
+      hintText: 'В',
       fillColor: Theme.of(context).colorScheme.surfaceTint,
       hintStyle: const TextStyle(color: AppColors.textSecondary),
     );

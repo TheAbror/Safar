@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'text_form_fields/new_inquiry_title.dart';
+import 'text_form_fields/taxi_from_field copy.dart';
+import 'text_form_fields/taxi_from_field.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'text_form_fields/new_inquiry_description.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TitleAndDescription extends StatefulWidget {
-  final TextEditingController titleController;
+  final TextEditingController fromController;
+  final TextEditingController toController;
   final TextEditingController descriptionController;
-  final TextEditingController recipientController;
 
   const TitleAndDescription({
     super.key,
-    required this.titleController,
+    required this.fromController,
+    required this.toController,
     required this.descriptionController,
-    required this.recipientController,
   });
 
   @override
@@ -33,7 +34,9 @@ class _TitleAndDescriptionState extends State<TitleAndDescription> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NewInquiryTitle(titleController: widget.titleController),
+          TaxiFromField(titleController: widget.fromController),
+          SizedBox(height: 8.h),
+          TaxiToField(titleController: widget.toController),
           SizedBox(height: 8.h),
           NewInquiryDescription(decriptionController: widget.descriptionController),
           SizedBox(height: 8.h),

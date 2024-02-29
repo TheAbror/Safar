@@ -89,7 +89,8 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  var titleController = TextEditingController();
+  var fromController = TextEditingController();
+  var toController = TextEditingController();
   var descriptionController = TextEditingController();
   var recipientController = TextEditingController();
 
@@ -110,7 +111,7 @@ class _BodyState extends State<_Body> {
     return BlocConsumer<ManageOrderBloc, ManageOrderState>(
       listener: (context, state) {
         if (state.isInitialValuesLoaded) {
-          titleController.text = state.data.title;
+          fromController.text = state.data.title;
           descriptionController.text = state.data.description;
 
           context.read<ManageOrderBloc>().initialValuesDisplayed();
@@ -124,13 +125,13 @@ class _BodyState extends State<_Body> {
         }
       },
       builder: (context, state) {
-        if (state.blocProgress == BlocProgress.IS_LOADING) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Theme.of(context).colorScheme.primaryContainer,
-            ),
-          );
-        }
+        // if (state.blocProgress == BlocProgress.IS_LOADING) {
+        //   return Center(
+        //     child: CircularProgressIndicator(
+        //       color: Theme.of(context).colorScheme.primaryContainer,
+        //     ),
+        //   );
+        // }
         // if (state.blocProgress == BlocProgress.FAILED) {
         //   return const SomethingWentWrong();
         // }
@@ -139,9 +140,9 @@ class _BodyState extends State<_Body> {
           child: Column(
             children: [
               TitleAndDescription(
-                titleController: titleController,
+                fromController: fromController,
+                toController: toController,
                 descriptionController: descriptionController,
-                recipientController: recipientController,
               ),
               ListView.builder(
                 scrollDirection: Axis.vertical,

@@ -10,7 +10,6 @@ import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_order_page/widgets/card_number_and_remove.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/item_inquiry_title.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
-import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/title_and_description.dart';
 import 'package:safar/ui/manage_order_page/widgets/unit_selection.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 
@@ -138,11 +137,11 @@ class _BodyState extends State<_Body> {
         return SingleChildScrollView(
           child: Column(
             children: [
-              TitleAndDescription(
-                titleController: titleController,
-                descriptionController: descriptionController,
-                recipientController: recipientController,
-              ),
+              // TitleAndDescription(
+              //   titleController: titleController,
+              //   descriptionController: descriptionController,
+              //   recipientController: recipientController,
+              // ),
               ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
