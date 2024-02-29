@@ -125,7 +125,7 @@ OrdersRequest _$OrdersRequestFromJson(Map<String, dynamic> json) =>
       numberOfPassengers: json['number_passenger'] as int? ?? 0,
       desiredPickupTime: json['desired_pickup_time'] as String? ?? '',
       desiredCarModel: json['desired_car_model'] as String? ?? '',
-      offeredPrice: json['offered_price'] as int? ?? 0,
+      offeredPrice: json['offered_price'] as String? ?? '',
       pickupReference: json['pickup_reference'] as String? ?? '',
       destinationReference: json['destination_reference'] as String? ?? '',
       commentForDriver: json['comments_for_driver'] as String? ?? '',

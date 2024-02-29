@@ -186,8 +186,8 @@ class OrdersRequest {
   String desiredPickupTime;
   @JsonKey(defaultValue: '', name: 'desired_car_model')
   String desiredCarModel;
-  @JsonKey(defaultValue: 0, name: 'offered_price')
-  int offeredPrice;
+  @JsonKey(defaultValue: '', name: 'offered_price')
+  String offeredPrice;
   @JsonKey(defaultValue: '', name: 'pickup_reference')
   String pickupReference;
   @JsonKey(defaultValue: '', name: 'destination_reference')

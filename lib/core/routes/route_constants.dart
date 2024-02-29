@@ -8,7 +8,7 @@ abstract class AppRoutes {
   static const materials = '/materialsPage';
   static const qr = '/qrpage';
   static const passcode = '/passcode';
-  static const manageInquiry = '/manageInquiry';
+  static const manageOrder = '/manageInquiry';
   static const bildirgi = '/bildirgi';
   static const profile = '/profile';
   static const faceIDAndPasscodePage = '/faceidandpasscode';

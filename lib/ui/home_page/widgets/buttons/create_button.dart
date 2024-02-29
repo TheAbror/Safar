@@ -23,7 +23,7 @@ class CreateButton extends StatelessWidget {
         ),
         onPressed: () {
           Navigator.of(context).pushNamed(
-            AppRoutes.manageInquiry,
+            AppRoutes.manageOrder,
             arguments: ManageOrdersPageViewModel(id: 0, isEdit: false),
           );
         },

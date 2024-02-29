@@ -83,7 +83,7 @@ class _BodyState extends State<_Body> {
                       if (!mounted) return;
 
                       result.toLowerCase() == 'edit'
-                          ? Navigator.of(context).pushNamed(AppRoutes.manageInquiry,
+                          ? Navigator.of(context).pushNamed(AppRoutes.manageOrder,
                               arguments:
                                   ManageOrdersPageViewModel(id: widget.model.id, isEdit: true))
                           : delete_dialog(context).then((value) {

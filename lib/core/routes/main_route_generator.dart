@@ -24,7 +24,7 @@ class MainRouteGenerator {
           builder: (_) => const HomePage(),
         );
 
-      case AppRoutes.manageInquiry:
+      case AppRoutes.manageOrder:
         return CustomCupertinoStyleNavigationRoute(
           builder: (_) => ManageOrdersPage(
             viewModel: settings.arguments as ManageOrdersPageViewModel,

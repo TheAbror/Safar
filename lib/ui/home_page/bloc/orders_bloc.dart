@@ -51,6 +51,56 @@ class OrdersBloc extends Cubit<OrdersState> {
     }
   }
 
+  void postTaxiOrders() async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    final request = OrdersRequest(
+      pickup: 'Xorazm, Urgench',
+      destination: 'Yunusobod, Tashkent',
+      numberOfPassengers: 3,
+      desiredPickupTime: '2024-02-27T08:00:00',
+      desiredCarModel: 'Malibu',
+      offeredPrice: '150.00',
+      pickupReference: '',
+      destinationReference: '',
+      commentForDriver: 'Hello there, I need a ride',
+    );
+
+    try {
+      final response = await ApiProvider.ordersService.postTaxiOrders(request);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(state.copyWith(
+            orders: data,
+            blocProgress: BlocProgress.IS_SUCCESS,
+          ));
+        }
+      } else {
+        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+    }
+  }
+
+// OrdersRequest
+
   void clearAll() {
     emit(OrdersState.initial());
   }
