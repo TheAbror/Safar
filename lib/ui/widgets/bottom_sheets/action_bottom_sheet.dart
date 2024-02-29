@@ -175,7 +175,8 @@ class _ActionBottomSheetState extends State<ActionBottomSheet> {
                                       ? assignedViewer
                                           ? DateOption(
                                               dateController: _dateController,
-                                              status: widget.status)
+                                              status: widget.status,
+                                            )
                                           : const SizedBox()
                                       : const SizedBox(),
                                   statusExceptions ? SizedBox(height: 10.h) : const SizedBox(),

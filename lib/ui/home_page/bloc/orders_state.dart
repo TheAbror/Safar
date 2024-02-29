@@ -2,6 +2,8 @@ part of 'orders_bloc.dart';
 
 class OrdersState extends Equatable {
   final int randomNumber;
+  final int numberOfPassengers;
+  final String date;
   final SuperBlocProgress<List<InquiryButtons>> buttons;
   final DeliveryOrdersResponse orders;
   final BlocProgress blocProgress;
@@ -9,6 +11,8 @@ class OrdersState extends Equatable {
 
   const OrdersState({
     required this.randomNumber,
+    required this.numberOfPassengers,
+    required this.date,
     required this.buttons,
     required this.orders,
     required this.blocProgress,
@@ -18,6 +22,8 @@ class OrdersState extends Equatable {
   factory OrdersState.initial() {
     return OrdersState(
       randomNumber: 0,
+      numberOfPassengers: -1,
+      date: '',
       buttons: SuperBlocProgress(model: const []),
       orders: DeliveryOrdersResponse(count: 0, results: []),
       blocProgress: BlocProgress.NOT_STARTED,
@@ -27,6 +33,8 @@ class OrdersState extends Equatable {
 
   OrdersState copyWith({
     int? randomNumber,
+    int? numberOfPassengers,
+    String? date,
     SuperBlocProgress<List<InquiryButtons>>? buttons,
     DeliveryOrdersResponse? orders,
     BlocProgress? blocProgress,
@@ -34,6 +42,8 @@ class OrdersState extends Equatable {
   }) {
     return OrdersState(
       randomNumber: randomNumber ?? this.randomNumber,
+      numberOfPassengers: numberOfPassengers ?? this.numberOfPassengers,
+      date: date ?? this.date,
       buttons: buttons ?? this.buttons,
       orders: orders ?? this.orders,
       blocProgress: blocProgress ?? this.blocProgress,
@@ -44,6 +54,8 @@ class OrdersState extends Equatable {
   @override
   List<Object?> get props => [
         randomNumber,
+        numberOfPassengers,
+        date,
         buttons,
         orders,
         blocProgress,

@@ -21,9 +21,41 @@ class _TaxiToFieldState extends State<TaxiToField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: true,
       onChanged: (value) {
         context.read<ManageOrderBloc>().updateData(title: value);
         print(value);
+      },
+      onTap: () async {
+        final result = await PrimaryBottomSheet.show(
+          context,
+          isSearchNeeded: true,
+          heightRatio: 0.9,
+          isConfirmationNeeded: false,
+          title: 'Quick reply',
+          selectedValue: 'Room',
+          initialList: [
+            'Андижанская область',
+            'Бухарская область',
+            'Джизакская область',
+            'Кашкадарьинская область',
+            'Навоийская область',
+            'Наманганская область',
+            'Республика Каракалпакстан',
+            'Самаркандская область',
+            'Сурхандарьинская область',
+            'Сырдарьинская область',
+            'Ташкентская область',
+            'Ферганская область',
+            'Хорезмская область',
+          ],
+        );
+
+        if (result != null) {
+          if (!mounted) return;
+          widget.titleController.text = result;
+          context.read<ManageOrderBloc>().updateData(title: result);
+        }
       },
       controller: widget.titleController,
       textInputAction: TextInputAction.next,
@@ -57,44 +89,11 @@ class _TaxiToFieldState extends State<TaxiToField> {
       suffixIcon: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GestureDetector(
-            onTap: () async {
-              final result = await PrimaryBottomSheet.show(
-                context,
-                isSearchNeeded: true,
-                heightRatio: 0.9,
-                isConfirmationNeeded: false,
-                title: 'Quick reply',
-                selectedValue: 'Room',
-                initialList: [
-                  'Андижанская область',
-                  'Бухарская область',
-                  'Джизакская область',
-                  'Кашкадарьинская область',
-                  'Навоийская область',
-                  'Наманганская область',
-                  'Республика Каракалпакстан',
-                  'Самаркандская область',
-                  'Сурхандарьинская область',
-                  'Сырдарьинская область',
-                  'Ташкентская область',
-                  'Ферганская область',
-                  'Хорезмская область',
-                ],
-              );
-
-              if (result != null) {
-                if (!mounted) return;
-                widget.titleController.text = result;
-                context.read<ManageOrderBloc>().updateData(title: result);
-              }
-            },
-            child: Container(
-              alignment: Alignment.topRight,
-              height: 24.h,
-              width: 24.h,
-              child: const Icon(Icons.arrow_drop_down_outlined),
-            ),
+          Container(
+            alignment: Alignment.topRight,
+            height: 24.h,
+            width: 24.h,
+            child: const Icon(Icons.arrow_drop_down_outlined),
           ),
         ],
       ),

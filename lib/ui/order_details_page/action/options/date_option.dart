@@ -2,6 +2,7 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/gen/assets.gen.dart';
+import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/order_details_page/action/bloc/action_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,7 +53,7 @@ class _DateOptionState extends State<DateOption> {
         setState() => this.dateTime = newDateTime;
 
         context
-            .read<ActionBloc>()
+            .read<OrdersBloc>()
             .meetingDate(widget.dateController.text = newDateTime.toUtc().toIso8601String());
 
         widget.dateController.text = DateFormat('dd-MM-yyyy, HH:mm').format(newDateTime);
@@ -87,7 +88,7 @@ class _DateOptionState extends State<DateOption> {
           borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
           borderRadius: BorderRadius.circular(12),
         ),
-        hintText: 'Meeting date',
+        hintText: 'Дата',
         fillColor: Theme.of(context).colorScheme.surfaceTint,
         hintStyle: const TextStyle(color: AppColors.textSecondary),
         suffixIcon: Padding(

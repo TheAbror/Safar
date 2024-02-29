@@ -15,6 +15,15 @@ part 'orders_state.dart';
 class OrdersBloc extends Cubit<OrdersState> {
   OrdersBloc() : super(OrdersState.initial());
 
+  void meetingDate(String date) async {
+    emit(state.copyWith(date: date));
+    print(state.date);
+  }
+
+  void passengerCount(int index) {
+    emit(state.copyWith(numberOfPassengers: index));
+  }
+
   void getTaxiOrders() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 

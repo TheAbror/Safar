@@ -10,7 +10,7 @@ import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_order_page/widgets/card_number_and_remove.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/item_inquiry_title.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
-import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/title_and_description.dart';
+import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/manage_taxi_order_fields.dart';
 import 'package:safar/ui/manage_order_page/widgets/unit_selection.dart';
 
 class ManageTaxiOrdersPageViewModel {
@@ -93,6 +93,8 @@ class _BodyState extends State<_Body> {
   var commentsController = TextEditingController();
   var exactLocationController = TextEditingController();
   var exactDestinationController = TextEditingController();
+  var offeredPriceController = TextEditingController();
+  var dateController = TextEditingController();
 
   @override
   void initState() {
@@ -136,18 +138,6 @@ class _BodyState extends State<_Body> {
         //   return const SomethingWentWrong();
         // }
 
-        //TODO 1
-
-        // 'pickup': 'Location A',
-        // 'destination': 'Location B',
-        // 'number_passenger': number of passengers,
-        // 'desired_pickup_time': 'datetime',
-        // 'desired_car_model': None,
-        // 'offered_price': offered price,
-        // 'pickup_reference': detailed address of pickup,
-        // 'destination_reference': detailed address of destination,
-        // 'comments_for_driver': comments for driver,
-
         //TODO 2
 
         // --- Orders detail ---
@@ -156,12 +146,14 @@ class _BodyState extends State<_Body> {
         return SingleChildScrollView(
           child: Column(
             children: [
-              TitleAndDescription(
+              ManageTaxiOrderFields(
                 fromController: fromController,
                 toController: toController,
                 commentsController: commentsController,
                 exactLocationController: exactLocationController,
                 exactDestinationController: exactDestinationController,
+                offeredPriceController: offeredPriceController,
+                dateController: dateController,
               ),
               ListView.builder(
                 scrollDirection: Axis.vertical,
