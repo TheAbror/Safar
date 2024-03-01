@@ -1,6 +1,6 @@
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/ui/manage_order_page/bloc/manage_order_bloc.dart';
+import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,10 +22,6 @@ class _TaxiToFieldState extends State<TaxiToField> {
   Widget build(BuildContext context) {
     return TextFormField(
       readOnly: true,
-      onChanged: (value) {
-        context.read<ManageOrderBloc>().updateData(title: value);
-        print(value);
-      },
       onTap: () async {
         final result = await PrimaryBottomSheet.show(
           context,
@@ -54,7 +50,8 @@ class _TaxiToFieldState extends State<TaxiToField> {
         if (result != null) {
           if (!mounted) return;
           widget.titleController.text = result;
-          context.read<ManageOrderBloc>().updateData(title: result);
+          context.read<OrdersBloc>().updateData(destination: result);
+          print(result);
         }
       },
       controller: widget.titleController,

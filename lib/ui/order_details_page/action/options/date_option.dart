@@ -49,15 +49,19 @@ class _DateOptionState extends State<DateOption> {
           time.minute,
         );
 
-        setState() => this.dateTime = newDateTime;
+        setState(() {
+          this.dateTime = newDateTime;
+        });
 
-        context
-            .read<OrdersBloc>()
-            .meetingDate(widget.dateController.text = newDateTime.toUtc().toIso8601String());
+        final formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss').format(newDateTime);
+
+        context.read<OrdersBloc>().meetingDate(formattedDateTime);
 
         widget.dateController.text = DateFormat('dd-MM-yyyy, HH:mm').format(newDateTime);
       },
-      onChanged: (value) {},
+      onChanged: (value) {
+        context.read<OrdersBloc>().updateData(date: value);
+      },
       validator: (username) {
         if (widget.status.toLowerCase() == 'meeting') {
           if (username == null || username.isEmpty) {

@@ -242,37 +242,37 @@ class ManageOrderBloc extends Cubit<ManageOrderState> {
     }
   }
 
-  void updateData({
-    String? title,
-    String? description,
-    int? recipientID,
-    String? recipientName,
-    String? recipientGroup,
-  }) {
-    if (title != null) {
-      emit(state.copyWith(title: title));
-    } else if (description != null) {
-      emit(state.copyWith(description: description));
-    } else if (recipientID != null) {
-      emit(state.copyWith(recipientID: recipientID));
-    } else if (recipientName != null) {
-      emit(state.copyWith(recipientName: recipientName));
-    } else if (recipientGroup != null) {
-      emit(state.copyWith(recipientGroup: recipientGroup));
-    }
+  // void updateData({
+  //   String? title,
+  //   String? description,
+  //   int? recipientID,
+  //   String? recipientName,
+  //   String? recipientGroup,
+  // }) {
+  //   if (title != null) {
+  //     emit(state.copyWith(title: title));
+  //   } else if (description != null) {
+  //     emit(state.copyWith(description: description));
+  //   } else if (recipientID != null) {
+  //     emit(state.copyWith(recipientID: recipientID));
+  //   } else if (recipientName != null) {
+  //     emit(state.copyWith(recipientName: recipientName));
+  //   } else if (recipientGroup != null) {
+  //     emit(state.copyWith(recipientGroup: recipientGroup));
+  //   }
 
-    final isTitleValid = state.title.isNotEmpty;
-    final isDescriptionValid = state.description.isNotEmpty;
-    final isRecipientIDValid = state.recipientID != 0;
-    final isrecipientGroupValid = state.recipientGroup.isNotEmpty;
+  //   final isTitleValid = state.title.isNotEmpty;
+  //   final isDescriptionValid = state.description.isNotEmpty;
+  //   final isRecipientIDValid = state.recipientID != 0;
+  //   final isrecipientGroupValid = state.recipientGroup.isNotEmpty;
 
-    var isFormValid = false;
-    isFormValid = state.recipientGroup == 'STAFF'
-        ? isTitleValid && isDescriptionValid && isRecipientIDValid
-        : isTitleValid && isDescriptionValid && isrecipientGroupValid;
+  //   var isFormValid = false;
+  //   isFormValid = state.recipientGroup == 'STAFF'
+  //       ? isTitleValid && isDescriptionValid && isRecipientIDValid
+  //       : isTitleValid && isDescriptionValid && isrecipientGroupValid;
 
-    emit(state.copyWith(isButtonEnabled: isFormValid));
-  }
+  //   emit(state.copyWith(isButtonEnabled: isFormValid));
+  // }
 
   // void getInquiryById(int id) async {
   //   emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));

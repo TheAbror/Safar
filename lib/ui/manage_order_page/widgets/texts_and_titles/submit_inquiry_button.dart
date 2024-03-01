@@ -2,11 +2,11 @@ import 'package:safar/core/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SubmitInquiryButton extends StatelessWidget {
+class SubmitOrderButton extends StatelessWidget {
   final bool isEnabled;
   final VoidCallback? onTap;
 
-  const SubmitInquiryButton({
+  const SubmitOrderButton({
     super.key,
     this.isEnabled = false,
     this.onTap,

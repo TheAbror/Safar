@@ -49,7 +49,7 @@ class _ManagDeliveryOrdersPageState extends State<ManagDeliveryOrdersPage> {
               appBar: staff_inruiry_appbar(
                 context,
                 widget.viewModel.isEdit ? 'Изменить детали доставки' : 'Заказать доставку',
-                SubmitInquiryButton(
+                SubmitOrderButton(
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () {
                     if (widget.viewModel.isEdit) {

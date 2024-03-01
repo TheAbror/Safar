@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
-import 'package:safar/ui/manage_order_page/bloc/manage_order_bloc.dart';
-import 'package:safar/ui/manage_order_page/widgets/amount_selection.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
-import 'package:safar/ui/manage_order_page/widgets/card_number_and_remove.dart';
-import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/item_inquiry_title.dart';
-import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/manage_taxi_order_fields.dart';
-import 'package:safar/ui/manage_order_page/widgets/unit_selection.dart';
+import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
+
+import '../home_page/bloc/orders_bloc.dart';
 
 class ManageTaxiOrdersPageViewModel {
   final int id;
@@ -33,13 +29,13 @@ class ManageTaxiOrdersPage extends StatefulWidget {
 }
 
 class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
-  final bloc = ManageOrderBloc();
+  final bloc = OrdersBloc();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => bloc,
-      child: BlocBuilder<ManageOrderBloc, ManageOrderState>(
+      child: BlocBuilder<OrdersBloc, OrdersState>(
         builder: (context, state) {
           return GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
@@ -49,23 +45,10 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
               appBar: staff_inruiry_appbar(
                 context,
                 widget.viewModel.isEdit ? 'Изменить детали заказа' : 'Заказать такси',
-                SubmitInquiryButton(
+                SubmitOrderButton(
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
-                  onTap: () {
-                    if (widget.viewModel.isEdit) {
-                      //   bloc.editInquiryByID(
-                      //     widget.viewModel.id,
-                      //     state.title.trim(),
-                      //     state.description.trim(),
-                      //     state.recipientID,
-                      //   );
-                      // } else {
-                      //   bloc.postNewInquiry(
-                      //     state.title.trim(),
-                      //     state.description.trim(),
-                      //     state.recipientID,
-                      //   );
-                    }
+                  onTap: () async {
+                    bloc.postTaxiOrders;
                   },
                 ),
               ),
@@ -97,27 +80,16 @@ class _BodyState extends State<_Body> {
   var dateController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-
-    if (widget.viewModel.isEdit) {
-      // context.read<ManageOrderBloc>().getInquiryByIdForEdit(widget.viewModel.id);
-      context.read<ManageOrderBloc>().isButtonEnabled();
-    }
-
-    // context.read<ManageOrderBloc>().getMeausures();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ManageOrderBloc, ManageOrderState>(
+    return BlocConsumer<OrdersBloc, OrdersState>(
       listener: (context, state) {
-        if (state.isInitialValuesLoaded) {
-          fromController.text = state.data.title;
-          commentsController.text = state.data.description;
+        // if (state.isInitialValuesLoaded) {
+        //   fromController.text = state.data.title;
+        //   commentsController.text = state.data.description;
 
-          context.read<ManageOrderBloc>().initialValuesDisplayed();
-        } else if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+        //   context.read<OrdersBloc>().initialValuesDisplayed();
+        // } else
+        if (state.blocProgress == BlocProgress.IS_SUCCESS) {
           //
           // context.read<InquiryBloc>().getInitiallyCreated();
 
@@ -138,8 +110,6 @@ class _BodyState extends State<_Body> {
         //   return const SomethingWentWrong();
         // }
 
-        //TODO 2
-
         // --- Orders detail ---
         // endpoint: /api/orders_detail/<int:pk>/
 
@@ -155,42 +125,10 @@ class _BodyState extends State<_Body> {
                 offeredPriceController: offeredPriceController,
                 dateController: dateController,
               ),
-              ListView.builder(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: state.listofItems.length,
-                itemBuilder: (context, index) {
-                  final item = state.listofItems[index];
-
-                  return Container(
-                    key: Key(state.listofItems.length.toString()),
-                    margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
-                    padding: EdgeInsets.all(10.w),
-                    decoration: _Decoration(context),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CardNumberAndRemove(index: index),
-                        ItemInquiryTitle(index: index, item: item),
-                        AmountSelection(item: item, index: index),
-                        UnitSelection(index: index, item: item),
-                      ],
-                    ),
-                  );
-                },
-              ),
             ],
           ),
         );
       },
-    );
-  }
-
-  BoxDecoration _Decoration(BuildContext context) {
-    return BoxDecoration(
-      color: Theme.of(context).colorScheme.onBackground,
-      borderRadius: BorderRadius.circular(16.r),
     );
   }
 }

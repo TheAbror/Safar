@@ -80,13 +80,16 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                     return PassengerNumberChoice(
                       index: index,
                       state: state,
-                      onTap: () => context.read<OrdersBloc>().passengerCount(index),
+                      onTap: () {
+                        context.read<OrdersBloc>().updateData(numberOfPassengers: index);
+                        print(index + 1);
+                      },
                     );
                   },
                 ),
               ),
               SizedBox(height: 8.h),
-              AdditionalField(
+              OfferedPriceField(
                 thisController: widget.offeredPriceController,
                 hintText: 'Предложенная цена (ex: 200.000 сум)',
               ),

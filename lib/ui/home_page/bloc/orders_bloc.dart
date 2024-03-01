@@ -67,10 +67,6 @@ class OrdersBloc extends Cubit<OrdersState> {
     print(state.date);
   }
 
-  void passengerCount(int index) {
-    emit(state.copyWith(numberOfPassengers: index));
-  }
-
   void getTaxiOrders() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
@@ -111,15 +107,15 @@ class OrdersBloc extends Cubit<OrdersState> {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = OrdersRequest(
-      pickup: 'Xorazm, Urgench',
-      destination: 'Yunusobod, Tashkent',
-      numberOfPassengers: 3,
-      desiredPickupTime: '2024-02-27T08:00:00',
-      desiredCarModel: 'Malibu',
-      offeredPrice: '150.00',
-      pickupReference: '',
-      destinationReference: '',
-      commentForDriver: 'Hello there, I need a ride',
+      pickup: state.pickup,
+      destination: state.destination,
+      numberOfPassengers: state.numberOfPassengers,
+      desiredPickupTime: state.date,
+      desiredCarModel: '',
+      offeredPrice: state.offeredPrice,
+      pickupReference: state.pickUpReference,
+      destinationReference: state.destinationReference,
+      commentForDriver: state.commentsForDriver,
     );
 
     try {
@@ -154,8 +150,6 @@ class OrdersBloc extends Cubit<OrdersState> {
       );
     }
   }
-
-// OrdersRequest
 
   void clearAll() {
     emit(OrdersState.initial());
