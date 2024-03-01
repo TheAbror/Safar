@@ -1,18 +1,35 @@
 part of 'orders_bloc.dart';
 
 class OrdersState extends Equatable {
-  final int randomNumber;
+  //post variables start
+  final String pickup;
+  final String destination;
   final int numberOfPassengers;
   final String date;
+  final String offeredPrice;
+  final String pickUpReference;
+  final String destinationReference;
+  final String commentsForDriver;
+
+  //post variables end
+  final bool isButtonEnabled;
+  final int randomNumber;
   final SuperBlocProgress<List<InquiryButtons>> buttons;
   final DeliveryOrdersResponse orders;
   final BlocProgress blocProgress;
   final String failureMessage;
 
   const OrdersState({
-    required this.randomNumber,
+    required this.pickup,
+    required this.destination,
     required this.numberOfPassengers,
     required this.date,
+    required this.offeredPrice,
+    required this.pickUpReference,
+    required this.destinationReference,
+    required this.commentsForDriver,
+    required this.isButtonEnabled,
+    required this.randomNumber,
     required this.buttons,
     required this.orders,
     required this.blocProgress,
@@ -21,9 +38,16 @@ class OrdersState extends Equatable {
 
   factory OrdersState.initial() {
     return OrdersState(
-      randomNumber: 0,
+      pickup: '',
+      destination: '',
       numberOfPassengers: -1,
       date: '',
+      offeredPrice: '',
+      pickUpReference: '',
+      destinationReference: '',
+      commentsForDriver: '',
+      isButtonEnabled: false,
+      randomNumber: 0,
       buttons: SuperBlocProgress(model: const []),
       orders: DeliveryOrdersResponse(count: 0, results: []),
       blocProgress: BlocProgress.NOT_STARTED,
@@ -32,18 +56,32 @@ class OrdersState extends Equatable {
   }
 
   OrdersState copyWith({
-    int? randomNumber,
+    String? pickup,
+    String? destination,
     int? numberOfPassengers,
     String? date,
+    String? offeredPrice,
+    String? pickUpReference,
+    String? destinationReference,
+    String? commentsForDriver,
+    bool? isButtonEnabled,
+    int? randomNumber,
     SuperBlocProgress<List<InquiryButtons>>? buttons,
     DeliveryOrdersResponse? orders,
     BlocProgress? blocProgress,
     String? failureMessage,
   }) {
     return OrdersState(
-      randomNumber: randomNumber ?? this.randomNumber,
+      pickup: pickup ?? this.pickup,
+      destination: destination ?? this.destination,
       numberOfPassengers: numberOfPassengers ?? this.numberOfPassengers,
       date: date ?? this.date,
+      offeredPrice: offeredPrice ?? this.offeredPrice,
+      randomNumber: randomNumber ?? this.randomNumber,
+      pickUpReference: pickUpReference ?? this.pickUpReference,
+      destinationReference: destinationReference ?? this.destinationReference,
+      commentsForDriver: commentsForDriver ?? this.commentsForDriver,
+      isButtonEnabled: isButtonEnabled ?? this.isButtonEnabled,
       buttons: buttons ?? this.buttons,
       orders: orders ?? this.orders,
       blocProgress: blocProgress ?? this.blocProgress,
@@ -53,9 +91,16 @@ class OrdersState extends Equatable {
 
   @override
   List<Object?> get props => [
-        randomNumber,
+        pickup,
+        destination,
         numberOfPassengers,
         date,
+        offeredPrice,
+        pickUpReference,
+        destinationReference,
+        commentsForDriver,
+        isButtonEnabled,
+        randomNumber,
         buttons,
         orders,
         blocProgress,

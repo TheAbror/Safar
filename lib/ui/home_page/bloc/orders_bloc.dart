@@ -15,6 +15,53 @@ part 'orders_state.dart';
 class OrdersBloc extends Cubit<OrdersState> {
   OrdersBloc() : super(OrdersState.initial());
 
+  void updateData({
+    String? pickup,
+    String? destination,
+    int? numberOfPassengers,
+    String? date,
+    String? offeredPrice,
+    String? pickUpReference,
+    String? destinationReference,
+    String? commentsForDriver,
+  }) {
+    if (pickup != null) {
+      emit(state.copyWith(pickup: pickup));
+    } else if (destination != null) {
+      emit(state.copyWith(destination: destination));
+    } else if (numberOfPassengers != null) {
+      emit(state.copyWith(numberOfPassengers: numberOfPassengers));
+    } else if (date != null) {
+      emit(state.copyWith(date: date));
+    } else if (offeredPrice != null) {
+      emit(state.copyWith(offeredPrice: offeredPrice));
+    } else if (pickUpReference != null) {
+      emit(state.copyWith(pickUpReference: pickUpReference));
+    } else if (destinationReference != null) {
+      emit(state.copyWith(destinationReference: destinationReference));
+    } else if (commentsForDriver != null) {
+      emit(state.copyWith(commentsForDriver: commentsForDriver));
+    }
+
+    final isPickUpValid = state.pickup.isNotEmpty;
+    final isDestinationValid = state.destination.isNotEmpty;
+    final isNumberOfPassengersValid = state.numberOfPassengers != -1;
+    final isDateValid = state.date.isNotEmpty;
+    final isOfferedPriceValid = state.offeredPrice.isNotEmpty;
+    // final isPickUpReferenceValid = state.pickUpReference.isNotEmpty;
+    // final isDestinationReferenceValid = state.destinationReference.isNotEmpty;
+    // final isCommentsForDriverValid = state.commentsForDriver.isNotEmpty;
+
+    var isFormValid = false;
+    isFormValid = isPickUpValid &&
+        isDestinationValid &&
+        isNumberOfPassengersValid &&
+        isOfferedPriceValid &&
+        isDateValid;
+
+    emit(state.copyWith(isButtonEnabled: isFormValid));
+  }
+
   void meetingDate(String date) async {
     emit(state.copyWith(date: date));
     print(state.date);
