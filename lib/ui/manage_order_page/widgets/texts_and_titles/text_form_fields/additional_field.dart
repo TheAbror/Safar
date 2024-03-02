@@ -115,3 +115,61 @@ class _OfferedPriceFieldState extends State<OfferedPriceField> {
     );
   }
 }
+
+class PhoneNumberField extends StatefulWidget {
+  final String hintText;
+  final TextEditingController thisController;
+
+  const PhoneNumberField({
+    super.key,
+    required this.thisController,
+    required this.hintText,
+  });
+
+  @override
+  State<PhoneNumberField> createState() => _PhoneNumberFieldState();
+}
+
+class _PhoneNumberFieldState extends State<PhoneNumberField> {
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      onChanged: (value) {
+        context.read<OrdersBloc>().updateData(offeredPrice: value);
+
+        print(value);
+      },
+      controller: widget.thisController,
+      textInputAction: TextInputAction.next,
+      decoration: _Decoration(context),
+    );
+  }
+
+  InputDecoration _Decoration(BuildContext context) {
+    return InputDecoration(
+      filled: true,
+      border: InputBorder.none, // Remove border color
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      hintText: widget.hintText,
+      fillColor: Theme.of(context).colorScheme.surfaceTint,
+      hintStyle: const TextStyle(color: AppColors.textSecondary),
+    );
+  }
+
+  //TODO CA Decoration for all
+}

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
+
 import '../../../order_details_page/action/options/date_option.dart';
 import 'text_form_fields/additional_field.dart';
 import 'text_form_fields/manage_taxi_fields_headline.dart';
-import 'text_form_fields/passenger_number_choice.dart';
-import 'text_form_fields/taxi_to_field.dart';
-import 'text_form_fields/taxi_from_field.dart';
 import 'text_form_fields/new_inquiry_description.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'text_form_fields/passenger_number_choice.dart';
+import 'text_form_fields/taxi_from_field.dart';
+import 'text_form_fields/taxi_to_field.dart';
 
 class ManageTaxiOrderFields extends StatefulWidget {
   final TextEditingController fromController;
@@ -18,6 +20,7 @@ class ManageTaxiOrderFields extends StatefulWidget {
   final TextEditingController commentsController;
   final TextEditingController offeredPriceController;
   final TextEditingController dateController;
+  final TextEditingController phoneNumberController;
 
   const ManageTaxiOrderFields({
     super.key,
@@ -28,6 +31,7 @@ class ManageTaxiOrderFields extends StatefulWidget {
     required this.commentsController,
     required this.offeredPriceController,
     required this.dateController,
+    required this.phoneNumberController,
   });
 
   @override
@@ -35,18 +39,15 @@ class ManageTaxiOrderFields extends StatefulWidget {
 }
 
 class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
+  bool _isPassenger = false;
+  bool _isDriver = false; //TODO move to state
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OrdersBloc, OrdersState>(
       builder: (context, state) {
         return Container(
-          margin: EdgeInsets.only(
-            top: 8.h,
-            right: 8.w,
-            left: 8.w,
-            bottom: 2.h,
-          ),
           padding: EdgeInsets.all(10.w),
+          margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.onBackground,
             borderRadius: BorderRadius.circular(16.r),
@@ -57,15 +58,62 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
               TaxiFromField(titleController: widget.fromController),
               SizedBox(height: 8.h),
               TaxiToField(titleController: widget.toController),
-              ManageTaxiFieldsHeadline(),
+              SizedBox(height: 8.h),
               AdditionalField(
                 thisController: widget.exactLocationController,
-                hintText: 'Место встречи',
+                hintText: 'Место встречи : Необязательно',
               ),
-              ManageTaxiFieldsHeadline(),
+              SizedBox(height: 8.h),
               AdditionalField(
                 thisController: widget.exactDestinationController,
-                hintText: 'Место назначения',
+                hintText: 'Место назначения : Необязательно',
+              ),
+              ManageTaxiFieldsHeadline(text: 'Создать заказ как:'),
+              Row(
+                children: [
+                  Text(
+                    'Пассажир',
+                    style: TextStyle(fontSize: 14.sp),
+                  ),
+                  Checkbox(
+                    checkColor: AppColors.float, // Color of the check icon
+                    fillColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.selected)) {
+                          return AppColors.primary; // Use primary color when selected
+                        }
+                        return Colors.transparent; // Use transparent color when not selected
+                      },
+                    ),
+                    value: _isPassenger,
+                    onChanged: (value) {
+                      setState(() {
+                        _isPassenger = value ?? false;
+                      });
+                    },
+                  ),
+                  Text(
+                    'Водитель',
+                    style: TextStyle(fontSize: 14.sp),
+                  ),
+                  Checkbox(
+                    checkColor: AppColors.float, // Color of the check icon
+                    fillColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.selected)) {
+                          return AppColors.primary; // Use primary color when selected
+                        }
+                        return Colors.transparent; // Use transparent color when not selected
+                      },
+                    ),
+                    value: _isDriver,
+                    onChanged: (value) {
+                      setState(() {
+                        _isDriver = value ?? false;
+                      });
+                    },
+                  ),
+                ],
               ),
               ManageTaxiFieldsHeadline(text: 'Количество пассажиров'),
               SizedBox(
@@ -92,6 +140,11 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
               OfferedPriceField(
                 thisController: widget.offeredPriceController,
                 hintText: 'Предложенная цена (ex: 200.000 сум)',
+              ),
+              SizedBox(height: 8.h),
+              PhoneNumberField(
+                thisController: widget.phoneNumberController,
+                hintText: '+998914309090',
               ),
               SizedBox(height: 8.h),
               DateOption(

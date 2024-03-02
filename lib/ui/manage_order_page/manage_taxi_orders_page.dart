@@ -79,6 +79,7 @@ class _BodyState extends State<_Body> {
   var exactDestinationController = TextEditingController();
   var offeredPriceController = TextEditingController();
   var dateController = TextEditingController();
+  var phoneNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -125,6 +126,7 @@ class _BodyState extends State<_Body> {
                 exactDestinationController: exactDestinationController,
                 offeredPriceController: offeredPriceController,
                 dateController: dateController,
+                phoneNumberController: phoneNumberController,
               ),
             ],
           ),
