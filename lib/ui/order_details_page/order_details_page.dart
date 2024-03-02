@@ -7,6 +7,7 @@ import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
+import 'package:safar/core/widgets/order_edit_or_delete_dialog.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
@@ -74,35 +75,36 @@ class _BodyState extends State<_Body> {
       appBar: order_appbar(
           context,
           widget.model.pickup,
-          widget.model.createdAt == true
+          widget.model.numberOfPassengers < 10
               ? GestureDetector(
                   onTap: () async {
-                    final result = await PrimaryBottomSheet.show(
-                      context,
-                      title: 'Choose Action',
-                      isConfirmationNeeded: false,
-                      isSearchNeeded: false,
-                      heightRatio: 0.30,
-                      selectedValue: '',
-                      initialList: ['Edit', 'Delete'],
-                    );
+                    order_edit_or_delete_dialog(context);
+                    // final result = await PrimaryBottomSheet.show(
+                    //   context,
+                    //   title: 'Choose Action',
+                    //   isConfirmationNeeded: false,
+                    //   isSearchNeeded: false,
+                    //   heightRatio: 0.30,
+                    //   selectedValue: '',
+                    //   initialList: ['Edit', 'Delete'],
+                    // );
 
-                    if (result != null) {
-                      if (!mounted) return;
+                    // if (result != null) {
+                    //   if (!mounted) return;
 
-                      result.toLowerCase() == 'edit'
-                          ? Navigator.of(context).pushNamed(AppRoutes.manageTaxiOrder,
-                              arguments:
-                                  ManageTaxiOrdersPageViewModel(id: widget.model.id, isEdit: true))
-                          : delete_dialog(context).then((value) {
-                              if (value) {
-                                // context
-                                //     .read<ManageOrderBloc>()
-                                //     .deleteInquiryById(widget.model.id);
-                                // Navigator.pop(context);
-                              } else if (value == false) {}
-                            });
-                    }
+                    //   result.toLowerCase() == 'edit'
+                    //       ? Navigator.of(context).pushNamed(AppRoutes.manageTaxiOrder,
+                    //           arguments:
+                    //               ManageTaxiOrdersPageViewModel(id: widget.model.id, isEdit: true))
+                    //       : delete_dialog(context).then((value) {
+                    //           if (value) {
+                    //             // context
+                    //             //     .read<ManageOrderBloc>()
+                    //             //     .deleteInquiryById(widget.model.id);
+                    //             // Navigator.pop(context);
+                    //           } else if (value == false) {}
+                    //         });
+                    // }
                   },
                   child: Assets.icons.staffIcons.edit.svg(
                     height: 24.h,

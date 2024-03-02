@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-AppBar inquiries_appbar(context, String fullName, String shortName, String role) {
+AppBar homePage_appbar(context, String fullName, String shortName, String role) {
   return AppBar(
     elevation: 1,
     backgroundColor: Theme.of(context).colorScheme.onBackground,

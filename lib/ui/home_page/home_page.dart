@@ -5,7 +5,7 @@ import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/main_tab/main_tab.dart';
-import 'package:safar/ui/home_page/widgets/app_bar/staff_inquiries_appbar.dart';
+import 'package:safar/ui/home_page/widgets/app_bar/homepage_appbar.dart';
 import 'package:safar/ui/home_page/widgets/buttons/create_button.dart';
 import 'package:safar/ui/manage_order_page/manage_delievry_orders_page.dart';
 import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
@@ -38,10 +38,10 @@ class _HomePageState extends State<HomePage> {
       length: 2,
       child: Builder(builder: (context) {
         return Scaffold(
-          appBar: inquiries_appbar(
+          appBar: homePage_appbar(
             context,
-            currentUser?.fullName ?? '',
-            currentUser?.shortName ?? '',
+            currentUser?.fullName ?? 'Abror Shamuradov',
+            currentUser?.shortName ?? 'AS',
             'Водитель',
           ),
           backgroundColor: Theme.of(context).colorScheme.background,

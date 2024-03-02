@@ -79,6 +79,7 @@ class OrdersCard extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                           overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.end,
                         ),
                       ),
                       Text(
