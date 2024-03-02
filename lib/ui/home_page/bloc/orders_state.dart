@@ -10,6 +10,8 @@ class OrdersState extends Equatable {
   final String pickUpReference;
   final String destinationReference;
   final String commentsForDriver;
+  // final String phoneNumber;
+  // final bool isPassenger;
 
   //post variables end
   final OrdersResponse orderByID;

@@ -21,12 +21,6 @@ class CommentsForDrier extends StatelessWidget {
         minLines: null,
         maxLines: null,
         textAlignVertical: TextAlignVertical.top,
-        validator: (username) {
-          if (username == null || username.isEmpty) {
-            return 'Please enter description';
-          }
-          return null;
-        },
         onChanged: (value) {
           context.read<OrdersBloc>().updateData(commentsForDriver: value);
 

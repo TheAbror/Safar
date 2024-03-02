@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
@@ -142,6 +143,7 @@ class _BodyState extends State<_Body> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
+                          //TODO  create diagram or picture
                           SizedBox(height: 4.h),
                           Text(
                             widget.model.destination,
@@ -151,6 +153,107 @@ class _BodyState extends State<_Body> {
                               fontWeight: FontWeight.w400,
                             ),
                           ),
+                          Row(
+                            children: [
+                              Text(
+                                'Количество пассажиров : ',
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                widget.model.numberOfPassengers.toString(),
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Дата отправления : ',
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                DateFormat('dd-MM-yyyy, HH:mm')
+                                    .format(DateTime.parse(widget.model.desiredPickupTime)),
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          Row(
+                            children: [
+                              Text(
+                                'Предложенная сумма : ',
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                widget.model.offeredPrice,
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          Row(
+                            children: [
+                              Text(
+                                'Комментарии для водителя : ',
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                widget.model.commentForDriver,
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          Text(
+                            widget.model.pickupReference,
+                            style: TextStyle(
+                              height: 1.4.h,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            widget.model.destinationReference,
+                            style: TextStyle(
+                              height: 1.4.h,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+
                           SizedBox(height: 18.h),
                           // ListView.builder(
                           //   padding: EdgeInsets.zero,
