@@ -49,9 +49,7 @@ class _DateOptionState extends State<DateOption> {
           time.minute,
         );
 
-        setState(() {
-          this.dateTime = newDateTime;
-        });
+        setState() => this.dateTime = newDateTime;
 
         final formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss').format(newDateTime);
 
@@ -61,6 +59,7 @@ class _DateOptionState extends State<DateOption> {
       },
       onChanged: (value) {
         context.read<OrdersBloc>().updateData(date: value);
+        print(value);
       },
       validator: (username) {
         if (widget.status.toLowerCase() == 'meeting') {

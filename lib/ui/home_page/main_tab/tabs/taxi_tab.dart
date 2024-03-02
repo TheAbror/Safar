@@ -24,7 +24,7 @@ class TaxiTab extends StatelessWidget {
     return RefreshIndicator(
       color: Theme.of(context).colorScheme.primaryContainer,
       onRefresh: () async {
-        context.read<OrdersBloc>().postTaxiOrders();
+        context.read<OrdersBloc>().getTaxiOrders();
       },
       child: BlocBuilder<OrdersBloc, OrdersState>(
         builder: (context, state) {

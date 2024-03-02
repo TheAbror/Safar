@@ -48,9 +48,6 @@ class OrdersBloc extends Cubit<OrdersState> {
     final isNumberOfPassengersValid = state.numberOfPassengers != -1;
     final isDateValid = state.date.isNotEmpty;
     final isOfferedPriceValid = state.offeredPrice.isNotEmpty;
-    // final isPickUpReferenceValid = state.pickUpReference.isNotEmpty;
-    // final isDestinationReferenceValid = state.destinationReference.isNotEmpty;
-    // final isCommentsForDriverValid = state.commentsForDriver.isNotEmpty;
 
     var isFormValid = false;
     isFormValid = isPickUpValid &&
@@ -109,7 +106,7 @@ class OrdersBloc extends Cubit<OrdersState> {
     final request = OrdersRequest(
       pickup: state.pickup,
       destination: state.destination,
-      numberOfPassengers: state.numberOfPassengers,
+      numberOfPassengers: state.numberOfPassengers + 1,
       desiredPickupTime: state.date,
       desiredCarModel: '',
       offeredPrice: state.offeredPrice,
