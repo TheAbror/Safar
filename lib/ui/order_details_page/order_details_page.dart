@@ -8,17 +8,15 @@ import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
+import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
-import 'package:safar/ui/order_details_page/widgets/orders_action_button.dart';
-import 'package:safar/ui/order_details_page/modalPopups/delete_dialog.dart';
-import 'package:safar/ui/order_details_page/widgets/change_log/change_log_item.dart';
-import 'package:safar/ui/manage_order_page/bloc/manage_order_bloc.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
-import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
+import 'package:safar/ui/order_details_page/modalPopups/delete_dialog.dart';
+import 'package:safar/ui/signin_page/auth/models/all_models.dart';
 
 class OrderDetailsPageViewModel {
   final int index;
-  final List<InquiryListItemResponse> model;
+  final List<OrdersResponse> model;
 
   const OrderDetailsPageViewModel({
     Key? key,
@@ -27,7 +25,7 @@ class OrderDetailsPageViewModel {
   });
 }
 
-class OrderDetailsPage extends StatelessWidget {
+class OrderDetailsPage extends StatefulWidget {
   final OrderDetailsPageViewModel viewModel;
 
   const OrderDetailsPage({
@@ -36,18 +34,28 @@ class OrderDetailsPage extends StatelessWidget {
   });
 
   @override
+  State<OrderDetailsPage> createState() => _OrderDetailsPageState();
+}
+
+class _OrderDetailsPageState extends State<OrderDetailsPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<OrdersBloc>().getOrderById(widget.viewModel.model[widget.viewModel.index].id);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ManageOrderBloc(),
-      // ..getInquiryById(viewModel.model[viewModel.index].id),
-      child: _Body(model: viewModel.model[viewModel.index], index: viewModel.index),
+    return _Body(
+      model: widget.viewModel.model[widget.viewModel.index],
+      index: widget.viewModel.index,
     );
   }
 }
 
 class _Body extends StatefulWidget {
   final int index;
-  final InquiryListItemResponse model;
+  final OrdersResponse model;
 
   const _Body({
     required this.model,
@@ -63,10 +71,10 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.inverseSurface,
-      appBar: staff_inruiry_appbar(
+      appBar: order_appbar(
           context,
-          widget.model.title,
-          widget.model.editable == true
+          widget.model.pickup,
+          widget.model.createdAt == true
               ? GestureDetector(
                   onTap: () async {
                     final result = await PrimaryBottomSheet.show(
@@ -102,7 +110,7 @@ class _BodyState extends State<_Body> {
                   ),
                 )
               : const SizedBox()),
-      body: BlocConsumer<ManageOrderBloc, ManageOrderState>(
+      body: BlocConsumer<OrdersBloc, OrdersState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS) {
             //
@@ -144,7 +152,7 @@ class _BodyState extends State<_Body> {
                         children: [
                           SizedBox(height: 8.h),
                           Text(
-                            state.item.title,
+                            widget.model.pickup,
                             style: TextStyle(
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w700,
@@ -152,19 +160,7 @@ class _BodyState extends State<_Body> {
                           ),
                           SizedBox(height: 4.h),
                           Text(
-                            state.item.description
-                                .replaceAll('<p>', '')
-                                .replaceAll('</p>', '')
-                                .replaceAll('<br>', '')
-                                .replaceAll('</br>', '')
-                                .replaceAll('<strong>', '')
-                                .replaceAll('</strong>', '')
-                                .replaceAll('<em>', '')
-                                .replaceAll('</em>', '')
-                                .replaceAll('<u>', '')
-                                .replaceAll('</u>', '')
-                                .replaceAll('<p style="text-align: justify">', '')
-                                .replaceAll('</p style="text-align: justify">', ''),
+                            widget.model.destination,
                             style: TextStyle(
                               height: 1.4.h,
                               fontSize: 12.sp,
@@ -172,99 +168,99 @@ class _BodyState extends State<_Body> {
                             ),
                           ),
                           SizedBox(height: 18.h),
-                          ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: state.item.items.length,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              final item = state.item.items[index];
+                          // ListView.builder(
+                          //   padding: EdgeInsets.zero,
+                          //   itemCount: state.item.items.length,
+                          //   shrinkWrap: true,
+                          //   physics: const NeverScrollableScrollPhysics(),
+                          //   itemBuilder: (context, index) {
+                          //     final item = state.item.items[index];
 
-                              return Container(
-                                margin: EdgeInsets.only(bottom: 10.h),
-                                padding: EdgeInsets.all(12.w),
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.background,
-                                  border: Border.all(
-                                    color: Theme.of(context).colorScheme.inversePrimary,
-                                    width: 0.5.w,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.r),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Name ',
-                                      style: TextStyle(
-                                        fontSize: 11.sp,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    Text(
-                                      item.name,
-                                      style: TextStyle(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    SizedBox(height: 8.h),
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          width: 94.w,
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Amount',
-                                                style: TextStyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                              SizedBox(height: 4.h),
-                                              Text(
-                                                (item.quantity).toString(),
-                                                style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(width: 8.w),
-                                        SizedBox(
-                                          width: 94.w,
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Unit',
-                                                style: TextStyle(
-                                                  fontSize: 11.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                              Text(
-                                                item.measurement?.label ?? '',
-                                                style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(width: 8.w),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
+                          //     return Container(
+                          //       margin: EdgeInsets.only(bottom: 10.h),
+                          //       padding: EdgeInsets.all(12.w),
+                          //       decoration: BoxDecoration(
+                          //         color: Theme.of(context).colorScheme.background,
+                          //         border: Border.all(
+                          //           color: Theme.of(context).colorScheme.inversePrimary,
+                          //           width: 0.5.w,
+                          //         ),
+                          //         borderRadius: BorderRadius.circular(8.r),
+                          //       ),
+                          //       child: Column(
+                          //         crossAxisAlignment: CrossAxisAlignment.start,
+                          //         children: [
+                          //           Text(
+                          //             'Name ',
+                          //             style: TextStyle(
+                          //               fontSize: 11.sp,
+                          //               fontWeight: FontWeight.w500,
+                          //             ),
+                          //           ),
+                          //           Text(
+                          //             item.name,
+                          //             style: TextStyle(
+                          //               fontSize: 14.sp,
+                          //               fontWeight: FontWeight.w700,
+                          //             ),
+                          //           ),
+                          //           SizedBox(height: 8.h),
+                          //           Row(
+                          //             children: [
+                          //               SizedBox(
+                          //                 width: 94.w,
+                          //                 child: Column(
+                          //                   crossAxisAlignment: CrossAxisAlignment.start,
+                          //                   children: [
+                          //                     Text(
+                          //                       'Amount',
+                          //                       style: TextStyle(
+                          //                         fontSize: 11.sp,
+                          //                         fontWeight: FontWeight.w500,
+                          //                       ),
+                          //                     ),
+                          //                     SizedBox(height: 4.h),
+                          //                     Text(
+                          //                       (item.quantity).toString(),
+                          //                       style: TextStyle(
+                          //                         fontSize: 12.sp,
+                          //                         fontWeight: FontWeight.w500,
+                          //                       ),
+                          //                     ),
+                          //                   ],
+                          //                 ),
+                          //               ),
+                          //               SizedBox(width: 8.w),
+                          //               SizedBox(
+                          //                 width: 94.w,
+                          //                 child: Column(
+                          //                   crossAxisAlignment: CrossAxisAlignment.start,
+                          //                   children: [
+                          //                     Text(
+                          //                       'Unit',
+                          //                       style: TextStyle(
+                          //                         fontSize: 11.sp,
+                          //                         fontWeight: FontWeight.w500,
+                          //                       ),
+                          //                     ),
+                          //                     Text(
+                          //                       item.measurement?.label ?? '',
+                          //                       style: TextStyle(
+                          //                         fontSize: 12.sp,
+                          //                         fontWeight: FontWeight.w500,
+                          //                       ),
+                          //                     ),
+                          //                   ],
+                          //                 ),
+                          //               ),
+                          //               SizedBox(width: 8.w),
+                          //             ],
+                          //           ),
+                          //         ],
+                          //       ),
+                          //     );
+                          //   },
+                          // ),
                           SizedBox(height: 10.h),
                         ],
                       ),
@@ -289,15 +285,15 @@ class _BodyState extends State<_Body> {
                             ),
                           ),
                           SizedBox(height: 16.h),
-                          ListView.builder(
-                            itemCount: state.item.history.length,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              final currentItem = state.item.history[index];
-                              return ChangeLogItem(item: currentItem);
-                            },
-                          ),
+                          // ListView.builder(
+                          //   itemCount: state.item.history.length,
+                          //   shrinkWrap: true,
+                          //   physics: const NeverScrollableScrollPhysics(),
+                          //   itemBuilder: (context, index) {
+                          //     final currentItem = state.item.history[index];
+                          //     return ChangeLogItem(item: currentItem);
+                          //   },
+                          // ),
                         ],
                       ),
                     ),
@@ -305,11 +301,11 @@ class _BodyState extends State<_Body> {
                   ],
                 ),
               ),
-              if (state.item.buttons.isNotEmpty)
-                OrdersActionButton(
-                  id: state.item.id,
-                  buttons: state.item.buttons,
-                ),
+              // if (state.item.buttons.isNotEmpty)
+              //   OrdersActionButton(
+              //     id: state.item.id,
+              //     buttons: state.item.buttons,
+              //   ),
             ],
           );
         },

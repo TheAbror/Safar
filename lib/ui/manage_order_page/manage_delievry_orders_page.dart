@@ -46,7 +46,7 @@ class _ManagDeliveryOrdersPageState extends State<ManagDeliveryOrdersPage> {
             child: Scaffold(
               resizeToAvoidBottomInset: true,
               backgroundColor: Theme.of(context).colorScheme.inverseSurface,
-              appBar: staff_inruiry_appbar(
+              appBar: order_appbar(
                 context,
                 widget.viewModel.isEdit ? 'Изменить детали доставки' : 'Заказать доставку',
                 SubmitOrderButton(

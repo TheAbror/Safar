@@ -12,6 +12,7 @@ class OrdersState extends Equatable {
   final String commentsForDriver;
 
   //post variables end
+  final OrdersResponse orderByID;
   final bool isButtonEnabled;
   final int randomNumber;
   final SuperBlocProgress<List<InquiryButtons>> buttons;
@@ -28,6 +29,7 @@ class OrdersState extends Equatable {
     required this.pickUpReference,
     required this.destinationReference,
     required this.commentsForDriver,
+    required this.orderByID,
     required this.isButtonEnabled,
     required this.randomNumber,
     required this.buttons,
@@ -46,6 +48,29 @@ class OrdersState extends Equatable {
       pickUpReference: '',
       destinationReference: '',
       commentsForDriver: '',
+      orderByID: OrdersResponse(
+        id: 0,
+        pickup: '',
+        destination: '',
+        numberOfPassengers: -1,
+        desiredPickupTime: '',
+        desiredCarModel: '',
+        offeredPrice: '',
+        pickupReference: '',
+        destinationReference: '',
+        commentForDriver: '',
+        assignedAt: '',
+        assigned: false,
+        created: false,
+        createdAt: '',
+        delivered: false,
+        deliveredAt: '',
+        driver: 0,
+        inProcess: false,
+        inProcessAt: '',
+        updateRequired: false,
+        user: 0,
+      ),
       isButtonEnabled: false,
       randomNumber: 0,
       buttons: SuperBlocProgress(model: const []),
@@ -64,6 +89,7 @@ class OrdersState extends Equatable {
     String? pickUpReference,
     String? destinationReference,
     String? commentsForDriver,
+    OrdersResponse? orderByID,
     bool? isButtonEnabled,
     int? randomNumber,
     SuperBlocProgress<List<InquiryButtons>>? buttons,
@@ -81,6 +107,7 @@ class OrdersState extends Equatable {
       pickUpReference: pickUpReference ?? this.pickUpReference,
       destinationReference: destinationReference ?? this.destinationReference,
       commentsForDriver: commentsForDriver ?? this.commentsForDriver,
+      orderByID: orderByID ?? this.orderByID,
       isButtonEnabled: isButtonEnabled ?? this.isButtonEnabled,
       buttons: buttons ?? this.buttons,
       orders: orders ?? this.orders,
@@ -99,6 +126,7 @@ class OrdersState extends Equatable {
         pickUpReference,
         destinationReference,
         commentsForDriver,
+        orderByID,
         isButtonEnabled,
         randomNumber,
         buttons,

@@ -1,5 +1,7 @@
 import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
+import 'package:safar/ui/order_details_page/order_details_page.dart';
 import 'package:safar/ui/signin_page/auth/models/all_models.dart';
 import 'package:safar/ui/home_page/widgets/order_status_color.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ import 'status_widget.dart';
 class OrdersCard extends StatelessWidget {
   final int index;
   final List<OrdersResponse> model;
+
   final Widget child;
 
   const OrdersCard({
@@ -32,12 +35,12 @@ class OrdersCard extends StatelessWidget {
     backgroundColor = statusColors.backgroundColor;
 
     return GestureDetector(
-      // onTap: () {
-      //   Navigator.of(context).pushNamed(
-      //     AppRoutes.bildirgi,
-      //     arguments: BildirgiPageViewModel(model: model, index: index),
-      //   );
-      // },
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          AppRoutes.bildirgi,
+          arguments: OrderDetailsPageViewModel(model: model, index: index),
+        );
+      },
       child: Container(
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 4.w),
         width: double.infinity,
@@ -67,15 +70,23 @@ class OrdersCard extends StatelessWidget {
                         'Сумма: ',
                         style: TextStyle(color: AppColors.iconSecondary),
                       ),
-                      Text(
-                        model[index].offeredPrice,
-                        style: TextStyle(
-                          color: AppColors.primary,
-                          fontWeight: FontWeight.bold,
+                      SizedBox(
+                        width: 55.w,
+                        child: Text(
+                          model[index].offeredPrice,
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      Text(model[index].numberOfPassengers.toString()),
-                      Text(model[index].desiredCarModel.toString()),
+                      Text(
+                        model[index].numberOfPassengers.toString(),
+                      ),
+                      Text(
+                        model[index].desiredCarModel.toString(),
+                      ),
                     ],
                   ),
                 ],

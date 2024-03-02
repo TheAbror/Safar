@@ -6,5 +6,7 @@ class AppStrings {
   static const internalErrorMessage = 'Internal error';
   static const incorrectPasscode = 'Incorrect';
   static const orders = 'api/orders/';
+  // endpoint: /api/orders_detail/<int:pk>
+  static const orderDetails = 'api/orders_detail/';
   static const appVersions = 'mobile/settings/versions';
 }

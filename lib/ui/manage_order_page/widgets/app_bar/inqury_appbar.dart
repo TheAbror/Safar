@@ -2,7 +2,7 @@ import 'package:safar/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-AppBar staff_inruiry_appbar(
+AppBar order_appbar(
   BuildContext context,
   String text,
   Widget widget,

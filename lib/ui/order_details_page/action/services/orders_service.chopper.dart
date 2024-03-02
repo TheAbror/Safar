@@ -43,4 +43,16 @@ final class _$OrdersService extends OrdersService {
     return client
         .send<DeliveryOrdersResponse, DeliveryOrdersResponse>($request);
   }
+
+  @override
+  Future<Response<OrdersResponse>> getOrderById(int id) {
+    final Uri $url = Uri.parse(
+        'https://safarapi.pythonanywhere.com/api/orders_detail/${id}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<OrdersResponse, OrdersResponse>($request);
+  }
 }

@@ -42,7 +42,7 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
             child: Scaffold(
               resizeToAvoidBottomInset: true,
               backgroundColor: Theme.of(context).colorScheme.inverseSurface,
-              appBar: staff_inruiry_appbar(
+              appBar: order_appbar(
                 context,
                 widget.viewModel.isEdit ? 'Изменить детали заказа' : 'Заказать такси',
                 SubmitOrderButton(
