@@ -129,10 +129,8 @@ OrdersRequest _$OrdersRequestFromJson(Map<String, dynamic> json) =>
       pickupReference: json['pickup_reference'] as String? ?? '',
       destinationReference: json['destination_reference'] as String? ?? '',
       commentForDriver: json['comments_for_driver'] as String? ?? '',
-      status: (json['status'] as List<dynamic>?)
-              ?.map((e) => OrderStatus.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
+      status: json['status'] as String? ?? '',
+      isDriver: json['is_driver'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$OrdersRequestToJson(OrdersRequest instance) =>
@@ -146,7 +144,8 @@ Map<String, dynamic> _$OrdersRequestToJson(OrdersRequest instance) =>
       'pickup_reference': instance.pickupReference,
       'destination_reference': instance.destinationReference,
       'comments_for_driver': instance.commentForDriver,
-      'status': instance.status.map((e) => e.toJson()).toList(),
+      'status': instance.status,
+      'is_driver': instance.isDriver,
     };
 
 OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) =>

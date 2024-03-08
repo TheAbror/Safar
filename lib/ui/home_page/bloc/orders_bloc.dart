@@ -148,7 +148,8 @@ class OrdersBloc extends Cubit<OrdersState> {
       pickupReference: state.pickUpReference,
       destinationReference: state.destinationReference,
       commentForDriver: state.commentsForDriver,
-      status: [OrderStatus(key: 'created', value: 'Created')],
+      status: 'Created',
+      isDriver: false,
     );
 
     try {
