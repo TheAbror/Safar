@@ -13,6 +13,7 @@ import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/signin_page/auth/models/all_models.dart';
+import 'widgets/orders_action_button.dart';
 
 class TaxiDetailsPageViewModel {
   final int index;
@@ -181,160 +182,38 @@ class _BodyState extends State<_Body> {
                           ),
 
                           TaxiOrderDescriptionAndValue(
-                            description: 'created at : ',
+                            description: 'Cоздан в : ',
                             value: DateFormat('dd-MM-yyyy, HH:mm')
                                 .format(DateTime.parse(widget.model.createdAt)),
                           ),
 
                           TaxiOrderDescriptionAndValue(
-                            description: 'is driver: ',
+                            description: 'Водитель: ',
                             value: widget.model.isDriver.toString(),
                           ),
 
                           TaxiOrderDescriptionAndValue(
-                            description: 'is driver: ',
+                            description: 'Статус: ',
                             value: widget.model.status.value,
                           ),
 
                           SizedBox(height: 18.h),
-                          // ListView.builder(
-                          //   padding: EdgeInsets.zero,
-                          //   itemCount: state.item.items.length,
-                          //   shrinkWrap: true,
-                          //   physics: const NeverScrollableScrollPhysics(),
-                          //   itemBuilder: (context, index) {
-                          //     final item = state.item.items[index];
 
-                          //     return Container(
-                          //       margin: EdgeInsets.only(bottom: 10.h),
-                          //       padding: EdgeInsets.all(12.w),
-                          //       decoration: BoxDecoration(
-                          //         color: Theme.of(context).colorScheme.background,
-                          //         border: Border.all(
-                          //           color: Theme.of(context).colorScheme.inversePrimary,
-                          //           width: 0.5.w,
-                          //         ),
-                          //         borderRadius: BorderRadius.circular(8.r),
-                          //       ),
-                          //       child: Column(
-                          //         crossAxisAlignment: CrossAxisAlignment.start,
-                          //         children: [
-                          //           Text(
-                          //             'Name ',
-                          //             style: TextStyle(
-                          //               fontSize: 11.sp,
-                          //               fontWeight: FontWeight.w500,
-                          //             ),
-                          //           ),
-                          //           Text(
-                          //             item.name,
-                          //             style: TextStyle(
-                          //               fontSize: 14.sp,
-                          //               fontWeight: FontWeight.w700,
-                          //             ),
-                          //           ),
-                          //           SizedBox(height: 8.h),
-                          //           Row(
-                          //             children: [
-                          //               SizedBox(
-                          //                 width: 94.w,
-                          //                 child: Column(
-                          //                   crossAxisAlignment: CrossAxisAlignment.start,
-                          //                   children: [
-                          //                     Text(
-                          //                       'Amount',
-                          //                       style: TextStyle(
-                          //                         fontSize: 11.sp,
-                          //                         fontWeight: FontWeight.w500,
-                          //                       ),
-                          //                     ),
-                          //                     SizedBox(height: 4.h),
-                          //                     Text(
-                          //                       (item.quantity).toString(),
-                          //                       style: TextStyle(
-                          //                         fontSize: 12.sp,
-                          //                         fontWeight: FontWeight.w500,
-                          //                       ),
-                          //                     ),
-                          //                   ],
-                          //                 ),
-                          //               ),
-                          //               SizedBox(width: 8.w),
-                          //               SizedBox(
-                          //                 width: 94.w,
-                          //                 child: Column(
-                          //                   crossAxisAlignment: CrossAxisAlignment.start,
-                          //                   children: [
-                          //                     Text(
-                          //                       'Unit',
-                          //                       style: TextStyle(
-                          //                         fontSize: 11.sp,
-                          //                         fontWeight: FontWeight.w500,
-                          //                       ),
-                          //                     ),
-                          //                     Text(
-                          //                       item.measurement?.label ?? '',
-                          //                       style: TextStyle(
-                          //                         fontSize: 12.sp,
-                          //                         fontWeight: FontWeight.w500,
-                          //                       ),
-                          //                     ),
-                          //                   ],
-                          //                 ),
-                          //               ),
-                          //               SizedBox(width: 8.w),
-                          //             ],
-                          //           ),
-                          //         ],
-                          //       ),
-                          //     );
-                          //   },
-                          // ),
                           SizedBox(height: 10.h),
                         ],
                       ),
                     ),
                     //
-                    Container(
-                      margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 24.h),
-                      padding: EdgeInsets.all(10.w),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.outline,
-                        borderRadius: BorderRadius.circular(16.r),
-                      ),
-                      child: ListView(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: [
-                          Text(
-                            'Change log',
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          SizedBox(height: 16.h),
-                          // ListView.builder(
-                          //   itemCount: state.item.history.length,
-                          //   shrinkWrap: true,
-                          //   physics: const NeverScrollableScrollPhysics(),
-                          //   itemBuilder: (context, index) {
-                          //     final currentItem = state.item.history[index];
-                          //     return ChangeLogItem(item: currentItem);
-                          //   },
-                          // ),
-                        ],
-                      ),
-                    ),
+
                     SizedBox(height: 40.h)
                   ],
                 ),
               ),
               // if (state.item.buttons.isNotEmpty)
-              //   OrdersActionButton(
-              //     id: state.item.id,
-              //     buttons: state.item.buttons,
-              //   ),
+              OrdersActionButton(
+                id: 0,
+                buttons: const [],
+              ),
             ],
           );
         },
