@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/widgets/tabs_no_data.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
@@ -42,6 +43,60 @@ class TaxiTab extends StatelessWidget {
                     searchTaxi: searchTaxi,
                   ),
                   _FilterCards(state, context),
+                  Container(
+                    padding: EdgeInsets.only(left: 8.w),
+                    margin: EdgeInsets.symmetric(vertical: 5.h),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Показать только:   ',
+                          style: TextStyle(
+                            color: AppColors.iconSecondary,
+                            fontSize: 14.sp,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Водителей',
+                              style: TextStyle(fontSize: 14.sp),
+                            ),
+                            Checkbox(
+                              checkColor: AppColors.float,
+                              fillColor: MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.selected)) {
+                                    return AppColors.primary;
+                                  }
+                                  return Colors.transparent;
+                                },
+                              ),
+                              value: true,
+                              onChanged: (value) {},
+                            ),
+                            Text(
+                              'Пассажиров',
+                              style: TextStyle(fontSize: 14.sp),
+                            ),
+                            Checkbox(
+                              checkColor: AppColors.float,
+                              fillColor: MaterialStateProperty.resolveWith<Color>(
+                                (Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.selected)) {
+                                    return AppColors.primary;
+                                  }
+                                  return Colors.transparent;
+                                },
+                              ),
+                              value: true,
+                              onChanged: (value) {},
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                   if (state.orders.results.isNotEmpty)
                     ListView.builder(
                       itemCount: state.orders.results.length,

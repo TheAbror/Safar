@@ -194,6 +194,8 @@ class OrdersRequest {
   String destinationReference;
   @JsonKey(defaultValue: '', name: 'comments_for_driver')
   String commentForDriver;
+  @JsonKey(defaultValue: [])
+  List<OrderStatus> status; //TODO
 
   OrdersRequest({
     required this.pickup,
@@ -205,6 +207,7 @@ class OrdersRequest {
     required this.pickupReference,
     required this.destinationReference,
     required this.commentForDriver,
+    required this.status,
   });
 
   factory OrdersRequest.fromJson(Map<String, dynamic> json) => _$OrdersRequestFromJson(json);
@@ -236,28 +239,20 @@ class OrdersResponse {
   String destinationReference;
   @JsonKey(defaultValue: '', name: 'comments_for_driver')
   String commentForDriver;
-  @JsonKey(defaultValue: false)
-  bool created;
   @JsonKey(defaultValue: '', name: 'created_at')
   String createdAt;
-  @JsonKey(defaultValue: false)
-  bool assigned;
-  @JsonKey(defaultValue: '', name: 'assigned_at')
-  String assignedAt;
-  @JsonKey(defaultValue: false, name: 'in_process')
-  bool inProcess;
-  @JsonKey(defaultValue: '', name: 'in_process_at')
-  String inProcessAt;
-  @JsonKey(defaultValue: false, name: 'update_required')
-  bool updateRequired;
-  @JsonKey(defaultValue: false)
-  bool delivered;
-  @JsonKey(defaultValue: '', name: 'delivered_at')
-  String deliveredAt;
+  @JsonKey(defaultValue: '', name: 'updated_at')
+  String updatedAt;
   @JsonKey(defaultValue: 0)
   int user;
   @JsonKey(defaultValue: 0)
   int driver;
+  @JsonKey(defaultValue: false, name: 'is_driver')
+  bool isDriver;
+  @JsonKey(defaultValue: false, name: 'created_by_this_user')
+  bool createdByThisUser;
+  @JsonKey()
+  OrderStatus status;
 
   OrdersResponse({
     required this.id,
@@ -270,20 +265,33 @@ class OrdersResponse {
     required this.pickupReference,
     required this.destinationReference,
     required this.commentForDriver,
-    required this.assignedAt,
-    required this.assigned,
-    required this.created,
     required this.createdAt,
-    required this.delivered,
-    required this.deliveredAt,
     required this.driver,
-    required this.inProcess,
-    required this.inProcessAt,
-    required this.updateRequired,
     required this.user,
+    required this.createdByThisUser,
+    required this.isDriver,
+    required this.status,
+    required this.updatedAt,
   });
 
   factory OrdersResponse.fromJson(Map<String, dynamic> json) => _$OrdersResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrdersResponseToJson(this);
+}
+
+@JsonSerializable(includeIfNull: true, explicitToJson: true)
+class OrderStatus {
+  @JsonKey(defaultValue: '')
+  final String key;
+  @JsonKey(defaultValue: '')
+  final String value;
+
+  OrderStatus({
+    required this.key,
+    required this.value,
+  });
+
+  factory OrderStatus.fromJson(Map<String, dynamic> json) => _$OrderStatusFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderStatusToJson(this);
 }

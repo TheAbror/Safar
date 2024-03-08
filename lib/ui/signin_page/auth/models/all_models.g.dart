@@ -129,6 +129,10 @@ OrdersRequest _$OrdersRequestFromJson(Map<String, dynamic> json) =>
       pickupReference: json['pickup_reference'] as String? ?? '',
       destinationReference: json['destination_reference'] as String? ?? '',
       commentForDriver: json['comments_for_driver'] as String? ?? '',
+      status: (json['status'] as List<dynamic>?)
+              ?.map((e) => OrderStatus.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
 
 Map<String, dynamic> _$OrdersRequestToJson(OrdersRequest instance) =>
@@ -142,6 +146,7 @@ Map<String, dynamic> _$OrdersRequestToJson(OrdersRequest instance) =>
       'pickup_reference': instance.pickupReference,
       'destination_reference': instance.destinationReference,
       'comments_for_driver': instance.commentForDriver,
+      'status': instance.status.map((e) => e.toJson()).toList(),
     };
 
 OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) =>
@@ -156,17 +161,13 @@ OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) =>
       pickupReference: json['pickup_reference'] as String? ?? '',
       destinationReference: json['destination_reference'] as String? ?? '',
       commentForDriver: json['comments_for_driver'] as String? ?? '',
-      assignedAt: json['assigned_at'] as String? ?? '',
-      assigned: json['assigned'] as bool? ?? false,
-      created: json['created'] as bool? ?? false,
       createdAt: json['created_at'] as String? ?? '',
-      delivered: json['delivered'] as bool? ?? false,
-      deliveredAt: json['delivered_at'] as String? ?? '',
       driver: json['driver'] as int? ?? 0,
-      inProcess: json['in_process'] as bool? ?? false,
-      inProcessAt: json['in_process_at'] as String? ?? '',
-      updateRequired: json['update_required'] as bool? ?? false,
       user: json['user'] as int? ?? 0,
+      createdByThisUser: json['created_by_this_user'] as bool? ?? false,
+      isDriver: json['is_driver'] as bool? ?? false,
+      status: OrderStatus.fromJson(json['status'] as Map<String, dynamic>),
+      updatedAt: json['updated_at'] as String? ?? '',
     );
 
 Map<String, dynamic> _$OrdersResponseToJson(OrdersResponse instance) =>
@@ -181,15 +182,22 @@ Map<String, dynamic> _$OrdersResponseToJson(OrdersResponse instance) =>
       'pickup_reference': instance.pickupReference,
       'destination_reference': instance.destinationReference,
       'comments_for_driver': instance.commentForDriver,
-      'created': instance.created,
       'created_at': instance.createdAt,
-      'assigned': instance.assigned,
-      'assigned_at': instance.assignedAt,
-      'in_process': instance.inProcess,
-      'in_process_at': instance.inProcessAt,
-      'update_required': instance.updateRequired,
-      'delivered': instance.delivered,
-      'delivered_at': instance.deliveredAt,
+      'updated_at': instance.updatedAt,
       'user': instance.user,
       'driver': instance.driver,
+      'is_driver': instance.isDriver,
+      'created_by_this_user': instance.createdByThisUser,
+      'status': instance.status.toJson(),
+    };
+
+OrderStatus _$OrderStatusFromJson(Map<String, dynamic> json) => OrderStatus(
+      key: json['key'] as String? ?? '',
+      value: json['value'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$OrderStatusToJson(OrderStatus instance) =>
+    <String, dynamic>{
+      'key': instance.key,
+      'value': instance.value,
     };
