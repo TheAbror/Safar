@@ -135,148 +135,49 @@ class _BodyState extends State<_Body> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          SizedBox(height: 8.h),
-                          Text(
-                            widget.model.pickup,
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
                           //TODO  create diagram or picture
                           SizedBox(height: 4.h),
-                          Text(
-                            widget.model.destination,
-                            style: TextStyle(
-                              height: 1.4.h,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
+
+                          TaxiOrderDescriptionAndValue(
+                            description: 'Из: ',
+                            value: widget.model.pickup,
+                            fonsize: 18,
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                'Количество пассажиров : ',
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                widget.model.numberOfPassengers.toString(),
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'Дата отправления : ',
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                DateFormat('dd-MM-yyyy, HH:mm')
-                                    .format(DateTime.parse(widget.model.desiredPickupTime)),
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
+                          TaxiOrderDescriptionAndValue(
+                            description: 'В: ',
+                            value: widget.model.destination,
+                            fonsize: 18,
                           ),
 
-                          Row(
-                            children: [
-                              Text(
-                                'Предложенная сумма : ',
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                widget.model.offeredPrice,
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
+                          TaxiOrderDescriptionAndValue(
+                            description: 'Количество пассажиров: ',
+                            value: widget.model.numberOfPassengers.toString(),
                           ),
 
-                          Row(
-                            children: [
-                              Text(
-                                'Комментарии для водителя : ',
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                widget.model.commentForDriver,
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
+                          TaxiOrderDescriptionAndValue(
+                            description: 'Дата отправления: ',
+                            value: DateFormat('dd-MM-yyyy, HH:mm')
+                                .format(DateTime.parse(widget.model.desiredPickupTime)),
                           ),
 
-                          Row(
-                            children: [
-                              Text(
-                                'Место встречи  : ',
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                widget.model.pickupReference,
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
+                          TaxiOrderDescriptionAndValue(
+                            description: 'Предложенная сумма: ',
+                            value: widget.model.offeredPrice,
                           ),
 
-                          Row(
-                            children: [
-                              Text(
-                                'Место назначения: ',
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                widget.model.destinationReference,
-                                style: TextStyle(
-                                  height: 1.4.h,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
+                          TaxiOrderDescriptionAndValue(
+                            description: 'Комментарии для водителя: ',
+                            value: widget.model.commentForDriver,
+                          ),
+
+                          TaxiOrderDescriptionAndValue(
+                            description: 'Место встречи: ',
+                            value: widget.model.pickupReference,
+                          ),
+
+                          TaxiOrderDescriptionAndValue(
+                            description: 'Место назначения: ',
+                            value: widget.model.destinationReference,
                           ),
 
                           SizedBox(height: 18.h),
@@ -422,6 +323,43 @@ class _BodyState extends State<_Body> {
           );
         },
       ),
+    );
+  }
+}
+
+class TaxiOrderDescriptionAndValue extends StatelessWidget {
+  final String description;
+  final String value;
+  final int fonsize;
+
+  const TaxiOrderDescriptionAndValue({
+    super.key,
+    required this.description,
+    required this.value,
+    this.fonsize = 12,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          description,
+          style: TextStyle(
+            height: 1.4.h,
+            fontSize: fonsize.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            height: 1.4.h,
+            fontSize: fonsize.sp,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ],
     );
   }
 }
