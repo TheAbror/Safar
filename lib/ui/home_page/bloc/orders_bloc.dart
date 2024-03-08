@@ -159,7 +159,7 @@ class OrdersBloc extends Cubit<OrdersState> {
       destinationReference: state.destinationReference,
       commentForDriver: state.commentsForDriver,
       status: 'created',
-      isDriver: false,
+      isDriver: state.isPassenger,
     );
 
     try {
