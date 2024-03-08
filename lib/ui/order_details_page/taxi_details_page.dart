@@ -14,30 +14,30 @@ import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/signin_page/auth/models/all_models.dart';
 
-class OrderDetailsPageViewModel {
+class TaxiDetailsPageViewModel {
   final int index;
   final List<OrdersResponse> model;
 
-  const OrderDetailsPageViewModel({
+  const TaxiDetailsPageViewModel({
     Key? key,
     required this.model,
     this.index = 0,
   });
 }
 
-class OrderDetailsPage extends StatefulWidget {
-  final OrderDetailsPageViewModel viewModel;
+class TaxiDetailsPage extends StatefulWidget {
+  final TaxiDetailsPageViewModel viewModel;
 
-  const OrderDetailsPage({
+  const TaxiDetailsPage({
     super.key,
     required this.viewModel,
   });
 
   @override
-  State<OrderDetailsPage> createState() => _OrderDetailsPageState();
+  State<TaxiDetailsPage> createState() => _TaxiDetailsPageState();
 }
 
-class _OrderDetailsPageState extends State<OrderDetailsPage> {
+class _TaxiDetailsPageState extends State<TaxiDetailsPage> {
   @override
   void initState() {
     super.initState();
@@ -237,21 +237,46 @@ class _BodyState extends State<_Body> {
                             ],
                           ),
 
-                          Text(
-                            widget.model.pickupReference,
-                            style: TextStyle(
-                              height: 1.4.h,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Место встречи  : ',
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                widget.model.pickupReference,
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            widget.model.destinationReference,
-                            style: TextStyle(
-                              height: 1.4.h,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
+
+                          Row(
+                            children: [
+                              Text(
+                                'Место назначения: ',
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                widget.model.destinationReference,
+                                style: TextStyle(
+                                  height: 1.4.h,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
                           ),
 
                           SizedBox(height: 18.h),

@@ -1,7 +1,7 @@
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
-import 'package:safar/ui/order_details_page/order_details_page.dart';
+import 'package:safar/ui/order_details_page/taxi_details_page.dart';
 import 'package:safar/ui/signin_page/auth/models/all_models.dart';
 import 'package:safar/ui/home_page/widgets/order_status_color.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +38,7 @@ class OrdersCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           AppRoutes.bildirgi,
-          arguments: OrderDetailsPageViewModel(model: model, index: index),
+          arguments: TaxiDetailsPageViewModel(model: model, index: index),
         );
       },
       child: Container(
