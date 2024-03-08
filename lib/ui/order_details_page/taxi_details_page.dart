@@ -180,6 +180,22 @@ class _BodyState extends State<_Body> {
                             value: widget.model.destinationReference,
                           ),
 
+                          TaxiOrderDescriptionAndValue(
+                            description: 'created at : ',
+                            value: DateFormat('dd-MM-yyyy, HH:mm')
+                                .format(DateTime.parse(widget.model.createdAt)),
+                          ),
+
+                          TaxiOrderDescriptionAndValue(
+                            description: 'is driver: ',
+                            value: widget.model.isDriver.toString(),
+                          ),
+
+                          TaxiOrderDescriptionAndValue(
+                            description: 'is driver: ',
+                            value: widget.model.status.value,
+                          ),
+
                           SizedBox(height: 18.h),
                           // ListView.builder(
                           //   padding: EdgeInsets.zero,
