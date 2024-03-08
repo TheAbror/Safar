@@ -17,12 +17,12 @@ class OrdersBloc extends Cubit<OrdersState> {
 
   void isPassenger() {
     emit(state.copyWith(isPassenger: true));
-    print(state.isPassenger);
+    print('Is passenger: ${state.isPassenger}');
   }
 
   void isDriver() {
     emit(state.copyWith(isPassenger: false));
-    print(state.isPassenger);
+    print('Is passenger: ${state.isPassenger}');
   }
 
   void getOrderById(int id) async {
