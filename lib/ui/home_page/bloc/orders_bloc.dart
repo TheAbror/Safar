@@ -15,6 +15,16 @@ part 'orders_state.dart';
 class OrdersBloc extends Cubit<OrdersState> {
   OrdersBloc() : super(OrdersState.initial());
 
+  void isPassenger() {
+    emit(state.copyWith(isPassenger: true));
+    print(state.isPassenger);
+  }
+
+  void isDriver() {
+    emit(state.copyWith(isPassenger: false));
+    print(state.isPassenger);
+  }
+
   void getOrderById(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
@@ -148,7 +158,7 @@ class OrdersBloc extends Cubit<OrdersState> {
       pickupReference: state.pickUpReference,
       destinationReference: state.destinationReference,
       commentForDriver: state.commentsForDriver,
-      status: 'Created',
+      status: 'created',
       isDriver: false,
     );
 

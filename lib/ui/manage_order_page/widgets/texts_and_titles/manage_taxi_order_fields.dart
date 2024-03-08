@@ -38,8 +38,6 @@ class ManageTaxiOrderFields extends StatefulWidget {
 }
 
 class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
-  bool _isPassenger = false;
-  bool _isDriver = false; //TODO move to state
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OrdersBloc, OrdersState>(
@@ -75,20 +73,18 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                     style: TextStyle(fontSize: 14.sp),
                   ),
                   Checkbox(
-                    checkColor: AppColors.float, // Color of the check icon
+                    checkColor: AppColors.float,
                     fillColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
                         if (states.contains(MaterialState.selected)) {
-                          return AppColors.primary; // Use primary color when selected
+                          return AppColors.primary;
                         }
-                        return Colors.transparent; // Use transparent color when not selected
+                        return Colors.transparent;
                       },
                     ),
-                    value: _isPassenger,
+                    value: state.isPassenger,
                     onChanged: (value) {
-                      setState(() {
-                        _isPassenger = value ?? false;
-                      });
+                      context.read<OrdersBloc>().isPassenger();
                     },
                   ),
                   Text(
@@ -96,20 +92,18 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                     style: TextStyle(fontSize: 14.sp),
                   ),
                   Checkbox(
-                    checkColor: AppColors.float, // Color of the check icon
+                    checkColor: AppColors.float,
                     fillColor: MaterialStateProperty.resolveWith<Color>(
                       (Set<MaterialState> states) {
                         if (states.contains(MaterialState.selected)) {
-                          return AppColors.primary; // Use primary color when selected
+                          return AppColors.primary;
                         }
-                        return Colors.transparent; // Use transparent color when not selected
+                        return Colors.transparent;
                       },
                     ),
-                    value: _isDriver,
+                    value: !state.isPassenger,
                     onChanged: (value) {
-                      setState(() {
-                        _isDriver = value ?? false;
-                      });
+                      context.read<OrdersBloc>().isDriver();
                     },
                   ),
                 ],
