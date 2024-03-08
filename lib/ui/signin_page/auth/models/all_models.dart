@@ -174,6 +174,11 @@ class DeliveryOrdersResponse {
 
 // POST:
 
+// {
+//     "status": "created",
+//     "is_driver": True
+// }
+
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
 class OrdersRequest {
   @JsonKey(defaultValue: '')
@@ -194,8 +199,10 @@ class OrdersRequest {
   String destinationReference;
   @JsonKey(defaultValue: '', name: 'comments_for_driver')
   String commentForDriver;
-  @JsonKey(defaultValue: [])
-  List<OrderStatus> status; //TODO
+  @JsonKey(defaultValue: '')
+  String status;
+  @JsonKey(defaultValue: false, name: 'is_driver')
+  bool isDriver;
 
   OrdersRequest({
     required this.pickup,
@@ -208,6 +215,7 @@ class OrdersRequest {
     required this.destinationReference,
     required this.commentForDriver,
     required this.status,
+    required this.isDriver,
   });
 
   factory OrdersRequest.fromJson(Map<String, dynamic> json) => _$OrdersRequestFromJson(json);
