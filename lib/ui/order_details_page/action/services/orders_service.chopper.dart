@@ -55,4 +55,16 @@ final class _$OrdersService extends OrdersService {
     );
     return client.send<OrdersResponse, OrdersResponse>($request);
   }
+
+  @override
+  Future<Response<OrdersResponse>> deleteOrderById(int id) {
+    final Uri $url = Uri.parse(
+        'https://safarapi.pythonanywhere.com/api/orders_detail/${id}');
+    final Request $request = Request(
+      'DELETE',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<OrdersResponse, OrdersResponse>($request);
+  }
 }

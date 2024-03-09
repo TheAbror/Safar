@@ -15,8 +15,9 @@ abstract class OrdersService extends ChopperService {
   @Post(path: AppStrings.orders)
   Future<Response<DeliveryOrdersResponse>> postTaxiOrders(@Body() OrdersRequest body);
 
-  //static const orders = 'api/orders/';
-  // endpoint: /api/orders_detail/<int:pk>
   @Get(path: '${AppStrings.orderDetails}/{id}')
   Future<Response<OrdersResponse>> getOrderById(@Path('id') int id);
+
+  @Delete(path: '${AppStrings.orderDetails}/{id}')
+  Future<Response<OrdersResponse>> deleteOrderById(@Path('id') int id);
 }

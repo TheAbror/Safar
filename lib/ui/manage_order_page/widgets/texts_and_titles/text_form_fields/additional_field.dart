@@ -29,33 +29,7 @@ class _AdditionalFieldState extends State<AdditionalField> {
       },
       controller: widget.thisController,
       textInputAction: TextInputAction.next,
-      decoration: _Decoration(context),
-    );
-  }
-
-  InputDecoration _Decoration(BuildContext context) {
-    return InputDecoration(
-      filled: true,
-      border: InputBorder.none, // Remove border color
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      hintText: widget.hintText,
-      fillColor: Theme.of(context).colorScheme.surfaceTint,
-      hintStyle: const TextStyle(color: AppColors.textSecondary),
+      decoration: _Decoration(context, widget.hintText),
     );
   }
 }
@@ -85,33 +59,7 @@ class _OfferedPriceFieldState extends State<OfferedPriceField> {
       },
       controller: widget.thisController,
       textInputAction: TextInputAction.next,
-      decoration: _Decoration(context),
-    );
-  }
-
-  InputDecoration _Decoration(BuildContext context) {
-    return InputDecoration(
-      filled: true,
-      border: InputBorder.none, // Remove border color
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      hintText: widget.hintText,
-      fillColor: Theme.of(context).colorScheme.surfaceTint,
-      hintStyle: const TextStyle(color: AppColors.textSecondary),
+      decoration: _Decoration(context, widget.hintText),
     );
   }
 }
@@ -141,35 +89,33 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
       },
       controller: widget.thisController,
       textInputAction: TextInputAction.next,
-      decoration: _Decoration(context),
+      decoration: _Decoration(context, widget.hintText),
     );
   }
+}
 
-  InputDecoration _Decoration(BuildContext context) {
-    return InputDecoration(
-      filled: true,
-      border: InputBorder.none, // Remove border color
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      hintText: widget.hintText,
-      fillColor: Theme.of(context).colorScheme.surfaceTint,
-      hintStyle: const TextStyle(color: AppColors.textSecondary),
-    );
-  }
-
-  //TODO CA Decoration for all
+InputDecoration _Decoration(BuildContext context, String hintText) {
+  return InputDecoration(
+    filled: true,
+    border: InputBorder.none, // Remove border color
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    hintText: hintText,
+    fillColor: Theme.of(context).colorScheme.surfaceTint,
+    hintStyle: const TextStyle(color: AppColors.textSecondary),
+  );
 }

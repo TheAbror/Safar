@@ -60,6 +60,42 @@ class OrdersBloc extends Cubit<OrdersState> {
     }
   }
 
+  void deleteOrderById(int id) async {
+    emit(state.copyWith(
+        blocProgress:
+            BlocProgress.IS_LOADING)); //TODO finish this after getting response from Abbos
+
+    try {
+      final response = await ApiProvider.ordersService.deleteOrderById(id);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(
+            state.copyWith(
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+        }
+      } else {
+        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+
+        emit(state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: error.message,
+        ));
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+
+      emit(state.copyWith(
+        blocProgress: BlocProgress.FAILED,
+        failureMessage: AppStrings.internalErrorMessage,
+      ));
+    }
+  }
+
   void updateData({
     String? pickup,
     String? destination,

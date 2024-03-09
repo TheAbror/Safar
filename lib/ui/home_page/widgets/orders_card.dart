@@ -34,6 +34,8 @@ class OrdersCard extends StatelessWidget {
     textColor = statusColors.textColor;
     backgroundColor = statusColors.backgroundColor;
 
+    var createdByThisUser = model[index].createdByThisUser;
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(
@@ -45,7 +47,7 @@ class OrdersCard extends StatelessWidget {
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 4.w),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onBackground,
+          color: createdByThisUser ? AppColors.primary : Theme.of(context).colorScheme.onBackground,
           borderRadius: BorderRadius.circular(16.r),
         ),
         child: Column(
@@ -123,7 +125,7 @@ class OrdersCard extends StatelessWidget {
                 Text(
                   from,
                   style: TextStyle(
-                    color: AppColors.textMain,
+                    color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
                   ),
@@ -136,7 +138,7 @@ class OrdersCard extends StatelessWidget {
                 Text(
                   to,
                   style: TextStyle(
-                    color: AppColors.textMain,
+                    color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
                   ),
@@ -193,6 +195,8 @@ class OrdersCard extends StatelessWidget {
                           fontSize: 14.sp,
                           overflow: TextOverflow.ellipsis,
                           fontWeight: FontWeight.w400,
+                          color:
+                              model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                         ),
                       ),
                       Text(
@@ -201,7 +205,9 @@ class OrdersCard extends StatelessWidget {
                           fontSize: 12.sp,
                           overflow: TextOverflow.ellipsis,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.textSecondary,
+                          color: model[index].createdByThisUser
+                              ? AppColors.float
+                              : AppColors.textSecondary,
                         ),
                       ),
                     ],
@@ -252,6 +258,7 @@ class OrdersCard extends StatelessWidget {
                       fontSize: 11.sp,
                       overflow: TextOverflow.ellipsis,
                       fontWeight: FontWeight.w400,
+                      color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                     ),
                   ),
                   Text(
@@ -272,6 +279,7 @@ class OrdersCard extends StatelessWidget {
                   fontSize: 14.sp,
                   overflow: TextOverflow.ellipsis,
                   fontWeight: FontWeight.w700,
+                  color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                 ),
               ),
               SizedBox(height: 8.h),
