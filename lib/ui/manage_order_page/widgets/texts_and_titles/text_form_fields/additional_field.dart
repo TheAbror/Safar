@@ -24,7 +24,6 @@ class _AdditionalFieldState extends State<AdditionalField> {
     return TextFormField(
       onChanged: (value) {
         context.read<OrdersBloc>().updateData(destinationReference: value);
-
         print(value);
       },
       controller: widget.thisController,
@@ -54,7 +53,6 @@ class _OfferedPriceFieldState extends State<OfferedPriceField> {
     return TextFormField(
       onChanged: (value) {
         context.read<OrdersBloc>().updateData(offeredPrice: value);
-
         print(value);
       },
       controller: widget.thisController,
@@ -84,7 +82,6 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
     return TextFormField(
       onChanged: (value) {
         context.read<OrdersBloc>().updateData(offeredPrice: value);
-
         print(value);
       },
       controller: widget.thisController,
