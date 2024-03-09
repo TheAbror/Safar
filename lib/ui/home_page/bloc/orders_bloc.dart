@@ -16,13 +16,13 @@ class OrdersBloc extends Cubit<OrdersState> {
   OrdersBloc() : super(OrdersState.initial());
 
   void isPassenger() {
-    emit(state.copyWith(isPassenger: true));
-    print('Is passenger: ${state.isPassenger}');
+    emit(state.copyWith(isDriver: false));
+    print('Is driver: ${state.isDriver}');
   }
 
   void isDriver() {
-    emit(state.copyWith(isPassenger: false));
-    print('Is passenger: ${state.isPassenger}');
+    emit(state.copyWith(isDriver: true));
+    print('Is driver: ${state.isDriver}');
   }
 
   void getOrderById(int id) async {
@@ -159,7 +159,7 @@ class OrdersBloc extends Cubit<OrdersState> {
       destinationReference: state.destinationReference,
       commentForDriver: state.commentsForDriver,
       status: 'created',
-      isDriver: state.isPassenger,
+      isDriver: state.isDriver,
     );
 
     try {

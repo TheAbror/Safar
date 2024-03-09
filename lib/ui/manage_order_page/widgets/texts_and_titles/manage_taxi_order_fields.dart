@@ -82,7 +82,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                         return Colors.transparent;
                       },
                     ),
-                    value: state.isPassenger,
+                    value: !state.isDriver,
                     onChanged: (value) {
                       context.read<OrdersBloc>().isPassenger();
                     },
@@ -101,7 +101,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                         return Colors.transparent;
                       },
                     ),
-                    value: !state.isPassenger,
+                    value: state.isDriver,
                     onChanged: (value) {
                       context.read<OrdersBloc>().isDriver();
                     },
