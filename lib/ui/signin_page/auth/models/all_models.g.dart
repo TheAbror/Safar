@@ -200,3 +200,13 @@ Map<String, dynamic> _$OrderStatusToJson(OrderStatus instance) =>
       'key': instance.key,
       'value': instance.value,
     };
+
+DeleteOrderById _$DeleteOrderByIdFromJson(Map<String, dynamic> json) =>
+    DeleteOrderById(
+      deleted: json['deleted'] as bool,
+    );
+
+Map<String, dynamic> _$DeleteOrderByIdToJson(DeleteOrderById instance) =>
+    <String, dynamic>{
+      'deleted': instance.deleted,
+    };

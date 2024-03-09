@@ -303,3 +303,14 @@ class OrderStatus {
 
   Map<String, dynamic> toJson() => _$OrderStatusToJson(this);
 }
+
+@JsonSerializable(includeIfNull: true)
+class DeleteOrderById {
+  final bool deleted;
+
+  DeleteOrderById({required this.deleted});
+
+  factory DeleteOrderById.fromJson(Map<String, dynamic> json) => _$DeleteOrderByIdFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DeleteOrderByIdToJson(this);
+}
