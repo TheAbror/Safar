@@ -72,8 +72,10 @@ class TaxiTab extends StatelessWidget {
                                   return Colors.transparent;
                                 },
                               ),
-                              value: true,
-                              onChanged: (value) {},
+                              value: state.isDriver,
+                              onChanged: (value) {
+                                context.read<OrdersBloc>().isDriver();
+                              },
                             ),
                             Text(
                               'Пассажиров',
@@ -89,8 +91,10 @@ class TaxiTab extends StatelessWidget {
                                   return Colors.transparent;
                                 },
                               ),
-                              value: true,
-                              onChanged: (value) {},
+                              value: !state.isDriver,
+                              onChanged: (value) {
+                                context.read<OrdersBloc>().isPassenger();
+                              },
                             ),
                           ],
                         ),
