@@ -149,8 +149,12 @@ class $AssetsIconsGen {
   $AssetsIconsStaffIconsGen get staffIcons => const $AssetsIconsStaffIconsGen();
 
   /// File path: assets/icons/time_line.png
-  AssetGenImage get timeLine =>
+  AssetGenImage get timeLinePng =>
       const AssetGenImage('assets/icons/time_line.png');
+
+  /// File path: assets/icons/time_line.svg
+  SvgGenImage get timeLineSvg =>
+      const SvgGenImage('assets/icons/time_line.svg');
 
   /// List of all assets
   List<dynamic> get values => [
@@ -162,7 +166,8 @@ class $AssetsIconsGen {
         logoGreen,
         logoShort,
         staffIconInquiryCard,
-        timeLine
+        timeLinePng,
+        timeLineSvg
       ];
 }
 

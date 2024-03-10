@@ -70,14 +70,19 @@ class OrdersCard extends StatelessWidget {
                     children: [
                       Text(
                         'Сумма: ',
-                        style: TextStyle(color: AppColors.iconSecondary),
+                        style: TextStyle(
+                            color: model[index].createdByThisUser
+                                ? AppColors.float
+                                : AppColors.iconSecondary),
                       ),
                       SizedBox(
                         width: 55.w,
                         child: Text(
                           model[index].offeredPrice,
                           style: TextStyle(
-                            color: AppColors.primary,
+                            color: model[index].createdByThisUser
+                                ? AppColors.float
+                                : AppColors.primary,
                             fontWeight: FontWeight.bold,
                           ),
                           overflow: TextOverflow.ellipsis,
@@ -86,6 +91,10 @@ class OrdersCard extends StatelessWidget {
                       ),
                       Text(
                         model[index].numberOfPassengers.toString(),
+                        style: TextStyle(
+                            color: model[index].createdByThisUser
+                                ? AppColors.float
+                                : AppColors.textMain),
                       ),
                       Text(
                         model[index].desiredCarModel.toString(),
@@ -111,7 +120,14 @@ class OrdersCard extends StatelessWidget {
       padding: EdgeInsets.only(left: 51.w),
       child: Row(
         children: [
-          Assets.icons.timeLine.image(),
+          model[index].createdByThisUser
+              ? Assets.icons.timeLineSvg.svg(
+                  colorFilter: ColorFilter.mode(
+                    AppColors.float,
+                    BlendMode.srcIn,
+                  ),
+                )
+              : Assets.icons.timeLinePng.image(),
           SizedBox(width: 10.h),
           SizedBox(
             height: 90.h,
@@ -120,7 +136,10 @@ class OrdersCard extends StatelessWidget {
               children: [
                 Text(
                   'Из',
-                  style: TextStyle(color: AppColors.iconSecondary),
+                  style: TextStyle(
+                    color:
+                        model[index].createdByThisUser ? AppColors.float : AppColors.iconSecondary,
+                  ),
                 ),
                 Text(
                   from,
@@ -133,7 +152,10 @@ class OrdersCard extends StatelessWidget {
                 Spacer(),
                 Text(
                   'В',
-                  style: TextStyle(color: AppColors.iconSecondary),
+                  style: TextStyle(
+                    color:
+                        model[index].createdByThisUser ? AppColors.float : AppColors.iconSecondary,
+                  ),
                 ),
                 Text(
                   to,
@@ -161,17 +183,15 @@ class OrdersCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(50.r)),
             border: Border.all(
-              color: Theme.of(context).colorScheme.tertiary,
+              color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
               width: 0.5.w,
             ),
             image: DecorationImage(
               colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.tertiary,
+                model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                 BlendMode.srcIn,
               ),
-              image: AssetImage(
-                Assets.icons.staffIconInquiryCard.path,
-              ),
+              image: AssetImage(Assets.icons.staffIconInquiryCard.path),
               fit: BoxFit.cover,
             ),
           ),
@@ -181,7 +201,11 @@ class OrdersCard extends StatelessWidget {
           flex: 5,
           child: Column(
             children: [
-              Divider(height: 1.h, thickness: 0.5),
+              Divider(
+                height: 1.h,
+                thickness: 0.5,
+                color: model[index].createdByThisUser ? AppColors.float : AppColors.iconSecondary,
+              ),
               SizedBox(height: 6.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -214,8 +238,8 @@ class OrdersCard extends StatelessWidget {
                   ),
                   StatusWidget(
                     radius: 8,
-                    backgroundColor: backgroundColor,
-                    textColor: textColor,
+                    backgroundColor: model[index].createdByThisUser ? textColor : backgroundColor,
+                    textColor: model[index].createdByThisUser ? backgroundColor : textColor,
                     status: 'In process',
                   ),
                 ],
@@ -267,7 +291,9 @@ class OrdersCard extends StatelessWidget {
                       fontSize: 11.sp,
                       overflow: TextOverflow.ellipsis,
                       fontWeight: FontWeight.w400,
-                      color: AppColors.textSecondary,
+                      color: model[index].createdByThisUser
+                          ? AppColors.float
+                          : AppColors.textSecondary,
                     ),
                     textAlign: TextAlign.end,
                   ),
@@ -283,7 +309,11 @@ class OrdersCard extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 8.h),
-              Divider(height: 1.h, thickness: 0.5),
+              Divider(
+                height: 1.h,
+                thickness: 0.5,
+                color: model[index].createdByThisUser ? AppColors.float : AppColors.iconSecondary,
+              ),
             ],
           ),
         ),
