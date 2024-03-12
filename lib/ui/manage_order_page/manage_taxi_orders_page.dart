@@ -7,6 +7,7 @@ import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/manage_taxi_order_fields.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
 
+import '../../core/constants/something_went_wrong.dart';
 import '../home_page/bloc/orders_bloc.dart';
 
 class ManageTaxiOrdersPageViewModel {
@@ -62,6 +63,8 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
   }
 }
 
+//TODO start edit functionality
+
 class _Body extends StatefulWidget {
   final ManageTaxiOrdersPageViewModel viewModel;
 
@@ -101,19 +104,16 @@ class _BodyState extends State<_Body> {
         }
       },
       builder: (context, state) {
-        // if (state.blocProgress == BlocProgress.IS_LOADING) {
-        //   return Center(
-        //     child: CircularProgressIndicator(
-        //       color: Theme.of(context).colorScheme.primaryContainer,
-        //     ),
-        //   );
-        // }
-        // if (state.blocProgress == BlocProgress.FAILED) {
-        //   return const SomethingWentWrong();
-        // }
-
-        // --- Orders detail ---
-        // endpoint: /api/orders_detail/<int:pk>/
+        if (state.blocProgress == BlocProgress.IS_LOADING) {
+          return Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).colorScheme.primaryContainer,
+            ),
+          );
+        }
+        if (state.blocProgress == BlocProgress.FAILED) {
+          return const SomethingWentWrong();
+        }
 
         return SingleChildScrollView(
           child: Column(
