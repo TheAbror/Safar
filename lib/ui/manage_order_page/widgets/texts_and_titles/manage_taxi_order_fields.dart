@@ -140,10 +140,10 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                 hintText: '+998914309090',
               ),
               SizedBox(height: 8.h),
-              DateOption(
-                dateController: widget.dateController,
-                status: '',
-              ),
+              // DateOption(
+              //   dateController: widget.dateController,
+              //   status: '',
+              // ),
               SizedBox(height: 8.h),
               CommentsForDrier(commentsController: widget.commentsController),
               SizedBox(height: 10.h),

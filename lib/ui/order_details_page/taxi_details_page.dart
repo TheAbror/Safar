@@ -83,9 +83,13 @@ class _BodyState extends State<_Body> {
                         if (value) {
                           context.read<OrdersBloc>().deleteOrderById(widget.model.id);
                         } else if (!value) {
-                          Navigator.of(context).pushNamed(AppRoutes.manageTaxiOrder,
-                              arguments:
-                                  ManageTaxiOrdersPageViewModel(id: widget.model.id, isEdit: true));
+                          Navigator.of(context).pushNamed(
+                            AppRoutes.manageTaxiOrder,
+                            arguments: ManageTaxiOrdersPageViewModel(
+                              id: widget.model.id,
+                              isEdit: true,
+                            ),
+                          );
                         }
                       }
                     });

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/core/dialogs/dialog_success_failure.dart';
-import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/manage_taxi_order_fields.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
@@ -50,7 +49,6 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () async {
                     bloc.postTaxiOrders();
-                    print('ontap here');
                   },
                 ),
               ),
@@ -75,30 +73,40 @@ class _Body extends StatefulWidget {
 class _BodyState extends State<_Body> {
   var fromController = TextEditingController();
   var toController = TextEditingController();
-  var commentsController = TextEditingController();
   var exactLocationController = TextEditingController();
   var exactDestinationController = TextEditingController();
   var offeredPriceController = TextEditingController();
   var dateController = TextEditingController();
   var phoneNumberController = TextEditingController();
+  var commentsController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.viewModel.isEdit) {
+      context.read<OrdersBloc>().getInquiryByIdForEdit(widget.viewModel.id);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<OrdersBloc, OrdersState>(
       listener: (context, state) {
-        // if (state.isInitialValuesLoaded) {
-        //   fromController.text = state.data.title;
-        //   commentsController.text = state.data.description;
+        String dateString = state.date;
+        DateTime dateTime = DateTime.parse(dateString);
 
-        //   context.read<OrdersBloc>().initialValuesDisplayed();
-        // } else
-        if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-          //
-          // context.read<InquiryBloc>().getInitiallyCreated();
+        if (state.isInitialValuesLoaded && widget.viewModel.isEdit) {
+          fromController.text = state.pickup;
+          toController.text = state.destination;
+          exactLocationController.text = state.pickUpReference;
+          exactDestinationController.text = state.destinationReference;
+          offeredPriceController.text = state.offeredPrice;
+          dateController.text = DateFormat('yyyy-MM-dd, HH:mm:ss').format(dateTime);
+          phoneNumberController.text = '';
+          commentsController.text = state.commentsForDriver;
 
-          Navigator.pushNamed(context, AppRoutes.homePage);
-
-          showMessage('Success');
+          context.read<OrdersBloc>().initialValuesDisplayed();
         }
       },
       builder: (context, state) {

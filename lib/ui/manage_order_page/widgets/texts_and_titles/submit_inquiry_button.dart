@@ -17,7 +17,7 @@ class SubmitOrderButton extends StatelessWidget {
     return GestureDetector(
       onTap: isEnabled ? onTap : null,
       child: Text(
-        'Создать',
+        'Отправить',
         style: TextStyle(
           fontSize: 15.sp,
           color: isEnabled ? AppColors.primary : AppColors.buttonDisabled,
