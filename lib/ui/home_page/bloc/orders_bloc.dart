@@ -15,6 +15,53 @@ part 'orders_state.dart';
 class OrdersBloc extends Cubit<OrdersState> {
   OrdersBloc() : super(OrdersState.initial());
 
+  void getInquiryByIdForEdit(int id) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.ordersService.getInquiryByIdForEdit(id);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(
+            state.copyWith(
+              pickup: data.pickup,
+              destination: data.destination,
+              numberOfPassengers: data.numberOfPassengers,
+              date: data.createdAt,
+              offeredPrice: data.offeredPrice,
+              pickUpReference: data.pickupReference,
+              destinationReference: data.destinationReference,
+              commentsForDriver: data.commentForDriver,
+              isInitialValuesLoaded: true,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+        }
+      } else {
+        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+
+        emit(state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: error.message,
+        ));
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+
+      emit(state.copyWith(
+        blocProgress: BlocProgress.FAILED,
+        failureMessage: AppStrings.internalErrorMessage,
+      ));
+    }
+  }
+
+  void initialValuesDisplayed() {
+    emit(state.copyWith(isInitialValuesLoaded: false));
+  }
+
   void isPassenger() {
     emit(state.copyWith(isDriver: false));
     print('Is driver: ${state.isDriver}');
@@ -61,9 +108,8 @@ class OrdersBloc extends Cubit<OrdersState> {
   }
 
   void deleteOrderById(int id) async {
-    emit(state.copyWith(
-        blocProgress:
-            BlocProgress.IS_LOADING)); //TODO finish this after getting response from Abbos
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+    //TODO finish this after getting response from Abbos
 
     try {
       final response = await ApiProvider.ordersService.deleteOrderById(id);

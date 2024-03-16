@@ -63,8 +63,6 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
   }
 }
 
-//TODO start edit functionality
-
 class _Body extends StatefulWidget {
   final ManageTaxiOrdersPageViewModel viewModel;
 

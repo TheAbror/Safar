@@ -57,6 +57,18 @@ final class _$OrdersService extends OrdersService {
   }
 
   @override
+  Future<Response<OrdersResponse>> getInquiryByIdForEdit(int id) {
+    final Uri $url = Uri.parse(
+        'https://safarapi.pythonanywhere.com/api/orders_detail/${id}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<OrdersResponse, OrdersResponse>($request);
+  }
+
+  @override
   Future<Response<DeleteOrderById>> deleteOrderById(int id) {
     final Uri $url = Uri.parse(
         'https://safarapi.pythonanywhere.com/api/orders_detail/${id}');

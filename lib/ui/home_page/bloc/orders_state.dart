@@ -12,6 +12,7 @@ class OrdersState extends Equatable {
   final String commentsForDriver;
   // final String phoneNumber;
   final bool isDriver;
+  final bool isInitialValuesLoaded;
 
   //post variables end
   final OrdersResponse orderByID;
@@ -32,6 +33,7 @@ class OrdersState extends Equatable {
     required this.destinationReference,
     required this.commentsForDriver,
     required this.isDriver,
+    required this.isInitialValuesLoaded,
     required this.orderByID,
     required this.isButtonEnabled,
     required this.randomNumber,
@@ -52,6 +54,7 @@ class OrdersState extends Equatable {
       destinationReference: '',
       commentsForDriver: '',
       isDriver: false,
+      isInitialValuesLoaded: false,
       orderByID: OrdersResponse(
         id: 0,
         pickup: '',
@@ -90,6 +93,7 @@ class OrdersState extends Equatable {
     String? destinationReference,
     String? commentsForDriver,
     bool? isDriver,
+    bool? isInitialValuesLoaded,
     OrdersResponse? orderByID,
     bool? isButtonEnabled,
     int? randomNumber,
@@ -109,6 +113,7 @@ class OrdersState extends Equatable {
       destinationReference: destinationReference ?? this.destinationReference,
       commentsForDriver: commentsForDriver ?? this.commentsForDriver,
       isDriver: isDriver ?? this.isDriver,
+      isInitialValuesLoaded: isInitialValuesLoaded ?? this.isInitialValuesLoaded,
       orderByID: orderByID ?? this.orderByID,
       isButtonEnabled: isButtonEnabled ?? this.isButtonEnabled,
       buttons: buttons ?? this.buttons,
@@ -129,6 +134,7 @@ class OrdersState extends Equatable {
         destinationReference,
         commentsForDriver,
         isDriver,
+        isInitialValuesLoaded,
         orderByID,
         isButtonEnabled,
         randomNumber,
