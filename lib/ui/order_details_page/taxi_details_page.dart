@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
-import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/core/widgets/order_edit_or_delete_dialog.dart';
 import 'package:safar/gen/assets.gen.dart';
@@ -102,14 +101,14 @@ class _BodyState extends State<_Body> {
               : const SizedBox()),
       body: BlocConsumer<OrdersBloc, OrdersState>(
         listener: (context, state) {
-          if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-            //
-            // context.read<InquiryBloc>().getInitiallyCreated();
+          // if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+          //   //
+          //   // context.read<InquiryBloc>().getInitiallyCreated();
 
-            Navigator.pushNamed(context, AppRoutes.homePage);
+          //   Navigator.pushNamed(context, AppRoutes.homePage);
 
-            showMessage('Inquiry was successfully deleted');
-          }
+          //   showMessage('Inquiry was successfully deleted');
+          // }
         },
         builder: (context, state) {
           if (state.blocProgress == BlocProgress.IS_LOADING) {

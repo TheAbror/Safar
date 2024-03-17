@@ -33,6 +33,35 @@ class _AdditionalFieldState extends State<AdditionalField> {
   }
 }
 
+class PickUpReferenceField extends StatefulWidget {
+  final String hintText;
+  final TextEditingController thisController;
+
+  const PickUpReferenceField({
+    super.key,
+    required this.thisController,
+    required this.hintText,
+  });
+
+  @override
+  State<PickUpReferenceField> createState() => _PickUpReferenceFieldState();
+}
+
+class _PickUpReferenceFieldState extends State<PickUpReferenceField> {
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      onChanged: (value) {
+        context.read<OrdersBloc>().updateData(pickUpReference: value);
+        print(value);
+      },
+      controller: widget.thisController,
+      textInputAction: TextInputAction.next,
+      decoration: _Decoration(context, widget.hintText),
+    );
+  }
+}
+
 class OfferedPriceField extends StatefulWidget {
   final String hintText;
   final TextEditingController thisController;

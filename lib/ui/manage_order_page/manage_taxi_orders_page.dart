@@ -5,8 +5,9 @@ import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/manage_taxi_order_fields.dart';
 import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
-
 import '../../core/constants/something_went_wrong.dart';
+import '../../core/dialogs/dialog_success_failure.dart';
+import '../../core/routes/route_constants.dart';
 import '../home_page/bloc/orders_bloc.dart';
 
 class ManageTaxiOrdersPageViewModel {
@@ -48,7 +49,7 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
                 SubmitOrderButton(
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () async {
-                    bloc.postTaxiOrders();
+                    bloc.postTaxiOrders(widget.viewModel.isEdit, widget.viewModel.id);
                   },
                 ),
               ),
@@ -107,6 +108,12 @@ class _BodyState extends State<_Body> {
           commentsController.text = state.commentsForDriver;
 
           context.read<OrdersBloc>().initialValuesDisplayed();
+        } else if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+          //
+
+          Navigator.pushNamed(context, AppRoutes.homePage);
+
+          showMessage('Успех');
         }
       },
       builder: (context, state) {

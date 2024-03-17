@@ -172,15 +172,10 @@ class DeliveryOrdersResponse {
   Map<String, dynamic> toJson() => _$DeliveryOrdersResponseToJson(this);
 }
 
-// POST:
-
-// {
-//     "status": "created",
-//     "is_driver": True
-// }
-
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
 class OrdersRequest {
+  @JsonKey(defaultValue: 0)
+  int? id;
   @JsonKey(defaultValue: '')
   String pickup;
   @JsonKey(defaultValue: '')
@@ -205,6 +200,7 @@ class OrdersRequest {
   bool isDriver;
 
   OrdersRequest({
+    this.id,
     required this.pickup,
     required this.destination,
     required this.numberOfPassengers,

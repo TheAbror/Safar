@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/widgets/tabs_no_data.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
@@ -29,6 +31,16 @@ class TaxiTab extends StatelessWidget {
       },
       child: BlocBuilder<OrdersBloc, OrdersState>(
         builder: (context, state) {
+          if (state.blocProgress == BlocProgress.IS_LOADING) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: Theme.of(context).colorScheme.primaryContainer,
+              ),
+            );
+          }
+          if (state.blocProgress == BlocProgress.FAILED) {
+            return const SomethingWentWrong();
+          }
           return SingleChildScrollView(
             controller: scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
