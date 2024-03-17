@@ -109,7 +109,6 @@ class OrdersBloc extends Cubit<OrdersState> {
 
   void deleteOrderById(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
-    //TODO finish this after getting response from Abbos
 
     try {
       final response = await ApiProvider.ordersService.deleteOrderById(id);

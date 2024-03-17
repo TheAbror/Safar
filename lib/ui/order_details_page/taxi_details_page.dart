@@ -140,9 +140,7 @@ class _BodyState extends State<_Body> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          //TODO  create diagram or picture
                           SizedBox(height: 4.h),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Из: ',
                             value: widget.model.pickup,
@@ -153,56 +151,45 @@ class _BodyState extends State<_Body> {
                             value: widget.model.destination,
                             fonsize: 18,
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Количество пассажиров: ',
                             value: widget.model.numberOfPassengers.toString(),
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Дата отправления: ',
                             value: DateFormat('dd-MM-yyyy, HH:mm')
                                 .format(DateTime.parse(widget.model.desiredPickupTime)),
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Предложенная сумма: ',
                             value: widget.model.offeredPrice,
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Комментарии для водителя: ',
                             value: widget.model.commentForDriver,
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Место встречи: ',
                             value: widget.model.pickupReference,
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Место назначения: ',
                             value: widget.model.destinationReference,
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Cоздан в : ',
                             value: DateFormat('dd-MM-yyyy, HH:mm')
                                 .format(DateTime.parse(widget.model.createdAt)),
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Водитель: ',
                             value: widget.model.isDriver.toString(),
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Статус: ',
                             value: widget.model.status.value,
                           ),
-
                           SizedBox(height: 18.h),
-
                           SizedBox(height: 10.h),
                         ],
                       ),

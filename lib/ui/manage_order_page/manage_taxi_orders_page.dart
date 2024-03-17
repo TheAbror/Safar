@@ -93,10 +93,10 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     return BlocConsumer<OrdersBloc, OrdersState>(
       listener: (context, state) {
-        String dateString = state.date;
-        DateTime dateTime = DateTime.parse(dateString);
-
         if (state.isInitialValuesLoaded && widget.viewModel.isEdit) {
+          String dateString = state.date;
+          DateTime dateTime = DateTime.parse(dateString);
+
           fromController.text = state.pickup;
           toController.text = state.destination;
           exactLocationController.text = state.pickUpReference;
