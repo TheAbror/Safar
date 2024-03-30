@@ -1,6 +1,8 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:chopper/chopper.dart';
+import 'package:safar/ui/home_page/terms_and_conditions/model/terms_request.dart';
+import 'package:safar/ui/home_page/terms_and_conditions/model/terms_response.dart';
 import 'package:safar/ui/order_details_page/action/model/comments_model.dart';
 import 'package:safar/ui/order_details_page/action/model/inquiry_action_request_model.dart';
 import 'package:safar/ui/order_details_page/action/model/staff_model.dart';
@@ -68,7 +70,7 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case MeasurementResponse:
       return MeasurementResponse.fromJson(json);
 
-    case StaffResponse:
+    case StaffResponse: //TODO remove
       return StaffResponse.fromJson(json);
 
     case CommentsResponse:
@@ -94,6 +96,12 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
 
     case DeliveryOrdersResponse:
       return DeliveryOrdersResponse.fromJson(json);
+
+    case TermsResponse:
+      return TermsResponse.fromJson(json);
+
+    case TermsRequest:
+      return TermsRequest.fromJson(json);
 
     default:
       return null;
