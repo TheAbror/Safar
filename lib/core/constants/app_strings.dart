@@ -1,6 +1,5 @@
 class AppStrings {
-  // static const baseLive = 'https://safarapi.pythonanywhere.com/';
-  static const baseLive = 'http://10.12.1.157:8000';
+  static const baseLive = 'https://safarapi.pythonanywhere.com/';
 
   static const signIn = 'api/signup/';
   static const internalErrorMessage = 'Internal error';

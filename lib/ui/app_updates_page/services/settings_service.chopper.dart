@@ -18,7 +18,8 @@ final class _$SettingsService extends SettingsService {
 
   @override
   Future<Response<AppVersionResponse>> getAppVersions() {
-    final Uri $url = Uri.parse('http://10.12.1.157:8000/api/version');
+    final Uri $url =
+        Uri.parse('https://safarapi.pythonanywhere.com/api/version/');
     final Request $request = Request(
       'GET',
       $url,

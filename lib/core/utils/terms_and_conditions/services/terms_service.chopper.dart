@@ -18,7 +18,8 @@ final class _$TermsService extends TermsService {
 
   @override
   Future<Response<List<String>>> getTerms() {
-    final Uri $url = Uri.parse('http://10.12.1.157:8000/types/measurement');
+    final Uri $url =
+        Uri.parse('https://safarapi.pythonanywhere.com/types/measurement');
     final Request $request = Request(
       'GET',
       $url,

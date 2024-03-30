@@ -18,7 +18,8 @@ final class _$OrdersService extends OrdersService {
 
   @override
   Future<Response<DeliveryOrdersResponse>> getTaxiOrders() {
-    final Uri $url = Uri.parse('http://10.12.1.157:8000/api/orders/');
+    final Uri $url =
+        Uri.parse('https://safarapi.pythonanywhere.com/api/orders/');
     final Request $request = Request(
       'GET',
       $url,
@@ -30,7 +31,8 @@ final class _$OrdersService extends OrdersService {
 
   @override
   Future<Response<DeliveryOrdersResponse>> postTaxiOrders(OrdersRequest body) {
-    final Uri $url = Uri.parse('http://10.12.1.157:8000/api/orders/');
+    final Uri $url =
+        Uri.parse('https://safarapi.pythonanywhere.com/api/orders/');
     final $body = body;
     final Request $request = Request(
       'POST',
@@ -44,8 +46,8 @@ final class _$OrdersService extends OrdersService {
 
   @override
   Future<Response<OrdersResponse>> getOrderById(int id) {
-    final Uri $url =
-        Uri.parse('http://10.12.1.157:8000/api/orders_detail//${id}');
+    final Uri $url = Uri.parse(
+        'https://safarapi.pythonanywhere.com/api/orders_detail/${id}');
     final Request $request = Request(
       'GET',
       $url,
@@ -56,8 +58,8 @@ final class _$OrdersService extends OrdersService {
 
   @override
   Future<Response<OrdersResponse>> getInquiryByIdForEdit(int id) {
-    final Uri $url =
-        Uri.parse('http://10.12.1.157:8000/api/orders_detail//${id}');
+    final Uri $url = Uri.parse(
+        'https://safarapi.pythonanywhere.com/api/orders_detail/${id}');
     final Request $request = Request(
       'GET',
       $url,
@@ -68,8 +70,8 @@ final class _$OrdersService extends OrdersService {
 
   @override
   Future<Response<DeleteOrderById>> deleteOrderById(int id) {
-    final Uri $url =
-        Uri.parse('http://10.12.1.157:8000/api/orders_detail//${id}');
+    final Uri $url = Uri.parse(
+        'https://safarapi.pythonanywhere.com/api/orders_detail/${id}');
     final Request $request = Request(
       'DELETE',
       $url,

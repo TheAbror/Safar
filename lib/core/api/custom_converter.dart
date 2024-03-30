@@ -5,9 +5,7 @@ import 'package:safar/core/utils/models/all_models.dart';
 import 'package:safar/core/utils/models/auth.dart';
 import 'package:safar/core/utils/terms_and_conditions/model/terms_request.dart';
 import 'package:safar/core/utils/terms_and_conditions/model/terms_response.dart';
-import 'package:safar/ui/order_details_page/action/model/inquiry_action_request_model.dart';
 import 'package:safar/ui/manage_order_page/model/delete_inquiry_by_id.dart';
-import 'package:safar/ui/manage_order_page/model/inquiry_item_request.dart';
 
 class CustomDataConverter extends JsonConverter {
   @override
@@ -55,11 +53,6 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
       return SignInRequest.fromJson(json);
 
     //delete unused elements
-    case InquiryActionRequestModel:
-      return InquiryActionRequestModel.fromJson(json);
-
-    case InquiryItemRequest:
-      return InquiryItemRequest.fromJson(json);
 
     case DeleteInquiryByIdModel:
       return DeleteInquiryByIdModel.fromJson(json);
