@@ -55,64 +55,7 @@ class TaxiTab extends StatelessWidget {
                     searchTaxi: searchTaxi,
                   ),
                   _FilterCards(state, context),
-                  Container(
-                    padding: EdgeInsets.only(left: 8.w),
-                    margin: EdgeInsets.symmetric(vertical: 5.h),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Показать только:   ',
-                          style: TextStyle(
-                            color: AppColors.iconSecondary,
-                            fontSize: 14.sp,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'Водителей',
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                            Checkbox(
-                              checkColor: AppColors.float,
-                              fillColor: MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.selected)) {
-                                    return AppColors.primary;
-                                  }
-                                  return Colors.transparent;
-                                },
-                              ),
-                              value: state.isDriver,
-                              onChanged: (value) {
-                                context.read<OrdersBloc>().isDriver();
-                              },
-                            ),
-                            Text(
-                              'Пассажиров',
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                            Checkbox(
-                              checkColor: AppColors.float,
-                              fillColor: MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.selected)) {
-                                    return AppColors.primary;
-                                  }
-                                  return Colors.transparent;
-                                },
-                              ),
-                              value: !state.isDriver,
-                              onChanged: (value) {
-                                context.read<OrdersBloc>().isPassenger();
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  CheckboxesForDriverAndUser(state: state),
                   if (state.orders.results.isNotEmpty)
                     ListView.builder(
                       itemCount: state.orders.results.length,
@@ -120,8 +63,8 @@ class TaxiTab extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return OrdersCard(
-                          model: state.orders.results,
                           index: index,
+                          model: state.orders.results,
                           child: Assets.icons.deliveryIcon.image(),
                         );
                       },
@@ -150,6 +93,77 @@ class TaxiTab extends StatelessWidget {
             //   ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CheckboxesForDriverAndUser extends StatelessWidget {
+  final OrdersState state;
+
+  const CheckboxesForDriverAndUser({
+    super.key,
+    required this.state,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 8.w),
+      margin: EdgeInsets.symmetric(vertical: 5.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Показать только:   ',
+            style: TextStyle(
+              color: AppColors.iconSecondary,
+              fontSize: 14.sp,
+            ),
+          ),
+          Row(
+            children: [
+              Text(
+                'Водителей',
+                style: TextStyle(fontSize: 14.sp),
+              ),
+              Checkbox(
+                checkColor: AppColors.float,
+                fillColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.selected)) {
+                      return AppColors.primary;
+                    }
+                    return Colors.transparent;
+                  },
+                ),
+                value: state.isDriver,
+                onChanged: (value) {
+                  context.read<OrdersBloc>().isDriver();
+                },
+              ),
+              Text(
+                'Пассажиров',
+                style: TextStyle(fontSize: 14.sp),
+              ),
+              Checkbox(
+                checkColor: AppColors.float,
+                fillColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.selected)) {
+                      return AppColors.primary;
+                    }
+                    return Colors.transparent;
+                  },
+                ),
+                value: !state.isDriver,
+                onChanged: (value) {
+                  context.read<OrdersBloc>().isPassenger();
+                },
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

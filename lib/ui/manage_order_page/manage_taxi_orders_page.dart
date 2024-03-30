@@ -47,7 +47,6 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
                 context,
                 widget.viewModel.isEdit ? 'Изменить детали заказа' : 'Заказать такси',
                 //var createdByThisUser = model[index].createdByThisUser;
-                //TODO do not show if was created by someone else
                 SubmitOrderButton(
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () async {

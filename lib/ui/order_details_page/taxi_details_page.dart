@@ -75,30 +75,32 @@ class _BodyState extends State<_Body> {
           context,
           widget.model.pickup,
           widget.model.numberOfPassengers < 10
-              ? GestureDetector(
-                  onTap: () async {
-                    order_edit_or_delete_dialog(context).then((value) {
-                      if (value != null) {
-                        if (value) {
-                          context.read<OrdersBloc>().deleteOrderById(widget.model.id);
-                        } else if (!value) {
-                          Navigator.of(context).pushNamed(
-                            AppRoutes.manageTaxiOrder,
-                            arguments: ManageTaxiOrdersPageViewModel(
-                              id: widget.model.id,
-                              isEdit: true,
-                            ),
-                          );
-                        }
-                      }
-                    });
-                  },
-                  child: Assets.icons.staffIcons.edit.svg(
-                    height: 24.h,
-                    width: 24.h,
-                  ),
-                )
-              : const SizedBox()),
+              ? widget.model.createdByThisUser
+                  ? GestureDetector(
+                      onTap: () async {
+                        order_edit_or_delete_dialog(context).then((value) {
+                          if (value != null) {
+                            if (value) {
+                              context.read<OrdersBloc>().deleteOrderById(widget.model.id);
+                            } else if (!value) {
+                              Navigator.of(context).pushNamed(
+                                AppRoutes.manageTaxiOrder,
+                                arguments: ManageTaxiOrdersPageViewModel(
+                                  id: widget.model.id,
+                                  isEdit: true,
+                                ),
+                              );
+                            }
+                          }
+                        });
+                      },
+                      child: Assets.icons.staffIcons.edit.svg(
+                        height: 24.h,
+                        width: 24.h,
+                      ),
+                    )
+                  : const SizedBox()
+              : SizedBox()),
       body: BlocConsumer<OrdersBloc, OrdersState>(
         listener: (context, state) {
           // if (state.blocProgress == BlocProgress.IS_SUCCESS) {

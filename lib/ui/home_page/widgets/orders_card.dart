@@ -12,7 +12,6 @@ import 'status_widget.dart';
 class OrdersCard extends StatelessWidget {
   final int index;
   final List<OrdersResponse> model;
-
   final Widget child;
 
   const OrdersCard({
