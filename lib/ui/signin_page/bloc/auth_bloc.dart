@@ -22,7 +22,7 @@ class AuthBloc extends Cubit<AuthState> {
   }
 
   void signIn(String username, String password, String contacts) async {
-    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING, isWaiting: true));
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = SignInRequest(username: username, password: password, contacts: contacts);
 
@@ -42,7 +42,6 @@ class AuthBloc extends Cubit<AuthState> {
             state.copyWith(
               data: data,
               blocProgress: BlocProgress.IS_SUCCESS,
-              isWaiting: false,
             ),
           );
 
@@ -60,7 +59,6 @@ class AuthBloc extends Cubit<AuthState> {
       } else {
         emit(state.copyWith(
           blocProgress: BlocProgress.FAILED,
-          isWaiting: false,
           failureMessage: response.error.toString(),
         ));
       }
@@ -68,7 +66,6 @@ class AuthBloc extends Cubit<AuthState> {
       debugPrint('Error getting inquiries: $e');
       emit(state.copyWith(
         blocProgress: BlocProgress.FAILED,
-        isWaiting: false,
         failureMessage: AppStrings.internalErrorMessage,
       ));
     }
@@ -77,5 +74,9 @@ class AuthBloc extends Cubit<AuthState> {
   void isPasswordHidden() {
     final item = !state.isPasswordHidden;
     emit(state.copyWith(isPasswordHidden: item));
+  }
+
+  void isAgreedToTerms(bool value) {
+    emit(state.copyWith(isAgreedToTerms: value));
   }
 }

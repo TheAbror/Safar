@@ -8,6 +8,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:safar/core/api/api_provider.dart';
 import 'package:safar/core/routes/main_route_generator.dart';
 import 'package:safar/core/utils/api_logging.dart';
+import 'package:safar/ui/signin_page/bloc/auth_bloc.dart';
 import 'package:safar/ui/splash_page/bloc/splash_bloc.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/model/current_user.dart';
@@ -36,6 +37,7 @@ void main() async {
       runApp(
         MultiBlocProvider(
           providers: [
+            BlocProvider(create: (context) => AuthBloc()),
             BlocProvider(create: (context) => OrdersBloc()),
             BlocProvider(create: (context) => SplashBloc()),
           ],

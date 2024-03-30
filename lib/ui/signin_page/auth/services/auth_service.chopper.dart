@@ -18,8 +18,7 @@ final class _$AuthService extends AuthService {
 
   @override
   Future<Response<SignInResponse>> signIn(SignInRequest body) {
-    final Uri $url =
-        Uri.parse('https://safarapi.pythonanywhere.com/api/signup/');
+    final Uri $url = Uri.parse('http://10.12.1.157:8000/api/signup/');
     final $body = body;
     final Request $request = Request(
       'POST',

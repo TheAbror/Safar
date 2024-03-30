@@ -17,6 +17,8 @@ AppVersionResponse _$AppVersionResponseFromJson(Map<String, dynamic> json) =>
       androidStoreUrl: json['android_store_url'] as String? ?? '',
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
+      terms: json['terms'] as String? ?? '',
+      created_at: json['created_at'] as String? ?? '',
     );
 
 Map<String, dynamic> _$AppVersionResponseToJson(AppVersionResponse instance) =>
@@ -30,4 +32,6 @@ Map<String, dynamic> _$AppVersionResponseToJson(AppVersionResponse instance) =>
       'android_store_url': instance.androidStoreUrl,
       'title': instance.title,
       'description': instance.description,
+      'terms': instance.terms,
+      'created_at': instance.created_at,
     };

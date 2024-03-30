@@ -22,6 +22,10 @@ class AppVersionResponse {
   final String title;
   @JsonKey(defaultValue: '')
   final String description;
+  @JsonKey(defaultValue: '')
+  final String terms;
+  @JsonKey(defaultValue: '')
+  final String created_at;
 
   AppVersionResponse({
     required this.showMaintanance,
@@ -33,9 +37,12 @@ class AppVersionResponse {
     required this.androidStoreUrl,
     required this.title,
     required this.description,
+    required this.terms,
+    required this.created_at,
   });
 
-  factory AppVersionResponse.fromJson(Map<String, dynamic> json) => _$AppVersionResponseFromJson(json);
+  factory AppVersionResponse.fromJson(Map<String, dynamic> json) =>
+      _$AppVersionResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$AppVersionResponseToJson(this);
 }

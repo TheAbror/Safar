@@ -26,132 +26,131 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc(),
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: Scaffold(
-          backgroundColor: AppColors.float,
-          resizeToAvoidBottomInset: false,
-          body: BlocConsumer<AuthBloc, AuthState>(
-            listener: (context, state) async {
-              if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-                Navigator.pushNamed(context, AppRoutes.homePage);
-              }
-              if (state.blocProgress == BlocProgress.IS_LOADING) {
-                Center(
-                  child: CircularProgressIndicator(color: AppColors.primary),
-                );
-              } else if (state.blocProgress == BlocProgress.FAILED) {
-                showMessage(
-                  state.failureMessage,
-                  isError: true,
-                );
-              }
-            },
-            builder: (context, state) {
-              return Form(
-                key: _formKey,
-                child: SafeArea(
-                  bottom: false,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.h),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 30.h),
-                        Center(
-                          child: Assets.icons.logoGreen.image(
-                            width: double.infinity,
-                            fit: BoxFit.fill,
-                          ),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        backgroundColor: AppColors.float,
+        resizeToAvoidBottomInset: false,
+        body: BlocConsumer<AuthBloc, AuthState>(
+          listener: (context, state) async {
+            if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+              Navigator.pushNamed(context, AppRoutes.homePage);
+            }
+            if (state.blocProgress == BlocProgress.IS_LOADING) {
+              Center(
+                child: CircularProgressIndicator(color: AppColors.primary),
+              );
+            } else if (state.blocProgress == BlocProgress.FAILED) {
+              showMessage(
+                state.failureMessage,
+                isError: true,
+              );
+            }
+          },
+          builder: (context, state) {
+            return Form(
+              key: _formKey,
+              child: SafeArea(
+                bottom: false,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 30.h),
+                      Center(
+                        child: Assets.icons.logoGreen.image(
+                          width: double.infinity,
+                          fit: BoxFit.fill,
                         ),
-                        SizedBox(height: 5.h),
-                        Text(
-                          'Войти',
-                          style: TextStyle(
-                            fontSize: 24.sp,
-                            fontWeight: FontWeight.w500,
-                            color: Theme.of(context).colorScheme.tertiaryContainer,
-                          ),
+                      ),
+                      SizedBox(height: 5.h),
+                      Text(
+                        'Войти',
+                        style: TextStyle(
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.tertiaryContainer,
                         ),
-                        SizedBox(height: 8.h),
-                        Text(
-                          'Введите свои учетные данные для доступа к платформе',
-                          style: TextStyle(
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w400,
-                            color: Theme.of(context).colorScheme.tertiaryContainer,
-                          ),
+                      ),
+                      SizedBox(height: 8.h),
+                      Text(
+                        'Введите свои учетные данные для доступа к платформе',
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Theme.of(context).colorScheme.tertiaryContainer,
                         ),
-                        SizedBox(height: 20.h),
-                        Text(
-                          'Логин',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.logInInTextColor,
-                          ),
+                      ),
+                      SizedBox(height: 20.h),
+                      Text(
+                        'Логин',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.logInInTextColor,
                         ),
-                        SizedBox(height: 5.h),
-                        SignInUsernameField(usernameController: _usernameController),
-                        SizedBox(height: 24.h),
-                        Text(
-                          'Пароль',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.logInInTextColor,
-                          ),
+                      ),
+                      SizedBox(height: 5.h),
+                      SignInUsernameField(usernameController: _usernameController),
+                      SizedBox(height: 24.h),
+                      Text(
+                        'Пароль',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.logInInTextColor,
                         ),
-                        SizedBox(height: 5.h),
-                        SignInPasswordField(passwordController: _passwordController),
-                        SizedBox(height: 5.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            GestureDetector(
-                              onTap: () => termsAndConditions(),
-                              child: Text(
-                                'Условия использования',
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.primary,
-                                ),
+                      ),
+                      SizedBox(height: 5.h),
+                      SignInPasswordField(passwordController: _passwordController),
+                      SizedBox(height: 5.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () => termsAndConditions(),
+                            child: Text(
+                              'Согласен с Условиями использования',
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.primary,
                               ),
                             ),
-                            Checkbox(
-                              activeColor: AppColors.primary,
-                              value: isAgreed,
-                              onChanged: (value) {
-                                setState(() {
-                                  isAgreed = !isAgreed;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        _ContinueButton(context, state, isAgreed),
-                        SizedBox(height: 50.h),
-                      ],
-                    ),
+                          ),
+                          Checkbox(
+                            activeColor: AppColors.primary,
+                            value: state.isAgreedToTerms,
+                            onChanged: (value) {
+                              context.read<AuthBloc>().isAgreedToTerms(value ?? false);
+                            },
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      _ContinueButton(
+                        context,
+                        state,
+                        state.isAgreedToTerms,
+                      ),
+                      SizedBox(height: 50.h),
+                    ],
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 
-  bool isAgreed = false;
-
   void termsAndConditions() async {
     final result = await TermsBottomSheet.show(context);
-    print(result);
+    if (!mounted) return;
+
+    context.read<AuthBloc>().isAgreedToTerms(result ?? true);
   }
 
   GestureDetector _ContinueButton(BuildContext context, AuthState state, bool isAgreed) {
@@ -174,7 +173,7 @@ class _SignInPageState extends State<SignInPage> {
           border: Border.all(color: AppColors.primary, width: 1),
         ),
         child: Center(
-          child: state.isWaiting
+          child: state.blocProgress == BlocProgress.IS_LOADING
               ? SizedBox(
                   width: 25.w,
                   height: 25.w,

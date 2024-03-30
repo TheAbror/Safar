@@ -3,14 +3,14 @@ part of 'auth_bloc.dart';
 class AuthState extends Equatable {
   final SignInResponse data;
   final bool isPasswordHidden;
-  final bool isWaiting;
+  final bool isAgreedToTerms;
   final BlocProgress blocProgress;
   final AccountType accountType;
   final String failureMessage;
 
   const AuthState({
     required this.isPasswordHidden,
-    required this.isWaiting,
+    required this.isAgreedToTerms,
     required this.data,
     required this.blocProgress,
     required this.accountType,
@@ -20,7 +20,7 @@ class AuthState extends Equatable {
   factory AuthState.initial() {
     return AuthState(
       isPasswordHidden: true,
-      isWaiting: false,
+      isAgreedToTerms: false,
       data: SignInResponse(
         token: '',
         userInfo: UserInfoResponse(
@@ -46,7 +46,7 @@ class AuthState extends Equatable {
   AuthState copyWith({
     SignInResponse? data,
     bool? isPasswordHidden,
-    bool? isWaiting,
+    bool? isAgreedToTerms,
     BlocProgress? blocProgress,
     AccountType? accountType,
     String? failureMessage,
@@ -54,7 +54,7 @@ class AuthState extends Equatable {
     return AuthState(
       data: data ?? this.data,
       isPasswordHidden: isPasswordHidden ?? this.isPasswordHidden,
-      isWaiting: isWaiting ?? this.isWaiting,
+      isAgreedToTerms: isAgreedToTerms ?? this.isAgreedToTerms,
       blocProgress: blocProgress ?? this.blocProgress,
       accountType: accountType ?? this.accountType,
       failureMessage: failureMessage ?? this.failureMessage,
@@ -64,7 +64,7 @@ class AuthState extends Equatable {
   @override
   List<Object?> get props => [
         isPasswordHidden,
-        isWaiting,
+        isAgreedToTerms,
         data,
         blocProgress,
         failureMessage,

@@ -31,6 +31,8 @@ class SplashState extends Equatable {
         androidStoreUrl: '',
         title: '',
         description: '',
+        terms: '',
+        created_at: '',
       ),
       showAppUpdatesPage: false,
       authStatus: SplashAuthStatus.initial,
