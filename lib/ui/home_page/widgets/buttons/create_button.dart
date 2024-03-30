@@ -37,7 +37,7 @@ class CreateButton extends StatelessWidget {
             ),
             SizedBox(width: 4.w),
             Text(
-              ' Create',
+              'Cоздать',
               style: TextStyle(
                 color: AppColors.float,
                 fontSize: 15.sp,

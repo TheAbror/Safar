@@ -16,7 +16,7 @@ class SignInUsernameField extends StatelessWidget {
     return TextFormField(
       validator: (username) {
         if (username == null || username.isEmpty) {
-          return 'Please enter your id';
+          return 'Все поля должны быть заполнены';
         }
         return null;
       },

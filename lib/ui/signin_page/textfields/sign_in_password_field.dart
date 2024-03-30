@@ -22,7 +22,7 @@ class SignInPasswordField extends StatelessWidget {
           return TextFormField(
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your password';
+                return 'Все поля должны быть заполнены';
               }
               return null;
             },

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
-import 'package:safar/core/utils/terms_and_conditions/terms_and_conditions_bottomsheet.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../core/utils/terms_and_conditions/terms_and_conditions_bottomsheet.dart';
 import 'bloc/auth_bloc.dart';
 import 'textfields/sign_in_password_field.dart';
 import 'textfields/sign_in_username_field.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/core/dialogs/dialog_success_failure.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -41,9 +41,8 @@ class _SignInPageState extends State<SignInPage> {
                 child: CircularProgressIndicator(color: AppColors.primary),
               );
             } else if (state.blocProgress == BlocProgress.FAILED) {
-              //TODO
               showMessage(
-                state.failureMessage,
+                state.failureMessage, //TODO
                 isError: true,
               );
             }
@@ -170,7 +169,7 @@ class _SignInPageState extends State<SignInPage> {
         height: 48.h,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: isAgreed ? AppColors.primary : AppColors.iconSecondary,
+          color: isAgreed ? AppColors.primary : Colors.grey.shade500,
           borderRadius: BorderRadius.all(Radius.circular(40.r)),
           border: Border.all(color: AppColors.primary, width: 1),
         ),

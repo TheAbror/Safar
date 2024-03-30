@@ -26,13 +26,16 @@ class SearchAndFilterTaxi extends StatelessWidget {
         fillColor: Theme.of(context).colorScheme.onBackground,
         width: 344.w,
         hintText: 'Поиск',
+        controller: searchTaxi,
+        onChanged: (val) {
+          // context.read<InquiryBloc>().searchTaxi(val);
+        },
         suffixIcon: SearchSettings(
           color: AppColors.primary,
           onTap: () async {
             // final selectedValue = state.listOfSelectedStatusesCreated.isNotEmpty
             //     ? state.listOfSelectedStatusesCreated.last
             //     : '';
-
             final result = await PrimaryBottomSheet.show(
               context,
               isSearchNeeded: false,
@@ -49,10 +52,6 @@ class SearchAndFilterTaxi extends StatelessWidget {
             }
           },
         ),
-        controller: searchTaxi,
-        onChanged: (val) {
-          // context.read<InquiryBloc>().searchTaxi(val);
-        },
       ),
     );
   }

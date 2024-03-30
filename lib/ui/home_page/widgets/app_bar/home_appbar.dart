@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:safar/core/api/api_provider.dart';
+import 'package:safar/core/box/current_user_box.dart';
+import 'package:safar/core/db/preferences_services.dart';
+import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/fonts.gen.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/constants/app_configs.dart';
-import 'package:safar/core/dialogs/sign_out_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/ui/signin_page/bloc/auth_bloc.dart';
+import 'package:flutter_dialogs/flutter_dialogs.dart';
 
 class HomeAppBar extends StatelessWidget {
   final String? fullName;
@@ -22,7 +28,37 @@ class HomeAppBar extends StatelessWidget {
     return Row(
       children: [
         GestureDetector(
-          onTap: () => signOutDialog(context),
+          onTap: () {
+            showPlatformDialog(
+              context: context,
+              builder: (mycontext) => BasicDialogAlert(
+                title: const Text('Выход'),
+                content: const Text('Вы хотите выйти из системы?'),
+                actions: <Widget>[
+                  BasicDialogAction(
+                    title: Text('Да', style: TextStyle(color: AppColors.primary)),
+                    onPressed: () {
+                      PreferencesServices.clearAll().then((value) {
+                        if (value) {
+                          ApiProvider.create();
+                          boxCurrentUser.clear();
+
+                          context.read<AuthBloc>().clearAll();
+
+                          Navigator.pop(mycontext);
+                          Navigator.of(context).pushNamed(AppRoutes.splashPage);
+                        }
+                      });
+                    },
+                  ),
+                  BasicDialogAction(
+                    title: Text('Нет', style: TextStyle(color: AppColors.primary)),
+                    onPressed: () => Navigator.pop(mycontext),
+                  ),
+                ],
+              ),
+            );
+          },
           child: Container(
             decoration: BoxDecoration(
               color: AppColors.float,
