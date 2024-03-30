@@ -6,7 +6,7 @@ import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/routes/route_constants.dart';
-import 'package:safar/core/utils/models/all_models.dart';
+import 'package:safar/core/utils/all_models/all_models.dart';
 import 'package:safar/core/widgets/order_edit_or_delete_dialog.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';

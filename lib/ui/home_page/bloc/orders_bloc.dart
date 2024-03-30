@@ -6,7 +6,7 @@ import 'package:safar/core/constants/app_strings.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safar/core/utils/models/all_models.dart';
+import 'package:safar/core/utils/all_models/all_models.dart';
 
 part 'orders_state.dart';
 

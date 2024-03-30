@@ -1,8 +1,8 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:chopper/chopper.dart';
-import 'package:safar/core/utils/models/all_models.dart';
-import 'package:safar/core/utils/models/auth.dart';
+import 'package:safar/core/utils/all_models/all_models.dart';
+import 'package:safar/core/utils/all_models/auth.dart';
 import 'package:safar/core/utils/terms_and_conditions/model/terms_request.dart';
 import 'package:safar/core/utils/terms_and_conditions/model/terms_response.dart';
 import 'package:safar/ui/manage_order_page/model/delete_order_by_id.dart';
