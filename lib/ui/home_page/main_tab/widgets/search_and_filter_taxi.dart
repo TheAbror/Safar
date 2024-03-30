@@ -42,7 +42,7 @@ class SearchAndFilterTaxi extends StatelessWidget {
               isSearchNeeded: false,
               isConfirmationNeeded: false,
               heightRatio: 0.7,
-              title: 'Filter by status',
+              title: 'Поиск',
               selectedValue: 'selectedValue',
               initialList: statusesList,
             );
