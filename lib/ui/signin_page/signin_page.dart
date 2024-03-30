@@ -41,6 +41,7 @@ class _SignInPageState extends State<SignInPage> {
                 child: CircularProgressIndicator(color: AppColors.primary),
               );
             } else if (state.blocProgress == BlocProgress.FAILED) {
+              //TODO
               showMessage(
                 state.failureMessage,
                 isError: true,
@@ -111,7 +112,7 @@ class _SignInPageState extends State<SignInPage> {
                           GestureDetector(
                             onTap: () => termsAndConditions(),
                             child: Text(
-                              'Согласен с Условиями использования',
+                              'Согласен с условиями использования',
                               style: TextStyle(
                                 fontSize: 14.sp,
                                 fontWeight: FontWeight.w500,

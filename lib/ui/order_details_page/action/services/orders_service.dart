@@ -12,6 +12,9 @@ abstract class OrdersService extends ChopperService {
   @Get(path: AppStrings.orders)
   Future<Response<DeliveryOrdersResponse>> getTaxiOrders();
 
+  @Get(path: AppStrings.filterStatusesList)
+  Future<Response<FilterStatusesList>> getStatusesList(); //TODO
+
   @Post(path: AppStrings.orderDetails)
   Future<Response<DeliveryOrdersResponse>> postTaxiOrders(@Body() OrdersRequest body);
 

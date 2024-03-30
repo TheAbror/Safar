@@ -30,6 +30,18 @@ final class _$OrdersService extends OrdersService {
   }
 
   @override
+  Future<Response<FilterStatusesList>> getStatusesList() {
+    final Uri $url = Uri.parse(
+        'https://safarapi.pythonanywhere.com/api/taxi_status_filters/');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<FilterStatusesList, FilterStatusesList>($request);
+  }
+
+  @override
   Future<Response<DeliveryOrdersResponse>> postTaxiOrders(OrdersRequest body) {
     final Uri $url =
         Uri.parse('https://safarapi.pythonanywhere.com/api/orders_detail/');

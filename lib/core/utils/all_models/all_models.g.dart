@@ -212,3 +212,16 @@ Map<String, dynamic> _$DeleteOrderByIdToJson(DeleteOrderById instance) =>
     <String, dynamic>{
       'deleted': instance.deleted,
     };
+
+FilterStatusesList _$FilterStatusesListFromJson(Map<String, dynamic> json) =>
+    FilterStatusesList(
+      statuses: (json['statuses'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$FilterStatusesListToJson(FilterStatusesList instance) =>
+    <String, dynamic>{
+      'statuses': instance.statuses,
+    };

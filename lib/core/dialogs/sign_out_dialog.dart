@@ -21,7 +21,7 @@ Future<dynamic> signOutDialog(BuildContext context) {
                 ApiProvider.create();
                 boxCurrentUser.clear();
 
-                Navigator.of(context).pushNamed(AppRoutes.splashPage);
+                Navigator.pushNamed(context, AppRoutes.splashPage);
               }
             });
           },

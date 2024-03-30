@@ -67,6 +67,9 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case DeleteOrderById:
       return DeleteOrderById.fromJson(json);
 
+    case FilterStatusesList:
+      return FilterStatusesList.fromJson(json);
+
     default:
       return null;
   }
