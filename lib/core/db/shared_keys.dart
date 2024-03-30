@@ -20,4 +20,5 @@ abstract class ShPrefKeys {
   static var isLightMode = 'isLightMode';
   static var themeMode = 'themeMode';
   static var currentUser = 'currentUser';
+  static var errorOccured = 'Произошла ошибка';
 }

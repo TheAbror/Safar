@@ -21,16 +21,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    context.read<OrdersBloc>().getTaxiOrders();
-
     super.initState();
+
+    context.read<OrdersBloc>().getTaxiOrders();
   }
 
   final ScrollController _scrollControllerAssigned = ScrollController();
   final ScrollController _scrollControllerCreated = ScrollController();
 
   CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
-  String errorOccured = 'Произошла ошибка';
+  String errorOccured = ShPrefKeys.errorOccured;
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +55,17 @@ class _HomePageState extends State<HomePage> {
               DefaultTabController.of(context).index == 0
                   ? Navigator.of(context).pushNamed(
                       AppRoutes.manageDeliveryOrder,
-                      arguments: ManagDeliveryOrdersPageViewModel(id: 0, isEdit: false),
+                      arguments: ManagDeliveryOrdersPageViewModel(
+                        id: 0,
+                        isEdit: false,
+                      ),
                     )
                   : Navigator.of(context).pushNamed(
                       AppRoutes.manageTaxiOrder,
-                      arguments: ManageTaxiOrdersPageViewModel(id: 0, isEdit: false),
+                      arguments: ManageTaxiOrdersPageViewModel(
+                        id: 0,
+                        isEdit: false,
+                      ),
                     );
             },
           ),
