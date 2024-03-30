@@ -1,4 +1,3 @@
-import 'package:safar/ui/manage_order_page/model/inquiry_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -230,7 +229,6 @@ class Items {
   final String name;
   @JsonKey(defaultValue: 0)
   final double quantity;
-  MeasurementResponse? measurement;
 
   Items({
     required this.id,

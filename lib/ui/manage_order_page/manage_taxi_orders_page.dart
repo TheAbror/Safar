@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
-import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/manage_taxi_order_fields.dart';
-import 'package:safar/ui/manage_order_page/widgets/texts_and_titles/submit_inquiry_button.dart';
 import '../../core/constants/something_went_wrong.dart';
 import '../../core/dialogs/dialog_success_failure.dart';
 import '../../core/routes/route_constants.dart';
 import '../home_page/bloc/orders_bloc.dart';
+import 'texts_and_titles/submit_inquiry_button.dart';
+import 'widgets/manage_taxi_order_fields.dart';
 
 class ManageTaxiOrdersPageViewModel {
   final int id;

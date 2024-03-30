@@ -3,12 +3,9 @@
 import 'package:chopper/chopper.dart';
 import 'package:safar/ui/home_page/terms_and_conditions/model/terms_request.dart';
 import 'package:safar/ui/home_page/terms_and_conditions/model/terms_response.dart';
-import 'package:safar/ui/order_details_page/action/model/comments_model.dart';
 import 'package:safar/ui/order_details_page/action/model/inquiry_action_request_model.dart';
-import 'package:safar/ui/order_details_page/action/model/staff_model.dart';
 import 'package:safar/ui/manage_order_page/model/delete_inquiry_by_id.dart';
 import 'package:safar/ui/manage_order_page/model/inquiry_item_request.dart';
-import 'package:safar/ui/manage_order_page/model/inquiry_model.dart';
 import 'package:safar/ui/signin_page/auth/models/auth.dart';
 import 'package:safar/ui/signin_page/auth/models/all_models.dart';
 import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
@@ -67,23 +64,9 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case Created:
       return Created.fromJson(json);
 
-    case MeasurementResponse:
-      return MeasurementResponse.fromJson(json);
-
-    case StaffResponse: //TODO remove
-      return StaffResponse.fromJson(json);
-
-    case CommentsResponse:
-      return CommentsResponse.fromJson(json);
-
-    case CommentsModelRequest:
-      return CommentsModelRequest.fromJson(json);
-
+//TODO remove
     case InquiryActionRequestModel:
       return InquiryActionRequestModel.fromJson(json);
-
-    case CreateInquiryRequest:
-      return CreateInquiryRequest.fromJson(json);
 
     case InquiryItemRequest:
       return InquiryItemRequest.fromJson(json);

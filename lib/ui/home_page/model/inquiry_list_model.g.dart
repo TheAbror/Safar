@@ -167,16 +167,12 @@ Items _$ItemsFromJson(Map<String, dynamic> json) => Items(
       id: json['id'] as int? ?? 0,
       name: json['name'] as String? ?? '',
       quantity: (json['quantity'] as num?)?.toDouble() ?? 0,
-    )..measurement = json['measurement'] == null
-        ? null
-        : MeasurementResponse.fromJson(
-            json['measurement'] as Map<String, dynamic>);
+    );
 
 Map<String, dynamic> _$ItemsToJson(Items instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'quantity': instance.quantity,
-      'measurement': instance.measurement?.toJson(),
     };
 
 Status _$StatusFromJson(Map<String, dynamic> json) => Status(

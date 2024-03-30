@@ -17,7 +17,7 @@ final class _$TermsService extends TermsService {
   final definitionType = TermsService;
 
   @override
-  Future<Response<List<MeasurementResponse>>> getTerms() {
+  Future<Response<List<String>>> getTerms() {
     final Uri $url =
         Uri.parse('https://safarapi.pythonanywhere.com/types/measurement');
     final Request $request = Request(
@@ -25,7 +25,6 @@ final class _$TermsService extends TermsService {
       $url,
       client.baseUrl,
     );
-    return client
-        .send<List<MeasurementResponse>, MeasurementResponse>($request);
+    return client.send<List<String>, String>($request);
   }
 }
