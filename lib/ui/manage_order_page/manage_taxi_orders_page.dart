@@ -46,6 +46,8 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
               appBar: order_appbar(
                 context,
                 widget.viewModel.isEdit ? 'Изменить детали заказа' : 'Заказать такси',
+                //var createdByThisUser = model[index].createdByThisUser;
+                //TODO do not show if was created by someone else
                 SubmitOrderButton(
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () async {
@@ -53,6 +55,7 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
                         ? bloc.editTaxiOrdersByID(widget.viewModel.id)
                         : bloc.postTaxiOrders(widget.viewModel.id);
                   },
+                  //TODO number of passengers is incremented by 1
                 ),
               ),
               body: _Body(viewModel: widget.viewModel),

@@ -6,7 +6,6 @@ import 'package:safar/core/utils/all_models/auth.dart';
 import 'package:safar/core/utils/terms_and_conditions/model/terms_request.dart';
 import 'package:safar/core/utils/terms_and_conditions/model/terms_response.dart';
 import 'package:safar/ui/app_updates_page/models/app_version_response.dart';
-import 'package:safar/ui/manage_order_page/model/delete_order_by_id.dart';
 
 class CustomDataConverter extends JsonConverter {
   @override
@@ -53,9 +52,6 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case SignInRequest:
       return SignInRequest.fromJson(json);
 
-    case DeleteOrderByIdModel:
-      return DeleteOrderByIdModel.fromJson(json);
-
     case DeliveryOrdersResponse:
       return DeliveryOrdersResponse.fromJson(json);
 
@@ -67,6 +63,9 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
 
     case AppVersionResponse:
       return AppVersionResponse.fromJson(json);
+
+    case DeleteOrderById:
+      return DeleteOrderById.fromJson(json);
 
     default:
       return null;

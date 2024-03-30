@@ -10,7 +10,7 @@ Future<dynamic> signOutDialog(BuildContext context) {
   return showPlatformDialog(
     context: context,
     builder: (mycontext) => BasicDialogAlert(
-      title: const Text('Sign Out?'),
+      title: const Text('Sign Out?'), //TODO exiting twice fix it
       content: const Text('Do you want to sign out from the system'),
       actions: <Widget>[
         BasicDialogAction(

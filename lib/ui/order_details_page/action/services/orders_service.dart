@@ -15,16 +15,16 @@ abstract class OrdersService extends ChopperService {
   @Post(path: AppStrings.orderDetails)
   Future<Response<DeliveryOrdersResponse>> postTaxiOrders(@Body() OrdersRequest body);
 
-  @Put(path: '${AppStrings.orderDetails}/{id}')
+  @Put(path: '${AppStrings.orderDetails}{id}/')
   Future<Response<DeliveryOrdersResponse>> editTaxiOrdersByID(
       @Body() OrdersRequest body, @Path('id') int id);
 
-  @Get(path: '${AppStrings.orderDetails}/{id}')
+  @Get(path: '${AppStrings.orderDetails}{id}/')
   Future<Response<OrdersResponse>> getOrderById(@Path('id') int id);
 
-  @Get(path: '${AppStrings.orderDetails}/{id}')
+  @Get(path: '${AppStrings.orderDetails}{id}/')
   Future<Response<OrdersResponse>> getInquiryByIdForEdit(@Path('id') int id);
 
-  @Delete(path: '${AppStrings.orderDetails}/{id}')
+  @Delete(path: '${AppStrings.orderDetails}{id}/')
   Future<Response<DeleteOrderById>> deleteOrderById(@Path('id') int id);
 }
