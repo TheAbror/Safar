@@ -5,18 +5,18 @@ class SplashState extends Equatable {
   final bool showAppUpdatesPage;
   final SplashAuthStatus authStatus;
   final AccountType accountType;
-  final BlocProgress blocProgress;
+  final String terms;
   final String failureMessage;
-  final String? passcode;
+  final BlocProgress blocProgress;
 
   const SplashState({
     required this.appVersionData,
     required this.showAppUpdatesPage,
     required this.authStatus,
     required this.accountType,
-    required this.blocProgress,
+    required this.terms,
     required this.failureMessage,
-    this.passcode,
+    required this.blocProgress,
   });
 
   factory SplashState.initial() {
@@ -37,8 +37,9 @@ class SplashState extends Equatable {
       showAppUpdatesPage: false,
       authStatus: SplashAuthStatus.initial,
       accountType: AccountType.unknown,
-      blocProgress: BlocProgress.NOT_STARTED,
+      terms: '',
       failureMessage: '',
+      blocProgress: BlocProgress.NOT_STARTED,
     );
   }
 
@@ -46,19 +47,19 @@ class SplashState extends Equatable {
     AppVersionResponse? appVersionData,
     bool? showAppUpdatesPage,
     SplashAuthStatus? authStatus,
-    BlocProgress? blocProgress,
-    String? failureMessage,
     AccountType? accountType,
-    String? passcode,
+    BlocProgress? blocProgress,
+    String? terms,
+    String? failureMessage,
   }) {
     return SplashState(
       appVersionData: appVersionData ?? this.appVersionData,
       showAppUpdatesPage: showAppUpdatesPage ?? this.showAppUpdatesPage,
       authStatus: authStatus ?? this.authStatus,
-      blocProgress: blocProgress ?? this.blocProgress,
-      failureMessage: failureMessage ?? this.failureMessage,
       accountType: accountType ?? this.accountType,
-      passcode: passcode ?? this.passcode,
+      terms: terms ?? this.terms,
+      failureMessage: failureMessage ?? this.failureMessage,
+      blocProgress: blocProgress ?? this.blocProgress,
     );
   }
 
@@ -67,9 +68,9 @@ class SplashState extends Equatable {
         appVersionData,
         showAppUpdatesPage,
         authStatus,
-        blocProgress,
-        failureMessage,
         accountType,
-        passcode,
+        terms,
+        failureMessage,
+        blocProgress,
       ];
 }

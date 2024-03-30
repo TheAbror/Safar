@@ -24,7 +24,12 @@ class AuthBloc extends Cubit<AuthState> {
   void signIn(String username, String password, String contacts) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    final request = SignInRequest(username: username, password: password, contacts: contacts);
+    final request = SignInRequest(
+      username: username,
+      password: password,
+      contacts: contacts,
+      term_is_accepted: state.isAgreedToTerms,
+    );
 
     try {
       final response = await ApiProvider.authService.signIn(request);

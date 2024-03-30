@@ -148,9 +148,10 @@ class _SignInPageState extends State<SignInPage> {
 
   void termsAndConditions() async {
     final result = await TermsBottomSheet.show(context);
-    if (!mounted) return;
-
-    context.read<AuthBloc>().isAgreedToTerms(result ?? true);
+    if (result != null) {
+      if (!mounted) return;
+      context.read<AuthBloc>().isAgreedToTerms(result);
+    }
   }
 
   GestureDetector _ContinueButton(BuildContext context, AuthState state, bool isAgreed) {

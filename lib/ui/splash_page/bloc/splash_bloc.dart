@@ -34,11 +34,9 @@ class SplashBloc extends Cubit<SplashState> {
         ),
       );
     } else {
-      final passcode = PreferencesServices.getPasscode();
       emit(
         state.copyWith(
           authStatus: SplashAuthStatus.authorized,
-          passcode: passcode,
         ),
       );
     }
@@ -57,6 +55,7 @@ class SplashBloc extends Cubit<SplashState> {
       final response = await ApiProvider.settingsService.getAppVersions();
 
       if (response.isSuccessful) {
+        print(response);
         final data = response.body;
 
         if (data != null) {
@@ -72,7 +71,11 @@ class SplashBloc extends Cubit<SplashState> {
           PreferencesServices.saveAndroidStoreUrl(data.androidStoreUrl);
           PreferencesServices.saveIOSstoreUrl(data.iosStoreUrl);
 
-          emit(state.copyWith(appVersionData: data, blocProgress: BlocProgress.LOADED));
+          emit(state.copyWith(
+            appVersionData: data,
+            terms: data.terms,
+            blocProgress: BlocProgress.LOADED,
+          ));
         }
       } else {
         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));

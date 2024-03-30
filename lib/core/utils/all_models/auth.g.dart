@@ -11,6 +11,7 @@ SignInRequest _$SignInRequestFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String,
       password: json['password'] as String,
       contacts: json['contacts'] as String,
+      term_is_accepted: json['term_is_accepted'] as bool,
     );
 
 Map<String, dynamic> _$SignInRequestToJson(SignInRequest instance) =>
@@ -18,4 +19,5 @@ Map<String, dynamic> _$SignInRequestToJson(SignInRequest instance) =>
       'username': instance.username,
       'password': instance.password,
       'contacts': instance.contacts,
+      'term_is_accepted': instance.term_is_accepted,
     };

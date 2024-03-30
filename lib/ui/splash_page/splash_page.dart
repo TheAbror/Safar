@@ -33,7 +33,6 @@ class _SplashPageState extends State<SplashPage> {
           NavigationUtils.navigateToNextRouteByAccountType(
             context,
             state.accountType,
-            state.passcode,
           );
         } else if (state.authStatus == SplashAuthStatus.notAuthorized) {
           Navigator.of(context).pushNamedAndRemoveUntil(

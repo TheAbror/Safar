@@ -5,8 +5,7 @@ import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/bottomsheet/primary_loader.dart';
 import 'package:safar/core/bottomsheet/widgets/bottomsheet_top_radius.dart';
 import 'package:safar/core/buttons/action_button.dart';
-import 'bloc/terms_bloc.dart';
-import 'terms_and_conditions_appbar.dart';
+import 'package:safar/ui/splash_page/bloc/splash_bloc.dart';
 
 class TermsBottomSheet extends StatelessWidget {
   const TermsBottomSheet({super.key});
@@ -19,23 +18,14 @@ class TermsBottomSheet extends StatelessWidget {
       shape: BottomSheetRadius(),
       isScrollControlled: true,
       builder: (context) {
-        return BlocProvider(
-          create: (context) => TermsBloc(),
-          child: TermsBottomSheet(),
-        );
+        return TermsBottomSheet();
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TermsBloc, TermsState>(
-      builder: (context, state) {
-        return TermsAndConditionsAppBar(
-          child: _Body(),
-        );
-      },
-    );
+    return _Body();
   }
 }
 
@@ -47,52 +37,46 @@ class _Body extends StatefulWidget {
 class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TermsBloc, TermsState>(
-      builder: (context, state) {
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Column(
-            children: [
-              Expanded(
-                child: BlocBuilder<TermsBloc, TermsState>(
-                  builder: (context, state) {
-                    if (state.blocProgress == BlocProgress.IS_LOADING) {
-                      return const PrimaryLoader();
-                    }
-                    //  else if (state.searchedList.isEmpty) {
-                    //   return Padding(
-                    //     padding: EdgeInsets.only(top: 24.h),
-                    //     child: const Text(
-                    //       'No Results',
-                    //     ),
-                    //   );
-                    // } else if (state.searchedList.length == 1 && state.searchedList.first.isEmpty) {
-                    //   return Padding(
-                    //     padding: EdgeInsets.only(top: 24.h),
-                    //     child: const Text(
-                    //       'No Results',
-                    //     ),
-                    //   );
-                    // }
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      child: Column(
+        children: [
+          Expanded(
+            child: BlocBuilder<SplashBloc, SplashState>(
+              builder: (context, state) {
+                if (state.blocProgress == BlocProgress.IS_LOADING) {
+                  return const PrimaryLoader();
+                } else if (state.terms.isEmpty) {
+                  return Padding(
+                    padding: EdgeInsets.only(top: 24.h),
+                    child: const Text(
+                      'No Results',
+                    ),
+                  );
+                }
 
-                    return Expanded(child: Text('dasas'));
-                  },
-                ),
-              ),
-              ActionButton(
-                text: 'Accept',
-                onPressed: () {
-                  Navigator.pop(context, true);
-                },
-              ),
-              SizedBox(height: 24.h),
-
-              // INFO: Always needed for Scrollable Bottom sheets
-              SizedBox(height: 24.h),
-            ],
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(state.terms),
+                      SizedBox(height: 24.h),
+                      ActionButton(
+                        text: 'Принять',
+                        onPressed: () {
+                          Navigator.pop(context, true);
+                        },
+                      ),
+                      SizedBox(height: 24.h),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
-        );
-      },
+          // INFO: Always needed for Scrollable Bottom sheets
+          SizedBox(height: 24.h),
+        ],
+      ),
     );
   }
 }

@@ -7,7 +7,6 @@ class NavigationUtils {
   static void navigateToNextRouteByAccountType(
     BuildContext context,
     AccountType accountType,
-    String? passcode,
   ) {
     switch (accountType) {
       // to be deleted
