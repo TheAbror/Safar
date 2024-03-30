@@ -39,7 +39,7 @@ class HomeAppBar extends StatelessWidget {
                     title: Text('Да', style: TextStyle(color: AppColors.primary)),
                     onPressed: () {
                       PreferencesServices.clearAll().then((value) {
-                        if (value) {
+                        if (value == true) {
                           ApiProvider.create();
                           boxCurrentUser.clear();
 

@@ -155,25 +155,25 @@ class DriverProfie {
 // allowed requests: GET, POST
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
-class DeliveryOrdersResponse {
+class AllTaxiOrdersResponse {
   @JsonKey(defaultValue: 0)
   int count;
   @JsonKey(defaultValue: [])
-  List<OrdersResponse> results;
+  List<TaxiOrdersResponse> results;
 
-  DeliveryOrdersResponse({
+  AllTaxiOrdersResponse({
     required this.count,
     required this.results,
   });
 
-  factory DeliveryOrdersResponse.fromJson(Map<String, dynamic> json) =>
-      _$DeliveryOrdersResponseFromJson(json);
+  factory AllTaxiOrdersResponse.fromJson(Map<String, dynamic> json) =>
+      _$AllTaxiOrdersResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DeliveryOrdersResponseToJson(this);
+  Map<String, dynamic> toJson() => _$AllTaxiOrdersResponseToJson(this);
 }
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
-class OrdersRequest {
+class TaxiOrdersRequest {
   @JsonKey(defaultValue: 0)
   int? id;
   @JsonKey(defaultValue: '')
@@ -199,7 +199,7 @@ class OrdersRequest {
   @JsonKey(defaultValue: false, name: 'is_driver')
   bool isDriver;
 
-  OrdersRequest({
+  TaxiOrdersRequest({
     this.id,
     required this.pickup,
     required this.destination,
@@ -214,15 +214,16 @@ class OrdersRequest {
     required this.isDriver,
   });
 
-  factory OrdersRequest.fromJson(Map<String, dynamic> json) => _$OrdersRequestFromJson(json);
+  factory TaxiOrdersRequest.fromJson(Map<String, dynamic> json) =>
+      _$TaxiOrdersRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$OrdersRequestToJson(this);
+  Map<String, dynamic> toJson() => _$TaxiOrdersRequestToJson(this);
 }
 
 // GET:
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
-class OrdersResponse {
+class TaxiOrdersResponse {
   @JsonKey(defaultValue: 0)
   int id;
   @JsonKey(defaultValue: '')
@@ -258,7 +259,7 @@ class OrdersResponse {
   @JsonKey()
   OrderStatus status;
 
-  OrdersResponse({
+  TaxiOrdersResponse({
     required this.id,
     required this.pickup,
     required this.destination,
@@ -278,9 +279,10 @@ class OrdersResponse {
     required this.updatedAt,
   });
 
-  factory OrdersResponse.fromJson(Map<String, dynamic> json) => _$OrdersResponseFromJson(json);
+  factory TaxiOrdersResponse.fromJson(Map<String, dynamic> json) =>
+      _$TaxiOrdersResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$OrdersResponseToJson(this);
+  Map<String, dynamic> toJson() => _$TaxiOrdersResponseToJson(this);
 }
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
@@ -324,4 +326,88 @@ class FilterStatusesList {
       _$FilterStatusesListFromJson(json);
 
   Map<String, dynamic> toJson() => _$FilterStatusesListToJson(this);
+}
+
+@JsonSerializable(includeIfNull: true, explicitToJson: true)
+class AllDeliveryOrdersResponse {
+  @JsonKey(defaultValue: 0)
+  int count;
+  @JsonKey(defaultValue: [])
+  List<DeliveryOrdersResponse> results;
+
+  AllDeliveryOrdersResponse({
+    required this.count,
+    required this.results,
+  });
+
+  factory AllDeliveryOrdersResponse.fromJson(Map<String, dynamic> json) =>
+      _$AllDeliveryOrdersResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AllDeliveryOrdersResponseToJson(this);
+}
+
+@JsonSerializable(includeIfNull: true, explicitToJson: true)
+class DeliveryOrdersResponse {
+  @JsonKey(defaultValue: 0)
+  int id;
+  @JsonKey(defaultValue: '')
+  String pickup;
+  @JsonKey(defaultValue: '')
+  String destination;
+  @JsonKey(defaultValue: '', name: 'packaged_photo_url')
+  String photo;
+  @JsonKey(defaultValue: 0, name: 'number_passenger')
+  int numberOfPassengers;
+  @JsonKey(defaultValue: '', name: 'desired_pickup_time')
+  String desiredPickupTime;
+  @JsonKey(defaultValue: '', name: 'desired_car_model')
+  String desiredCarModel;
+  @JsonKey(defaultValue: '', name: 'offered_price')
+  String offeredPrice;
+  @JsonKey(defaultValue: '', name: 'pickup_reference')
+  String pickupReference;
+  @JsonKey(defaultValue: '', name: 'destination_reference')
+  String destinationReference;
+  @JsonKey(defaultValue: '', name: 'comments_for_driver')
+  String commentForDriver;
+  @JsonKey(defaultValue: '', name: 'created_at')
+  String createdAt;
+  @JsonKey(defaultValue: '', name: 'updated_at')
+  String updatedAt;
+  @JsonKey(defaultValue: 0)
+  int user;
+  @JsonKey(defaultValue: 0)
+  int driver;
+  @JsonKey(defaultValue: false, name: 'is_driver')
+  bool isDriver;
+  @JsonKey(defaultValue: false, name: 'created_by_this_user')
+  bool createdByThisUser;
+  @JsonKey()
+  OrderStatus status;
+
+  DeliveryOrdersResponse({
+    required this.id,
+    required this.pickup,
+    required this.destination,
+    required this.photo,
+    required this.numberOfPassengers,
+    required this.desiredPickupTime,
+    required this.desiredCarModel,
+    required this.offeredPrice,
+    required this.pickupReference,
+    required this.destinationReference,
+    required this.commentForDriver,
+    required this.createdAt,
+    required this.driver,
+    required this.user,
+    required this.createdByThisUser,
+    required this.isDriver,
+    required this.status,
+    required this.updatedAt,
+  });
+
+  factory DeliveryOrdersResponse.fromJson(Map<String, dynamic> json) =>
+      _$DeliveryOrdersResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DeliveryOrdersResponseToJson(this);
 }

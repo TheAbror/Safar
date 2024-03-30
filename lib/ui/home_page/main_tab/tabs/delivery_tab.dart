@@ -7,7 +7,7 @@ import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/widgets/tabs_no_data.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
-import 'package:safar/ui/home_page/widgets/orders_card.dart';
+import 'package:safar/ui/home_page/widgets/delivery_orders_card.dart';
 import '../widgets/search_and_filter_delivery.dart';
 
 class DeliveryTab extends StatelessWidget {
@@ -27,7 +27,7 @@ class DeliveryTab extends StatelessWidget {
     return RefreshIndicator(
       color: Theme.of(context).colorScheme.primaryContainer,
       onRefresh: () async {
-        context.read<OrdersBloc>().getTaxiOrders();
+        context.read<OrdersBloc>().getDeliveryOrders();
       },
       child: BlocBuilder<OrdersBloc, OrdersState>(
         builder: (context, state) {
@@ -53,20 +53,20 @@ class DeliveryTab extends StatelessWidget {
                     searchDelivery: searchDelivery,
                   ),
                   _FilterCards(state, context),
-                  if (state.orders.results.isNotEmpty)
+                  if (state.deliveryOrdersList.results.isNotEmpty)
                     ListView.builder(
-                      itemCount: state.orders.results.length,
+                      itemCount: state.deliveryOrdersList.results.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return OrdersCard(
-                          model: state.orders.results,
+                        return DeliveryOrdersCard(
+                          model: state.deliveryOrdersList.results,
                           index: index,
                           child: Assets.icons.deliveryIcon.image(),
                         );
                       },
                     ),
-                  if (state.orders.results.isEmpty) TabsNoData()
+                  if (state.deliveryOrdersList.results.isEmpty) TabsNoData()
                 ],
               ),
             ),

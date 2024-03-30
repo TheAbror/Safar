@@ -17,7 +17,7 @@ import 'widgets/orders_action_button.dart';
 
 class TaxiDetailsPageViewModel {
   final int index;
-  final List<OrdersResponse> model;
+  final List<TaxiOrdersResponse> model;
 
   const TaxiDetailsPageViewModel({
     Key? key,
@@ -56,7 +56,7 @@ class _TaxiDetailsPageState extends State<TaxiDetailsPage> {
 
 class _Body extends StatefulWidget {
   final int index;
-  final OrdersResponse model;
+  final TaxiOrdersResponse model;
 
   const _Body({
     required this.model,
@@ -105,9 +105,6 @@ class _BodyState extends State<_Body> {
       body: BlocConsumer<OrdersBloc, OrdersState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS && state.isOrderDeleted) {
-            //
-            // context.read<InquiryBloc>().getInitiallyCreated();
-
             Navigator.pushNamed(context, AppRoutes.homePage);
 
             showMessage('Удалено');

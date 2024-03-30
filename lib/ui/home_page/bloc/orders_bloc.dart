@@ -234,7 +234,44 @@ class OrdersBloc extends Cubit<OrdersState> {
 
         if (data != null) {
           emit(state.copyWith(
-            orders: data,
+            taxiOrdersList: data,
+            blocProgress: BlocProgress.IS_SUCCESS,
+          ));
+        }
+      } else {
+        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+    }
+  }
+
+  void getDeliveryOrders() async {
+    //TODO
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.ordersService.getDeliveryOrders();
+
+      if (response.isSuccessful) {
+        final data = response.body; //TODO
+
+        if (data != null) {
+          emit(state.copyWith(
+            deliveryOrdersList: data,
             blocProgress: BlocProgress.IS_SUCCESS,
           ));
         }
@@ -262,7 +299,7 @@ class OrdersBloc extends Cubit<OrdersState> {
   void postTaxiOrders(int? id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    final request = OrdersRequest(
+    final request = TaxiOrdersRequest(
       pickup: state.pickup,
       destination: state.destination,
       numberOfPassengers: state.numberOfPassengers,
@@ -284,7 +321,7 @@ class OrdersBloc extends Cubit<OrdersState> {
 
         if (data != null) {
           emit(state.copyWith(
-            orders: data,
+            taxiOrdersList: data,
             blocProgress: BlocProgress.IS_SUCCESS,
           ));
         }
@@ -312,7 +349,7 @@ class OrdersBloc extends Cubit<OrdersState> {
   void editTaxiOrdersByID(int? id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    final request = OrdersRequest(
+    final request = TaxiOrdersRequest(
       id: id,
       pickup: state.pickup,
       destination: state.destination,
@@ -335,7 +372,7 @@ class OrdersBloc extends Cubit<OrdersState> {
 
         if (data != null) {
           emit(state.copyWith(
-            orders: data,
+            taxiOrdersList: data,
             blocProgress: BlocProgress.IS_SUCCESS,
           ));
         }

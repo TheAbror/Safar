@@ -43,8 +43,8 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case int:
       return int;
 
-    case OrdersResponse:
-      return OrdersResponse.fromJson(json);
+    case TaxiOrdersResponse:
+      return TaxiOrdersResponse.fromJson(json);
 
     case SignInResponse:
       return SignInResponse.fromJson(json);
@@ -52,8 +52,8 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case SignInRequest:
       return SignInRequest.fromJson(json);
 
-    case DeliveryOrdersResponse:
-      return DeliveryOrdersResponse.fromJson(json);
+    case AllTaxiOrdersResponse:
+      return AllTaxiOrdersResponse.fromJson(json);
 
     case TermsResponse:
       return TermsResponse.fromJson(json);
@@ -69,6 +69,9 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
 
     case FilterStatusesList:
       return FilterStatusesList.fromJson(json);
+
+    case AllDeliveryOrdersResponse:
+      return AllDeliveryOrdersResponse.fromJson(json);
 
     default:
       return null;

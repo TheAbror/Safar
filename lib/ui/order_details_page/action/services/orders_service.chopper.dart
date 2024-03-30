@@ -17,7 +17,7 @@ final class _$OrdersService extends OrdersService {
   final definitionType = OrdersService;
 
   @override
-  Future<Response<DeliveryOrdersResponse>> getTaxiOrders() {
+  Future<Response<AllTaxiOrdersResponse>> getTaxiOrders() {
     final Uri $url =
         Uri.parse('https://safarapi.pythonanywhere.com/api/orders/');
     final Request $request = Request(
@@ -25,8 +25,20 @@ final class _$OrdersService extends OrdersService {
       $url,
       client.baseUrl,
     );
+    return client.send<AllTaxiOrdersResponse, AllTaxiOrdersResponse>($request);
+  }
+
+  @override
+  Future<Response<AllDeliveryOrdersResponse>> getDeliveryOrders() {
+    final Uri $url =
+        Uri.parse('https://safarapi.pythonanywhere.com/api/delivery_orders/');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
     return client
-        .send<DeliveryOrdersResponse, DeliveryOrdersResponse>($request);
+        .send<AllDeliveryOrdersResponse, AllDeliveryOrdersResponse>($request);
   }
 
   @override
@@ -42,7 +54,8 @@ final class _$OrdersService extends OrdersService {
   }
 
   @override
-  Future<Response<DeliveryOrdersResponse>> postTaxiOrders(OrdersRequest body) {
+  Future<Response<AllTaxiOrdersResponse>> postTaxiOrders(
+      TaxiOrdersRequest body) {
     final Uri $url =
         Uri.parse('https://safarapi.pythonanywhere.com/api/orders_detail/');
     final $body = body;
@@ -52,13 +65,12 @@ final class _$OrdersService extends OrdersService {
       client.baseUrl,
       body: $body,
     );
-    return client
-        .send<DeliveryOrdersResponse, DeliveryOrdersResponse>($request);
+    return client.send<AllTaxiOrdersResponse, AllTaxiOrdersResponse>($request);
   }
 
   @override
-  Future<Response<DeliveryOrdersResponse>> editTaxiOrdersByID(
-    OrdersRequest body,
+  Future<Response<AllTaxiOrdersResponse>> editTaxiOrdersByID(
+    TaxiOrdersRequest body,
     int id,
   ) {
     final Uri $url = Uri.parse(
@@ -70,12 +82,11 @@ final class _$OrdersService extends OrdersService {
       client.baseUrl,
       body: $body,
     );
-    return client
-        .send<DeliveryOrdersResponse, DeliveryOrdersResponse>($request);
+    return client.send<AllTaxiOrdersResponse, AllTaxiOrdersResponse>($request);
   }
 
   @override
-  Future<Response<OrdersResponse>> getOrderById(int id) {
+  Future<Response<TaxiOrdersResponse>> getOrderById(int id) {
     final Uri $url = Uri.parse(
         'https://safarapi.pythonanywhere.com/api/orders_detail/${id}/');
     final Request $request = Request(
@@ -83,11 +94,11 @@ final class _$OrdersService extends OrdersService {
       $url,
       client.baseUrl,
     );
-    return client.send<OrdersResponse, OrdersResponse>($request);
+    return client.send<TaxiOrdersResponse, TaxiOrdersResponse>($request);
   }
 
   @override
-  Future<Response<OrdersResponse>> getInquiryByIdForEdit(int id) {
+  Future<Response<TaxiOrdersResponse>> getInquiryByIdForEdit(int id) {
     final Uri $url = Uri.parse(
         'https://safarapi.pythonanywhere.com/api/orders_detail/${id}/');
     final Request $request = Request(
@@ -95,7 +106,7 @@ final class _$OrdersService extends OrdersService {
       $url,
       client.baseUrl,
     );
-    return client.send<OrdersResponse, OrdersResponse>($request);
+    return client.send<TaxiOrdersResponse, TaxiOrdersResponse>($request);
   }
 
   @override

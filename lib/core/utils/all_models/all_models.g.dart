@@ -101,25 +101,26 @@ Map<String, dynamic> _$DriverProfieToJson(DriverProfie instance) =>
       'registered_at': instance.registeredAt,
     };
 
-DeliveryOrdersResponse _$DeliveryOrdersResponseFromJson(
+AllTaxiOrdersResponse _$AllTaxiOrdersResponseFromJson(
         Map<String, dynamic> json) =>
-    DeliveryOrdersResponse(
+    AllTaxiOrdersResponse(
       count: json['count'] as int? ?? 0,
       results: (json['results'] as List<dynamic>?)
-              ?.map((e) => OrdersResponse.fromJson(e as Map<String, dynamic>))
+              ?.map(
+                  (e) => TaxiOrdersResponse.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
     );
 
-Map<String, dynamic> _$DeliveryOrdersResponseToJson(
-        DeliveryOrdersResponse instance) =>
+Map<String, dynamic> _$AllTaxiOrdersResponseToJson(
+        AllTaxiOrdersResponse instance) =>
     <String, dynamic>{
       'count': instance.count,
       'results': instance.results.map((e) => e.toJson()).toList(),
     };
 
-OrdersRequest _$OrdersRequestFromJson(Map<String, dynamic> json) =>
-    OrdersRequest(
+TaxiOrdersRequest _$TaxiOrdersRequestFromJson(Map<String, dynamic> json) =>
+    TaxiOrdersRequest(
       id: json['id'] as int? ?? 0,
       pickup: json['pickup'] as String? ?? '',
       destination: json['destination'] as String? ?? '',
@@ -134,7 +135,7 @@ OrdersRequest _$OrdersRequestFromJson(Map<String, dynamic> json) =>
       isDriver: json['is_driver'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$OrdersRequestToJson(OrdersRequest instance) =>
+Map<String, dynamic> _$TaxiOrdersRequestToJson(TaxiOrdersRequest instance) =>
     <String, dynamic>{
       'id': instance.id,
       'pickup': instance.pickup,
@@ -150,8 +151,8 @@ Map<String, dynamic> _$OrdersRequestToJson(OrdersRequest instance) =>
       'is_driver': instance.isDriver,
     };
 
-OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) =>
-    OrdersResponse(
+TaxiOrdersResponse _$TaxiOrdersResponseFromJson(Map<String, dynamic> json) =>
+    TaxiOrdersResponse(
       id: json['id'] as int? ?? 0,
       pickup: json['pickup'] as String? ?? '',
       destination: json['destination'] as String? ?? '',
@@ -171,7 +172,7 @@ OrdersResponse _$OrdersResponseFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] as String? ?? '',
     );
 
-Map<String, dynamic> _$OrdersResponseToJson(OrdersResponse instance) =>
+Map<String, dynamic> _$TaxiOrdersResponseToJson(TaxiOrdersResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'pickup': instance.pickup,
@@ -224,4 +225,68 @@ FilterStatusesList _$FilterStatusesListFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$FilterStatusesListToJson(FilterStatusesList instance) =>
     <String, dynamic>{
       'statuses': instance.statuses,
+    };
+
+AllDeliveryOrdersResponse _$AllDeliveryOrdersResponseFromJson(
+        Map<String, dynamic> json) =>
+    AllDeliveryOrdersResponse(
+      count: json['count'] as int? ?? 0,
+      results: (json['results'] as List<dynamic>?)
+              ?.map((e) =>
+                  DeliveryOrdersResponse.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$AllDeliveryOrdersResponseToJson(
+        AllDeliveryOrdersResponse instance) =>
+    <String, dynamic>{
+      'count': instance.count,
+      'results': instance.results.map((e) => e.toJson()).toList(),
+    };
+
+DeliveryOrdersResponse _$DeliveryOrdersResponseFromJson(
+        Map<String, dynamic> json) =>
+    DeliveryOrdersResponse(
+      id: json['id'] as int? ?? 0,
+      pickup: json['pickup'] as String? ?? '',
+      destination: json['destination'] as String? ?? '',
+      photo: json['packaged_photo_url'] as String? ?? '',
+      numberOfPassengers: json['number_passenger'] as int? ?? 0,
+      desiredPickupTime: json['desired_pickup_time'] as String? ?? '',
+      desiredCarModel: json['desired_car_model'] as String? ?? '',
+      offeredPrice: json['offered_price'] as String? ?? '',
+      pickupReference: json['pickup_reference'] as String? ?? '',
+      destinationReference: json['destination_reference'] as String? ?? '',
+      commentForDriver: json['comments_for_driver'] as String? ?? '',
+      createdAt: json['created_at'] as String? ?? '',
+      driver: json['driver'] as int? ?? 0,
+      user: json['user'] as int? ?? 0,
+      createdByThisUser: json['created_by_this_user'] as bool? ?? false,
+      isDriver: json['is_driver'] as bool? ?? false,
+      status: OrderStatus.fromJson(json['status'] as Map<String, dynamic>),
+      updatedAt: json['updated_at'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$DeliveryOrdersResponseToJson(
+        DeliveryOrdersResponse instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'pickup': instance.pickup,
+      'destination': instance.destination,
+      'packaged_photo_url': instance.photo,
+      'number_passenger': instance.numberOfPassengers,
+      'desired_pickup_time': instance.desiredPickupTime,
+      'desired_car_model': instance.desiredCarModel,
+      'offered_price': instance.offeredPrice,
+      'pickup_reference': instance.pickupReference,
+      'destination_reference': instance.destinationReference,
+      'comments_for_driver': instance.commentForDriver,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'user': instance.user,
+      'driver': instance.driver,
+      'is_driver': instance.isDriver,
+      'created_by_this_user': instance.createdByThisUser,
+      'status': instance.status.toJson(),
     };

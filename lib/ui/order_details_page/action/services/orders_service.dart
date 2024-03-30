@@ -9,24 +9,27 @@ abstract class OrdersService extends ChopperService {
   static OrdersService create([ChopperClient? client]) =>
       _$OrdersService(client ?? ChopperClient());
 
-  @Get(path: AppStrings.orders)
-  Future<Response<DeliveryOrdersResponse>> getTaxiOrders();
+  @Get(path: AppStrings.ordersList)
+  Future<Response<AllTaxiOrdersResponse>> getTaxiOrders();
+
+  @Get(path: AppStrings.deliveryList)
+  Future<Response<AllDeliveryOrdersResponse>> getDeliveryOrders();
 
   @Get(path: AppStrings.filterStatusesList)
   Future<Response<FilterStatusesList>> getStatusesList(); //TODO
 
   @Post(path: AppStrings.orderDetails)
-  Future<Response<DeliveryOrdersResponse>> postTaxiOrders(@Body() OrdersRequest body);
+  Future<Response<AllTaxiOrdersResponse>> postTaxiOrders(@Body() TaxiOrdersRequest body);
 
   @Put(path: '${AppStrings.orderDetails}{id}/')
-  Future<Response<DeliveryOrdersResponse>> editTaxiOrdersByID(
-      @Body() OrdersRequest body, @Path('id') int id);
+  Future<Response<AllTaxiOrdersResponse>> editTaxiOrdersByID(
+      @Body() TaxiOrdersRequest body, @Path('id') int id);
 
   @Get(path: '${AppStrings.orderDetails}{id}/')
-  Future<Response<OrdersResponse>> getOrderById(@Path('id') int id);
+  Future<Response<TaxiOrdersResponse>> getOrderById(@Path('id') int id);
 
   @Get(path: '${AppStrings.orderDetails}{id}/')
-  Future<Response<OrdersResponse>> getInquiryByIdForEdit(@Path('id') int id);
+  Future<Response<TaxiOrdersResponse>> getInquiryByIdForEdit(@Path('id') int id);
 
   @Delete(path: '${AppStrings.orderDetails}{id}/')
   Future<Response<DeleteOrderById>> deleteOrderById(@Path('id') int id);

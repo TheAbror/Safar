@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     context.read<OrdersBloc>().getTaxiOrders();
+    context.read<OrdersBloc>().getDeliveryOrders();
   }
 
   final ScrollController _scrollControllerAssigned = ScrollController();

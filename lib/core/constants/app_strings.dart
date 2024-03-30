@@ -1,11 +1,12 @@
 class AppStrings {
-  static const baseLive = 'https://safarapi.pythonanywhere.com/';
+  static const baseLive = 'https://safarapi.pythonanywhere.com/api/';
 
-  static const signIn = 'api/signup/';
+  static const signIn = 'signup/';
   static const internalErrorMessage = 'Internal error';
   static const incorrectPasscode = 'Incorrect';
-  static const orders = 'api/orders/';
-  static const filterStatusesList = 'api/taxi_status_filters/';
-  static const orderDetails = 'api/orders_detail/';
-  static const appVersions = 'api/version/';
+  static const filterStatusesList = 'taxi_status_filters/';
+  static const orderDetails = 'orders_detail/';
+  static const appVersions = 'version/';
+  static const ordersList = 'orders/';
+  static const deliveryList = 'delivery_orders/';
 }

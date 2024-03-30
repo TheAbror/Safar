@@ -56,20 +56,20 @@ class TaxiTab extends StatelessWidget {
                   ),
                   _FilterCards(state, context),
                   CheckboxesForDriverAndUser(state: state),
-                  if (state.orders.results.isNotEmpty)
+                  if (state.taxiOrdersList.results.isNotEmpty)
                     ListView.builder(
-                      itemCount: state.orders.results.length,
+                      itemCount: state.taxiOrdersList.results.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return OrdersCard(
                           index: index,
-                          model: state.orders.results,
+                          model: state.taxiOrdersList.results,
                           child: Assets.icons.carTab.image(),
                         );
                       },
                     ),
-                  if (state.orders.results.isEmpty) TabsNoData()
+                  if (state.taxiOrdersList.results.isEmpty) TabsNoData()
                 ],
               ),
             ),
