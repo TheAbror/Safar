@@ -2,9 +2,7 @@ import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/gen/assets.gen.dart';
-import 'package:safar/ui/order_details_page/action/bloc/action_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommentsOption extends StatefulWidget {
@@ -33,12 +31,6 @@ class _CommentsOptionState extends State<CommentsOption> {
           child: TextFormField(
             maxLines: null,
             expands: true,
-            // validator: (username) {
-            //   if (username == null || username.isEmpty) {
-            //     return 'Please enter comment';
-            //   }
-            //   return null;
-            // },
             textAlignVertical: TextAlignVertical.top,
             controller: widget._titleController,
             textInputAction: TextInputAction.next,
@@ -84,7 +76,7 @@ class _CommentsOptionState extends State<CommentsOption> {
                         if (result != null) {
                           if (!mounted) return;
 
-                          context.read<ActionBloc>().comment(widget._titleController.text = result);
+                          // context.read<ActionBloc>().comment(widget._titleController.text = result);
                         }
                       },
                       child: Container(
@@ -99,7 +91,7 @@ class _CommentsOptionState extends State<CommentsOption> {
               ),
             ),
             onChanged: (value) {
-              context.read<ActionBloc>().comment(value);
+              // context.read<ActionBloc>().comment(value);
             },
           ),
         ),

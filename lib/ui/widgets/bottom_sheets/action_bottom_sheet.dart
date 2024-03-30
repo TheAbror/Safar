@@ -189,8 +189,7 @@ class _ActionBottomSheetState extends State<ActionBottomSheet> {
                                   assignedViewer
                                       ? CommentsOption(
                                           titleController: _titleController,
-                                          initialList:
-                                              state.commentsList.map((e) => e.label).toList(),
+                                          initialList: const [],
                                         )
                                       : const SizedBox(),
                                 ],
@@ -228,9 +227,9 @@ class _ActionBottomSheetState extends State<ActionBottomSheet> {
             final today = DateTime.now();
             final finalDate = DateTime(today.year, today.month, today.day, 15, 0);
 
-            context
-                .read<ActionBloc>()
-                .meetingDate(_dateController.text = finalDate.toUtc().toIso8601String());
+            // context
+            //     .read<ActionBloc>()
+            //     .meetingDate(_dateController.text = finalDate.toUtc().toIso8601String());
 
             _dateController.text = _dateFormatter.format(finalDate);
           },
@@ -248,9 +247,9 @@ class _ActionBottomSheetState extends State<ActionBottomSheet> {
             final tomorrow = DateTime.now().add(const Duration(days: 1));
             final finalDate = DateTime(tomorrow.year, tomorrow.month, tomorrow.day, 15, 0);
 
-            context
-                .read<ActionBloc>()
-                .meetingDate(_dateController.text = finalDate.toUtc().toIso8601String());
+            // context
+            //     .read<ActionBloc>()
+            //     .meetingDate(_dateController.text = finalDate.toUtc().toIso8601String());
             _dateController.text = _dateFormatter.format(finalDate);
           },
         ),
@@ -267,9 +266,9 @@ class _ActionBottomSheetState extends State<ActionBottomSheet> {
             final nextWeek = DateTime.now().add(const Duration(days: 7));
             final finalDate = DateTime(nextWeek.year, nextWeek.month, nextWeek.day, 15, 0);
 
-            context
-                .read<ActionBloc>()
-                .meetingDate(_dateController.text = finalDate.toUtc().toIso8601String());
+            // context
+            //     .read<ActionBloc>()
+            //     .meetingDate(_dateController.text = finalDate.toUtc().toIso8601String());
             _dateController.text = _dateFormatter.format(finalDate);
           },
         ),
