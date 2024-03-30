@@ -53,7 +53,6 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
                         ? bloc.editTaxiOrdersByID(widget.viewModel.id)
                         : bloc.postTaxiOrders(widget.viewModel.id);
                   },
-                  //TODO number of passengers is incremented by 1
                 ),
               ),
               body: _Body(viewModel: widget.viewModel),

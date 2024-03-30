@@ -151,7 +151,10 @@ class OrdersBloc extends Cubit<OrdersState> {
         final data = response.body;
 
         if (data != null) {
-          emit(state.copyWith(blocProgress: BlocProgress.LOADED));
+          emit(state.copyWith(
+            blocProgress: BlocProgress.IS_SUCCESS,
+            isOrderDeleted: true,
+          ));
         }
       } else {
         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
@@ -359,5 +362,9 @@ class OrdersBloc extends Cubit<OrdersState> {
 
   void clearAll() {
     emit(OrdersState.initial());
+  }
+
+  void makeDeletedFale() {
+    emit(state.copyWith(isOrderDeleted: false));
   }
 }

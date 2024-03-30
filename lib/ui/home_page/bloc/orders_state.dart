@@ -17,6 +17,7 @@ class OrdersState extends Equatable {
   //post variables end
   final OrdersResponse orderByID;
   final bool isButtonEnabled;
+  final bool isOrderDeleted;
   final int randomNumber;
   final DeliveryOrdersResponse orders;
   final BlocProgress blocProgress;
@@ -36,6 +37,7 @@ class OrdersState extends Equatable {
     required this.statusesForFilter,
     required this.orderByID,
     required this.isButtonEnabled,
+    required this.isOrderDeleted,
     required this.randomNumber,
     required this.orders,
     required this.blocProgress,
@@ -75,6 +77,7 @@ class OrdersState extends Equatable {
         updatedAt: '',
       ),
       isButtonEnabled: false,
+      isOrderDeleted: false,
       randomNumber: 0,
       orders: DeliveryOrdersResponse(count: 0, results: []),
       blocProgress: BlocProgress.NOT_STARTED,
@@ -96,6 +99,7 @@ class OrdersState extends Equatable {
     List<String>? statusesForFilter,
     OrdersResponse? orderByID,
     bool? isButtonEnabled,
+    bool? isOrderDeleted,
     int? randomNumber,
     DeliveryOrdersResponse? orders,
     BlocProgress? blocProgress,
@@ -116,6 +120,7 @@ class OrdersState extends Equatable {
       statusesForFilter: statusesForFilter ?? this.statusesForFilter,
       orderByID: orderByID ?? this.orderByID,
       isButtonEnabled: isButtonEnabled ?? this.isButtonEnabled,
+      isOrderDeleted: isOrderDeleted ?? this.isOrderDeleted,
       orders: orders ?? this.orders,
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
@@ -137,6 +142,7 @@ class OrdersState extends Equatable {
         statusesForFilter,
         orderByID,
         isButtonEnabled,
+        isOrderDeleted,
         randomNumber,
         orders,
         blocProgress,
