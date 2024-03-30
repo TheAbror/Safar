@@ -12,8 +12,12 @@ abstract class OrdersService extends ChopperService {
   @Get(path: AppStrings.orders)
   Future<Response<DeliveryOrdersResponse>> getTaxiOrders();
 
-  @Post(path: AppStrings.orders)
+  @Post(path: AppStrings.orderDetails)
   Future<Response<DeliveryOrdersResponse>> postTaxiOrders(@Body() OrdersRequest body);
+
+  @Put(path: '${AppStrings.orderDetails}/{id}')
+  Future<Response<DeliveryOrdersResponse>> editTaxiOrdersByID(
+      @Body() OrdersRequest body, @Path('id') int id);
 
   @Get(path: '${AppStrings.orderDetails}/{id}')
   Future<Response<OrdersResponse>> getOrderById(@Path('id') int id);

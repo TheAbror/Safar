@@ -115,11 +115,7 @@ class OrdersBloc extends Cubit<OrdersState> {
         final data = response.body;
 
         if (data != null) {
-          emit(
-            state.copyWith(
-              blocProgress: BlocProgress.LOADED,
-            ),
-          );
+          emit(state.copyWith(blocProgress: BlocProgress.LOADED));
         }
       } else {
         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
@@ -224,40 +220,76 @@ class OrdersBloc extends Cubit<OrdersState> {
     }
   }
 
-  void postTaxiOrders(bool isEdit, int? id) async {
+  void postTaxiOrders(int? id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
-    final request = isEdit
-        ? OrdersRequest(
-            id: id,
-            pickup: state.pickup,
-            destination: state.destination,
-            numberOfPassengers: state.numberOfPassengers + 1,
-            desiredPickupTime: state.date,
-            desiredCarModel: '',
-            offeredPrice: state.offeredPrice,
-            pickupReference: state.pickUpReference,
-            destinationReference: state.destinationReference,
-            commentForDriver: state.commentsForDriver,
-            status: 'created',
-            isDriver: state.isDriver,
-          )
-        : OrdersRequest(
-            pickup: state.pickup,
-            destination: state.destination,
-            numberOfPassengers: state.numberOfPassengers + 1,
-            desiredPickupTime: state.date,
-            desiredCarModel: '',
-            offeredPrice: state.offeredPrice,
-            pickupReference: state.pickUpReference,
-            destinationReference: state.destinationReference,
-            commentForDriver: state.commentsForDriver,
-            status: 'created',
-            isDriver: state.isDriver,
-          );
+    final request = OrdersRequest(
+      pickup: state.pickup,
+      destination: state.destination,
+      numberOfPassengers: state.numberOfPassengers + 1,
+      desiredPickupTime: state.date,
+      desiredCarModel: '',
+      offeredPrice: state.offeredPrice,
+      pickupReference: state.pickUpReference,
+      destinationReference: state.destinationReference,
+      commentForDriver: state.commentsForDriver,
+      status: 'created',
+      isDriver: state.isDriver,
+    );
 
     try {
       final response = await ApiProvider.ordersService.postTaxiOrders(request);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(state.copyWith(
+            orders: data,
+            blocProgress: BlocProgress.IS_SUCCESS,
+          ));
+        }
+      } else {
+        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+    }
+  }
+
+  void editTaxiOrdersByID(int? id) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    final request = OrdersRequest(
+      id: id,
+      pickup: state.pickup,
+      destination: state.destination,
+      numberOfPassengers: state.numberOfPassengers + 1,
+      desiredPickupTime: state.date,
+      desiredCarModel: '',
+      offeredPrice: state.offeredPrice,
+      pickupReference: state.pickUpReference,
+      destinationReference: state.destinationReference,
+      commentForDriver: state.commentsForDriver,
+      status: 'created',
+      isDriver: state.isDriver,
+    );
+
+    try {
+      final response = await ApiProvider.ordersService.editTaxiOrdersByID(request, id ?? 0);
 
       if (response.isSuccessful) {
         final data = response.body;

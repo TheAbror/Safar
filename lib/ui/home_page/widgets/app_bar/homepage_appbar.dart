@@ -1,9 +1,9 @@
 import 'package:safar/core/constants/app_configs.dart';
 import 'package:safar/ui/home_page/widgets/app_bar/appbar_item.dart';
-import 'package:safar/ui/home_page/widgets/app_bar/staff_exam_appbar_title.dart';
 import 'package:flutter/material.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/ui/home_page/widgets/app_bar/home_appbar.dart';
 
 AppBar homePage_appbar(context, String fullName, String shortName, String role) {
   return AppBar(
@@ -37,6 +37,6 @@ AppBar homePage_appbar(context, String fullName, String shortName, String role) 
       ),
     ),
     automaticallyImplyLeading: false,
-    title: StaffAppBarTitle(fullName: fullName, shortName: shortName, role: role),
+    title: HomeAppBar(fullName: fullName, shortName: shortName, role: role),
   );
 }

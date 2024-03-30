@@ -49,7 +49,9 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
                 SubmitOrderButton(
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () async {
-                    bloc.postTaxiOrders(widget.viewModel.isEdit, widget.viewModel.id);
+                    widget.viewModel.isEdit
+                        ? bloc.editTaxiOrdersByID(widget.viewModel.id)
+                        : bloc.postTaxiOrders(widget.viewModel.id);
                   },
                 ),
               ),

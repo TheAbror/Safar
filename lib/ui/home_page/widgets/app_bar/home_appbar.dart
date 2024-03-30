@@ -5,12 +5,12 @@ import 'package:safar/core/constants/app_configs.dart';
 import 'package:safar/core/dialogs/sign_out_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class StaffAppBarTitle extends StatelessWidget {
+class HomeAppBar extends StatelessWidget {
   final String? fullName;
   final String? shortName;
   final String? role;
 
-  const StaffAppBarTitle({
+  const HomeAppBar({
     super.key,
     this.fullName,
     this.shortName,

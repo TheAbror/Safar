@@ -4,7 +4,6 @@ import 'package:safar/core/api/api_provider.dart';
 import 'package:safar/core/box/current_user_box.dart';
 import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/routes/route_constants.dart';
-
 import '../db/preferences_services.dart';
 
 Future<dynamic> signOutDialog(BuildContext context) {
