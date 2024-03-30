@@ -1,14 +1,13 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:chopper/chopper.dart';
+import 'package:safar/core/utils/models/all_models.dart';
+import 'package:safar/core/utils/models/auth.dart';
 import 'package:safar/ui/home_page/terms_and_conditions/model/terms_request.dart';
 import 'package:safar/ui/home_page/terms_and_conditions/model/terms_response.dart';
 import 'package:safar/ui/order_details_page/action/model/inquiry_action_request_model.dart';
 import 'package:safar/ui/manage_order_page/model/delete_inquiry_by_id.dart';
 import 'package:safar/ui/manage_order_page/model/inquiry_item_request.dart';
-import 'package:safar/ui/signin_page/auth/models/auth.dart';
-import 'package:safar/ui/signin_page/auth/models/all_models.dart';
-import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 
 class CustomDataConverter extends JsonConverter {
   @override
@@ -46,9 +45,6 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
     case int:
       return int;
 
-    case InquiryListResponse:
-      return InquiryListResponse.fromJson(json);
-
     case OrdersResponse:
       return OrdersResponse.fromJson(json);
 
@@ -57,12 +53,6 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
 
     case SignInRequest:
       return SignInRequest.fromJson(json);
-
-    case InquiryListItemResponse:
-      return InquiryListItemResponse.fromJson(json);
-
-    case Created:
-      return Created.fromJson(json);
 
 //TODO remove
     case InquiryActionRequestModel:
@@ -73,9 +63,6 @@ dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
 
     case DeleteInquiryByIdModel:
       return DeleteInquiryByIdModel.fromJson(json);
-
-    case InquiryButtons:
-      return InquiryButtons.fromJson(json);
 
     case DeliveryOrdersResponse:
       return DeliveryOrdersResponse.fromJson(json);

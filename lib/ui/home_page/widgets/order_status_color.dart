@@ -1,7 +1,5 @@
 // ignore_for_file: use_full_hex_values_for_flutter_colors
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/ui/signin_page/auth/models/all_models.dart';
-import 'package:safar/ui/home_page/model/inquiry_list_model.dart';
 import 'package:flutter/material.dart';
 
 class StatusColors {
@@ -14,21 +12,22 @@ class StatusColors {
   });
 }
 
-class OrderItemStatusColor {
-  static StatusColors displayColorByStatus(
-    int index,
-    List<OrdersResponse> model,
-  ) {
-    return _getStatusColors(model[index].destination);
-  }
-}
+// class OrderItemStatusColor {
+//   static StatusColors displayColorByStatus(
+//     int index,
+//     List<OrdersResponse> model,
+//   ) {
+//     return _getStatusColors(model[index].destination);
+//   }
+// }
 
-class InquiryChengeLogItemStatusColor {
-  static StatusColors displayColorByStatus(History item) {
-    return _getStatusColors(item.status?.title);
-  }
-}
+// class InquiryChengeLogItemStatusColor {
+//   static StatusColors displayColorByStatus(History item) {
+//     return _getStatusColors(item.status?.title);
+//   }
+// }
 
+// ignore: unused_element
 StatusColors _getStatusColors(String? statusTitle) {
   Color textColor = AppColors.textMain;
   Color backgroundColor = AppColors.background;

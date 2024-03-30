@@ -18,7 +18,6 @@ class OrdersState extends Equatable {
   final OrdersResponse orderByID;
   final bool isButtonEnabled;
   final int randomNumber;
-  final SuperBlocProgress<List<InquiryButtons>> buttons;
   final DeliveryOrdersResponse orders;
   final BlocProgress blocProgress;
   final String failureMessage;
@@ -37,7 +36,6 @@ class OrdersState extends Equatable {
     required this.orderByID,
     required this.isButtonEnabled,
     required this.randomNumber,
-    required this.buttons,
     required this.orders,
     required this.blocProgress,
     required this.failureMessage,
@@ -76,7 +74,6 @@ class OrdersState extends Equatable {
       ),
       isButtonEnabled: false,
       randomNumber: 0,
-      buttons: SuperBlocProgress(model: const []),
       orders: DeliveryOrdersResponse(count: 0, results: []),
       blocProgress: BlocProgress.NOT_STARTED,
       failureMessage: '',
@@ -97,7 +94,6 @@ class OrdersState extends Equatable {
     OrdersResponse? orderByID,
     bool? isButtonEnabled,
     int? randomNumber,
-    SuperBlocProgress<List<InquiryButtons>>? buttons,
     DeliveryOrdersResponse? orders,
     BlocProgress? blocProgress,
     String? failureMessage,
@@ -116,7 +112,6 @@ class OrdersState extends Equatable {
       isInitialValuesLoaded: isInitialValuesLoaded ?? this.isInitialValuesLoaded,
       orderByID: orderByID ?? this.orderByID,
       isButtonEnabled: isButtonEnabled ?? this.isButtonEnabled,
-      buttons: buttons ?? this.buttons,
       orders: orders ?? this.orders,
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
@@ -138,7 +133,6 @@ class OrdersState extends Equatable {
         orderByID,
         isButtonEnabled,
         randomNumber,
-        buttons,
         orders,
         blocProgress,
         failureMessage,
