@@ -10,24 +10,24 @@ Future<dynamic> signOutDialog(BuildContext context) {
   return showPlatformDialog(
     context: context,
     builder: (mycontext) => BasicDialogAlert(
-      title: const Text('Sign Out?'), //TODO exiting twice fix it
-      content: const Text('Do you want to sign out from the system'),
+      title: const Text('Выход'),
+      content: const Text('Вы хотите выйти из системы?'),
       actions: <Widget>[
         BasicDialogAction(
-          title: Text('Yes', style: _Style()),
+          title: Text('Да', style: _Style()),
           onPressed: () {
             PreferencesServices.clearAll().then((value) {
               if (value) {
                 ApiProvider.create();
                 boxCurrentUser.clear();
 
-                Navigator.of(mycontext).pushNamed(AppRoutes.splashPage);
+                Navigator.of(context).pushNamed(AppRoutes.splashPage);
               }
             });
           },
         ),
         BasicDialogAction(
-          title: Text('No', style: _Style()),
+          title: Text('Нет', style: _Style()),
           onPressed: () => Navigator.pop(mycontext),
         ),
       ],

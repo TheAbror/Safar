@@ -21,11 +21,7 @@ class SearchAndFilterTaxi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        top: 12.h,
-        right: 8.w,
-        left: 8.w,
-      ),
+      margin: EdgeInsets.only(top: 12.h, right: 8.w, left: 8.w),
       child: SearchInput(
         fillColor: Theme.of(context).colorScheme.onBackground,
         width: 344.w,
