@@ -65,7 +65,7 @@ class TaxiTab extends StatelessWidget {
                         return OrdersCard(
                           index: index,
                           model: state.orders.results,
-                          child: Assets.icons.deliveryIcon.image(),
+                          child: Assets.icons.carTab.image(),
                         );
                       },
                     ),

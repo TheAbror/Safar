@@ -36,7 +36,7 @@ class _DateOptionState extends State<DateOption> {
         FocusScope.of(context).requestFocus(focus);
 
         List<DateTime?>? date = await pickDate();
-        if (date == null) return;
+        if (date == null || date.isEmpty) return;
 
         TimeOfDay? time = await pickTime();
         if (time == null) return;
