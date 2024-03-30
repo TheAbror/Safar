@@ -9,9 +9,7 @@ import 'package:safar/ui/home_page/widgets/app_bar/homepage_appbar.dart';
 import 'package:safar/ui/home_page/widgets/buttons/create_button.dart';
 import 'package:safar/ui/manage_order_page/manage_delievry_orders_page.dart';
 import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
-
 import 'model/current_user.dart';
-import 'terms_and_conditions/terms_and_conditions_bottomsheet.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,15 +24,6 @@ class _HomePageState extends State<HomePage> {
     context.read<OrdersBloc>().getTaxiOrders();
 
     super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      termsAndConditions();
-    });
-  }
-
-  void termsAndConditions() async {
-    final result = await TermsBottomSheet.show(context);
-    print(result);
   }
 
   final ScrollController _scrollControllerAssigned = ScrollController();

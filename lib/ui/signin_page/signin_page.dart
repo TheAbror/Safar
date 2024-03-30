@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safar/core/routes/route_constants.dart';
+import 'package:safar/core/utils/terms_and_conditions/terms_and_conditions_bottomsheet.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/auth_bloc.dart';
@@ -105,8 +106,34 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         SizedBox(height: 5.h),
                         SignInPasswordField(passwordController: _passwordController),
+                        SizedBox(height: 5.h),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () => termsAndConditions(),
+                              child: Text(
+                                'Условия использования',
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.primary,
+                                ),
+                              ),
+                            ),
+                            Checkbox(
+                              activeColor: AppColors.primary,
+                              value: isAgreed,
+                              onChanged: (value) {
+                                setState(() {
+                                  isAgreed = !isAgreed;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
                         const Spacer(),
-                        _ContinueButton(context, state),
+                        _ContinueButton(context, state, isAgreed),
                         SizedBox(height: 50.h),
                       ],
                     ),
@@ -120,20 +147,29 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  GestureDetector _ContinueButton(BuildContext context, AuthState state) {
+  bool isAgreed = false;
+
+  void termsAndConditions() async {
+    final result = await TermsBottomSheet.show(context);
+    print(result);
+  }
+
+  GestureDetector _ContinueButton(BuildContext context, AuthState state, bool isAgreed) {
     return GestureDetector(
-      onTap: () async {
-        final username = _usernameController.text.trim();
-        final password = _passwordController.text.trim();
-        if (_formKey.currentState!.validate()) {
-          context.read<AuthBloc>().signIn(username, password, '998914309090');
-        }
-      },
+      onTap: !isAgreed
+          ? null
+          : () async {
+              final username = _usernameController.text.trim();
+              final password = _passwordController.text.trim();
+              if (_formKey.currentState!.validate()) {
+                context.read<AuthBloc>().signIn(username, password, '998914309090');
+              }
+            },
       child: Container(
         height: 48.h,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: AppColors.primary,
+          color: isAgreed ? AppColors.primary : AppColors.iconSecondary,
           borderRadius: BorderRadius.all(Radius.circular(40.r)),
           border: Border.all(color: AppColors.primary, width: 1),
         ),

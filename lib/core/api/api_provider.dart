@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:chopper/chopper.dart';
 import 'package:http/io_client.dart' as http;
 import 'package:safar/core/api/custom_converter.dart';
-import 'package:safar/ui/home_page/terms_and_conditions/services/terms_service.dart';
+import 'package:safar/core/utils/terms_and_conditions/services/terms_service.dart';
 import 'package:safar/ui/signin_page/auth/services/auth_service.dart';
 import 'package:safar/ui/order_details_page/action/services/orders_service.dart';
 import '../../ui/app_updates_page/services/settings_service.dart';
