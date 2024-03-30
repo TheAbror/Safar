@@ -262,7 +262,7 @@ class OrdersBloc extends Cubit<OrdersState> {
     final request = OrdersRequest(
       pickup: state.pickup,
       destination: state.destination,
-      numberOfPassengers: state.numberOfPassengers + 1,
+      numberOfPassengers: state.numberOfPassengers,
       desiredPickupTime: state.date,
       desiredCarModel: '',
       offeredPrice: state.offeredPrice,
@@ -313,7 +313,7 @@ class OrdersBloc extends Cubit<OrdersState> {
       id: id,
       pickup: state.pickup,
       destination: state.destination,
-      numberOfPassengers: state.numberOfPassengers + 1,
+      numberOfPassengers: state.numberOfPassengers,
       desiredPickupTime: state.date,
       desiredCarModel: '',
       offeredPrice: state.offeredPrice,

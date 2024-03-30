@@ -46,7 +46,6 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
               appBar: order_appbar(
                 context,
                 widget.viewModel.isEdit ? 'Изменить детали заказа' : 'Заказать такси',
-                //var createdByThisUser = model[index].createdByThisUser;
                 SubmitOrderButton(
                   isEnabled: widget.viewModel.isEdit ? true : state.isButtonEnabled,
                   onTap: () async {

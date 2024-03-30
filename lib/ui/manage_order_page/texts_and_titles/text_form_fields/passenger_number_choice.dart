@@ -23,7 +23,7 @@ class PassengerNumberChoice extends StatelessWidget {
         height: 48.w,
         width: 48.w,
         decoration: BoxDecoration(
-          color: state.numberOfPassengers == index ? AppColors.primary : AppColors.background,
+          color: state.numberOfPassengers == (index + 1) ? AppColors.primary : AppColors.background,
           borderRadius: BorderRadius.circular(50.r),
           border: Border.all(color: AppColors.outline, width: 0.5.w),
         ),
@@ -32,7 +32,7 @@ class PassengerNumberChoice extends StatelessWidget {
             '${index + 1} ',
             style: TextStyle(
               fontSize: 22.sp,
-              color: state.numberOfPassengers == index ? AppColors.float : AppColors.textMain,
+              color: state.numberOfPassengers == (index + 1) ? AppColors.float : AppColors.textMain,
             ),
             textAlign: TextAlign.center,
           ),

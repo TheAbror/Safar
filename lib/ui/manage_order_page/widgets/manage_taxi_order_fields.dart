@@ -122,7 +122,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                       index: index,
                       state: state,
                       onTap: () {
-                        context.read<OrdersBloc>().updateData(numberOfPassengers: index);
+                        context.read<OrdersBloc>().updateData(numberOfPassengers: index + 1);
                         print(index + 1);
                       },
                     );
