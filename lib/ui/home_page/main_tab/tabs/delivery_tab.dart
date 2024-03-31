@@ -39,6 +39,7 @@ class DeliveryTab extends StatelessWidget {
           if (state.blocProgress == BlocProgress.FAILED) {
             return SomethingWentWrong();
           }
+
           return SingleChildScrollView(
             controller: scrollController,
             physics: const AlwaysScrollableScrollPhysics(),

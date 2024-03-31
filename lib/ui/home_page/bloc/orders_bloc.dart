@@ -260,14 +260,13 @@ class OrdersBloc extends Cubit<OrdersState> {
   }
 
   void getDeliveryOrders() async {
-    //TODO
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
       final response = await ApiProvider.ordersService.getDeliveryOrders();
 
       if (response.isSuccessful) {
-        final data = response.body; //TODO
+        final data = response.body;
 
         if (data != null) {
           emit(state.copyWith(

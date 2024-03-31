@@ -350,14 +350,12 @@ class AllDeliveryOrdersResponse {
 class DeliveryOrdersResponse {
   @JsonKey(defaultValue: 0)
   int id;
+  @JsonKey(defaultValue: '', name: 'packaged_photo_url')
+  String photo;
   @JsonKey(defaultValue: '')
   String pickup;
   @JsonKey(defaultValue: '')
   String destination;
-  @JsonKey(defaultValue: '', name: 'packaged_photo_url')
-  String photo;
-  @JsonKey(defaultValue: 0, name: 'number_passenger')
-  int numberOfPassengers;
   @JsonKey(defaultValue: '', name: 'desired_pickup_time')
   String desiredPickupTime;
   @JsonKey(defaultValue: '', name: 'desired_car_model')
@@ -380,17 +378,17 @@ class DeliveryOrdersResponse {
   int driver;
   @JsonKey(defaultValue: false, name: 'is_driver')
   bool isDriver;
-  @JsonKey(defaultValue: false, name: 'created_by_this_user')
-  bool createdByThisUser;
-  @JsonKey()
-  OrderStatus status;
+  // @JsonKey(defaultValue: false, name: 'created_by_this_user')
+  // bool createdByThisUser;
+  // @JsonKey()
+  // OrderStatus status;
 
   DeliveryOrdersResponse({
     required this.id,
     required this.pickup,
     required this.destination,
     required this.photo,
-    required this.numberOfPassengers,
+    // required this.numberOfPassengers,
     required this.desiredPickupTime,
     required this.desiredCarModel,
     required this.offeredPrice,
@@ -400,9 +398,9 @@ class DeliveryOrdersResponse {
     required this.createdAt,
     required this.driver,
     required this.user,
-    required this.createdByThisUser,
+    // required this.createdByThisUser,
     required this.isDriver,
-    required this.status,
+    // required this.status,
     required this.updatedAt,
   });
 

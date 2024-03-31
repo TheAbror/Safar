@@ -252,7 +252,6 @@ DeliveryOrdersResponse _$DeliveryOrdersResponseFromJson(
       pickup: json['pickup'] as String? ?? '',
       destination: json['destination'] as String? ?? '',
       photo: json['packaged_photo_url'] as String? ?? '',
-      numberOfPassengers: json['number_passenger'] as int? ?? 0,
       desiredPickupTime: json['desired_pickup_time'] as String? ?? '',
       desiredCarModel: json['desired_car_model'] as String? ?? '',
       offeredPrice: json['offered_price'] as String? ?? '',
@@ -262,9 +261,7 @@ DeliveryOrdersResponse _$DeliveryOrdersResponseFromJson(
       createdAt: json['created_at'] as String? ?? '',
       driver: json['driver'] as int? ?? 0,
       user: json['user'] as int? ?? 0,
-      createdByThisUser: json['created_by_this_user'] as bool? ?? false,
       isDriver: json['is_driver'] as bool? ?? false,
-      status: OrderStatus.fromJson(json['status'] as Map<String, dynamic>),
       updatedAt: json['updated_at'] as String? ?? '',
     );
 
@@ -272,10 +269,9 @@ Map<String, dynamic> _$DeliveryOrdersResponseToJson(
         DeliveryOrdersResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'packaged_photo_url': instance.photo,
       'pickup': instance.pickup,
       'destination': instance.destination,
-      'packaged_photo_url': instance.photo,
-      'number_passenger': instance.numberOfPassengers,
       'desired_pickup_time': instance.desiredPickupTime,
       'desired_car_model': instance.desiredCarModel,
       'offered_price': instance.offeredPrice,
@@ -287,6 +283,4 @@ Map<String, dynamic> _$DeliveryOrdersResponseToJson(
       'user': instance.user,
       'driver': instance.driver,
       'is_driver': instance.isDriver,
-      'created_by_this_user': instance.createdByThisUser,
-      'status': instance.status.toJson(),
     };
