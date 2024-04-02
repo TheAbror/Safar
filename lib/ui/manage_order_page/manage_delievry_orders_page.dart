@@ -66,49 +66,114 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
-            padding: EdgeInsets.all(10.w),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onBackground,
-              borderRadius: BorderRadius.circular(16.r),
-            ),
-            child: Column(
-              children: [
-                DeliveryTitleField(
-                  thisController: titleController,
-                  hintText: 'Title',
-                  onChanged: (value) {
-                    context.read<OrdersBloc>().updateData(offeredPrice: value);
-                    print(value);
-                  },
+      child: BlocBuilder<OrdersBloc, OrdersState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
+                padding: EdgeInsets.all(10.w),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.onBackground,
+                  borderRadius: BorderRadius.circular(16.r),
                 ),
-                SizedBox(height: 8.h),
-                DeliveryTitleField(
-                  thisController: titleController,
-                  hintText: 'Description',
-                  height: 100,
-                  onChanged: (value) {
-                    context.read<OrdersBloc>().updateData(offeredPrice: value);
-                    print(value);
-                  },
+                child: Column(
+                  children: [
+                    DeliveryTitleField(
+                      thisController: titleController,
+                      hintText: 'Title',
+                      onChanged: (value) {
+                        context.read<OrdersBloc>().updateData(offeredPrice: value);
+                        print(value);
+                      },
+                    ),
+                    SizedBox(height: 8.h),
+                    DeliveryTitleField(
+                      thisController: titleController,
+                      hintText: 'Description',
+                      height: 100,
+                      onChanged: (value) {
+                        context.read<OrdersBloc>().updateData(offeredPrice: value);
+                        print(value);
+                      },
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 40.h,
-            width: double.infinity,
-          ),
-          AddItemButton(
-            text: ' Add Item',
-            width: 135.w,
-            ontap: () {},
-          ),
-          SizedBox(height: 60.h),
-        ],
+              ),
+              // ListView.builder(
+              //   scrollDirection: Axis.vertical,
+              //   shrinkWrap: true,
+              //   physics: const NeverScrollableScrollPhysics(),
+              //   itemCount: state.listofItems.length,
+              //   itemBuilder: (context, index) {
+              //     final item = state.listofItems[index];
+
+              //     return Container(
+              //       key: Key(state.listofItems.length.toString()),
+              //       margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
+              //       padding: EdgeInsets.all(10.w),
+              //       decoration: _Decoration(context),
+              //       child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           CardNumberAndRemove(index: index),
+              //           ItemInquiryTitle(index: index, item: item),
+              //           AmountSelection(item: item, index: index),
+              //           UnitSelection(index: index, item: item),
+              //         ],
+              //       ),
+              //     );
+              //   },
+              // ),
+              SizedBox(
+                height: 40.h,
+                width: double.infinity,
+              ),
+              AddItemButton(
+                text: ' Add Item',
+                width: 135.w,
+                ontap: () {},
+              ),
+              SizedBox(height: 20.h),
+              Container(
+                margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
+                padding: EdgeInsets.all(10.w),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.onBackground,
+                  borderRadius: BorderRadius.circular(16.r),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text('Upload photo'),
+                    Container(
+                      margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.background,
+                        borderRadius: BorderRadius.circular(16.r),
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 20.h),
+                          Text(
+                            '+',
+                            style: TextStyle(fontSize: 24.sp),
+                          ),
+                          Text(
+                            'File upload',
+                            style: TextStyle(fontSize: 16.sp),
+                          ),
+                          SizedBox(height: 20.h),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(height: 60.h),
+            ],
+          );
+        },
       ),
     );
   }
