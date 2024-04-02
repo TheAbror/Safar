@@ -8,7 +8,7 @@ import '../../core/dialogs/dialog_success_failure.dart';
 import '../../core/routes/route_constants.dart';
 import '../home_page/bloc/orders_bloc.dart';
 import 'texts_and_titles/submit_inquiry_button.dart';
-import 'widgets/manage_taxi_order_fields.dart';
+import 'manage_taxi_order_fields.dart';
 
 class ManageTaxiOrdersPageViewModel {
   final int id;

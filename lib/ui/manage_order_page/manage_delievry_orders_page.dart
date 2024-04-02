@@ -4,8 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
+import 'package:safar/ui/manage_order_page/widgets/inquiry_item.dart';
 import 'texts_and_titles/submit_inquiry_button.dart';
 import 'texts_and_titles/text_form_fields/additional_field.dart';
+import 'widgets/amount_selection.dart';
+import 'widgets/card_number_and_remove.dart';
+import 'widgets/item_inquiry_title.dart';
+import 'widgets/unit_selection.dart';
 
 class ManagDeliveryOrdersPageViewModel {
   final int id;
@@ -65,6 +70,8 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    final item = InquiryItem(name: 'test', quantity: 1);
+
     return SingleChildScrollView(
       child: BlocBuilder<OrdersBloc, OrdersState>(
         builder: (context, state) {
@@ -125,6 +132,20 @@ class _BodyState extends State<_Body> {
               //     );
               //   },
               // ),
+              Container(
+                margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
+                padding: EdgeInsets.all(10.w),
+                decoration: _Decoration(context),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CardNumberAndRemove(index: 1),
+                    ItemInquiryTitle(index: 1, item: item),
+                    AmountSelection(item: item, index: 1),
+                    UnitSelection(index: 1, item: item),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 40.h,
                 width: double.infinity,
@@ -175,6 +196,13 @@ class _BodyState extends State<_Body> {
           );
         },
       ),
+    );
+  }
+
+  BoxDecoration _Decoration(BuildContext context) {
+    return BoxDecoration(
+      color: Theme.of(context).colorScheme.onBackground,
+      borderRadius: BorderRadius.circular(16.r),
     );
   }
 }
