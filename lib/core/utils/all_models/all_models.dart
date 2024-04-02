@@ -6,58 +6,20 @@ part 'all_models.g.dart';
 class SignInResponse {
   @JsonKey(defaultValue: '')
   String token;
-  @JsonKey(name: 'user')
-  UserInfoResponse userInfo;
+  @JsonKey(defaultValue: '')
+  String username;
+  @JsonKey(defaultValue: '')
+  String detail;
 
-  SignInResponse({required this.token, required this.userInfo});
+  SignInResponse({
+    required this.token,
+    required this.username,
+    required this.detail,
+  });
 
   factory SignInResponse.fromJson(Map<String, dynamic> json) => _$SignInResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SignInResponseToJson(this);
-}
-
-@JsonSerializable(includeIfNull: true, explicitToJson: true)
-class UserInfoResponse {
-  @JsonKey(defaultValue: 0)
-  int id;
-  @JsonKey(defaultValue: 'error occured', name: 'first_name')
-  String firstname;
-  @JsonKey(defaultValue: '', name: 'last_name')
-  String lastname;
-  @JsonKey(defaultValue: '')
-  String email;
-  @JsonKey(defaultValue: '', name: 'date_joined')
-  String dateJoined;
-  @JsonKey(defaultValue: '', name: 'last_login')
-  String lastLogin;
-  @JsonKey(defaultValue: false, name: 'is_superuser')
-  bool isSuperUser;
-  @JsonKey(defaultValue: false, name: 'is_staff')
-  bool isStaff;
-  @JsonKey(defaultValue: false, name: 'is_active')
-  bool isActive;
-  @JsonKey(defaultValue: '')
-  String username;
-  @JsonKey(defaultValue: '')
-  String password;
-
-  UserInfoResponse({
-    required this.id,
-    required this.firstname,
-    required this.lastname,
-    required this.dateJoined,
-    required this.lastLogin,
-    required this.isStaff,
-    required this.email,
-    required this.isActive,
-    required this.isSuperUser,
-    required this.username,
-    required this.password,
-  });
-
-  factory UserInfoResponse.fromJson(Map<String, dynamic> json) => _$UserInfoResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UserInfoResponseToJson(this);
 }
 
 // --- Account ---

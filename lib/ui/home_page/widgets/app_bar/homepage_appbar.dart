@@ -5,7 +5,7 @@ import 'package:safar/core/colors/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/ui/home_page/widgets/app_bar/home_appbar.dart';
 
-AppBar homePage_appbar(context, String fullName, String shortName, String role) {
+AppBar homePage_appbar(context, String fullName, String role) {
   return AppBar(
     elevation: 1,
     backgroundColor: Theme.of(context).colorScheme.onBackground,
@@ -37,6 +37,6 @@ AppBar homePage_appbar(context, String fullName, String shortName, String role) 
       ),
     ),
     automaticallyImplyLeading: false,
-    title: HomeAppBar(fullName: fullName, shortName: shortName, role: role),
+    title: HomeAppBar(fullName: fullName, role: role),
   );
 }

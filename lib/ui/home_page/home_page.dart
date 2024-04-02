@@ -42,7 +42,6 @@ class _HomePageState extends State<HomePage> {
           appBar: homePage_appbar(
             context,
             currentUser?.fullName ?? 'Abror Shamuradov',
-            currentUser?.shortName ?? 'AS',
             'Водитель',
           ),
           backgroundColor: Theme.of(context).colorScheme.background,

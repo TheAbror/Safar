@@ -12,14 +12,12 @@ import 'package:safar/ui/signin_page/bloc/auth_bloc.dart';
 import 'package:flutter_dialogs/flutter_dialogs.dart';
 
 class HomeAppBar extends StatelessWidget {
-  final String? fullName;
-  final String? shortName;
+  final String fullName;
   final String? role;
 
   const HomeAppBar({
     super.key,
-    this.fullName,
-    this.shortName,
+    required this.fullName,
     this.role,
   });
 
@@ -75,7 +73,7 @@ class HomeAppBar extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(corex * 2.r)),
               ),
               child: Text(
-                shortName ?? '',
+                fullName[0].toUpperCase(),
                 style: TextStyle(
                   fontSize: 14.sp,
                   color: AppColors.textMain,
@@ -91,7 +89,7 @@ class HomeAppBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              fullName ?? '',
+              fullName,
               style: TextStyle(
                 fontSize: 14.sp,
                 color: Theme.of(context).colorScheme.tertiary,

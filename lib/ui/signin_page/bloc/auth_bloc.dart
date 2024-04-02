@@ -50,14 +50,12 @@ class AuthBloc extends Cubit<AuthState> {
             ),
           );
 
-          var user = data.userInfo;
+          var user = data.username;
           boxCurrentUser.put(
             ShPrefKeys.currentUser,
             CurrentUser(
-              fullName: '${user.firstname} ${user.lastname}',
-              shortName: '${user.firstname[0].toUpperCase()} ${user.lastname[0].toUpperCase()}',
+              fullName: user,
               token: token,
-              userID: username,
             ),
           );
         }

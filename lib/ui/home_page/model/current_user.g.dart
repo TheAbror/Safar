@@ -18,24 +18,18 @@ class CurrentUserAdapter extends TypeAdapter<CurrentUser> {
     };
     return CurrentUser(
       fullName: fields[0] as String,
-      shortName: fields[1] as String,
-      token: fields[3] as String,
-      userID: fields[4] as String,
+      token: fields[1] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, CurrentUser obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(2)
       ..writeByte(0)
       ..write(obj.fullName)
       ..writeByte(1)
-      ..write(obj.shortName)
-      ..writeByte(3)
-      ..write(obj.token)
-      ..writeByte(4)
-      ..write(obj.userID);
+      ..write(obj.token);
   }
 
   @override

@@ -145,3 +145,40 @@ InputDecoration _Decoration(BuildContext context, String hintText) {
     hintStyle: const TextStyle(color: AppColors.textSecondary),
   );
 }
+
+class DeliveryTitleField extends StatefulWidget {
+  final String hintText;
+  final TextEditingController thisController;
+  final Function(String)? onChanged;
+  final double height;
+
+  const DeliveryTitleField({
+    super.key,
+    required this.thisController,
+    required this.hintText,
+    required this.onChanged,
+    this.height = 52,
+  });
+
+  @override
+  State<DeliveryTitleField> createState() => _DeliveryTitleFieldState();
+}
+
+class _DeliveryTitleFieldState extends State<DeliveryTitleField> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: widget.height.h,
+      child: TextFormField(
+        expands: true,
+        minLines: null,
+        maxLines: null,
+        textAlignVertical: TextAlignVertical.top,
+        textInputAction: TextInputAction.next,
+        onChanged: widget.onChanged,
+        controller: widget.thisController,
+        decoration: _Decoration(context, widget.hintText),
+      ),
+    );
+  }
+}
