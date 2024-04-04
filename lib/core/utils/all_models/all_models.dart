@@ -380,38 +380,38 @@ class DeliveryOrdersRequest {
   String pickup;
   @JsonKey(defaultValue: '')
   String destination;
-  // @JsonKey(defaultValue: 0, name: 'number_passenger')
-  // int numberOfPassengers;
-  // @JsonKey(defaultValue: '', name: 'desired_pickup_time')
-  // String desiredPickupTime;
-  // @JsonKey(defaultValue: '', name: 'desired_car_model')
-  // String desiredCarModel;
-  // @JsonKey(defaultValue: '', name: 'offered_price')
-  // String offeredPrice;
-  // @JsonKey(defaultValue: '', name: 'pickup_reference')
-  // String pickupReference;
-  // @JsonKey(defaultValue: '', name: 'destination_reference')
-  // String destinationReference;
-  // @JsonKey(defaultValue: '', name: 'comments_for_driver')
-  // String commentForDriver;
-  // @JsonKey(defaultValue: '')
-  // String status;
-  // @JsonKey(defaultValue: false, name: 'is_driver')
-  // bool isDriver;
+  @JsonKey(defaultValue: 0, name: 'number_passenger')
+  int numberOfPassengers;
+  @JsonKey(defaultValue: '', name: 'desired_pickup_time')
+  String desiredPickupTime;
+  @JsonKey(defaultValue: '', name: 'desired_car_model')
+  String desiredCarModel;
+  @JsonKey(defaultValue: '', name: 'offered_price')
+  String offeredPrice;
+  @JsonKey(defaultValue: '', name: 'pickup_reference')
+  String pickupReference;
+  @JsonKey(defaultValue: '', name: 'destination_reference')
+  String destinationReference;
+  @JsonKey(defaultValue: '', name: 'comments_for_driver')
+  String commentForDriver;
+  @JsonKey(defaultValue: '')
+  String status;
+  @JsonKey(defaultValue: false, name: 'is_driver')
+  bool isDriver;
 
   DeliveryOrdersRequest({
     // this.id,
     required this.pickup,
     required this.destination,
-    // required this.numberOfPassengers,
-    // required this.desiredPickupTime,
-    // required this.desiredCarModel,
-    // required this.offeredPrice,
-    // required this.pickupReference,
-    // required this.destinationReference,
-    // required this.commentForDriver,
-    // required this.status,
-    // required this.isDriver,
+    required this.numberOfPassengers,
+    required this.desiredPickupTime,
+    required this.desiredCarModel,
+    required this.offeredPrice,
+    required this.pickupReference,
+    required this.destinationReference,
+    required this.commentForDriver,
+    required this.status,
+    required this.isDriver,
   });
 
   factory DeliveryOrdersRequest.fromJson(Map<String, dynamic> json) =>

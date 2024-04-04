@@ -149,8 +149,8 @@ final class _$OrdersService extends OrdersService {
   @override
   Future<Response<AllDeliveryOrdersResponse>> postDeliveryOrders(
       DeliveryOrdersRequest body) {
-    final Uri $url =
-        Uri.parse('https://safarapi.pythonanywhere.com/api/orders_detail/');
+    final Uri $url = Uri.parse(
+        'https://safarapi.pythonanywhere.com/api/delivery_orders_detail/');
     final $body = body;
     final Request $request = Request(
       'POST',

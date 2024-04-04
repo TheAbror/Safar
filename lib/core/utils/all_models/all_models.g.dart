@@ -262,6 +262,15 @@ DeliveryOrdersRequest _$DeliveryOrdersRequestFromJson(
     DeliveryOrdersRequest(
       pickup: json['pickup'] as String? ?? '',
       destination: json['destination'] as String? ?? '',
+      numberOfPassengers: json['number_passenger'] as int? ?? 0,
+      desiredPickupTime: json['desired_pickup_time'] as String? ?? '',
+      desiredCarModel: json['desired_car_model'] as String? ?? '',
+      offeredPrice: json['offered_price'] as String? ?? '',
+      pickupReference: json['pickup_reference'] as String? ?? '',
+      destinationReference: json['destination_reference'] as String? ?? '',
+      commentForDriver: json['comments_for_driver'] as String? ?? '',
+      status: json['status'] as String? ?? '',
+      isDriver: json['is_driver'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$DeliveryOrdersRequestToJson(
@@ -269,4 +278,13 @@ Map<String, dynamic> _$DeliveryOrdersRequestToJson(
     <String, dynamic>{
       'pickup': instance.pickup,
       'destination': instance.destination,
+      'number_passenger': instance.numberOfPassengers,
+      'desired_pickup_time': instance.desiredPickupTime,
+      'desired_car_model': instance.desiredCarModel,
+      'offered_price': instance.offeredPrice,
+      'pickup_reference': instance.pickupReference,
+      'destination_reference': instance.destinationReference,
+      'comments_for_driver': instance.commentForDriver,
+      'status': instance.status,
+      'is_driver': instance.isDriver,
     };

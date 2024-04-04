@@ -87,17 +87,17 @@ class OrdersBloc extends Cubit<OrdersState> {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = DeliveryOrdersRequest(
-      pickup: 'state.pickup',
+      pickup: '31111state.pickup',
       destination: 'state.destination',
-      // numberOfPassengers: state.numberOfPassengers,
-      // desiredPickupTime: state.date,
-      // desiredCarModel: '',
-      // offeredPrice: state.offeredPrice,
-      // pickupReference: state.pickUpReference,
-      // destinationReference: state.destinationReference,
-      // commentForDriver: state.commentsForDriver,
-      // status: 'created',
-      // isDriver: state.isDriver,
+      numberOfPassengers: 1,
+      desiredPickupTime: '2024-04-01T08:00:00',
+      desiredCarModel: '',
+      offeredPrice: '4444',
+      pickupReference: state.pickUpReference,
+      destinationReference: state.destinationReference,
+      commentForDriver: state.commentsForDriver,
+      status: 'created',
+      isDriver: state.isDriver,
     );
 
     try {
@@ -109,6 +109,7 @@ class OrdersBloc extends Cubit<OrdersState> {
         if (data != null) {
           emit(state.copyWith(
             deliveryOrdersList: data,
+            isDeliveryPostSuccessfull: true,
             blocProgress: BlocProgress.IS_SUCCESS,
           ));
         }
@@ -522,7 +523,11 @@ class OrdersBloc extends Cubit<OrdersState> {
     emit(OrdersState.initial());
   }
 
-  void makeDeletedFale() {
+  void makeDeletedFalse() {
     emit(state.copyWith(isOrderDeleted: false));
+  }
+
+  void makeBlocProgressFalse() {
+    emit(state.copyWith(isDeliveryPostSuccessfull: false));
   }
 }

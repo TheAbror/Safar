@@ -42,7 +42,7 @@ abstract class OrdersService extends ChopperService {
   @Delete(path: '${AppStrings.deliveryOrderDetails}{id}/')
   Future<Response<DeleteOrderById>> deleteDeliveryOrderById(@Path('id') int id);
 
-  @Post(path: AppStrings.orderDetails)
+  @Post(path: AppStrings.deliveryOrderDetails)
   Future<Response<AllDeliveryOrdersResponse>> postDeliveryOrders(
       @Body() DeliveryOrdersRequest body);
 }

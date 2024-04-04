@@ -113,7 +113,7 @@ class _BodyState extends State<_Body> {
 
             showMessage('Удалено');
 
-            context.read<OrdersBloc>().makeDeletedFale();
+            context.read<OrdersBloc>().makeDeletedFalse();
           }
         },
         builder: (context, state) {

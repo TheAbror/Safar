@@ -20,6 +20,7 @@ class OrdersState extends Equatable {
   final bool isButtonEnabled;
   final bool isOrderDeleted;
   final bool isDeliveryOrderDeleted;
+  final bool isDeliveryPostSuccessfull;
   final int randomNumber;
   final AllTaxiOrdersResponse taxiOrdersList;
   final AllDeliveryOrdersResponse deliveryOrdersList;
@@ -43,6 +44,7 @@ class OrdersState extends Equatable {
     required this.isButtonEnabled,
     required this.isOrderDeleted,
     required this.isDeliveryOrderDeleted,
+    required this.isDeliveryPostSuccessfull,
     required this.randomNumber,
     required this.taxiOrdersList,
     required this.deliveryOrdersList,
@@ -102,6 +104,7 @@ class OrdersState extends Equatable {
       isButtonEnabled: false,
       isOrderDeleted: false,
       isDeliveryOrderDeleted: false,
+      isDeliveryPostSuccessfull: false,
       randomNumber: 0,
       taxiOrdersList: AllTaxiOrdersResponse(count: 0, results: []),
       deliveryOrdersList: AllDeliveryOrdersResponse(count: 0, results: []),
@@ -127,6 +130,7 @@ class OrdersState extends Equatable {
     bool? isButtonEnabled,
     bool? isOrderDeleted,
     bool? isDeliveryOrderDeleted,
+    bool? isDeliveryPostSuccessfull,
     int? randomNumber,
     AllTaxiOrdersResponse? taxiOrdersList,
     AllDeliveryOrdersResponse? deliveryOrdersList,
@@ -151,6 +155,7 @@ class OrdersState extends Equatable {
       isButtonEnabled: isButtonEnabled ?? this.isButtonEnabled,
       isOrderDeleted: isOrderDeleted ?? this.isOrderDeleted,
       isDeliveryOrderDeleted: isDeliveryOrderDeleted ?? this.isDeliveryOrderDeleted,
+      isDeliveryPostSuccessfull: isDeliveryPostSuccessfull ?? this.isDeliveryPostSuccessfull,
       taxiOrdersList: taxiOrdersList ?? this.taxiOrdersList,
       deliveryOrdersList: deliveryOrdersList ?? this.deliveryOrdersList,
       blocProgress: blocProgress ?? this.blocProgress,
@@ -176,6 +181,7 @@ class OrdersState extends Equatable {
         isButtonEnabled,
         isOrderDeleted,
         isDeliveryOrderDeleted,
+        isDeliveryPostSuccessfull,
         randomNumber,
         taxiOrdersList,
         deliveryOrdersList,

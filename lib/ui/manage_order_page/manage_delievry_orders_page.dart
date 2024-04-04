@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/core/bloc_progress/bloc_progress.dart';
+import 'package:safar/core/constants/something_went_wrong.dart';
+import 'package:safar/core/dialogs/dialog_success_failure.dart';
+import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
@@ -74,10 +78,31 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final item = InquiryItem(name: 'test', quantity: 1);
 
-    return SingleChildScrollView(
-      child: BlocBuilder<OrdersBloc, OrdersState>(
-        builder: (context, state) {
-          return Column(
+    return BlocConsumer<OrdersBloc, OrdersState>(
+      listener: (context, state) {
+        if (state.blocProgress == BlocProgress.IS_SUCCESS && state.isDeliveryPostSuccessfull) {
+          //
+
+          Navigator.pushNamed(context, AppRoutes.homePage);
+
+          showMessage('Успех delivey created');
+
+          context.read<OrdersBloc>().makeBlocProgressFalse();
+        }
+      },
+      builder: (context, state) {
+        if (state.blocProgress == BlocProgress.IS_LOADING) {
+          return Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).colorScheme.primaryContainer,
+            ),
+          );
+        }
+        if (state.blocProgress == BlocProgress.FAILED) {
+          return const SomethingWentWrong();
+        }
+        return SingleChildScrollView(
+          child: Column(
             children: [
               Container(
                 margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
@@ -195,9 +220,9 @@ class _BodyState extends State<_Body> {
               ),
               SizedBox(height: 60.h),
             ],
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 
