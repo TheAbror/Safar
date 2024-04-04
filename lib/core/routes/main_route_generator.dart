@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
+import 'package:safar/ui/order_details_page/delivery_details_page.dart';
 import 'package:safar/ui/order_details_page/taxi_details_page.dart';
 import 'package:safar/ui/signin_page/signin_page.dart';
 import 'package:safar/ui/splash_page/splash_page.dart';
@@ -37,10 +38,16 @@ class MainRouteGenerator {
             viewModel: settings.arguments as ManagDeliveryOrdersPageViewModel,
           ),
         );
-      case AppRoutes.bildirgi:
+      case AppRoutes.taxiDetails:
         return CustomCupertinoStyleNavigationRoute(
           builder: (context) => TaxiDetailsPage(
             viewModel: settings.arguments as TaxiDetailsPageViewModel,
+          ),
+        );
+      case AppRoutes.deliveryDetails:
+        return CustomCupertinoStyleNavigationRoute(
+          builder: (context) => DeliveryDetailsPage(
+            viewModel: settings.arguments as DeliveryDetailsPageViewModel,
           ),
         );
 

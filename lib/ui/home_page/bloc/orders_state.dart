@@ -16,6 +16,7 @@ class OrdersState extends Equatable {
   final List<String> statusesForFilter;
   //post variables end
   final TaxiOrdersResponse orderByID;
+  final DeliveryOrdersResponse deliveryOrderByID;
   final bool isButtonEnabled;
   final bool isOrderDeleted;
   final int randomNumber;
@@ -37,6 +38,7 @@ class OrdersState extends Equatable {
     required this.isInitialValuesLoaded,
     required this.statusesForFilter,
     required this.orderByID,
+    required this.deliveryOrderByID,
     required this.isButtonEnabled,
     required this.isOrderDeleted,
     required this.randomNumber,
@@ -78,6 +80,23 @@ class OrdersState extends Equatable {
         status: OrderStatus(key: '', value: ''),
         updatedAt: '',
       ),
+      deliveryOrderByID: DeliveryOrdersResponse(
+        id: 0,
+        pickup: '',
+        destination: '',
+        photo: '',
+        desiredPickupTime: '',
+        desiredCarModel: '',
+        offeredPrice: '',
+        pickupReference: '',
+        destinationReference: '',
+        commentForDriver: '',
+        createdAt: '',
+        driver: 0,
+        user: 0,
+        isDriver: false,
+        updatedAt: '',
+      ),
       isButtonEnabled: false,
       isOrderDeleted: false,
       randomNumber: 0,
@@ -101,6 +120,7 @@ class OrdersState extends Equatable {
     bool? isInitialValuesLoaded,
     List<String>? statusesForFilter,
     TaxiOrdersResponse? orderByID,
+    DeliveryOrdersResponse? deliveryOrderByID,
     bool? isButtonEnabled,
     bool? isOrderDeleted,
     int? randomNumber,
@@ -123,6 +143,7 @@ class OrdersState extends Equatable {
       isInitialValuesLoaded: isInitialValuesLoaded ?? this.isInitialValuesLoaded,
       statusesForFilter: statusesForFilter ?? this.statusesForFilter,
       orderByID: orderByID ?? this.orderByID,
+      deliveryOrderByID: deliveryOrderByID ?? this.deliveryOrderByID,
       isButtonEnabled: isButtonEnabled ?? this.isButtonEnabled,
       isOrderDeleted: isOrderDeleted ?? this.isOrderDeleted,
       taxiOrdersList: taxiOrdersList ?? this.taxiOrdersList,
@@ -146,6 +167,7 @@ class OrdersState extends Equatable {
         isInitialValuesLoaded,
         statusesForFilter,
         orderByID,
+        deliveryOrderByID,
         isButtonEnabled,
         isOrderDeleted,
         randomNumber,

@@ -1,9 +1,11 @@
 import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/core/utils/all_models/all_models.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:safar/ui/order_details_page/taxi_details_page.dart';
 import 'status_widget.dart';
 
 class OrdersCard extends StatelessWidget {
@@ -34,10 +36,10 @@ class OrdersCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        // Navigator.of(context).pushNamed(
-        //   AppRoutes.bildirgi,
-        //   arguments: TaxiDetailsPageViewModel(model: model, index: index),
-        // );
+        Navigator.of(context).pushNamed(
+          AppRoutes.taxiDetails,
+          arguments: TaxiDetailsPageViewModel(model: model, index: index),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 4.w),

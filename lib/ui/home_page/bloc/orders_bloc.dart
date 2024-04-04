@@ -13,6 +13,45 @@ part 'orders_state.dart';
 class OrdersBloc extends Cubit<OrdersState> {
   OrdersBloc() : super(OrdersState.initial());
 
+  //  Delivery requests
+
+  void getDeliveryOrderById(int id) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.ordersService.getDeliveryOrderById(id);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(
+            state.copyWith(
+              deliveryOrderByID: data,
+              blocProgress: BlocProgress.LOADED,
+            ),
+          );
+        }
+      } else {
+        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+
+        emit(state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: error.message,
+        ));
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+
+      emit(state.copyWith(
+        blocProgress: BlocProgress.FAILED,
+        failureMessage: AppStrings.internalErrorMessage,
+      ));
+    }
+  }
+
+  //
+
   void getStatusesList() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
