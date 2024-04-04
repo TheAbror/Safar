@@ -85,10 +85,9 @@ class _BodyState extends State<_Body> {
                 if (value != null) {
                   if (value) {
                     context.read<OrdersBloc>().deleteDeliveryOrderById(widget.model.id);
-                    //TODO test delete
                   } else if (!value) {
                     Navigator.of(context).pushNamed(
-                      AppRoutes.manageTaxiOrder,
+                      AppRoutes.manageDeliveryOrder,
                       arguments: ManageTaxiOrdersPageViewModel(
                         id: widget.model.id,
                         isEdit: true,
@@ -108,7 +107,7 @@ class _BodyState extends State<_Body> {
           ),
       body: BlocConsumer<OrdersBloc, OrdersState>(
         listener: (context, state) {
-          if (state.blocProgress == BlocProgress.IS_SUCCESS && state.isOrderDeleted) {
+          if (state.blocProgress == BlocProgress.IS_SUCCESS && state.isDeliveryOrderDeleted) {
             Navigator.pushNamed(context, AppRoutes.homePage);
 
             showMessage('Удалено');

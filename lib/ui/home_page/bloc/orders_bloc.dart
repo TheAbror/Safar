@@ -87,7 +87,7 @@ class OrdersBloc extends Cubit<OrdersState> {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = DeliveryOrdersRequest(
-      pickup: '31111state.pickup',
+      pickup: '754331111state.pickup',
       destination: 'state.destination',
       numberOfPassengers: 1,
       desiredPickupTime: '2024-04-01T08:00:00',
@@ -524,7 +524,7 @@ class OrdersBloc extends Cubit<OrdersState> {
   }
 
   void makeDeletedFalse() {
-    emit(state.copyWith(isOrderDeleted: false));
+    emit(state.copyWith(isDeliveryOrderDeleted: false));
   }
 
   void makeBlocProgressFalse() {

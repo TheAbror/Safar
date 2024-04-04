@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     context.read<OrdersBloc>().getTaxiOrders();
-    context.read<OrdersBloc>().getStatusesList();
+    // context.read<OrdersBloc>().getStatusesList();
     context.read<OrdersBloc>().getDeliveryOrders();
   }
 

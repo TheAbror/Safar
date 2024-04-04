@@ -35,8 +35,7 @@ class DeliveryTab extends StatelessWidget {
             return const Center(
               child: CircularProgressIndicator(color: AppColors.primary),
             );
-          }
-          if (state.blocProgress == BlocProgress.FAILED) {
+          } else if (state.blocProgress == BlocProgress.FAILED) {
             return SomethingWentWrong();
           }
 

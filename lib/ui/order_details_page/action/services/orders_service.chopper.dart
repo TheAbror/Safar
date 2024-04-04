@@ -124,7 +124,7 @@ final class _$OrdersService extends OrdersService {
   @override
   Future<Response<DeliveryOrdersResponse>> getDeliveryOrderById(int id) {
     final Uri $url = Uri.parse(
-        'https://safarapi.pythonanywhere.com/api/orders_detail/${id}/');
+        'https://safarapi.pythonanywhere.com/api/delivery_orders_detail/${id}/');
     final Request $request = Request(
       'GET',
       $url,
