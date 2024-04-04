@@ -15,6 +15,43 @@ class OrdersBloc extends Cubit<OrdersState> {
 
   //  Delivery requests
 
+  void updateDeliveryData({
+    String? pickup,
+    String? destination,
+    int? numberOfPassengers,
+    String? date,
+    String? offeredPrice,
+    String? pickUpReference,
+    String? destinationReference,
+    String? commentsForDriver,
+  }) {
+    if (pickup != null) {
+      emit(state.copyWith(deliveryPickup: pickup));
+    } else if (destination != null) {
+      emit(state.copyWith(deliveryDestination: destination));
+    } else if (date != null) {
+      emit(state.copyWith(deliveryDate: date));
+    } else if (offeredPrice != null) {
+      emit(state.copyWith(deliveryOfferedPrice: offeredPrice));
+    } else if (pickUpReference != null) {
+      emit(state.copyWith(deliveryPickUpReference: pickUpReference));
+    } else if (destinationReference != null) {
+      emit(state.copyWith(deliveryDestinationReference: destinationReference));
+    } else if (commentsForDriver != null) {
+      emit(state.copyWith(deliveryCommentsForDriver: commentsForDriver));
+    }
+
+    final isPickUpValid = state.deliveryPickup.isNotEmpty;
+    final isDestinationValid = state.deliveryDestination.isNotEmpty;
+    final isDateValid = state.deliveryDate.isNotEmpty;
+    final isOfferedPriceValid = state.deliveryOfferedPrice.isNotEmpty;
+
+    var isFormValid = false;
+    isFormValid = isPickUpValid && isDestinationValid && isOfferedPriceValid && isDateValid;
+
+    emit(state.copyWith(isDeliveryButtonEnabled: isFormValid));
+  }
+
   void getDeliveryOrderById(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 

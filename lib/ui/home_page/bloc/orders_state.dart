@@ -1,7 +1,7 @@
 part of 'orders_bloc.dart';
 
 class OrdersState extends Equatable {
-  //post variables start
+  // taxi post variables start
   final String pickup;
   final String destination;
   final int numberOfPassengers;
@@ -12,16 +12,29 @@ class OrdersState extends Equatable {
   final String commentsForDriver;
   // final String phoneNumber;
   final bool isDriver;
+  //taxi post variables end
+
+  // delivery post variables start
+  final String deliveryPickup;
+  final String deliveryDestination;
+  final String deliveryDate;
+  final String deliveryOfferedPrice;
+  final String deliveryPickUpReference;
+  final String deliveryDestinationReference;
+  final String deliveryCommentsForDriver;
+  // final String phoneNumber;
+  final bool deliveryIsDriver;
+  //taxi delivery variables end
+
   final bool isInitialValuesLoaded;
   final List<String> statusesForFilter;
-  //post variables end
   final TaxiOrdersResponse orderByID;
   final DeliveryOrdersResponse deliveryOrderByID;
   final bool isButtonEnabled;
+  final bool isDeliveryButtonEnabled;
   final bool isOrderDeleted;
   final bool isDeliveryOrderDeleted;
   final bool isDeliveryPostSuccessfull;
-  final int randomNumber;
   final AllTaxiOrdersResponse taxiOrdersList;
   final AllDeliveryOrdersResponse deliveryOrdersList;
   final BlocProgress blocProgress;
@@ -37,15 +50,23 @@ class OrdersState extends Equatable {
     required this.destinationReference,
     required this.commentsForDriver,
     required this.isDriver,
+    required this.deliveryPickup,
+    required this.deliveryDestination,
+    required this.deliveryDate,
+    required this.deliveryOfferedPrice,
+    required this.deliveryPickUpReference,
+    required this.deliveryDestinationReference,
+    required this.deliveryCommentsForDriver,
+    required this.deliveryIsDriver,
     required this.isInitialValuesLoaded,
     required this.statusesForFilter,
     required this.orderByID,
     required this.deliveryOrderByID,
     required this.isButtonEnabled,
+    required this.isDeliveryButtonEnabled,
     required this.isOrderDeleted,
     required this.isDeliveryOrderDeleted,
     required this.isDeliveryPostSuccessfull,
-    required this.randomNumber,
     required this.taxiOrdersList,
     required this.deliveryOrdersList,
     required this.blocProgress,
@@ -63,6 +84,14 @@ class OrdersState extends Equatable {
       destinationReference: '',
       commentsForDriver: '',
       isDriver: false,
+      deliveryPickup: '',
+      deliveryDestination: '',
+      deliveryDate: '',
+      deliveryOfferedPrice: '',
+      deliveryPickUpReference: '',
+      deliveryDestinationReference: '',
+      deliveryCommentsForDriver: '',
+      deliveryIsDriver: false,
       isInitialValuesLoaded: false,
       statusesForFilter: const [],
       orderByID: TaxiOrdersResponse(
@@ -102,10 +131,10 @@ class OrdersState extends Equatable {
         updatedAt: '',
       ),
       isButtonEnabled: false,
+      isDeliveryButtonEnabled: false,
       isOrderDeleted: false,
       isDeliveryOrderDeleted: false,
       isDeliveryPostSuccessfull: false,
-      randomNumber: 0,
       taxiOrdersList: AllTaxiOrdersResponse(count: 0, results: []),
       deliveryOrdersList: AllDeliveryOrdersResponse(count: 0, results: []),
       blocProgress: BlocProgress.NOT_STARTED,
@@ -123,15 +152,23 @@ class OrdersState extends Equatable {
     String? destinationReference,
     String? commentsForDriver,
     bool? isDriver,
+    String? deliveryPickup,
+    String? deliveryDestination,
+    String? deliveryDate,
+    String? deliveryOfferedPrice,
+    String? deliveryPickUpReference,
+    String? deliveryDestinationReference,
+    String? deliveryCommentsForDriver,
+    bool? deliveryIsDriver,
     bool? isInitialValuesLoaded,
     List<String>? statusesForFilter,
     TaxiOrdersResponse? orderByID,
     DeliveryOrdersResponse? deliveryOrderByID,
     bool? isButtonEnabled,
+    bool? isDeliveryButtonEnabled,
     bool? isOrderDeleted,
     bool? isDeliveryOrderDeleted,
     bool? isDeliveryPostSuccessfull,
-    int? randomNumber,
     AllTaxiOrdersResponse? taxiOrdersList,
     AllDeliveryOrdersResponse? deliveryOrdersList,
     BlocProgress? blocProgress,
@@ -143,16 +180,25 @@ class OrdersState extends Equatable {
       numberOfPassengers: numberOfPassengers ?? this.numberOfPassengers,
       date: date ?? this.date,
       offeredPrice: offeredPrice ?? this.offeredPrice,
-      randomNumber: randomNumber ?? this.randomNumber,
       pickUpReference: pickUpReference ?? this.pickUpReference,
       destinationReference: destinationReference ?? this.destinationReference,
       commentsForDriver: commentsForDriver ?? this.commentsForDriver,
       isDriver: isDriver ?? this.isDriver,
+      deliveryPickup: deliveryPickup ?? this.deliveryPickup,
+      deliveryDestination: deliveryDestination ?? this.deliveryDestination,
+      deliveryDate: deliveryDate ?? this.deliveryDate,
+      deliveryOfferedPrice: deliveryOfferedPrice ?? this.deliveryOfferedPrice,
+      deliveryPickUpReference: deliveryPickUpReference ?? this.deliveryPickUpReference,
+      deliveryDestinationReference:
+          deliveryDestinationReference ?? this.deliveryDestinationReference,
+      deliveryCommentsForDriver: deliveryCommentsForDriver ?? this.deliveryCommentsForDriver,
+      deliveryIsDriver: deliveryIsDriver ?? this.deliveryIsDriver,
       isInitialValuesLoaded: isInitialValuesLoaded ?? this.isInitialValuesLoaded,
       statusesForFilter: statusesForFilter ?? this.statusesForFilter,
       orderByID: orderByID ?? this.orderByID,
       deliveryOrderByID: deliveryOrderByID ?? this.deliveryOrderByID,
       isButtonEnabled: isButtonEnabled ?? this.isButtonEnabled,
+      isDeliveryButtonEnabled: isDeliveryButtonEnabled ?? this.isDeliveryButtonEnabled,
       isOrderDeleted: isOrderDeleted ?? this.isOrderDeleted,
       isDeliveryOrderDeleted: isDeliveryOrderDeleted ?? this.isDeliveryOrderDeleted,
       isDeliveryPostSuccessfull: isDeliveryPostSuccessfull ?? this.isDeliveryPostSuccessfull,
@@ -174,15 +220,23 @@ class OrdersState extends Equatable {
         destinationReference,
         commentsForDriver,
         isDriver,
+        deliveryPickup,
+        deliveryDestination,
+        deliveryDate,
+        deliveryOfferedPrice,
+        deliveryPickUpReference,
+        deliveryDestinationReference,
+        deliveryCommentsForDriver,
+        deliveryIsDriver,
         isInitialValuesLoaded,
         statusesForFilter,
         orderByID,
         deliveryOrderByID,
         isButtonEnabled,
+        isDeliveryButtonEnabled,
         isOrderDeleted,
         isDeliveryOrderDeleted,
         isDeliveryPostSuccessfull,
-        randomNumber,
         taxiOrdersList,
         deliveryOrdersList,
         blocProgress,
