@@ -6,6 +6,7 @@ class AppStrings {
   static const incorrectPasscode = 'Incorrect';
   static const filterStatusesList = 'taxi_status_filters/';
   static const orderDetails = 'orders_detail/';
+  static const deliveryOrderDetails = 'delivery_orders_detail/';
   static const appVersions = 'version/';
   static const ordersList = 'orders/';
   static const deliveryList = 'delivery_orders/';

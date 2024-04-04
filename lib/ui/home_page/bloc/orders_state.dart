@@ -19,6 +19,7 @@ class OrdersState extends Equatable {
   final DeliveryOrdersResponse deliveryOrderByID;
   final bool isButtonEnabled;
   final bool isOrderDeleted;
+  final bool isDeliveryOrderDeleted;
   final int randomNumber;
   final AllTaxiOrdersResponse taxiOrdersList;
   final AllDeliveryOrdersResponse deliveryOrdersList;
@@ -41,6 +42,7 @@ class OrdersState extends Equatable {
     required this.deliveryOrderByID,
     required this.isButtonEnabled,
     required this.isOrderDeleted,
+    required this.isDeliveryOrderDeleted,
     required this.randomNumber,
     required this.taxiOrdersList,
     required this.deliveryOrdersList,
@@ -99,6 +101,7 @@ class OrdersState extends Equatable {
       ),
       isButtonEnabled: false,
       isOrderDeleted: false,
+      isDeliveryOrderDeleted: false,
       randomNumber: 0,
       taxiOrdersList: AllTaxiOrdersResponse(count: 0, results: []),
       deliveryOrdersList: AllDeliveryOrdersResponse(count: 0, results: []),
@@ -123,6 +126,7 @@ class OrdersState extends Equatable {
     DeliveryOrdersResponse? deliveryOrderByID,
     bool? isButtonEnabled,
     bool? isOrderDeleted,
+    bool? isDeliveryOrderDeleted,
     int? randomNumber,
     AllTaxiOrdersResponse? taxiOrdersList,
     AllDeliveryOrdersResponse? deliveryOrdersList,
@@ -146,6 +150,7 @@ class OrdersState extends Equatable {
       deliveryOrderByID: deliveryOrderByID ?? this.deliveryOrderByID,
       isButtonEnabled: isButtonEnabled ?? this.isButtonEnabled,
       isOrderDeleted: isOrderDeleted ?? this.isOrderDeleted,
+      isDeliveryOrderDeleted: isDeliveryOrderDeleted ?? this.isDeliveryOrderDeleted,
       taxiOrdersList: taxiOrdersList ?? this.taxiOrdersList,
       deliveryOrdersList: deliveryOrdersList ?? this.deliveryOrdersList,
       blocProgress: blocProgress ?? this.blocProgress,
@@ -170,6 +175,7 @@ class OrdersState extends Equatable {
         deliveryOrderByID,
         isButtonEnabled,
         isOrderDeleted,
+        isDeliveryOrderDeleted,
         randomNumber,
         taxiOrdersList,
         deliveryOrdersList,

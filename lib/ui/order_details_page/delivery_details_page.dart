@@ -84,7 +84,8 @@ class _BodyState extends State<_Body> {
               order_edit_or_delete_dialog(context).then((value) {
                 if (value != null) {
                   if (value) {
-                    context.read<OrdersBloc>().deleteOrderById(widget.model.id);
+                    context.read<OrdersBloc>().deleteDeliveryOrderById(widget.model.id);
+                    //TODO test delete
                   } else if (!value) {
                     Navigator.of(context).pushNamed(
                       AppRoutes.manageTaxiOrder,

@@ -43,8 +43,10 @@ class _ManagDeliveryOrdersPageState extends State<ManagDeliveryOrdersPage> {
           context,
           widget.viewModel.isEdit ? 'Изменить детали доставки' : 'Заказать доставку',
           SubmitOrderButton(
-            isEnabled: widget.viewModel.isEdit ? true : false,
+            // isEnabled: widget.viewModel.isEdit ? true : false,
+            isEnabled: true,
             onTap: () {
+              context.read<OrdersBloc>().postDeliveryOrders();
               if (widget.viewModel.isEdit) {}
             },
           ),

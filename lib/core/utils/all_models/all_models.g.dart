@@ -256,3 +256,17 @@ Map<String, dynamic> _$DeliveryOrdersResponseToJson(
       'driver': instance.driver,
       'is_driver': instance.isDriver,
     };
+
+DeliveryOrdersRequest _$DeliveryOrdersRequestFromJson(
+        Map<String, dynamic> json) =>
+    DeliveryOrdersRequest(
+      pickup: json['pickup'] as String? ?? '',
+      destination: json['destination'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$DeliveryOrdersRequestToJson(
+        DeliveryOrdersRequest instance) =>
+    <String, dynamic>{
+      'pickup': instance.pickup,
+      'destination': instance.destination,
+    };

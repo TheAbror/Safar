@@ -51,7 +51,7 @@ class _ManageTaxiOrdersPageState extends State<ManageTaxiOrdersPage> {
                   onTap: () async {
                     widget.viewModel.isEdit
                         ? bloc.editTaxiOrdersByID(widget.viewModel.id)
-                        : bloc.postTaxiOrders(widget.viewModel.id);
+                        : bloc.postTaxiOrders();
                   },
                 ),
               ),

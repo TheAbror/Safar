@@ -50,6 +50,89 @@ class OrdersBloc extends Cubit<OrdersState> {
     }
   }
 
+  void deleteDeliveryOrderById(int id) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    try {
+      final response = await ApiProvider.ordersService.deleteDeliveryOrderById(id);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(state.copyWith(
+            blocProgress: BlocProgress.IS_SUCCESS,
+            isDeliveryOrderDeleted: true,
+          ));
+        }
+      } else {
+        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+
+        emit(state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: error.message,
+        ));
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+
+      emit(state.copyWith(
+        blocProgress: BlocProgress.FAILED,
+        failureMessage: AppStrings.internalErrorMessage,
+      ));
+    }
+  }
+
+  void postDeliveryOrders() async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    final request = DeliveryOrdersRequest(
+      pickup: 'state.pickup',
+      destination: 'state.destination',
+      // numberOfPassengers: state.numberOfPassengers,
+      // desiredPickupTime: state.date,
+      // desiredCarModel: '',
+      // offeredPrice: state.offeredPrice,
+      // pickupReference: state.pickUpReference,
+      // destinationReference: state.destinationReference,
+      // commentForDriver: state.commentsForDriver,
+      // status: 'created',
+      // isDriver: state.isDriver,
+    );
+
+    try {
+      final response = await ApiProvider.ordersService.postDeliveryOrders(request);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(state.copyWith(
+            deliveryOrdersList: data,
+            blocProgress: BlocProgress.IS_SUCCESS,
+          ));
+        }
+      } else {
+        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+    }
+  }
+
   //
 
   void getStatusesList() async {
@@ -334,7 +417,7 @@ class OrdersBloc extends Cubit<OrdersState> {
     }
   }
 
-  void postTaxiOrders(int? id) async {
+  void postTaxiOrders() async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = TaxiOrdersRequest(
