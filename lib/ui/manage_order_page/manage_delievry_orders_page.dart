@@ -11,12 +11,14 @@ import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_order_page/widgets/inquiry_item.dart';
+import 'package:safar/ui/order_details_page/action/options/date_option.dart';
 import 'texts_and_titles/submit_inquiry_button.dart';
+import 'texts_and_titles/text_form_fields/additional_field.dart';
+import 'texts_and_titles/text_form_fields/new_inquiry_description.dart';
 import 'widgets/amount_selection.dart';
 import 'widgets/card_number_and_remove.dart';
 import 'widgets/from_to_fields.dart';
 import 'widgets/item_inquiry_title.dart';
-import 'widgets/unit_selection.dart';
 
 class ManagDeliveryOrdersPageViewModel {
   final int id;
@@ -75,6 +77,11 @@ class _Body extends StatefulWidget {
 class _BodyState extends State<_Body> {
   var fromController = TextEditingController();
   var toController = TextEditingController();
+  var offeredPriceController = TextEditingController();
+  var exactLocationController = TextEditingController();
+  var exactDestinationController = TextEditingController();
+  var commentsController = TextEditingController();
+  var dateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -115,17 +122,8 @@ class _BodyState extends State<_Body> {
                 ),
                 child: Column(
                   children: [
-                    // pickup: '754331111state.pickup',
-                    // destination: 'state.destination',
-                    // numberOfPassengers: 1,
                     // desiredPickupTime: '2024-04-01T08:00:00',
-                    // desiredCarModel: '',
-                    // offeredPrice: '4444',
-                    // pickupReference: state.pickUpReference,
-                    // destinationReference: state.destinationReference,
                     // commentForDriver: state.commentsForDriver,
-                    // status: 'created',
-                    // isDriver: state.isDriver,
 
                     FromToFields(
                       hintText: 'Из',
@@ -178,6 +176,43 @@ class _BodyState extends State<_Body> {
                     ),
 
                     SizedBox(height: 8.h),
+                    AdditionalField(
+                      thisController: offeredPriceController,
+                      hintText: 'Предложенная цена (ex: 200.000 сум)',
+                      onChanged: (value) {
+                        context.read<OrdersBloc>().updateData(offeredPrice: value);
+                        print(value);
+                      },
+                    ),
+
+                    SizedBox(height: 8.h),
+                    AdditionalField(
+                      thisController: exactLocationController,
+                      hintText: 'Место встречи : Необязательно',
+                      onChanged: (value) {
+                        context.read<OrdersBloc>().updateDeliveryData(pickUpReference: value);
+                        print(value);
+                      },
+                    ),
+                    SizedBox(height: 8.h),
+                    AdditionalField(
+                      thisController: exactDestinationController,
+                      hintText: 'Место назначения : Необязательно',
+                      onChanged: (value) {
+                        context.read<OrdersBloc>().updateDeliveryData(destinationReference: value);
+                        print(value);
+                      },
+                    ),
+
+                    SizedBox(height: 8.h),
+                    DateOption(
+                      dateController: dateController,
+                      onChanged: (value) {
+                        context.read<OrdersBloc>().updateDeliveryData(date: value);
+                      },
+                    ),
+                    SizedBox(height: 8.h),
+                    CommentsForDrier(commentsController: commentsController),
                   ],
                 ),
               ),
@@ -191,7 +226,6 @@ class _BodyState extends State<_Body> {
                     CardNumberAndRemove(index: 0),
                     ItemInquiryTitle(index: 1, item: item),
                     AmountSelection(item: item, index: 1),
-                    UnitSelection(index: 1, item: item),
                   ],
                 ),
               ),

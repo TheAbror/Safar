@@ -9,13 +9,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 class DateOption extends StatefulWidget {
-  final String status;
   final TextEditingController dateController;
+  final Function(String)? onChanged;
 
   const DateOption({
     super.key,
     required this.dateController,
-    required this.status,
+    required this.onChanged,
   });
 
   @override
@@ -57,18 +57,7 @@ class _DateOptionState extends State<DateOption> {
 
         widget.dateController.text = DateFormat('dd-MM-yyyy, HH:mm').format(newDateTime);
       },
-      onChanged: (value) {
-        context.read<OrdersBloc>().updateData(date: value);
-        print(value);
-      },
-      validator: (username) {
-        if (widget.status.toLowerCase() == 'meeting') {
-          if (username == null || username.isEmpty) {
-            return 'Please select date';
-          }
-        }
-        return null;
-      },
+      onChanged: widget.onChanged,
       controller: widget.dateController,
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
