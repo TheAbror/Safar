@@ -15,7 +15,7 @@ import 'texts_and_titles/submit_inquiry_button.dart';
 import 'texts_and_titles/text_form_fields/additional_field.dart';
 import 'widgets/amount_selection.dart';
 import 'widgets/card_number_and_remove.dart';
-import 'widgets/delivery_from_to_fields.dart';
+import 'widgets/from_to_fields.dart';
 import 'widgets/item_inquiry_title.dart';
 import 'widgets/unit_selection.dart';
 
