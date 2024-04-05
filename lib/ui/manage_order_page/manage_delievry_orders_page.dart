@@ -10,7 +10,6 @@ import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_order_page/widgets/inquiry_item.dart';
-
 import 'manage_delivery_order_fields.dart';
 import 'texts_and_titles/submit_inquiry_button.dart';
 import 'widgets/amount_selection.dart';
@@ -41,24 +40,31 @@ class _ManagDeliveryOrdersPageState extends State<ManagDeliveryOrdersPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        backgroundColor: Theme.of(context).colorScheme.inverseSurface,
-        appBar: order_appbar(
-          context,
-          widget.viewModel.isEdit ? 'Изменить детали доставки' : 'Заказать доставку',
-          SubmitOrderButton(
-            isEnabled: widget.viewModel.isEdit ? true : false,
-            onTap: () {
-              widget.viewModel.isEdit
-                  ? bloc.editDeliveryOrdersByID(widget.viewModel.id)
-                  : bloc.postDeliveryOrders();
-            },
-          ),
-        ),
-        body: _Body(viewModel: widget.viewModel),
+    return BlocProvider(
+      create: (context) => bloc,
+      child: BlocBuilder<OrdersBloc, OrdersState>(
+        builder: (context, state) {
+          return GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Scaffold(
+              resizeToAvoidBottomInset: true,
+              backgroundColor: Theme.of(context).colorScheme.inverseSurface,
+              appBar: order_appbar(
+                context,
+                widget.viewModel.isEdit ? 'Изменить детали доставки' : 'Заказать доставку',
+                SubmitOrderButton(
+                  isEnabled: widget.viewModel.isEdit ? true : false,
+                  onTap: () {
+                    widget.viewModel.isEdit
+                        ? bloc.editDeliveryOrdersByID(widget.viewModel.id)
+                        : bloc.postDeliveryOrders();
+                  },
+                ),
+              ),
+              body: _Body(viewModel: widget.viewModel),
+            ),
+          );
+        },
       ),
     );
   }
@@ -112,8 +118,6 @@ class _BodyState extends State<_Body> {
           context.read<OrdersBloc>().initialValuesDisplayed();
         } else if (state.blocProgress == BlocProgress.IS_SUCCESS &&
             state.isDeliveryPostSuccessfull) {
-          //
-
           Navigator.pushNamed(context, AppRoutes.homePage);
 
           showMessage('Успех delivey created');

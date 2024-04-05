@@ -40,6 +40,7 @@ class OrdersBloc extends Cubit<OrdersState> {
         if (data != null) {
           emit(state.copyWith(
             deliveryOrdersList: data,
+            isDeliveryPostSuccessfull: true,
             blocProgress: BlocProgress.IS_SUCCESS,
           ));
         }
@@ -651,6 +652,8 @@ class OrdersBloc extends Cubit<OrdersState> {
   }
 
   void makeBlocProgressFalse() {
-    emit(state.copyWith(isDeliveryPostSuccessfull: false));
+    emit(state.copyWith(
+      isDeliveryPostSuccessfull: false,
+    ));
   }
 }
