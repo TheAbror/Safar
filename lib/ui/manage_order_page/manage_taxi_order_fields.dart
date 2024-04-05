@@ -204,13 +204,17 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
               ),
               SizedBox(height: 8.h),
               DateOption(
+                isDelivery: false,
                 dateController: widget.dateController,
-                onChanged: (value) {
-                  context.read<OrdersBloc>().updateData(date: value);
-                },
               ),
               SizedBox(height: 8.h),
-              CommentsForDrier(commentsController: widget.commentsController),
+              CommentsForDrier(
+                commentsController: widget.commentsController,
+                onChanged: (value) {
+                  context.read<OrdersBloc>().updateData(commentsForDriver: value);
+                  print(value);
+                },
+              ),
               SizedBox(height: 10.h),
             ],
           ),

@@ -10,12 +10,12 @@ import 'package:intl/intl.dart';
 
 class DateOption extends StatefulWidget {
   final TextEditingController dateController;
-  final Function(String)? onChanged;
+  final bool isDelivery;
 
   const DateOption({
     super.key,
     required this.dateController,
-    required this.onChanged,
+    required this.isDelivery,
   });
 
   @override
@@ -52,12 +52,13 @@ class _DateOptionState extends State<DateOption> {
         setState() => this.dateTime = newDateTime;
 
         final formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss').format(newDateTime);
-
-        context.read<OrdersBloc>().meetingDate(formattedDateTime);
+        widget.isDelivery
+            ? context.read<OrdersBloc>().updateDeliveryData(date: formattedDateTime)
+            : context.read<OrdersBloc>().updateData(date: formattedDateTime);
 
         widget.dateController.text = DateFormat('dd-MM-yyyy, HH:mm').format(newDateTime);
       },
-      onChanged: widget.onChanged,
+      // onChanged: widget.onChanged,
       controller: widget.dateController,
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(

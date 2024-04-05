@@ -387,12 +387,9 @@ class DeliveryOrdersRequest {
   String pickup;
   @JsonKey(defaultValue: '')
   String destination;
-  @JsonKey(defaultValue: 0, name: 'number_passenger')
-  int numberOfPassengers;
   @JsonKey(defaultValue: '', name: 'desired_pickup_time')
   String desiredPickupTime;
-  @JsonKey(defaultValue: '', name: 'desired_car_model')
-  String desiredCarModel;
+
   @JsonKey(defaultValue: '', name: 'offered_price')
   String offeredPrice;
   @JsonKey(defaultValue: '', name: 'pickup_reference')
@@ -410,9 +407,7 @@ class DeliveryOrdersRequest {
     // this.id,
     required this.pickup,
     required this.destination,
-    required this.numberOfPassengers,
     required this.desiredPickupTime,
-    required this.desiredCarModel,
     required this.offeredPrice,
     required this.pickupReference,
     required this.destinationReference,

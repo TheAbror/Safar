@@ -32,16 +32,16 @@ class MainRouteGenerator {
             viewModel: settings.arguments as ManageTaxiOrdersPageViewModel,
           ),
         );
-      case AppRoutes.manageDeliveryOrder:
-        return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => ManagDeliveryOrdersPage(
-            viewModel: settings.arguments as ManagDeliveryOrdersPageViewModel,
-          ),
-        );
       case AppRoutes.taxiDetails:
         return CustomCupertinoStyleNavigationRoute(
           builder: (context) => TaxiDetailsPage(
             viewModel: settings.arguments as TaxiDetailsPageViewModel,
+          ),
+        );
+      case AppRoutes.manageDeliveryOrder:
+        return CustomCupertinoStyleNavigationRoute(
+          builder: (_) => ManagDeliveryOrdersPage(
+            viewModel: settings.arguments as ManagDeliveryOrdersPageViewModel,
           ),
         );
       case AppRoutes.deliveryDetails:

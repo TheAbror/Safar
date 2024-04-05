@@ -123,17 +123,15 @@ class OrdersBloc extends Cubit<OrdersState> {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     final request = DeliveryOrdersRequest(
-      pickup: '754331111state.pickup',
-      destination: 'state.destination',
-      numberOfPassengers: 1,
-      desiredPickupTime: '2024-04-01T08:00:00',
-      desiredCarModel: '',
-      offeredPrice: '4444',
-      pickupReference: state.pickUpReference,
-      destinationReference: state.destinationReference,
-      commentForDriver: state.commentsForDriver,
+      pickup: state.deliveryPickup,
+      destination: state.deliveryDestination,
+      desiredPickupTime: state.deliveryDate, // '2024-04-01T08:00:00',
+      offeredPrice: state.deliveryOfferedPrice,
+      pickupReference: state.deliveryPickUpReference,
+      destinationReference: state.deliveryDestinationReference,
+      commentForDriver: state.deliveryCommentsForDriver,
       status: 'created',
-      isDriver: state.isDriver,
+      isDriver: false,
     );
 
     try {
@@ -375,11 +373,6 @@ class OrdersBloc extends Cubit<OrdersState> {
         isDateValid;
 
     emit(state.copyWith(isButtonEnabled: isFormValid));
-  }
-
-  void meetingDate(String date) async {
-    emit(state.copyWith(date: date));
-    print(state.date);
   }
 
   void getTaxiOrders() async {

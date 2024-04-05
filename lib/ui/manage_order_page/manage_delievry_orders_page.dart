@@ -177,16 +177,6 @@ class _BodyState extends State<_Body> {
 
                     SizedBox(height: 8.h),
                     AdditionalField(
-                      thisController: offeredPriceController,
-                      hintText: 'Предложенная цена (ex: 200.000 сум)',
-                      onChanged: (value) {
-                        context.read<OrdersBloc>().updateData(offeredPrice: value);
-                        print(value);
-                      },
-                    ),
-
-                    SizedBox(height: 8.h),
-                    AdditionalField(
                       thisController: exactLocationController,
                       hintText: 'Место встречи : Необязательно',
                       onChanged: (value) {
@@ -205,14 +195,28 @@ class _BodyState extends State<_Body> {
                     ),
 
                     SizedBox(height: 8.h),
-                    DateOption(
-                      dateController: dateController,
+                    AdditionalField(
+                      thisController: offeredPriceController,
+                      hintText: 'Предложенная цена (ex: 200.000 сум)',
                       onChanged: (value) {
-                        context.read<OrdersBloc>().updateDeliveryData(date: value);
+                        context.read<OrdersBloc>().updateDeliveryData(offeredPrice: value);
+                        print(value);
                       },
                     ),
                     SizedBox(height: 8.h),
-                    CommentsForDrier(commentsController: commentsController),
+
+                    DateOption(
+                      isDelivery: true,
+                      dateController: dateController,
+                    ),
+                    SizedBox(height: 8.h),
+                    CommentsForDrier(
+                      commentsController: commentsController,
+                      onChanged: (value) {
+                        context.read<OrdersBloc>().updateDeliveryData(commentsForDriver: value);
+                        print(value);
+                      },
+                    ),
                   ],
                 ),
               ),
