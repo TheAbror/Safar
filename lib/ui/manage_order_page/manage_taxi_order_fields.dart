@@ -54,8 +54,9 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FromToFields(
-                controller: widget.fromController,
                 hintText: 'Из',
+                suffixIcon: true,
+                controller: widget.fromController,
                 onTap: () async {
                   final result = await PrimaryBottomSheet.show(
                     context,
@@ -63,7 +64,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                     heightRatio: 0.9,
                     isConfirmationNeeded: false,
                     title: 'Выберите регион',
-                    selectedValue: state.deliveryPickup,
+                    selectedValue: state.pickup,
                     initialList: ShPrefKeys.listOfStates,
                   );
 
@@ -77,8 +78,9 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
               ),
               SizedBox(height: 8.h),
               FromToFields(
-                controller: widget.toController,
                 hintText: 'В',
+                suffixIcon: true,
+                controller: widget.toController,
                 onTap: () async {
                   final result = await PrimaryBottomSheet.show(
                     context,
@@ -86,7 +88,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                     heightRatio: 0.9,
                     isConfirmationNeeded: false,
                     title: 'Выберите регион',
-                    selectedValue: state.deliveryPickup,
+                    selectedValue: state.destination,
                     initialList: ShPrefKeys.listOfStates,
                   );
 
@@ -100,14 +102,22 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                 },
               ),
               SizedBox(height: 8.h),
-              PickUpReferenceField(
+              AdditionalField(
                 thisController: widget.exactLocationController,
                 hintText: 'Место встречи : Необязательно',
+                onChanged: (value) {
+                  context.read<OrdersBloc>().updateData(pickUpReference: value);
+                  print(value);
+                },
               ),
               SizedBox(height: 8.h),
               AdditionalField(
                 thisController: widget.exactDestinationController,
                 hintText: 'Место назначения : Необязательно',
+                onChanged: (value) {
+                  context.read<OrdersBloc>().updateData(destinationReference: value);
+                  print(value);
+                },
               ),
               ManageTaxiFieldsHeadline(text: 'Создать заказ как:'),
               Row(
@@ -116,6 +126,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                     'Пассажир',
                     style: TextStyle(fontSize: 14.sp),
                   ),
+                  //TODO
                   Checkbox(
                     checkColor: AppColors.float,
                     fillColor: MaterialStateProperty.resolveWith<Color>(
@@ -174,14 +185,22 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                 ),
               ),
               SizedBox(height: 8.h),
-              OfferedPriceField(
+              AdditionalField(
                 thisController: widget.offeredPriceController,
                 hintText: 'Предложенная цена (ex: 200.000 сум)',
+                onChanged: (value) {
+                  context.read<OrdersBloc>().updateData(offeredPrice: value);
+                  print(value);
+                },
               ),
               SizedBox(height: 8.h),
-              PhoneNumberField(
+              AdditionalField(
                 thisController: widget.phoneNumberController,
                 hintText: '+998914309090',
+                onChanged: (value) {
+                  context.read<OrdersBloc>().updateData(offeredPrice: value);
+                  print(value);
+                },
               ),
               SizedBox(height: 8.h),
               DateOption(

@@ -6,12 +6,14 @@ class FromToFields extends StatefulWidget {
   final TextEditingController controller;
   final Function()? onTap;
   final String hintText;
+  final bool? suffixIcon;
 
   const FromToFields({
     super.key,
     required this.controller,
     required this.onTap,
     required this.hintText,
+    this.suffixIcon = false,
   });
 
   @override
@@ -26,12 +28,20 @@ class _FromToFieldsState extends State<FromToFields> {
       onTap: widget.onTap,
       controller: widget.controller,
       textInputAction: TextInputAction.next,
-      decoration: ToFromDecoration(context, widget.hintText),
+      decoration: ToFromDecoration(
+        context,
+        widget.hintText,
+        widget.suffixIcon ?? false,
+      ),
     );
   }
 }
 
-InputDecoration ToFromDecoration(BuildContext context, String hintText) {
+InputDecoration ToFromDecoration(
+  BuildContext context,
+  String hintText,
+  bool suffixIcon,
+) {
   return InputDecoration(
     filled: true,
     border: InputBorder.none, // Remove border color
@@ -54,16 +64,18 @@ InputDecoration ToFromDecoration(BuildContext context, String hintText) {
     hintText: hintText,
     fillColor: Theme.of(context).colorScheme.surfaceTint,
     hintStyle: const TextStyle(color: AppColors.textSecondary),
-    suffixIcon: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          alignment: Alignment.topRight,
-          height: 24.h,
-          width: 24.h,
-          child: const Icon(Icons.arrow_drop_down_outlined),
-        ),
-      ],
-    ),
+    suffixIcon: suffixIcon
+        ? Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                alignment: Alignment.topRight,
+                height: 24.h,
+                width: 24.h,
+                child: const Icon(Icons.arrow_drop_down_outlined),
+              ),
+            ],
+          )
+        : SizedBox(),
   );
 }

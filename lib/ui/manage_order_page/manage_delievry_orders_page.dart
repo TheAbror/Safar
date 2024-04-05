@@ -12,7 +12,6 @@ import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_order_page/widgets/inquiry_item.dart';
 import 'texts_and_titles/submit_inquiry_button.dart';
-import 'texts_and_titles/text_form_fields/additional_field.dart';
 import 'widgets/amount_selection.dart';
 import 'widgets/card_number_and_remove.dart';
 import 'widgets/from_to_fields.dart';
@@ -151,7 +150,7 @@ class _BodyState extends State<_Body> {
                       },
                     ),
 
-                    SizedBox(height: 10.h),
+                    SizedBox(height: 8.h),
 
                     FromToFields(
                       controller: toController,
@@ -176,25 +175,7 @@ class _BodyState extends State<_Body> {
                       },
                     ),
 
-                    SizedBox(height: 10.h),
-                    DeliveryTitleField(
-                      thisController: toController,
-                      hintText: 'Title',
-                      onChanged: (value) {
-                        context.read<OrdersBloc>().updateDeliveryData(offeredPrice: value);
-                        print(value);
-                      },
-                    ),
                     SizedBox(height: 8.h),
-                    DeliveryTitleField(
-                      thisController: toController,
-                      hintText: 'Description',
-                      height: 100,
-                      onChanged: (value) {
-                        context.read<OrdersBloc>().updateDeliveryData(offeredPrice: value);
-                        print(value);
-                      },
-                    ),
                   ],
                 ),
               ),
