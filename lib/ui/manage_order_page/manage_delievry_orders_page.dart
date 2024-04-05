@@ -128,8 +128,9 @@ class _BodyState extends State<_Body> {
                     // isDriver: state.isDriver,
 
                     FromToFields(
-                      controller: fromController,
                       hintText: 'Из',
+                      suffixIcon: true,
+                      controller: fromController,
                       onTap: () async {
                         final result = await PrimaryBottomSheet.show(
                           context,
@@ -153,8 +154,9 @@ class _BodyState extends State<_Body> {
                     SizedBox(height: 8.h),
 
                     FromToFields(
-                      controller: toController,
                       hintText: 'В',
+                      suffixIcon: true,
+                      controller: toController,
                       onTap: () async {
                         final result = await PrimaryBottomSheet.show(
                           context,
@@ -162,14 +164,14 @@ class _BodyState extends State<_Body> {
                           heightRatio: 0.9,
                           isConfirmationNeeded: false,
                           title: 'Выберите регион',
-                          selectedValue: state.deliveryPickup,
+                          selectedValue: state.deliveryDestination,
                           initialList: ShPrefKeys.listOfStates,
                         );
 
                         if (result != null) {
                           if (!mounted) return;
                           toController.text = result;
-                          context.read<OrdersBloc>().updateDeliveryData(pickup: result);
+                          context.read<OrdersBloc>().updateDeliveryData(destination: result);
                           print(result);
                         }
                       },
