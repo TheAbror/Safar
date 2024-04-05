@@ -20,7 +20,7 @@ class CreateButton extends StatelessWidget {
       width: 101.w,
       child: FloatingActionButton(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(corex * 1000.r)),
+          borderRadius: BorderRadius.all(Radius.circular(corex * 50.r)),
         ),
         onPressed: onPressed,
         backgroundColor: Palette.grey850,
