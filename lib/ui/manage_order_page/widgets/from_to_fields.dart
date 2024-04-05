@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../texts_and_titles/text_form_fields/taxi_from_field.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/core/colors/app_colors.dart';
 
 class FromToFields extends StatefulWidget {
   final TextEditingController controller;
@@ -28,4 +29,41 @@ class _FromToFieldsState extends State<FromToFields> {
       decoration: ToFromDecoration(context, widget.hintText),
     );
   }
+}
+
+InputDecoration ToFromDecoration(BuildContext context, String hintText) {
+  return InputDecoration(
+    filled: true,
+    border: InputBorder.none, // Remove border color
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    hintText: hintText,
+    fillColor: Theme.of(context).colorScheme.surfaceTint,
+    hintStyle: const TextStyle(color: AppColors.textSecondary),
+    suffixIcon: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          alignment: Alignment.topRight,
+          height: 24.h,
+          width: 24.h,
+          child: const Icon(Icons.arrow_drop_down_outlined),
+        ),
+      ],
+    ),
+  );
 }

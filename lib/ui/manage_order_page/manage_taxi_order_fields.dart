@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import '../order_details_page/action/options/date_option.dart';
 import 'texts_and_titles/text_form_fields/additional_field.dart';
 import 'texts_and_titles/text_form_fields/manage_taxi_fields_headline.dart';
 import 'texts_and_titles/text_form_fields/new_inquiry_description.dart';
 import 'texts_and_titles/text_form_fields/passenger_number_choice.dart';
-import 'texts_and_titles/text_form_fields/taxi_from_field.dart';
-import 'texts_and_titles/text_form_fields/taxi_to_field.dart';
+import 'widgets/from_to_fields.dart';
 
 class ManageTaxiOrderFields extends StatefulWidget {
   final TextEditingController fromController;
@@ -52,9 +53,52 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TaxiFromField(titleController: widget.fromController),
+              FromToFields(
+                controller: widget.fromController,
+                hintText: 'Из',
+                onTap: () async {
+                  final result = await PrimaryBottomSheet.show(
+                    context,
+                    isSearchNeeded: true,
+                    heightRatio: 0.9,
+                    isConfirmationNeeded: false,
+                    title: 'Выберите регион',
+                    selectedValue: state.deliveryPickup,
+                    initialList: ShPrefKeys.listOfStates,
+                  );
+
+                  if (result != null) {
+                    if (!mounted) return;
+                    widget.fromController.text = result;
+                    context.read<OrdersBloc>().updateData(pickup: result);
+                    print(result);
+                  }
+                },
+              ),
               SizedBox(height: 8.h),
-              TaxiToField(titleController: widget.toController),
+              FromToFields(
+                controller: widget.toController,
+                hintText: 'В',
+                onTap: () async {
+                  final result = await PrimaryBottomSheet.show(
+                    context,
+                    isSearchNeeded: true,
+                    heightRatio: 0.9,
+                    isConfirmationNeeded: false,
+                    title: 'Выберите регион',
+                    selectedValue: state.deliveryPickup,
+                    initialList: ShPrefKeys.listOfStates,
+                  );
+
+                  if (result != null) {
+                    if (!mounted) return;
+                    widget.toController.text = result;
+                    context.read<OrdersBloc>().updateData(destination: result);
+
+                    print(result);
+                  }
+                },
+              ),
               SizedBox(height: 8.h),
               PickUpReferenceField(
                 thisController: widget.exactLocationController,
