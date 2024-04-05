@@ -1,5 +1,6 @@
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,21 +31,7 @@ class _TaxiToFieldState extends State<TaxiToField> {
           isConfirmationNeeded: false,
           title: 'Quick reply',
           selectedValue: 'Room',
-          initialList: [
-            'Андижанская область',
-            'Бухарская область',
-            'Джизакская область',
-            'Кашкадарьинская область',
-            'Навоийская область',
-            'Наманганская область',
-            'Республика Каракалпакстан',
-            'Самаркандская область',
-            'Сурхандарьинская область',
-            'Сырдарьинская область',
-            'Ташкентская область',
-            'Ферганская область',
-            'Хорезмская область',
-          ],
+          initialList: ShPrefKeys.listOfStates,
         );
 
         if (result != null) {

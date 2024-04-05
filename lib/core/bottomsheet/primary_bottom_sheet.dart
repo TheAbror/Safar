@@ -120,7 +120,7 @@ class _BodyState extends State<_Body> {
                 child: SearchInput(
                   fillColor: Theme.of(context).colorScheme.surfaceTint,
                   width: double.infinity,
-                  hintText: 'Search',
+                  hintText: 'Поиск',
                   prefixIcon: const Icon(Icons.search, color: AppColors.primary),
                   controller: searchController,
                   onChanged: (val) {

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
+import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
@@ -73,8 +74,8 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  var titleController = TextEditingController();
-  var descriptionController = TextEditingController();
+  var fromController = TextEditingController();
+  var toController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -128,41 +129,56 @@ class _BodyState extends State<_Body> {
                     // isDriver: state.isDriver,
 
                     FromToFields(
-                        titleController: titleController,
-                        onTap: () async {
-                          final result = await PrimaryBottomSheet.show(
-                            context,
-                            isSearchNeeded: true,
-                            heightRatio: 0.9,
-                            isConfirmationNeeded: false,
-                            title: 'Quick reply',
-                            selectedValue: 'Room',
-                            initialList: [
-                              'Андижанская область',
-                              'Бухарская область',
-                              'Джизакская область',
-                              'Кашкадарьинская область',
-                              'Навоийская область',
-                              'Наманганская область',
-                              'Республика Каракалпакстан',
-                              'Самаркандская область',
-                              'Сурхандарьинская область',
-                              'Сырдарьинская область',
-                              'Ташкентская область',
-                              'Ферганская область',
-                              'Хорезмская область',
-                            ],
-                          );
+                      controller: fromController,
+                      hintText: 'Из',
+                      onTap: () async {
+                        final result = await PrimaryBottomSheet.show(
+                          context,
+                          isSearchNeeded: true,
+                          heightRatio: 0.9,
+                          isConfirmationNeeded: false,
+                          title: 'Выберите регион',
+                          selectedValue: state.deliveryPickup,
+                          initialList: ShPrefKeys.listOfStates,
+                        );
 
-                          if (result != null) {
-                            if (!mounted) return;
-                            titleController.text = result;
-                            context.read<OrdersBloc>().updateDeliveryData(pickup: result);
-                            print(result);
-                          }
-                        }),
+                        if (result != null) {
+                          if (!mounted) return;
+                          fromController.text = result;
+                          context.read<OrdersBloc>().updateDeliveryData(pickup: result);
+                          print(result);
+                        }
+                      },
+                    ),
+
+                    SizedBox(height: 10.h),
+
+                    FromToFields(
+                      controller: toController,
+                      hintText: 'В',
+                      onTap: () async {
+                        final result = await PrimaryBottomSheet.show(
+                          context,
+                          isSearchNeeded: true,
+                          heightRatio: 0.9,
+                          isConfirmationNeeded: false,
+                          title: 'Выберите регион',
+                          selectedValue: state.deliveryPickup,
+                          initialList: ShPrefKeys.listOfStates,
+                        );
+
+                        if (result != null) {
+                          if (!mounted) return;
+                          toController.text = result;
+                          context.read<OrdersBloc>().updateDeliveryData(pickup: result);
+                          print(result);
+                        }
+                      },
+                    ),
+
+                    SizedBox(height: 10.h),
                     DeliveryTitleField(
-                      thisController: titleController,
+                      thisController: toController,
                       hintText: 'Title',
                       onChanged: (value) {
                         context.read<OrdersBloc>().updateDeliveryData(offeredPrice: value);
@@ -171,7 +187,7 @@ class _BodyState extends State<_Body> {
                     ),
                     SizedBox(height: 8.h),
                     DeliveryTitleField(
-                      thisController: titleController,
+                      thisController: toController,
                       hintText: 'Description',
                       height: 100,
                       onChanged: (value) {
