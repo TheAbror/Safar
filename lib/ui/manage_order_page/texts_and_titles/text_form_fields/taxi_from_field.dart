@@ -18,6 +18,7 @@ class TaxiFromField extends StatefulWidget {
 }
 
 class _TaxiFromFieldState extends State<TaxiFromField> {
+  //TODO
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -56,44 +57,44 @@ class _TaxiFromFieldState extends State<TaxiFromField> {
       },
       controller: widget.titleController,
       textInputAction: TextInputAction.next,
-      decoration: _Decoration(context),
+      decoration: ToFromDecoration(context),
     );
   }
+}
 
-  InputDecoration _Decoration(BuildContext context) {
-    return InputDecoration(
-      filled: true,
-      border: InputBorder.none, // Remove border color
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      hintText: 'Из',
-      fillColor: Theme.of(context).colorScheme.surfaceTint,
-      hintStyle: const TextStyle(color: AppColors.textSecondary),
-      suffixIcon: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            alignment: Alignment.topRight,
-            height: 24.h,
-            width: 24.h,
-            child: const Icon(Icons.arrow_drop_down_outlined),
-          ),
-        ],
-      ),
-    );
-  }
+InputDecoration ToFromDecoration(BuildContext context) {
+  return InputDecoration(
+    filled: true,
+    border: InputBorder.none, // Remove border color
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    hintText: 'Из',
+    fillColor: Theme.of(context).colorScheme.surfaceTint,
+    hintStyle: const TextStyle(color: AppColors.textSecondary),
+    suffixIcon: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          alignment: Alignment.topRight,
+          height: 24.h,
+          width: 24.h,
+          child: const Icon(Icons.arrow_drop_down_outlined),
+        ),
+      ],
+    ),
+  );
 }

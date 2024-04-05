@@ -42,7 +42,7 @@ class _SignInPageState extends State<SignInPage> {
               );
             } else if (state.blocProgress == BlocProgress.FAILED) {
               showMessage(
-                state.failureMessage, //TODO
+                state.failureMessage,
                 isError: true,
               );
             }

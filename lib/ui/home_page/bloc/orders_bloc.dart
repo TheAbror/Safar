@@ -18,7 +18,6 @@ class OrdersBloc extends Cubit<OrdersState> {
   void updateDeliveryData({
     String? pickup,
     String? destination,
-    int? numberOfPassengers,
     String? date,
     String? offeredPrice,
     String? pickUpReference,

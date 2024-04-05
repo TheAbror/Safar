@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
+import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
@@ -13,6 +14,7 @@ import 'texts_and_titles/submit_inquiry_button.dart';
 import 'texts_and_titles/text_form_fields/additional_field.dart';
 import 'widgets/amount_selection.dart';
 import 'widgets/card_number_and_remove.dart';
+import 'widgets/delivery_from_to_fields.dart';
 import 'widgets/item_inquiry_title.dart';
 import 'widgets/unit_selection.dart';
 
@@ -113,11 +115,57 @@ class _BodyState extends State<_Body> {
                 ),
                 child: Column(
                   children: [
+                    // pickup: '754331111state.pickup',
+                    // destination: 'state.destination',
+                    // numberOfPassengers: 1,
+                    // desiredPickupTime: '2024-04-01T08:00:00',
+                    // desiredCarModel: '',
+                    // offeredPrice: '4444',
+                    // pickupReference: state.pickUpReference,
+                    // destinationReference: state.destinationReference,
+                    // commentForDriver: state.commentsForDriver,
+                    // status: 'created',
+                    // isDriver: state.isDriver,
+
+                    FromToFields(
+                        titleController: titleController,
+                        onTap: () async {
+                          final result = await PrimaryBottomSheet.show(
+                            context,
+                            isSearchNeeded: true,
+                            heightRatio: 0.9,
+                            isConfirmationNeeded: false,
+                            title: 'Quick reply',
+                            selectedValue: 'Room',
+                            initialList: [
+                              'Андижанская область',
+                              'Бухарская область',
+                              'Джизакская область',
+                              'Кашкадарьинская область',
+                              'Навоийская область',
+                              'Наманганская область',
+                              'Республика Каракалпакстан',
+                              'Самаркандская область',
+                              'Сурхандарьинская область',
+                              'Сырдарьинская область',
+                              'Ташкентская область',
+                              'Ферганская область',
+                              'Хорезмская область',
+                            ],
+                          );
+
+                          if (result != null) {
+                            if (!mounted) return;
+                            titleController.text = result;
+                            context.read<OrdersBloc>().updateDeliveryData(pickup: result);
+                            print(result);
+                          }
+                        }),
                     DeliveryTitleField(
                       thisController: titleController,
                       hintText: 'Title',
                       onChanged: (value) {
-                        context.read<OrdersBloc>().updateData(offeredPrice: value);
+                        context.read<OrdersBloc>().updateDeliveryData(offeredPrice: value);
                         print(value);
                       },
                     ),
@@ -127,38 +175,13 @@ class _BodyState extends State<_Body> {
                       hintText: 'Description',
                       height: 100,
                       onChanged: (value) {
-                        context.read<OrdersBloc>().updateData(offeredPrice: value);
+                        context.read<OrdersBloc>().updateDeliveryData(offeredPrice: value);
                         print(value);
                       },
                     ),
                   ],
                 ),
               ),
-              // ListView.builder(
-              //   scrollDirection: Axis.vertical,
-              //   shrinkWrap: true,
-              //   physics: const NeverScrollableScrollPhysics(),
-              //   itemCount: state.listofItems.length,
-              //   itemBuilder: (context, index) {
-              //     final item = state.listofItems[index];
-
-              //     return Container(
-              //       key: Key(state.listofItems.length.toString()),
-              //       margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
-              //       padding: EdgeInsets.all(10.w),
-              //       decoration: _Decoration(context),
-              //       child: Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           CardNumberAndRemove(index: index),
-              //           ItemInquiryTitle(index: index, item: item),
-              //           AmountSelection(item: item, index: index),
-              //           UnitSelection(index: index, item: item),
-              //         ],
-              //       ),
-              //     );
-              //   },
-              // ),
               Container(
                 margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
                 padding: EdgeInsets.all(10.w),
@@ -166,7 +189,7 @@ class _BodyState extends State<_Body> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CardNumberAndRemove(index: 1),
+                    CardNumberAndRemove(index: 0),
                     ItemInquiryTitle(index: 1, item: item),
                     AmountSelection(item: item, index: 1),
                     UnitSelection(index: 1, item: item),
@@ -233,3 +256,32 @@ class _BodyState extends State<_Body> {
     );
   }
 }
+
+
+
+
+ // ListView.builder(
+              //   scrollDirection: Axis.vertical,
+              //   shrinkWrap: true,
+              //   physics: const NeverScrollableScrollPhysics(),
+              //   itemCount: state.listofItems.length,
+              //   itemBuilder: (context, index) {
+              //     final item = state.listofItems[index];
+
+              //     return Container(
+              //       key: Key(state.listofItems.length.toString()),
+              //       margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
+              //       padding: EdgeInsets.all(10.w),
+              //       decoration: _Decoration(context),
+              //       child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           CardNumberAndRemove(index: index),
+              //           ItemInquiryTitle(index: index, item: item),
+              //           AmountSelection(item: item, index: index),
+              //           UnitSelection(index: index, item: item),
+              //         ],
+              //       ),
+              //     );
+              //   },
+              // ),

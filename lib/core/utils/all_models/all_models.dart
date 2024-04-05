@@ -308,6 +308,15 @@ class AllDeliveryOrdersResponse {
   Map<String, dynamic> toJson() => _$AllDeliveryOrdersResponseToJson(this);
 }
 
+// delivery detail
+
+//  "'desired_pickup_time': '2024-02-10T08:00:00', 'desired_car_model': 'Car "
+//  "model', 'offered_price': '50.00', 'comments_for_driver': 'Any comments for "
+//  "driver', 'rating': '0.0', 'status': 'created', 'created_at': "
+//  "'2024-04-05T05:32:57.113660', 'updated_at': '2024-04-05T05:32:59.337209', "
+//  "'is_driver': False, 'user': 2, 'driver': None}, 'status': {'key': 'created', "
+//  "'value': 'Создан'}}")
+
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
 class DeliveryOrdersResponse {
   @JsonKey(defaultValue: 0)
@@ -340,10 +349,8 @@ class DeliveryOrdersResponse {
   int driver;
   @JsonKey(defaultValue: false, name: 'is_driver')
   bool isDriver;
-  // @JsonKey(defaultValue: false, name: 'created_by_this_user')
-  // bool createdByThisUser;
-  // @JsonKey()
-  // OrderStatus status;
+  @JsonKey()
+  OrderStatus status;
 
   DeliveryOrdersResponse({
     required this.id,
@@ -362,7 +369,7 @@ class DeliveryOrdersResponse {
     required this.user,
     // required this.createdByThisUser,
     required this.isDriver,
-    // required this.status,
+    required this.status,
     required this.updatedAt,
   });
 

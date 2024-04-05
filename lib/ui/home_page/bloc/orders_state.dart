@@ -128,6 +128,7 @@ class OrdersState extends Equatable {
         driver: 0,
         user: 0,
         isDriver: false,
+        status: OrderStatus(key: '', value: ''),
         updatedAt: '',
       ),
       isButtonEnabled: false,
