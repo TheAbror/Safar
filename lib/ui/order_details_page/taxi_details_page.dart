@@ -108,6 +108,7 @@ class _BodyState extends State<_Body> {
             Navigator.pushNamed(context, AppRoutes.homePage);
 
             showMessage('Удалено');
+            context.read<OrdersBloc>().makeDeletedFalse();
           }
         },
         builder: (context, state) {

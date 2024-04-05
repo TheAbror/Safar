@@ -560,7 +560,10 @@ class OrdersBloc extends Cubit<OrdersState> {
   }
 
   void makeDeletedFalse() {
-    emit(state.copyWith(isDeliveryOrderDeleted: false));
+    emit(state.copyWith(
+      isOrderDeleted: false,
+      isDeliveryOrderDeleted: false,
+    ));
   }
 
   void makeBlocProgressFalse() {
