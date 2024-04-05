@@ -37,6 +37,8 @@ class ManagDeliveryOrdersPage extends StatefulWidget {
 }
 
 class _ManagDeliveryOrdersPageState extends State<ManagDeliveryOrdersPage> {
+  final bloc = OrdersBloc();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -50,8 +52,9 @@ class _ManagDeliveryOrdersPageState extends State<ManagDeliveryOrdersPage> {
           SubmitOrderButton(
             isEnabled: widget.viewModel.isEdit ? true : false,
             onTap: () {
-              context.read<OrdersBloc>().postDeliveryOrders();
-              if (widget.viewModel.isEdit) {}
+              widget.viewModel.isEdit
+                  ? bloc.editDeliveryOrdersByID(widget.viewModel.id)
+                  : bloc.postDeliveryOrders();
             },
           ),
         ),
@@ -84,7 +87,7 @@ class _BodyState extends State<_Body> {
     super.initState();
 
     if (widget.viewModel.isEdit) {
-      context.read<OrdersBloc>().getInquiryByIdForEdit(widget.viewModel.id);
+      context.read<OrdersBloc>().getDeliveryInquiryByIdForEdit(widget.viewModel.id);
     }
   }
 
@@ -129,6 +132,7 @@ class _BodyState extends State<_Body> {
         if (state.blocProgress == BlocProgress.FAILED) {
           return const SomethingWentWrong();
         }
+
         return SingleChildScrollView(
           child: Column(
             children: [

@@ -15,6 +15,55 @@ class OrdersBloc extends Cubit<OrdersState> {
 
   //  Delivery requests
 
+  void editDeliveryOrdersByID(int? id) async {
+    emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
+
+    final request = DeliveryOrdersRequest(
+      id: id,
+      pickup: state.deliveryPickup,
+      destination: state.deliveryDestination,
+      desiredPickupTime: state.deliveryDate,
+      offeredPrice: state.deliveryOfferedPrice,
+      pickupReference: state.deliveryPickUpReference,
+      destinationReference: state.deliveryDestinationReference,
+      commentForDriver: state.deliveryCommentsForDriver,
+      status: 'created',
+      isDriver: state.isDriver,
+    );
+
+    try {
+      final response = await ApiProvider.ordersService.editDeliveryOrdersByID(request, id ?? 0);
+
+      if (response.isSuccessful) {
+        final data = response.body;
+
+        if (data != null) {
+          emit(state.copyWith(
+            deliveryOrdersList: data,
+            blocProgress: BlocProgress.IS_SUCCESS,
+          ));
+        }
+      } else {
+        final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+
+        emit(
+          state.copyWith(
+            blocProgress: BlocProgress.FAILED,
+            failureMessage: error.message,
+          ),
+        );
+      }
+    } catch (e) {
+      debugPrint('Error getting inquiries: $e');
+      emit(
+        state.copyWith(
+          blocProgress: BlocProgress.FAILED,
+          failureMessage: AppStrings.internalErrorMessage,
+        ),
+      );
+    }
+  }
+
   void getDeliveryInquiryByIdForEdit(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 

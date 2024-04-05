@@ -381,8 +381,8 @@ class DeliveryOrdersResponse {
 
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
 class DeliveryOrdersRequest {
-  // @JsonKey(defaultValue: 0)
-  // int? id;
+  @JsonKey(defaultValue: 0)
+  int? id;
   @JsonKey(defaultValue: '')
   String pickup;
   @JsonKey(defaultValue: '')
@@ -404,7 +404,7 @@ class DeliveryOrdersRequest {
   bool isDriver;
 
   DeliveryOrdersRequest({
-    // this.id,
+    this.id,
     required this.pickup,
     required this.destination,
     required this.desiredPickupTime,

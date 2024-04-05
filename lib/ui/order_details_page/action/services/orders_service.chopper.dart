@@ -175,4 +175,22 @@ final class _$OrdersService extends OrdersService {
     return client
         .send<DeliveryOrdersResponse, DeliveryOrdersResponse>($request);
   }
+
+  @override
+  Future<Response<AllDeliveryOrdersResponse>> editDeliveryOrdersByID(
+    DeliveryOrdersRequest body,
+    int id,
+  ) {
+    final Uri $url = Uri.parse(
+        'https://safarapi.pythonanywhere.com/api/delivery_orders_detail/${id}/');
+    final $body = body;
+    final Request $request = Request(
+      'PUT',
+      $url,
+      client.baseUrl,
+      body: $body,
+    );
+    return client
+        .send<AllDeliveryOrdersResponse, AllDeliveryOrdersResponse>($request);
+  }
 }

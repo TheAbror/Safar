@@ -262,6 +262,7 @@ Map<String, dynamic> _$DeliveryOrdersResponseToJson(
 DeliveryOrdersRequest _$DeliveryOrdersRequestFromJson(
         Map<String, dynamic> json) =>
     DeliveryOrdersRequest(
+      id: json['id'] as int? ?? 0,
       pickup: json['pickup'] as String? ?? '',
       destination: json['destination'] as String? ?? '',
       desiredPickupTime: json['desired_pickup_time'] as String? ?? '',
@@ -276,6 +277,7 @@ DeliveryOrdersRequest _$DeliveryOrdersRequestFromJson(
 Map<String, dynamic> _$DeliveryOrdersRequestToJson(
         DeliveryOrdersRequest instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'pickup': instance.pickup,
       'destination': instance.destination,
       'desired_pickup_time': instance.desiredPickupTime,

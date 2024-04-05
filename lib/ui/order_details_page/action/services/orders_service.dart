@@ -48,4 +48,8 @@ abstract class OrdersService extends ChopperService {
 
   @Get(path: '${AppStrings.deliveryOrderDetails}{id}/')
   Future<Response<DeliveryOrdersResponse>> getDeliveryInquiryByIdForEdit(@Path('id') int id);
+
+  @Put(path: '${AppStrings.deliveryOrderDetails}{id}/')
+  Future<Response<AllDeliveryOrdersResponse>> editDeliveryOrdersByID(
+      @Body() DeliveryOrdersRequest body, @Path('id') int id);
 }
