@@ -88,7 +88,7 @@ class _BodyState extends State<_Body> {
     super.initState();
 
     if (widget.viewModel.isEdit) {
-      context.read<OrdersBloc>().getInquiryByIdForEdit(widget.viewModel.id);
+      context.read<OrdersBloc>().getTaxiOrderByIdForEdit(widget.viewModel.id);
     }
   }
 
@@ -111,8 +111,6 @@ class _BodyState extends State<_Body> {
 
           context.read<OrdersBloc>().initialValuesDisplayed();
         } else if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-          //
-
           Navigator.pushNamed(context, AppRoutes.homePage);
 
           showMessage('Успех');

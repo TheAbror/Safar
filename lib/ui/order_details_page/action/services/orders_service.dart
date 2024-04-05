@@ -29,7 +29,7 @@ abstract class OrdersService extends ChopperService {
   Future<Response<TaxiOrdersResponse>> getOrderById(@Path('id') int id);
 
   @Get(path: '${AppStrings.orderDetails}{id}/')
-  Future<Response<TaxiOrdersResponse>> getInquiryByIdForEdit(@Path('id') int id);
+  Future<Response<TaxiOrdersResponse>> getTaxiOrderByIdForEdit(@Path('id') int id);
 
   @Delete(path: '${AppStrings.orderDetails}{id}/')
   Future<Response<DeleteOrderById>> deleteOrderById(@Path('id') int id);
@@ -47,7 +47,7 @@ abstract class OrdersService extends ChopperService {
       @Body() DeliveryOrdersRequest body);
 
   @Get(path: '${AppStrings.deliveryOrderDetails}{id}/')
-  Future<Response<DeliveryOrdersResponse>> getDeliveryInquiryByIdForEdit(@Path('id') int id);
+  Future<Response<DeliveryOrdersResponse>> getDeliveryOrderByIdForEdit(@Path('id') int id);
 
   @Put(path: '${AppStrings.deliveryOrderDetails}{id}/')
   Future<Response<AllDeliveryOrdersResponse>> editDeliveryOrdersByID(

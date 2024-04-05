@@ -64,11 +64,11 @@ class OrdersBloc extends Cubit<OrdersState> {
     }
   }
 
-  void getDeliveryInquiryByIdForEdit(int id) async {
+  void getDeliveryOrderByIdForEdit(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final response = await ApiProvider.ordersService.getDeliveryInquiryByIdForEdit(id);
+      final response = await ApiProvider.ordersService.getDeliveryOrderByIdForEdit(id);
 
       if (response.isSuccessful) {
         final data = response.body;
@@ -297,11 +297,11 @@ class OrdersBloc extends Cubit<OrdersState> {
     }
   }
 
-  void getInquiryByIdForEdit(int id) async {
+  void getTaxiOrderByIdForEdit(int id) async {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final response = await ApiProvider.ordersService.getInquiryByIdForEdit(id);
+      final response = await ApiProvider.ordersService.getTaxiOrderByIdForEdit(id);
 
       if (response.isSuccessful) {
         final data = response.body;

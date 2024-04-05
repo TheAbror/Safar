@@ -87,7 +87,7 @@ class _BodyState extends State<_Body> {
     super.initState();
 
     if (widget.viewModel.isEdit) {
-      context.read<OrdersBloc>().getDeliveryInquiryByIdForEdit(widget.viewModel.id);
+      context.read<OrdersBloc>().getDeliveryOrderByIdForEdit(widget.viewModel.id);
     }
   }
 

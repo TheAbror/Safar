@@ -98,7 +98,7 @@ final class _$OrdersService extends OrdersService {
   }
 
   @override
-  Future<Response<TaxiOrdersResponse>> getInquiryByIdForEdit(int id) {
+  Future<Response<TaxiOrdersResponse>> getTaxiOrderByIdForEdit(int id) {
     final Uri $url = Uri.parse(
         'https://safarapi.pythonanywhere.com/api/orders_detail/${id}/');
     final Request $request = Request(
@@ -163,8 +163,7 @@ final class _$OrdersService extends OrdersService {
   }
 
   @override
-  Future<Response<DeliveryOrdersResponse>> getDeliveryInquiryByIdForEdit(
-      int id) {
+  Future<Response<DeliveryOrdersResponse>> getDeliveryOrderByIdForEdit(int id) {
     final Uri $url = Uri.parse(
         'https://safarapi.pythonanywhere.com/api/delivery_orders_detail/${id}/');
     final Request $request = Request(
