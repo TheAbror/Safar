@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
-import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
-import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
 import 'package:safar/ui/manage_order_page/widgets/inquiry_item.dart';
-import 'package:safar/ui/order_details_page/action/options/date_option.dart';
+
+import 'manage_delivery_order_fields.dart';
 import 'texts_and_titles/submit_inquiry_button.dart';
-import 'texts_and_titles/text_form_fields/additional_field.dart';
-import 'texts_and_titles/text_form_fields/new_inquiry_description.dart';
 import 'widgets/amount_selection.dart';
 import 'widgets/card_number_and_remove.dart';
-import 'widgets/from_to_fields.dart';
 import 'widgets/item_inquiry_title.dart';
 
 class ManagDeliveryOrdersPageViewModel {
@@ -51,8 +48,7 @@ class _ManagDeliveryOrdersPageState extends State<ManagDeliveryOrdersPage> {
           context,
           widget.viewModel.isEdit ? 'Изменить детали доставки' : 'Заказать доставку',
           SubmitOrderButton(
-            // isEnabled: widget.viewModel.isEdit ? true : false,
-            isEnabled: true,
+            isEnabled: widget.viewModel.isEdit ? true : false,
             onTap: () {
               context.read<OrdersBloc>().postDeliveryOrders();
               if (widget.viewModel.isEdit) {}
@@ -84,12 +80,35 @@ class _BodyState extends State<_Body> {
   var dateController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+
+    if (widget.viewModel.isEdit) {
+      context.read<OrdersBloc>().getInquiryByIdForEdit(widget.viewModel.id);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final item = InquiryItem(name: 'test', quantity: 1);
 
     return BlocConsumer<OrdersBloc, OrdersState>(
       listener: (context, state) {
-        if (state.blocProgress == BlocProgress.IS_SUCCESS && state.isDeliveryPostSuccessfull) {
+        if (state.isInitialValuesLoaded && widget.viewModel.isEdit) {
+          String dateString = state.deliveryDate;
+          DateTime dateTime = DateTime.parse(dateString);
+
+          fromController.text = state.deliveryPickup;
+          toController.text = state.deliveryDestination;
+          exactLocationController.text = state.deliveryPickUpReference;
+          exactDestinationController.text = state.deliveryDestinationReference;
+          offeredPriceController.text = state.deliveryOfferedPrice;
+          dateController.text = DateFormat('yyyy-MM-dd, HH:mm:ss').format(dateTime);
+          commentsController.text = state.deliveryCommentsForDriver;
+
+          context.read<OrdersBloc>().initialValuesDisplayed();
+        } else if (state.blocProgress == BlocProgress.IS_SUCCESS &&
+            state.isDeliveryPostSuccessfull) {
           //
 
           Navigator.pushNamed(context, AppRoutes.homePage);
@@ -113,112 +132,14 @@ class _BodyState extends State<_Body> {
         return SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
-                padding: EdgeInsets.all(10.w),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.onBackground,
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-                child: Column(
-                  children: [
-                    // desiredPickupTime: '2024-04-01T08:00:00',
-                    // commentForDriver: state.commentsForDriver,
-
-                    FromToFields(
-                      hintText: 'Из',
-                      suffixIcon: true,
-                      controller: fromController,
-                      onTap: () async {
-                        final result = await PrimaryBottomSheet.show(
-                          context,
-                          isSearchNeeded: true,
-                          heightRatio: 0.9,
-                          isConfirmationNeeded: false,
-                          title: 'Выберите регион',
-                          selectedValue: state.deliveryPickup,
-                          initialList: ShPrefKeys.listOfStates,
-                        );
-
-                        if (result != null) {
-                          if (!mounted) return;
-                          fromController.text = result;
-                          context.read<OrdersBloc>().updateDeliveryData(pickup: result);
-                          print(result);
-                        }
-                      },
-                    ),
-
-                    SizedBox(height: 8.h),
-
-                    FromToFields(
-                      hintText: 'В',
-                      suffixIcon: true,
-                      controller: toController,
-                      onTap: () async {
-                        final result = await PrimaryBottomSheet.show(
-                          context,
-                          isSearchNeeded: true,
-                          heightRatio: 0.9,
-                          isConfirmationNeeded: false,
-                          title: 'Выберите регион',
-                          selectedValue: state.deliveryDestination,
-                          initialList: ShPrefKeys.listOfStates,
-                        );
-
-                        if (result != null) {
-                          if (!mounted) return;
-                          toController.text = result;
-                          context.read<OrdersBloc>().updateDeliveryData(destination: result);
-                          print(result);
-                        }
-                      },
-                    ),
-
-                    SizedBox(height: 8.h),
-                    AdditionalField(
-                      thisController: exactLocationController,
-                      hintText: 'Место встречи : Необязательно',
-                      onChanged: (value) {
-                        context.read<OrdersBloc>().updateDeliveryData(pickUpReference: value);
-                        print(value);
-                      },
-                    ),
-                    SizedBox(height: 8.h),
-                    AdditionalField(
-                      thisController: exactDestinationController,
-                      hintText: 'Место назначения : Необязательно',
-                      onChanged: (value) {
-                        context.read<OrdersBloc>().updateDeliveryData(destinationReference: value);
-                        print(value);
-                      },
-                    ),
-
-                    SizedBox(height: 8.h),
-                    AdditionalField(
-                      thisController: offeredPriceController,
-                      hintText: 'Предложенная цена (ex: 200.000 сум)',
-                      onChanged: (value) {
-                        context.read<OrdersBloc>().updateDeliveryData(offeredPrice: value);
-                        print(value);
-                      },
-                    ),
-                    SizedBox(height: 8.h),
-
-                    DateOption(
-                      isDelivery: true,
-                      dateController: dateController,
-                    ),
-                    SizedBox(height: 8.h),
-                    CommentsForDrier(
-                      commentsController: commentsController,
-                      onChanged: (value) {
-                        context.read<OrdersBloc>().updateDeliveryData(commentsForDriver: value);
-                        print(value);
-                      },
-                    ),
-                  ],
-                ),
+              ManageDeliveryOrderFields(
+                fromController: fromController,
+                toController: toController,
+                exactLocationController: exactLocationController,
+                exactDestinationController: exactDestinationController,
+                offeredPriceController: offeredPriceController,
+                dateController: dateController,
+                commentsController: commentsController,
               ),
               Container(
                 margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
@@ -293,7 +214,6 @@ class _BodyState extends State<_Body> {
     );
   }
 }
-
 
 
 
