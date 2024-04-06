@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/colors/app_colors.dart';
 
-class ManageTaxiFieldsHeadline extends StatelessWidget {
+class TaxiFieldsHeadline extends StatelessWidget {
   final String text;
 
-  const ManageTaxiFieldsHeadline({
+  const TaxiFieldsHeadline({
     super.key,
     this.text = 'Необязательно',
   });
@@ -23,7 +23,7 @@ class ManageTaxiFieldsHeadline extends StatelessWidget {
             color: AppColors.textSecondary,
           ),
         ),
-        SizedBox(height: 8.h), //TODO
+        SizedBox(height: 8.h),
       ],
     );
   }

@@ -349,12 +349,12 @@ class OrdersBloc extends Cubit<OrdersState> {
   }
 
   void isPassenger() {
-    emit(state.copyWith(isDriver: false));
+    emit(state.copyWith(isDriver: true));
     print('Is driver: ${state.isDriver}');
   }
 
   void isDriver() {
-    emit(state.copyWith(isDriver: true));
+    emit(state.copyWith(isDriver: false));
     print('Is driver: ${state.isDriver}');
   }
 

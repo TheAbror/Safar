@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
-import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import '../order_details_page/action/options/date_option.dart';
 import 'texts_and_titles/text_form_fields/additional_field.dart';
-import 'texts_and_titles/text_form_fields/manage_taxi_fields_headline.dart';
+import 'texts_and_titles/text_form_fields/taxi_fields_headline.dart';
 import 'texts_and_titles/text_form_fields/new_inquiry_description.dart';
 import 'texts_and_titles/text_form_fields/passenger_number_choice.dart';
 import 'widgets/from_to_fields.dart';
+import 'widgets/passenger_or_driver_fields.dart';
 
 class ManageTaxiOrderFields extends StatefulWidget {
   final TextEditingController fromController;
@@ -119,51 +119,9 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                   print(value);
                 },
               ),
-              ManageTaxiFieldsHeadline(text: 'Создать заказ как:'),
-              Row(
-                children: [
-                  Text(
-                    'Пассажир',
-                    style: TextStyle(fontSize: 14.sp),
-                  ),
-                  //TODO
-                  Checkbox(
-                    checkColor: AppColors.float,
-                    fillColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.selected)) {
-                          return AppColors.primary;
-                        }
-                        return Colors.transparent;
-                      },
-                    ),
-                    value: !state.isDriver,
-                    onChanged: (value) {
-                      context.read<OrdersBloc>().isPassenger();
-                    },
-                  ),
-                  Text(
-                    'Водитель',
-                    style: TextStyle(fontSize: 14.sp),
-                  ),
-                  Checkbox(
-                    checkColor: AppColors.float,
-                    fillColor: MaterialStateProperty.resolveWith<Color>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.selected)) {
-                          return AppColors.primary;
-                        }
-                        return Colors.transparent;
-                      },
-                    ),
-                    value: state.isDriver,
-                    onChanged: (value) {
-                      context.read<OrdersBloc>().isDriver();
-                    },
-                  ),
-                ],
-              ),
-              ManageTaxiFieldsHeadline(text: 'Количество пассажиров'),
+              TaxiFieldsHeadline(text: 'Создать заказ как:'),
+              PassengerOrDriverField(state: state),
+              TaxiFieldsHeadline(text: 'Количество пассажиров'),
               SizedBox(
                 height: 48.w,
                 width: double.infinity,
