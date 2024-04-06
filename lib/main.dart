@@ -53,20 +53,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 800),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp(
-          themeMode: ThemeMode.system,
-          theme: lightTheme(),
-          debugShowCheckedModeBanner: false,
-          builder: BotToastInit(),
-          navigatorObservers: [BotToastNavigatorObserver()],
-          onGenerateRoute: MainRouteGenerator().generateRoute,
-        );
+    return GestureDetector(
+      onTap: () {
+        // Hide keyboard when user taps outside of text field
+        FocusManager.instance.primaryFocus?.unfocus();
       },
+      child: ScreenUtilInit(
+        designSize: const Size(360, 800),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp(
+            themeMode: ThemeMode.system,
+            theme: lightTheme(),
+            debugShowCheckedModeBanner: false,
+            builder: BotToastInit(),
+            navigatorObservers: [BotToastNavigatorObserver()],
+            onGenerateRoute: MainRouteGenerator().generateRoute,
+          );
+        },
+      ),
     );
   }
 }

@@ -28,129 +28,126 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: AppColors.float,
-        resizeToAvoidBottomInset: false,
-        body: BlocConsumer<AuthBloc, AuthState>(
-          listener: (context, state) async {
-            if (state.blocProgress == BlocProgress.IS_SUCCESS) {
-              Navigator.pushNamed(context, AppRoutes.homePage);
-            }
-            if (state.blocProgress == BlocProgress.IS_LOADING) {
-              Center(
-                child: CircularProgressIndicator(color: AppColors.primary),
-              );
-            } else if (state.blocProgress == BlocProgress.FAILED) {
-              showMessage(
-                state.failureMessage,
-                isError: true,
-              );
-            }
-          },
-          builder: (context, state) {
-            return Form(
-              key: _formKey,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 40.h),
-                    Center(
-                      child: Assets.icons.logoGreen.image(
-                        width: double.infinity,
-                        fit: BoxFit.fill,
-                      ),
+    return Scaffold(
+      backgroundColor: AppColors.float,
+      resizeToAvoidBottomInset: false,
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) async {
+          if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+            Navigator.pushNamed(context, AppRoutes.homePage);
+          }
+          if (state.blocProgress == BlocProgress.IS_LOADING) {
+            Center(
+              child: CircularProgressIndicator(color: AppColors.primary),
+            );
+          } else if (state.blocProgress == BlocProgress.FAILED) {
+            showMessage(
+              state.failureMessage,
+              isError: true,
+            );
+          }
+        },
+        builder: (context, state) {
+          return Form(
+            key: _formKey,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 40.h),
+                  Center(
+                    child: Assets.icons.logoGreen.image(
+                      width: double.infinity,
+                      fit: BoxFit.fill,
                     ),
-                    Text(
-                      'Войти',
-                      style: TextStyle(
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).colorScheme.tertiaryContainer,
-                      ),
+                  ),
+                  Text(
+                    'Войти',
+                    style: TextStyle(
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).colorScheme.tertiaryContainer,
                     ),
-                    SizedBox(height: 2.h),
-                    Text(
-                      'Введите свои учетные данные для доступа к платформе',
-                      style: TextStyle(
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).colorScheme.tertiaryContainer,
-                      ),
+                  ),
+                  SizedBox(height: 2.h),
+                  Text(
+                    'Введите свои учетные данные для доступа к платформе',
+                    style: TextStyle(
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w400,
+                      color: Theme.of(context).colorScheme.tertiaryContainer,
                     ),
-                    SizedBox(height: 10.h),
-                    Text(
-                      'Логин',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.logInInTextColor,
-                      ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Text(
+                    'Логин',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.logInInTextColor,
                     ),
-                    SizedBox(height: 5.h),
-                    SignInUsernameField(usernameController: _usernameController),
-                    SizedBox(height: 10.h),
-                    Text(
-                      'Номер',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.logInInTextColor,
-                      ),
+                  ),
+                  SizedBox(height: 5.h),
+                  SignInUsernameField(usernameController: _usernameController),
+                  SizedBox(height: 10.h),
+                  Text(
+                    'Номер',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.logInInTextColor,
                     ),
-                    SizedBox(height: 5.h),
-                    ContactInfoField(contactsController: _contactsController),
-                    SizedBox(height: 10.h),
-                    Text(
-                      'Пароль',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.logInInTextColor,
-                      ),
+                  ),
+                  SizedBox(height: 5.h),
+                  ContactInfoField(contactsController: _contactsController),
+                  SizedBox(height: 10.h),
+                  Text(
+                    'Пароль',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.logInInTextColor,
                     ),
-                    SizedBox(height: 5.h),
-                    SignInPasswordField(passwordController: _passwordController),
-                    SizedBox(height: 5.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () => termsAndConditions(),
-                          child: Text(
-                            'Согласен с условиями использования',
-                            style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.primary,
-                            ),
+                  ),
+                  SizedBox(height: 5.h),
+                  SignInPasswordField(passwordController: _passwordController),
+                  SizedBox(height: 5.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () => termsAndConditions(),
+                        child: Text(
+                          'Согласен с условиями использования',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.primary,
                           ),
                         ),
-                        Checkbox(
-                          activeColor: AppColors.primary,
-                          value: state.isAgreedToTerms,
-                          onChanged: (value) {
-                            context.read<AuthBloc>().isAgreedToTerms(value ?? false);
-                          },
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    _ContinueButton(
-                      context,
-                      state,
-                      state.isAgreedToTerms,
-                    ),
-                    SizedBox(height: 50.h),
-                  ],
-                ),
+                      ),
+                      Checkbox(
+                        activeColor: AppColors.primary,
+                        value: state.isAgreedToTerms,
+                        onChanged: (value) {
+                          context.read<AuthBloc>().isAgreedToTerms(value ?? false);
+                        },
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
+                  _ContinueButton(
+                    context,
+                    state,
+                    state.isAgreedToTerms,
+                  ),
+                  SizedBox(height: 50.h),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

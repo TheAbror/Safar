@@ -145,6 +145,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
               SizedBox(height: 8.h),
               AdditionalField(
                 thisController: widget.offeredPriceController,
+                isNumberNeeded: true,
                 hintText: 'Предложенная цена (ex: 200.000 сум)',
                 onChanged: (value) {
                   context.read<OrdersBloc>().updateData(offeredPrice: value);
