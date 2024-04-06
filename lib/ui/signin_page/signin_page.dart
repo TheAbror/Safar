@@ -5,6 +5,7 @@ import 'package:safar/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/utils/terms_and_conditions/terms_and_conditions_bottomsheet.dart';
 import 'bloc/auth_bloc.dart';
+import 'textfields/contact_info_field.dart';
 import 'textfields/sign_in_password_field.dart';
 import 'textfields/sign_in_username_field.dart';
 import 'package:safar/core/colors/app_colors.dart';
@@ -23,6 +24,7 @@ class _SignInPageState extends State<SignInPage> {
 
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _contactsController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +59,13 @@ class _SignInPageState extends State<SignInPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 25.h),
                       Center(
                         child: Assets.icons.logoGreen.image(
                           width: double.infinity,
                           fit: BoxFit.fill,
                         ),
                       ),
-                      SizedBox(height: 5.h),
                       Text(
                         'Войти',
                         style: TextStyle(
@@ -73,7 +74,7 @@ class _SignInPageState extends State<SignInPage> {
                           color: Theme.of(context).colorScheme.tertiaryContainer,
                         ),
                       ),
-                      SizedBox(height: 8.h),
+                      SizedBox(height: 2.h),
                       Text(
                         'Введите свои учетные данные для доступа к платформе',
                         style: TextStyle(
@@ -82,7 +83,7 @@ class _SignInPageState extends State<SignInPage> {
                           color: Theme.of(context).colorScheme.tertiaryContainer,
                         ),
                       ),
-                      SizedBox(height: 20.h),
+                      SizedBox(height: 10.h),
                       Text(
                         'Логин',
                         style: TextStyle(
@@ -93,7 +94,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                       SizedBox(height: 5.h),
                       SignInUsernameField(usernameController: _usernameController),
-                      SizedBox(height: 24.h),
+                      SizedBox(height: 10.h),
                       Text(
                         'Пароль',
                         style: TextStyle(
@@ -104,6 +105,16 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                       SizedBox(height: 5.h),
                       SignInPasswordField(passwordController: _passwordController),
+                      SizedBox(height: 10.h),
+                      Text(
+                        'Номер',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.logInInTextColor,
+                        ),
+                      ),
+                      ContactInfoField(contactsController: _contactsController),
                       SizedBox(height: 5.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -154,15 +165,20 @@ class _SignInPageState extends State<SignInPage> {
     }
   }
 
-  GestureDetector _ContinueButton(BuildContext context, AuthState state, bool isAgreed) {
+  GestureDetector _ContinueButton(
+    BuildContext context,
+    AuthState state,
+    bool isAgreed,
+  ) {
     return GestureDetector(
       onTap: !isAgreed
           ? null
           : () async {
               final username = _usernameController.text.trim();
               final password = _passwordController.text.trim();
+              final contactInfo = _contactsController.text.trim();
               if (_formKey.currentState!.validate()) {
-                context.read<AuthBloc>().signIn(username, password, '998914309090');
+                context.read<AuthBloc>().signIn(username, password, contactInfo);
               }
             },
       child: Container(

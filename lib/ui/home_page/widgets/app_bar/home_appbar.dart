@@ -56,32 +56,7 @@ class HomeAppBar extends StatelessWidget {
               ),
             );
           },
-          child: Container(
-            decoration: BoxDecoration(
-              color: AppColors.float,
-              borderRadius: BorderRadius.all(Radius.circular(corex * 3.r)),
-            ),
-            child: Container(
-              margin: EdgeInsets.all(corex / 2.h),
-              padding: EdgeInsets.only(bottom: corex / 2.h),
-              width: 32.h,
-              height: 32.h,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Palette.grey75,
-                borderRadius: BorderRadius.all(Radius.circular(corex * 2.r)),
-              ),
-              child: Text(
-                fullName[0].toUpperCase(),
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  color: AppColors.textMain,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
+          child: _BoxWithInitials(),
         ),
         SizedBox(width: 8.w),
         Column(
@@ -111,6 +86,35 @@ class HomeAppBar extends StatelessWidget {
         const Spacer(),
         SizedBox(width: 5.w)
       ],
+    );
+  }
+
+  Container _BoxWithInitials() {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.float,
+        borderRadius: BorderRadius.all(Radius.circular(corex * 3.r)),
+      ),
+      child: Container(
+        margin: EdgeInsets.all(corex / 2.h),
+        padding: EdgeInsets.only(bottom: corex / 2.h),
+        width: 32.h,
+        height: 32.h,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Palette.grey75,
+          borderRadius: BorderRadius.all(Radius.circular(corex * 2.r)),
+        ),
+        child: Text(
+          fullName[0].toUpperCase(),
+          style: TextStyle(
+            fontSize: 14.sp,
+            color: AppColors.textMain,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }

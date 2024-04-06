@@ -220,7 +220,7 @@ class DeliveryOrdersCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'oyjddkvvjjj@gmail.com',
+                        'oyjddkvjjj@gmail.com',
                         style: TextStyle(
                           fontSize: 12.sp,
                           overflow: TextOverflow.ellipsis,
