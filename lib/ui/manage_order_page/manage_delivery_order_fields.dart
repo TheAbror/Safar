@@ -16,6 +16,7 @@ class ManageDeliveryOrderFields extends StatefulWidget {
   final TextEditingController exactLocationController;
   final TextEditingController exactDestinationController;
   final TextEditingController offeredPriceController;
+  final TextEditingController phoneNumberController;
   final TextEditingController dateController;
   final TextEditingController commentsController;
 
@@ -26,6 +27,7 @@ class ManageDeliveryOrderFields extends StatefulWidget {
     required this.exactLocationController,
     required this.exactDestinationController,
     required this.offeredPriceController,
+    required this.phoneNumberController,
     required this.dateController,
     required this.commentsController,
   });
@@ -48,9 +50,6 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
         builder: (context, state) {
           return Column(
             children: [
-              // desiredPickupTime: '2024-04-01T08:00:00',
-              // commentForDriver: state.commentsForDriver,
-
               FromToFields(
                 hintText: 'Из',
                 suffixIcon: true,
@@ -74,9 +73,7 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                   }
                 },
               ),
-
               SizedBox(height: 8.h),
-
               FromToFields(
                 hintText: 'В',
                 suffixIcon: true,
@@ -100,7 +97,6 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                   }
                 },
               ),
-
               SizedBox(height: 8.h),
               AdditionalField(
                 thisController: widget.exactLocationController,
@@ -119,7 +115,6 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                   print(value);
                 },
               ),
-
               SizedBox(height: 8.h),
               AdditionalField(
                 thisController: widget.offeredPriceController,
@@ -130,7 +125,15 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                 },
               ),
               SizedBox(height: 8.h),
-
+              AdditionalField(
+                thisController: widget.phoneNumberController,
+                hintText: '+998914309090',
+                onChanged: (value) {
+                  context.read<OrdersBloc>().updateDeliveryData(phoneNumber: value);
+                  print(value);
+                },
+              ),
+              SizedBox(height: 8.h),
               DateOption(
                 isDelivery: true,
                 dateController: widget.dateController,

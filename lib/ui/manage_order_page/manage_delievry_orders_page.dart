@@ -16,10 +16,6 @@ import 'widgets/amount_selection.dart';
 import 'widgets/card_number_and_remove.dart';
 import 'widgets/item_inquiry_title.dart';
 
-// btw the login is still signup
-// When choosing time for taxi order. The user should not be able to put past time, past date. It should show by default 1 hour plus from now
-// When I tried to edit other order that is not mine, I could enter to edit part. The edit button must not be shown in orders in which, user is not the owner of the order.
-// "created_by_this_user": false
 class ManagDeliveryOrdersPageViewModel {
   final int id;
   final bool isEdit;
@@ -93,6 +89,7 @@ class _BodyState extends State<_Body> {
   var offeredPriceController = TextEditingController();
   var exactLocationController = TextEditingController();
   var exactDestinationController = TextEditingController();
+  var phoneController = TextEditingController();
   var commentsController = TextEditingController();
   var dateController = TextEditingController();
 
@@ -153,6 +150,7 @@ class _BodyState extends State<_Body> {
                 toController: toController,
                 exactLocationController: exactLocationController,
                 exactDestinationController: exactDestinationController,
+                phoneNumberController: phoneController,
                 offeredPriceController: offeredPriceController,
                 dateController: dateController,
                 commentsController: commentsController,

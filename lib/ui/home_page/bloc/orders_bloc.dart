@@ -112,6 +112,7 @@ class OrdersBloc extends Cubit<OrdersState> {
     String? destination,
     String? date,
     String? offeredPrice,
+    String? phoneNumber,
     String? pickUpReference,
     String? destinationReference,
     String? commentsForDriver,
@@ -124,6 +125,8 @@ class OrdersBloc extends Cubit<OrdersState> {
       emit(state.copyWith(deliveryDate: date));
     } else if (offeredPrice != null) {
       emit(state.copyWith(deliveryOfferedPrice: offeredPrice));
+    } else if (offeredPrice != null) {
+      emit(state.copyWith(deliveryPhoneNumber: phoneNumber));
     } else if (pickUpReference != null) {
       emit(state.copyWith(deliveryPickUpReference: pickUpReference));
     } else if (destinationReference != null) {
@@ -429,6 +432,7 @@ class OrdersBloc extends Cubit<OrdersState> {
     int? numberOfPassengers,
     String? date,
     String? offeredPrice,
+    String? phoneNumber,
     String? pickUpReference,
     String? destinationReference,
     String? commentsForDriver,
@@ -443,6 +447,8 @@ class OrdersBloc extends Cubit<OrdersState> {
       emit(state.copyWith(date: date));
     } else if (offeredPrice != null) {
       emit(state.copyWith(offeredPrice: offeredPrice));
+    } else if (phoneNumber != null) {
+      emit(state.copyWith(taxiPhoneNumber: phoneNumber));
     } else if (pickUpReference != null) {
       emit(state.copyWith(pickUpReference: pickUpReference));
     } else if (destinationReference != null) {

@@ -10,7 +10,7 @@ class OrdersState extends Equatable {
   final String pickUpReference;
   final String destinationReference;
   final String commentsForDriver;
-  // final String phoneNumber;
+  final String taxiPhoneNumber;
   final bool isDriver;
   //taxi post variables end
 
@@ -22,7 +22,7 @@ class OrdersState extends Equatable {
   final String deliveryPickUpReference;
   final String deliveryDestinationReference;
   final String deliveryCommentsForDriver;
-  // final String phoneNumber;
+  final String deliveryPhoneNumber;
   final bool deliveryIsDriver;
   //taxi delivery variables end
 
@@ -49,6 +49,7 @@ class OrdersState extends Equatable {
     required this.pickUpReference,
     required this.destinationReference,
     required this.commentsForDriver,
+    required this.taxiPhoneNumber,
     required this.isDriver,
     required this.deliveryPickup,
     required this.deliveryDestination,
@@ -57,6 +58,7 @@ class OrdersState extends Equatable {
     required this.deliveryPickUpReference,
     required this.deliveryDestinationReference,
     required this.deliveryCommentsForDriver,
+    required this.deliveryPhoneNumber,
     required this.deliveryIsDriver,
     required this.isInitialValuesLoaded,
     required this.statusesForFilter,
@@ -83,6 +85,7 @@ class OrdersState extends Equatable {
       pickUpReference: '',
       destinationReference: '',
       commentsForDriver: '',
+      taxiPhoneNumber: '',
       isDriver: false,
       deliveryPickup: '',
       deliveryDestination: '',
@@ -91,6 +94,7 @@ class OrdersState extends Equatable {
       deliveryPickUpReference: '',
       deliveryDestinationReference: '',
       deliveryCommentsForDriver: '',
+      deliveryPhoneNumber: '',
       deliveryIsDriver: false,
       isInitialValuesLoaded: false,
       statusesForFilter: const [],
@@ -153,6 +157,7 @@ class OrdersState extends Equatable {
     String? pickUpReference,
     String? destinationReference,
     String? commentsForDriver,
+    String? taxiPhoneNumber,
     bool? isDriver,
     String? deliveryPickup,
     String? deliveryDestination,
@@ -161,6 +166,7 @@ class OrdersState extends Equatable {
     String? deliveryPickUpReference,
     String? deliveryDestinationReference,
     String? deliveryCommentsForDriver,
+    String? deliveryPhoneNumber,
     bool? deliveryIsDriver,
     bool? isInitialValuesLoaded,
     List<String>? statusesForFilter,
@@ -185,6 +191,7 @@ class OrdersState extends Equatable {
       pickUpReference: pickUpReference ?? this.pickUpReference,
       destinationReference: destinationReference ?? this.destinationReference,
       commentsForDriver: commentsForDriver ?? this.commentsForDriver,
+      taxiPhoneNumber: taxiPhoneNumber ?? this.taxiPhoneNumber,
       isDriver: isDriver ?? this.isDriver,
       deliveryPickup: deliveryPickup ?? this.deliveryPickup,
       deliveryDestination: deliveryDestination ?? this.deliveryDestination,
@@ -194,6 +201,7 @@ class OrdersState extends Equatable {
       deliveryDestinationReference:
           deliveryDestinationReference ?? this.deliveryDestinationReference,
       deliveryCommentsForDriver: deliveryCommentsForDriver ?? this.deliveryCommentsForDriver,
+      deliveryPhoneNumber: deliveryPhoneNumber ?? this.deliveryPhoneNumber,
       deliveryIsDriver: deliveryIsDriver ?? this.deliveryIsDriver,
       isInitialValuesLoaded: isInitialValuesLoaded ?? this.isInitialValuesLoaded,
       statusesForFilter: statusesForFilter ?? this.statusesForFilter,
@@ -221,6 +229,7 @@ class OrdersState extends Equatable {
         pickUpReference,
         destinationReference,
         commentsForDriver,
+        taxiPhoneNumber,
         isDriver,
         deliveryPickup,
         deliveryDestination,
@@ -229,6 +238,7 @@ class OrdersState extends Equatable {
         deliveryPickUpReference,
         deliveryDestinationReference,
         deliveryCommentsForDriver,
+        deliveryPhoneNumber,
         deliveryIsDriver,
         isInitialValuesLoaded,
         statusesForFilter,
