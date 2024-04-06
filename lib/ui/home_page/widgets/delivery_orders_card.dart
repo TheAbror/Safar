@@ -210,7 +210,7 @@ class DeliveryOrdersCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Abror Shamuradov',
+                        model[index].user.toString(),
                         style: TextStyle(
                           fontSize: 14.sp,
                           overflow: TextOverflow.ellipsis,
@@ -220,7 +220,7 @@ class DeliveryOrdersCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'oyjddkvj@gmail.com',
+                        'oyjddkvvjjj@gmail.com',
                         style: TextStyle(
                           fontSize: 12.sp,
                           overflow: TextOverflow.ellipsis,
@@ -236,7 +236,7 @@ class DeliveryOrdersCard extends StatelessWidget {
                     radius: 8,
                     backgroundColor: model[index].createdByThisUser ? textColor : backgroundColor,
                     textColor: model[index].createdByThisUser ? backgroundColor : textColor,
-                    status: 'In process',
+                    status: model[index].status.value,
                   ),
                 ],
               ),

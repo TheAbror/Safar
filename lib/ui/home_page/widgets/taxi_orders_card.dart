@@ -212,7 +212,7 @@ class TaxiOrdersCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Abror Shamuradov',
+                        model[index].user.toString(),
                         style: TextStyle(
                           fontSize: 14.sp,
                           overflow: TextOverflow.ellipsis,
@@ -238,7 +238,7 @@ class TaxiOrdersCard extends StatelessWidget {
                     radius: 8,
                     backgroundColor: model[index].createdByThisUser ? textColor : backgroundColor,
                     textColor: model[index].createdByThisUser ? backgroundColor : textColor,
-                    status: 'In process',
+                    status: model[index].status.value,
                   ),
                 ],
               ),

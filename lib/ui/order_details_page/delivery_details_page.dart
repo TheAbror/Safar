@@ -77,34 +77,31 @@ class _BodyState extends State<_Body> {
       appBar: order_appbar(
           context,
           widget.model.pickup,
-          //  widget.model.createdByThisUser
-          //           ?
-          GestureDetector(
-            onTap: () async {
-              order_edit_or_delete_dialog(context).then((value) {
-                if (value != null) {
-                  if (value) {
-                    context.read<OrdersBloc>().deleteDeliveryOrderById(widget.model.id);
-                  } else if (!value) {
-                    Navigator.of(context).pushNamed(
-                      AppRoutes.manageDeliveryOrder,
-                      arguments: ManagDeliveryOrdersPageViewModel(
-                        id: widget.model.id,
-                        isEdit: true,
-                      ),
-                    );
-                  }
-                }
-              });
-            },
-            child: Assets.icons.staffIcons.edit.svg(
-              height: 24.h,
-              width: 24.h,
-            ),
-          )
-
-          // : SizedBox()
-          ),
+          widget.model.createdByThisUser
+              ? GestureDetector(
+                  onTap: () async {
+                    order_edit_or_delete_dialog(context).then((value) {
+                      if (value != null) {
+                        if (value) {
+                          context.read<OrdersBloc>().deleteDeliveryOrderById(widget.model.id);
+                        } else if (!value) {
+                          Navigator.of(context).pushNamed(
+                            AppRoutes.manageDeliveryOrder,
+                            arguments: ManagDeliveryOrdersPageViewModel(
+                              id: widget.model.id,
+                              isEdit: true,
+                            ),
+                          );
+                        }
+                      }
+                    });
+                  },
+                  child: Assets.icons.staffIcons.edit.svg(
+                    height: 24.h,
+                    width: 24.h,
+                  ),
+                )
+              : SizedBox()),
       body: BlocConsumer<OrdersBloc, OrdersState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS && state.isDeliveryOrderDeleted) {
