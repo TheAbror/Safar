@@ -13,6 +13,7 @@ class ContactInfoField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: TextInputType.number,
       validator: (username) {
         if (username == null || username.isEmpty) {
           return 'Все поля должны быть заполнены';
