@@ -233,6 +233,7 @@ DeliveryOrdersResponse _$DeliveryOrdersResponseFromJson(
       createdAt: json['created_at'] as String? ?? '',
       driver: json['driver'] as int? ?? 0,
       user: json['user'] as int? ?? 0,
+      createdByThisUser: json['created_by_this_user'] as bool? ?? false,
       isDriver: json['is_driver'] as bool? ?? false,
       status: OrderStatus.fromJson(json['status'] as Map<String, dynamic>),
       updatedAt: json['updated_at'] as String? ?? '',
@@ -256,6 +257,7 @@ Map<String, dynamic> _$DeliveryOrdersResponseToJson(
       'user': instance.user,
       'driver': instance.driver,
       'is_driver': instance.isDriver,
+      'created_by_this_user': instance.createdByThisUser,
       'status': instance.status.toJson(),
     };
 

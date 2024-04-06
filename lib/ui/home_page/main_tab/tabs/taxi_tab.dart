@@ -62,7 +62,7 @@ class TaxiTab extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return OrdersCard(
+                        return TaxiOrdersCard(
                           index: index,
                           model: state.taxiOrdersList.results,
                           child: Assets.icons.carTab.image(),

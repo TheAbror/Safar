@@ -27,6 +27,8 @@ class HomeAppBar extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
+            final topNavigator = Navigator.of(context, rootNavigator: true);
+
             showPlatformDialog(
               context: context,
               builder: (mycontext) => BasicDialogAlert(
@@ -40,11 +42,8 @@ class HomeAppBar extends StatelessWidget {
                         if (value == true) {
                           ApiProvider.create();
                           boxCurrentUser.clear();
-
                           context.read<AuthBloc>().clearAll();
-
-                          Navigator.pop(mycontext);
-                          Navigator.of(context).pushNamed(AppRoutes.splashPage);
+                          topNavigator.pushNamed(AppRoutes.splashPage);
                         }
                       });
                     },

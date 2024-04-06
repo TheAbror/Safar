@@ -8,12 +8,12 @@ import 'package:intl/intl.dart';
 import 'package:safar/ui/order_details_page/taxi_details_page.dart';
 import 'status_widget.dart';
 
-class OrdersCard extends StatelessWidget {
+class TaxiOrdersCard extends StatelessWidget {
   final int index;
   final List<TaxiOrdersResponse> model;
   final Widget child;
 
-  const OrdersCard({
+  const TaxiOrdersCard({
     super.key,
     required this.model,
     required this.index,

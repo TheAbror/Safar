@@ -7,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:safar/ui/order_details_page/delivery_details_page.dart';
 
+import 'status_widget.dart';
+
 class DeliveryOrdersCard extends StatelessWidget {
   final int index;
   final List<DeliveryOrdersResponse> model;
@@ -31,6 +33,8 @@ class DeliveryOrdersCard extends StatelessWidget {
     // textColor = statusColors.textColor;
     // backgroundColor = statusColors.backgroundColor;
 
+    var createdByThisUser = model[index].createdByThisUser;
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(
@@ -42,7 +46,7 @@ class DeliveryOrdersCard extends StatelessWidget {
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 4.w),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onBackground,
+          color: createdByThisUser ? AppColors.primary : Theme.of(context).colorScheme.onBackground,
           borderRadius: BorderRadius.circular(16.r),
         ),
         child: Column(
@@ -65,14 +69,19 @@ class DeliveryOrdersCard extends StatelessWidget {
                     children: [
                       Text(
                         'Сумма: ',
-                        style: TextStyle(color: AppColors.iconSecondary),
+                        style: TextStyle(
+                            color: model[index].createdByThisUser
+                                ? AppColors.float
+                                : AppColors.iconSecondary),
                       ),
                       SizedBox(
                         width: 55.w,
                         child: Text(
                           model[index].offeredPrice,
                           style: TextStyle(
-                            color: AppColors.primary,
+                            color: model[index].createdByThisUser
+                                ? AppColors.float
+                                : AppColors.primary,
                             fontWeight: FontWeight.bold,
                           ),
                           overflow: TextOverflow.ellipsis,
@@ -81,6 +90,10 @@ class DeliveryOrdersCard extends StatelessWidget {
                       ),
                       Text(
                         model[index].desiredCarModel.toString(),
+                        style: TextStyle(
+                            color: model[index].createdByThisUser
+                                ? AppColors.float
+                                : AppColors.textMain),
                       ),
                     ],
                   ),
@@ -103,15 +116,14 @@ class DeliveryOrdersCard extends StatelessWidget {
       padding: EdgeInsets.only(left: 51.w),
       child: Row(
         children: [
-          // model[index].createdByThisUser
-          //     ? Assets.icons.timeLineSvg.svg(
-          //         colorFilter: ColorFilter.mode(
-          //           AppColors.float,
-          //           BlendMode.srcIn,
-          //         ),
-          //       )
-          //     :
-          Assets.icons.timeLinePng.image(),
+          model[index].createdByThisUser
+              ? Assets.icons.timeLineSvg.svg(
+                  colorFilter: ColorFilter.mode(
+                    AppColors.float,
+                    BlendMode.srcIn,
+                  ),
+                )
+              : Assets.icons.timeLinePng.image(),
           SizedBox(width: 10.h),
           SizedBox(
             height: 90.h,
@@ -121,13 +133,14 @@ class DeliveryOrdersCard extends StatelessWidget {
                 Text(
                   'Из',
                   style: TextStyle(
-                    color: AppColors.iconSecondary,
+                    color:
+                        model[index].createdByThisUser ? AppColors.float : AppColors.iconSecondary,
                   ),
                 ),
                 Text(
                   from,
                   style: TextStyle(
-                    color: AppColors.textMain,
+                    color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
                   ),
@@ -136,13 +149,14 @@ class DeliveryOrdersCard extends StatelessWidget {
                 Text(
                   'В',
                   style: TextStyle(
-                    color: AppColors.iconSecondary,
+                    color:
+                        model[index].createdByThisUser ? AppColors.float : AppColors.iconSecondary,
                   ),
                 ),
                 Text(
                   to,
                   style: TextStyle(
-                    color: AppColors.textMain,
+                    color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
                   ),
@@ -165,12 +179,12 @@ class DeliveryOrdersCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(50.r)),
             border: Border.all(
-              color: AppColors.textMain,
+              color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
               width: 0.5.w,
             ),
             image: DecorationImage(
               colorFilter: ColorFilter.mode(
-                AppColors.textMain,
+                model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                 BlendMode.srcIn,
               ),
               image: AssetImage(Assets.icons.staffIconInquiryCard.path),
@@ -186,7 +200,7 @@ class DeliveryOrdersCard extends StatelessWidget {
               Divider(
                 height: 1.h,
                 thickness: 0.5,
-                color: AppColors.iconSecondary,
+                color: model[index].createdByThisUser ? AppColors.float : AppColors.iconSecondary,
               ),
               SizedBox(height: 6.h),
               Row(
@@ -201,7 +215,8 @@ class DeliveryOrdersCard extends StatelessWidget {
                           fontSize: 14.sp,
                           overflow: TextOverflow.ellipsis,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.textMain,
+                          color:
+                              model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                         ),
                       ),
                       Text(
@@ -210,17 +225,19 @@ class DeliveryOrdersCard extends StatelessWidget {
                           fontSize: 12.sp,
                           overflow: TextOverflow.ellipsis,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.textSecondary,
+                          color: model[index].createdByThisUser
+                              ? AppColors.float
+                              : AppColors.textSecondary,
                         ),
                       ),
                     ],
                   ),
-                  // StatusWidget(
-                  //   radius: 8,
-                  //   backgroundColor: model[index].createdByThisUser ? textColor : backgroundColor,
-                  //   textColor: model[index].createdByThisUser ? backgroundColor : textColor,
-                  //   status: 'In process',
-                  // ),
+                  StatusWidget(
+                    radius: 8,
+                    backgroundColor: model[index].createdByThisUser ? textColor : backgroundColor,
+                    textColor: model[index].createdByThisUser ? backgroundColor : textColor,
+                    status: 'In process',
+                  ),
                 ],
               ),
             ],
@@ -261,7 +278,7 @@ class DeliveryOrdersCard extends StatelessWidget {
                       fontSize: 11.sp,
                       overflow: TextOverflow.ellipsis,
                       fontWeight: FontWeight.w400,
-                      color: AppColors.textMain,
+                      color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                     ),
                   ),
                   Text(
@@ -270,7 +287,9 @@ class DeliveryOrdersCard extends StatelessWidget {
                       fontSize: 11.sp,
                       overflow: TextOverflow.ellipsis,
                       fontWeight: FontWeight.w400,
-                      color: AppColors.textSecondary,
+                      color: model[index].createdByThisUser
+                          ? AppColors.float
+                          : AppColors.textSecondary,
                     ),
                     textAlign: TextAlign.end,
                   ),
@@ -282,14 +301,14 @@ class DeliveryOrdersCard extends StatelessWidget {
                   fontSize: 14.sp,
                   overflow: TextOverflow.ellipsis,
                   fontWeight: FontWeight.w700,
-                  color: AppColors.textMain,
+                  color: model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
                 ),
               ),
               SizedBox(height: 8.h),
               Divider(
                 height: 1.h,
                 thickness: 0.5,
-                color: AppColors.iconSecondary,
+                color: model[index].createdByThisUser ? AppColors.float : AppColors.iconSecondary,
               ),
             ],
           ),
