@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
+import 'package:safar/core/box/current_user_box.dart';
 import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
+import 'package:safar/ui/home_page/model/current_user.dart';
 import '../order_details_page/action/options/date_option.dart';
 import 'texts_and_titles/text_form_fields/additional_field.dart';
 import 'texts_and_titles/text_form_fields/taxi_fields_headline.dart';
@@ -41,6 +43,9 @@ class ManageTaxiOrderFields extends StatefulWidget {
 class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
   @override
   Widget build(BuildContext context) {
+    CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
+    final number = currentUser?.number ?? 'Введите номер';
+
     return BlocBuilder<OrdersBloc, OrdersState>(
       builder: (context, state) {
         return Container(
@@ -155,9 +160,14 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
               SizedBox(height: 8.h),
               AdditionalField(
                 thisController: widget.phoneNumberController,
-                hintText: '+998914309090',
+                hintText: number,
+                isNumberNeeded: true,
                 onChanged: (value) {
-                  context.read<OrdersBloc>().updateData(offeredPrice: value);
+                  // ignore: unnecessary_null_comparison
+                  if (value == null || value.isEmpty) {
+                    value = number;
+                  }
+                  context.read<OrdersBloc>().updateData(phoneNumber: value);
                   print(value);
                 },
               ),

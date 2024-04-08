@@ -22,27 +22,38 @@ class ContactInfoField extends StatelessWidget {
       },
       controller: _contactsController,
       textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-        filled: true,
-        border: InputBorder.none, // Remove border color
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
-          borderRadius: BorderRadius.circular(12),
+      decoration: SignDeocration(context),
+    );
+  }
+
+  InputDecoration SignDeocration(BuildContext context) {
+    return InputDecoration(
+      filled: true,
+      border: InputBorder.none, // Remove border color
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.primary, width: 1.w),
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      fillColor: Theme.of(context).colorScheme.surfaceTint,
+      hintText: 'Номер телефона',
+      prefixIcon: Padding(
+        padding: EdgeInsets.only(left: 6.w),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: const [Text('+998')],
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primary, width: 1.w),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        fillColor: Theme.of(context).colorScheme.surfaceTint,
-        hintText: 'Телефон номер',
       ),
     );
   }
