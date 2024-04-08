@@ -121,7 +121,7 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                 },
               ),
               SizedBox(height: 8.h),
-              AdditionalField(
+              OfferedPriceField(
                 thisController: widget.offeredPriceController,
                 hintText: 'Предложенная цена (ex: 200000 сум)',
                 onChanged: (value) {
@@ -133,7 +133,6 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
               PhoneNumberField(
                 thisController: widget.phoneNumberController,
                 hintText: number,
-                isNumberNeeded: true,
                 onChanged: (value) {
                   // ignore: unnecessary_null_comparison
                   if (value == null || value.isEmpty) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:safar/ui/manage_order_page/widgets/from_to_fields.dart';
+import 'package:safar/ui/signin_page/textfields/contact_info_field.dart';
 
 class AdditionalField extends StatefulWidget {
   final String hintText;
@@ -32,14 +33,12 @@ class _AdditionalFieldState extends State<AdditionalField> {
 
 class PhoneNumberField extends StatefulWidget {
   final String hintText;
-  final bool isNumberNeeded;
   final Function(String)? onChanged;
   final TextEditingController thisController;
 
   const PhoneNumberField({
     super.key,
     required this.hintText,
-    this.isNumberNeeded = false,
     required this.thisController,
     required this.onChanged,
   });
@@ -55,7 +54,42 @@ class _PhoneNumberFieldState extends State<PhoneNumberField> {
       inputFormatters: [
         LengthLimitingTextInputFormatter(9),
       ],
-      keyboardType: widget.isNumberNeeded ? TextInputType.number : TextInputType.text,
+      keyboardType: TextInputType.number,
+      onChanged: widget.onChanged,
+      controller: widget.thisController,
+      textInputAction: TextInputAction.next,
+      decoration: SignDeocration(
+        context,
+        widget.hintText.replaceAll('+998', ''),
+      ),
+    );
+  }
+}
+
+class OfferedPriceField extends StatefulWidget {
+  final String hintText;
+  final Function(String)? onChanged;
+  final TextEditingController thisController;
+
+  const OfferedPriceField({
+    super.key,
+    required this.hintText,
+    required this.thisController,
+    required this.onChanged,
+  });
+
+  @override
+  State<OfferedPriceField> createState() => _OfferedPriceFieldState();
+}
+
+class _OfferedPriceFieldState extends State<OfferedPriceField> {
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      inputFormatters: [
+        LengthLimitingTextInputFormatter(8),
+      ],
+      keyboardType: TextInputType.number,
       onChanged: widget.onChanged,
       controller: widget.thisController,
       textInputAction: TextInputAction.next,
