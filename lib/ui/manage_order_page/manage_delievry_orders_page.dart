@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:file_picker/file_picker.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -207,30 +210,61 @@ class _BodyState extends State<_Body> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text('Загрузите фото'),
-          Container(
-            margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
-              borderRadius: BorderRadius.circular(16.r),
-            ),
-            child: Column(
-              children: [
-                SizedBox(height: 20.h),
-                Text(
-                  '+',
-                  style: TextStyle(fontSize: 24.sp),
-                ),
-                Text(
-                  'Выберите фото',
-                  style: TextStyle(fontSize: 16.sp),
-                ),
-                SizedBox(height: 20.h),
-              ],
+          GestureDetector(
+            onTap: () async {
+              FilePickerResult? result = await FilePicker.platform.pickFiles();
+              if (result != null) {
+                File file = File(result.files.single.path!);
+                _asyncFileUpload('Your text', file);
+              } else {
+                // User canceled file picking.
+              }
+            },
+            child: Container(
+              margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.background,
+                borderRadius: BorderRadius.circular(16.r),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(height: 20.h),
+                  Text(
+                    '+',
+                    style: TextStyle(fontSize: 24.sp),
+                  ),
+                  Text(
+                    'Выберите фото',
+                    style: TextStyle(fontSize: 16.sp),
+                  ),
+                  SizedBox(height: 20.h),
+                ],
+              ),
             ),
           )
         ],
       ),
     );
+  }
+
+  Future<void> _asyncFileUpload(String text, File file) async {
+    var request = http.MultipartRequest("POST", Uri.parse("<url>"));
+    request.fields["text_field"] = text;
+    var pic = await http.MultipartFile.fromPath("file_field", file.path);
+    request.files.add(pic);
+
+    try {
+      var response = await request.send();
+      if (response.statusCode == 200) {
+        var responseData = await response.stream.toBytes();
+        var responseString = String.fromCharCodes(responseData);
+        print(responseString);
+      } else {
+        print('Failed to upload file: ${response.reasonPhrase}');
+      }
+    } catch (e) {
+      print('Error uploading file: $e');
+    }
   }
 
   BoxDecoration _Decoration(BuildContext context) {
