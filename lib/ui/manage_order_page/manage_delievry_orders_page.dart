@@ -9,7 +9,6 @@ import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
-import 'package:safar/ui/manage_order_page/widgets/delivery_item.dart';
 import 'manage_delivery_order_fields.dart';
 import 'texts_and_titles/submit_inquiry_button.dart';
 import 'widgets/amount_selection.dart';
@@ -104,8 +103,6 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final item = DeliveryItem(name: 'test', quantity: 1);
-
     return BlocConsumer<OrdersBloc, OrdersState>(
       listener: (context, state) {
         if (state.isInitialValuesLoaded && widget.viewModel.isEdit) {
