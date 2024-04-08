@@ -42,7 +42,7 @@ void showMessage(String text, {bool isError = false}) {
                       children: [
                         Text(
                           text,
-                          maxLines: 1,
+                          maxLines: 2,
                           style: const TextStyle(
                             color: AppColors.float,
                           ),

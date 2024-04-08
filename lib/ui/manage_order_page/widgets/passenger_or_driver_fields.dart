@@ -23,7 +23,7 @@ class PassengerOrDriverField extends StatelessWidget {
         DriverCheckBox(
           value: !state.isDriver,
           onChanged: (value) {
-            context.read<OrdersBloc>().isDriver();
+            context.read<OrdersBloc>().isPassenger();
           },
         ),
         Text(
@@ -33,7 +33,7 @@ class PassengerOrDriverField extends StatelessWidget {
         DriverCheckBox(
           value: state.isDriver,
           onChanged: (value) {
-            context.read<OrdersBloc>().isPassenger();
+            context.read<OrdersBloc>().isDriver();
           },
         ),
       ],

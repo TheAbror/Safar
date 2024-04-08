@@ -6,6 +6,7 @@ import 'package:safar/core/constants/app_strings.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/utils/all_models/all_models.dart';
 
 part 'orders_state.dart';
@@ -244,10 +245,11 @@ class OrdersBloc extends Cubit<OrdersState> {
         }
       } else {
         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+        showMessage(response.error.toString(), isError: true);
 
         emit(
           state.copyWith(
-            blocProgress: BlocProgress.FAILED,
+            blocProgress: BlocProgress.LOADED,
             failureMessage: error.message,
           ),
         );
@@ -349,12 +351,11 @@ class OrdersBloc extends Cubit<OrdersState> {
   }
 
   void isPassenger() {
-    emit(state.copyWith(isDriver: true));
-    print('Is driver: ${state.isDriver}');
+    emit(state.copyWith(isDriver: false));
   }
 
   void isDriver() {
-    emit(state.copyWith(isDriver: false));
+    emit(state.copyWith(isDriver: true));
     print('Is driver: ${state.isDriver}');
   }
 
@@ -559,7 +560,7 @@ class OrdersBloc extends Cubit<OrdersState> {
       destinationReference: state.destinationReference,
       commentForDriver: state.commentsForDriver,
       status: 'created',
-      isDriver: state.isDriver,
+      isDriver: false,
     );
 
     try {
@@ -576,16 +577,20 @@ class OrdersBloc extends Cubit<OrdersState> {
         }
       } else {
         final error = ErrorResponse.fromJson(json.decode(response.error.toString()));
+        showMessage(response.error.toString(), isError: true);
 
         emit(
           state.copyWith(
-            blocProgress: BlocProgress.FAILED,
+            blocProgress: BlocProgress.LOADED,
             failureMessage: error.message,
           ),
         );
       }
     } catch (e) {
       debugPrint('Error getting inquiries: $e');
+
+      showMessage('$e', isError: true);
+
       emit(
         state.copyWith(
           blocProgress: BlocProgress.FAILED,

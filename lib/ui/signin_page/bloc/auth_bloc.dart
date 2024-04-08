@@ -56,6 +56,7 @@ class AuthBloc extends Cubit<AuthState> {
             CurrentUser(
               fullName: user,
               token: token,
+              number: contacts,
             ),
           );
         }

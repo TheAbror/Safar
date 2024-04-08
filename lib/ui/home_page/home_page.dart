@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           appBar: homePage_appbar(
             context,
             currentUser?.fullName ?? 'Abror Shamuradov',
-            'Водитель',
+            currentUser?.number ?? '',
           ),
           backgroundColor: Theme.of(context).colorScheme.background,
           resizeToAvoidBottomInset: false,
