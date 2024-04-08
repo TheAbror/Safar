@@ -125,7 +125,7 @@ class _BodyState extends State<_Body> {
             state.isDeliveryPostSuccessfull) {
           Navigator.pushNamed(context, AppRoutes.homePage);
 
-          showMessage('Успех delivey created');
+          showMessage('Успех');
 
           context.read<OrdersBloc>().makeBlocProgressFalse();
         }

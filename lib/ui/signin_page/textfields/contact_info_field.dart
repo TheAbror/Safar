@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/colors/app_colors.dart';
 
@@ -13,6 +14,9 @@ class ContactInfoField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: [
+        LengthLimitingTextInputFormatter(9),
+      ],
       keyboardType: TextInputType.number,
       validator: (username) {
         if (username == null || username.isEmpty) {

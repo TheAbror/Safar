@@ -27,7 +27,7 @@ class HomeAppBar extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            final topNavigator = Navigator.of(context, rootNavigator: true);
+            // final topNavigator = Navigator.of(context, rootNavigator: true);
 
             showPlatformDialog(
               context: context,
@@ -38,14 +38,18 @@ class HomeAppBar extends StatelessWidget {
                   BasicDialogAction(
                     title: Text('Да', style: TextStyle(color: AppColors.primary)),
                     onPressed: () {
-                      PreferencesServices.clearAll().then((value) {
-                        if (value == true) {
-                          ApiProvider.create();
-                          boxCurrentUser.clear();
-                          context.read<AuthBloc>().clearAll();
-                          topNavigator.pushNamed(AppRoutes.splashPage);
-                        }
-                      });
+                      PreferencesServices.clearAll().then(
+                        (value) {
+                          if (value == true) {
+                            ApiProvider.create();
+                            boxCurrentUser.clear();
+                            context.read<AuthBloc>().clearAll();
+                            // topNavigator.pushNamed(AppRoutes.splashPage);
+                          }
+                        },
+                      );
+
+                      Navigator.pushNamed(context, AppRoutes.splashPage);
                     },
                   ),
                   BasicDialogAction(
