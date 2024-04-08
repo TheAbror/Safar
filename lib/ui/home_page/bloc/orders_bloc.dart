@@ -8,12 +8,53 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/utils/all_models/all_models.dart';
+import 'package:safar/ui/manage_order_page/widgets/delivery_item.dart';
 
 part 'orders_state.dart';
 
 class OrdersBloc extends Cubit<OrdersState> {
   OrdersBloc() : super(OrdersState.initial());
 
+  void updateDeliveryItem({
+    required int index,
+    required DeliveryItem data,
+  }) {
+    final list = List<DeliveryItem>.from(state.listofItems).toList();
+
+    list[index] = data;
+
+    emit(state.copyWith(listofItems: list));
+  }
+
+  void addDeliveryItem() {
+    final list = List<DeliveryItem>.from(state.listofItems);
+
+    list.add(
+      DeliveryItem(
+        name: '',
+        quantity: 0,
+      ),
+    );
+
+    emit(state.copyWith(listofItems: list));
+  }
+
+  void removeDelivery(int index) {
+    print('Before removal: ${state.listofItems}');
+
+    // Ensure the index is valid
+    if (index >= 0 && index < state.listofItems.length) {
+      final list = List<DeliveryItem>.from(state.listofItems);
+
+      list.removeAt(index);
+
+      print('After removal: $list');
+
+      emit(state.copyWith(listofItems: list));
+    } else {
+      print('Invalid index: $index');
+    }
+  }
   //  Delivery requests
 
   void editDeliveryOrdersByID(int? id) async {

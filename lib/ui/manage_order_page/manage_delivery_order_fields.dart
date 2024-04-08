@@ -7,7 +7,6 @@ import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/model/current_user.dart';
 import 'package:safar/ui/order_details_page/action/options/date_option.dart';
-
 import 'texts_and_titles/text_form_fields/additional_field.dart';
 import 'texts_and_titles/text_form_fields/new_inquiry_description.dart';
 import 'widgets/from_to_fields.dart';

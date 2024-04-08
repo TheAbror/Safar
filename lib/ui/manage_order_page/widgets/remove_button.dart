@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 
 class RemoveButton extends StatelessWidget {
   final int index;
@@ -14,7 +16,7 @@ class RemoveButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // context.read<ManageInquiryBloc>().removeInquiry(index);
+        context.read<OrdersBloc>().removeDelivery(index);
       },
       child: Text(
         'Remove',

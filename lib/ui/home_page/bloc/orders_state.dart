@@ -24,6 +24,8 @@ class OrdersState extends Equatable {
   final String deliveryCommentsForDriver;
   final String deliveryPhoneNumber;
   final bool deliveryIsDriver;
+  final List<DeliveryItem> listofItems;
+
   //taxi delivery variables end
 
   final bool isInitialValuesLoaded;
@@ -60,6 +62,7 @@ class OrdersState extends Equatable {
     required this.deliveryCommentsForDriver,
     required this.deliveryPhoneNumber,
     required this.deliveryIsDriver,
+    required this.listofItems,
     required this.isInitialValuesLoaded,
     required this.statusesForFilter,
     required this.orderByID,
@@ -96,6 +99,7 @@ class OrdersState extends Equatable {
       deliveryCommentsForDriver: '',
       deliveryPhoneNumber: '',
       deliveryIsDriver: false,
+      listofItems: const [],
       isInitialValuesLoaded: false,
       statusesForFilter: const [],
       orderByID: TaxiOrdersResponse(
@@ -168,6 +172,7 @@ class OrdersState extends Equatable {
     String? deliveryCommentsForDriver,
     String? deliveryPhoneNumber,
     bool? deliveryIsDriver,
+    List<DeliveryItem>? listofItems,
     bool? isInitialValuesLoaded,
     List<String>? statusesForFilter,
     TaxiOrdersResponse? orderByID,
@@ -203,6 +208,7 @@ class OrdersState extends Equatable {
       deliveryCommentsForDriver: deliveryCommentsForDriver ?? this.deliveryCommentsForDriver,
       deliveryPhoneNumber: deliveryPhoneNumber ?? this.deliveryPhoneNumber,
       deliveryIsDriver: deliveryIsDriver ?? this.deliveryIsDriver,
+      listofItems: listofItems ?? this.listofItems,
       isInitialValuesLoaded: isInitialValuesLoaded ?? this.isInitialValuesLoaded,
       statusesForFilter: statusesForFilter ?? this.statusesForFilter,
       orderByID: orderByID ?? this.orderByID,
@@ -240,6 +246,7 @@ class OrdersState extends Equatable {
         deliveryCommentsForDriver,
         deliveryPhoneNumber,
         deliveryIsDriver,
+        listofItems,
         isInitialValuesLoaded,
         statusesForFilter,
         orderByID,

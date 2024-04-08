@@ -9,7 +9,7 @@ import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
 import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
-import 'package:safar/ui/manage_order_page/widgets/inquiry_item.dart';
+import 'package:safar/ui/manage_order_page/widgets/delivery_item.dart';
 import 'manage_delivery_order_fields.dart';
 import 'texts_and_titles/submit_inquiry_button.dart';
 import 'widgets/amount_selection.dart';
@@ -104,7 +104,7 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final item = InquiryItem(name: 'test', quantity: 1);
+    final item = DeliveryItem(name: 'test', quantity: 1);
 
     return BlocConsumer<OrdersBloc, OrdersState>(
       listener: (context, state) {
@@ -155,69 +155,84 @@ class _BodyState extends State<_Body> {
                 dateController: dateController,
                 commentsController: commentsController,
               ),
-              Container(
-                margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
-                padding: EdgeInsets.all(10.w),
-                decoration: _Decoration(context),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CardNumberAndRemove(index: 0),
-                    ItemInquiryTitle(index: 1, item: item),
-                    AmountSelection(item: item, index: 1),
-                  ],
-                ),
+              ListView.builder(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: state.listofItems.length,
+                itemBuilder: (context, index) {
+                  final item = state.listofItems[index];
+
+                  return Container(
+                    key: Key(state.listofItems.length.toString()),
+                    margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
+                    padding: EdgeInsets.all(10.w),
+                    decoration: _Decoration(context),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CardNumberAndRemove(index: index),
+                        ItemInquiryTitle(index: index, item: item),
+                        AmountSelection(item: item, index: index),
+                      ],
+                    ),
+                  );
+                },
               ),
               SizedBox(
-                height: 40.h,
+                height: 10.h,
                 width: double.infinity,
               ),
               AddItemButton(
-                text: ' Add Item',
+                text: ' Добавить',
                 width: 135.w,
-                ontap: () {},
+                ontap: () => context.read<OrdersBloc>().addDeliveryItem(),
               ),
               SizedBox(height: 20.h),
-              Container(
-                margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
-                padding: EdgeInsets.all(10.w),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.onBackground,
-                  borderRadius: BorderRadius.circular(16.r),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text('Upload photo'),
-                    Container(
-                      margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.background,
-                        borderRadius: BorderRadius.circular(16.r),
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(height: 20.h),
-                          Text(
-                            '+',
-                            style: TextStyle(fontSize: 24.sp),
-                          ),
-                          Text(
-                            'File upload',
-                            style: TextStyle(fontSize: 16.sp),
-                          ),
-                          SizedBox(height: 20.h),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              PhotoUploader(context),
               SizedBox(height: 60.h),
             ],
           ),
         );
       },
+    );
+  }
+
+  Container PhotoUploader(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
+      padding: EdgeInsets.all(10.w),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onBackground,
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text('Загрузите фото'),
+          Container(
+            margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+              borderRadius: BorderRadius.circular(16.r),
+            ),
+            child: Column(
+              children: [
+                SizedBox(height: 20.h),
+                Text(
+                  '+',
+                  style: TextStyle(fontSize: 24.sp),
+                ),
+                Text(
+                  'Выберите фото',
+                  style: TextStyle(fontSize: 16.sp),
+                ),
+                SizedBox(height: 20.h),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -228,31 +243,3 @@ class _BodyState extends State<_Body> {
     );
   }
 }
-
-
-
- // ListView.builder(
-              //   scrollDirection: Axis.vertical,
-              //   shrinkWrap: true,
-              //   physics: const NeverScrollableScrollPhysics(),
-              //   itemCount: state.listofItems.length,
-              //   itemBuilder: (context, index) {
-              //     final item = state.listofItems[index];
-
-              //     return Container(
-              //       key: Key(state.listofItems.length.toString()),
-              //       margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 2.h),
-              //       padding: EdgeInsets.all(10.w),
-              //       decoration: _Decoration(context),
-              //       child: Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           CardNumberAndRemove(index: index),
-              //           ItemInquiryTitle(index: index, item: item),
-              //           AmountSelection(item: item, index: index),
-              //           UnitSelection(index: index, item: item),
-              //         ],
-              //       ),
-              //     );
-              //   },
-              // ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/colors/app_colors.dart';
-import 'inquiry_item.dart';
+import 'delivery_item.dart';
 
 class ItemInquiryTitle extends StatefulWidget {
   final int index;
-  final InquiryItem item;
+  final DeliveryItem item;
 
   const ItemInquiryTitle({
     super.key,
