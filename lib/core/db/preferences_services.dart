@@ -27,25 +27,6 @@ class PreferencesServices {
 
   static void dispose() => _prefs = null;
 
-  static String? getPasscode() {
-    return _getPrefs().getString(ShPrefKeys.passcode);
-  }
-
-  static Future<String> savePasscode(String passcode) async {
-    final preferences = await SharedPreferences.getInstance();
-    await preferences.setString(ShPrefKeys.passcode, passcode);
-    return passcode;
-  }
-
-  static Future<bool> saveIsPasscodeOn(bool passcode) async {
-    return _getPrefs().setBool(ShPrefKeys.passcode, passcode);
-  }
-
-  static Future<bool> removePasscode() async {
-    final preferences = await SharedPreferences.getInstance();
-    return await preferences.remove(ShPrefKeys.passcode);
-  }
-
   static Future<void> saveUserRoles(List<String> roles) async {
     await _getPrefs().setStringList(ShPrefKeys.userRoles, roles);
   }
@@ -155,14 +136,4 @@ class PreferencesServices {
     final preferences = await SharedPreferences.getInstance();
     return await preferences.clear();
   }
-
-  // static Future<Future<bool>> savethemeMode(int theme) async {
-  //   final preferences = await SharedPreferences.getInstance();
-  //   return preferences.setInt(ShPrefKeys.themeMode, theme);
-  // }
-
-  // static Future<int?> getthemeMode() async {
-  //   final preferences = await SharedPreferences.getInstance();
-  //   return preferences.getInt(ShPrefKeys.isLightMode);
-  // }
 }

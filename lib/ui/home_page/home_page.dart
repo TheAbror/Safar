@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         return Scaffold(
           appBar: homePage_appbar(
             context,
-            currentUser?.fullName ?? 'Abror Shamuradov',
+            currentUser?.fullName ?? 'Error happened',
             currentUser?.number ?? '',
           ),
           backgroundColor: Theme.of(context).colorScheme.background,
