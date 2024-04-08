@@ -123,14 +123,14 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
               SizedBox(height: 8.h),
               AdditionalField(
                 thisController: widget.offeredPriceController,
-                hintText: 'Предложенная цена (ex: 200.000 сум)',
+                hintText: 'Предложенная цена (ex: 200000 сум)',
                 onChanged: (value) {
                   context.read<OrdersBloc>().updateDeliveryData(offeredPrice: value);
                   print(value);
                 },
               ),
               SizedBox(height: 8.h),
-              AdditionalField(
+              PhoneNumberField(
                 thisController: widget.phoneNumberController,
                 hintText: number,
                 isNumberNeeded: true,

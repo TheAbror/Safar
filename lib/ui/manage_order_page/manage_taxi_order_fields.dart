@@ -148,17 +148,18 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                 ),
               ),
               SizedBox(height: 8.h),
-              AdditionalField(
+              PhoneNumberField(
                 thisController: widget.offeredPriceController,
                 isNumberNeeded: true,
-                hintText: 'Предложенная цена (ex: 200.000 сум)',
+                hintText: 'Предложенная цена (ex: 200000 сум)',
                 onChanged: (value) {
                   context.read<OrdersBloc>().updateData(offeredPrice: value);
                   print(value);
                 },
               ),
               SizedBox(height: 8.h),
-              AdditionalField(
+              // and there is a limitation in model from backend for offered price max digits 10 and 2 decimals after the decimal point
+              PhoneNumberField(
                 thisController: widget.phoneNumberController,
                 hintText: number,
                 isNumberNeeded: true,
