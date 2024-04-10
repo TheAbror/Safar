@@ -13,36 +13,41 @@ class SignInUsernameField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: (username) {
-        if (username == null || username.isEmpty) {
-          return 'Все поля должны быть заполнены';
-        }
-        return null;
-      },
-      controller: _usernameController,
-      textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-        filled: true,
-        border: InputBorder.none, // Remove border color
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
-          borderRadius: BorderRadius.circular(12),
+    return SizedBox(
+      height: 55.h,
+      child: TextFormField(
+        validator: (username) {
+          if (username == null || username.isEmpty) {
+            return 'Все поля должны быть заполнены';
+          }
+          return null;
+        },
+        controller: _usernameController,
+        textInputAction: TextInputAction.next,
+        textAlignVertical: TextAlignVertical.center,
+        decoration: InputDecoration(
+          filled: true,
+          contentPadding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 12.w),
+          border: InputBorder.none,
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primary, width: 1.w),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          fillColor: Theme.of(context).colorScheme.surfaceTint,
+          hintText: 'Логин',
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primary, width: 1.w),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        fillColor: Theme.of(context).colorScheme.surfaceTint,
-        hintText: 'Логин',
       ),
     );
   }

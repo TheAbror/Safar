@@ -93,7 +93,6 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         SizedBox(height: 5.h),
                         SignInUsernameField(usernameController: _usernameController),
-                        SizedBox(height: 10.h),
                         Text(
                           'Номер',
                           style: TextStyle(
@@ -104,7 +103,6 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         SizedBox(height: 5.h),
                         ContactInfoField(contactsController: _contactsController),
-                        SizedBox(height: 10.h),
                         Text(
                           'Пароль',
                           style: TextStyle(
@@ -115,7 +113,6 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         SizedBox(height: 5.h),
                         SignInPasswordField(passwordController: _passwordController),
-                        SizedBox(height: 5.h),
                         _AgreeWithTermsText(state, context),
                         SizedBox(height: 250.h),
                       ],

@@ -128,7 +128,7 @@ class TaxiOrdersCard extends StatelessWidget {
               : Assets.icons.timeLinePng.image(),
           SizedBox(width: 10.h),
           SizedBox(
-            height: 90.h,
+            height: 96.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -146,6 +146,7 @@ class TaxiOrdersCard extends StatelessWidget {
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Spacer(),
                 Text(
@@ -162,6 +163,7 @@ class TaxiOrdersCard extends StatelessWidget {
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

@@ -13,20 +13,23 @@ class ContactInfoField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      inputFormatters: [
-        LengthLimitingTextInputFormatter(9),
-      ],
-      keyboardType: TextInputType.number,
-      validator: (username) {
-        if (username == null || username.isEmpty) {
-          return 'Все поля должны быть заполнены';
-        }
-        return null;
-      },
-      controller: _contactsController,
-      textInputAction: TextInputAction.next,
-      decoration: SignDeocration(context, 'Номер телефона'),
+    return SizedBox(
+      height: 55.h,
+      child: TextFormField(
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(9),
+        ],
+        keyboardType: TextInputType.number,
+        validator: (username) {
+          if (username == null || username.isEmpty) {
+            return 'Все поля должны быть заполнены';
+          }
+          return null;
+        },
+        controller: _contactsController,
+        textInputAction: TextInputAction.next,
+        decoration: SignDeocration(context, 'Номер телефона'),
+      ),
     );
   }
 }
@@ -34,7 +37,8 @@ class ContactInfoField extends StatelessWidget {
 InputDecoration SignDeocration(BuildContext context, String hintText) {
   return InputDecoration(
     filled: true,
-    border: InputBorder.none, // Remove border color
+    border: InputBorder.none,
+    contentPadding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 0.w),
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(color: AppColors.inputField, width: 1.w),
       borderRadius: BorderRadius.circular(12.r),

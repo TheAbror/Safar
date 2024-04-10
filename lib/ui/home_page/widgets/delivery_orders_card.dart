@@ -91,9 +91,11 @@ class DeliveryOrdersCard extends StatelessWidget {
                       Text(
                         model[index].desiredCarModel.toString(),
                         style: TextStyle(
-                            color: model[index].createdByThisUser
-                                ? AppColors.float
-                                : AppColors.textMain),
+                          color:
+                              model[index].createdByThisUser ? AppColors.float : AppColors.textMain,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.end,
                       ),
                     ],
                   ),
@@ -126,7 +128,7 @@ class DeliveryOrdersCard extends StatelessWidget {
               : Assets.icons.timeLinePng.image(),
           SizedBox(width: 10.h),
           SizedBox(
-            height: 90.h,
+            height: 96.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -144,6 +146,7 @@ class DeliveryOrdersCard extends StatelessWidget {
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Spacer(),
                 Text(
@@ -160,6 +163,7 @@ class DeliveryOrdersCard extends StatelessWidget {
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
