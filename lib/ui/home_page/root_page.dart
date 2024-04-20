@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:safar/core/api/api_provider.dart';
@@ -39,7 +38,6 @@ class _HomePageState extends State<HomePage> {
     );
 
     context.read<OrdersBloc>().getTaxiOrders();
-    // context.read<OrdersBloc>().getStatusesList();
     context.read<OrdersBloc>().getDeliveryOrders();
   }
 
