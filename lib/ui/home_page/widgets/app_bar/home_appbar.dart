@@ -44,12 +44,10 @@ class HomeAppBar extends StatelessWidget {
                             ApiProvider.create();
                             boxCurrentUser.clear();
                             context.read<AuthBloc>().clearAll();
-                            // topNavigator.pushNamed(AppRoutes.splashPage);
+                            Navigator.pushNamed(context, AppRoutes.splashPage);
                           }
                         },
                       );
-
-                      Navigator.pushNamed(context, AppRoutes.splashPage);
                     },
                   ),
                   BasicDialogAction(

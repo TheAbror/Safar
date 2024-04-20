@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:safar/core/api/api_provider.dart';
 import 'package:safar/core/box/current_user_box.dart';
+import 'package:safar/core/db/preferences_services.dart';
 import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
@@ -9,6 +13,7 @@ import 'package:safar/ui/home_page/widgets/app_bar/homepage_appbar.dart';
 import 'package:safar/ui/home_page/widgets/buttons/create_button.dart';
 import 'package:safar/ui/manage_order_page/manage_delievry_orders_page.dart';
 import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
+import 'package:safar/ui/signin_page/bloc/auth_bloc.dart';
 import 'model/current_user.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,13 +24,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late StreamSubscription<bool> notAuthorizedStreamSubscription;
+
   @override
   void initState() {
     super.initState();
 
+    notAuthorizedStreamSubscription = ApiProvider.notAuthorizedInterceptor.controller.stream.listen(
+      (bool isNotAuthorized) {
+        if (isNotAuthorized) {
+          signOut(context);
+        }
+      },
+    );
+
     context.read<OrdersBloc>().getTaxiOrders();
     // context.read<OrdersBloc>().getStatusesList();
     context.read<OrdersBloc>().getDeliveryOrders();
+  }
+
+  void signOut(_) {
+    PreferencesServices.clearAll().then(
+      (value) {
+        if (value == true) {
+          ApiProvider.create();
+          boxCurrentUser.clear();
+          context.read<AuthBloc>().clearAll();
+          Navigator.pushNamed(context, AppRoutes.splashPage);
+        }
+      },
+    );
   }
 
   final ScrollController _scrollControllerAssigned = ScrollController();
