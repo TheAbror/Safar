@@ -53,6 +53,7 @@ class _SignInPageState extends State<SignInPage> {
             return Stack(
               children: [
                 SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(),
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.h),
                     child: Column(
