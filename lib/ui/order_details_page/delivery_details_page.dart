@@ -10,6 +10,7 @@ import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/core/utils/all_models/all_models.dart';
 import 'package:safar/core/widgets/order_edit_or_delete_dialog.dart';
 import 'package:safar/gen/assets.gen.dart';
+import 'package:safar/ui/order_details_page/widgets/taxi_order_description_and_value.dart';
 import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/manage_order_page/widgets/inqury_appbar.dart';
 import '../manage_order_page/delivery/manage_delievry_orders_page.dart';
@@ -207,43 +208,6 @@ class _BodyState extends State<_Body> {
           );
         },
       ),
-    );
-  }
-}
-
-class TaxiOrderDescriptionAndValue extends StatelessWidget {
-  final String description;
-  final String value;
-  final int fonsize;
-
-  const TaxiOrderDescriptionAndValue({
-    super.key,
-    required this.description,
-    required this.value,
-    this.fonsize = 12,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          description,
-          style: TextStyle(
-            height: 1.4.h,
-            fontSize: fonsize.sp,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          value,
-          style: TextStyle(
-            height: 1.4.h,
-            fontSize: fonsize.sp,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-      ],
     );
   }
 }

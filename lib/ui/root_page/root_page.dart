@@ -8,7 +8,7 @@ import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/root_page/main_tab/main_tab.dart';
-import 'package:safar/ui/root_page/widgets/app_bar/homepage_appbar.dart';
+import 'package:safar/ui/root_page/widgets/app_bar/root_page_appbar.dart';
 import 'package:safar/ui/root_page/widgets/buttons/create_button.dart';
 import 'package:safar/ui/signin_page/bloc/auth_bloc.dart';
 import '../manage_order_page/delivery/manage_delievry_orders_page.dart';
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
       length: 2,
       child: Builder(builder: (context) {
         return Scaffold(
-          appBar: homePage_appbar(
+          appBar: rootPage_appBar(
             context,
             currentUser?.fullName ?? 'Error happened',
             currentUser?.number ?? '',
