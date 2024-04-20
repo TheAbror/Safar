@@ -105,7 +105,7 @@ class _BodyState extends State<_Body> {
       body: BlocConsumer<OrdersBloc, OrdersState>(
         listener: (context, state) {
           if (state.blocProgress == BlocProgress.IS_SUCCESS && state.isOrderDeleted) {
-            Navigator.pushNamed(context, AppRoutes.homePage);
+            Navigator.pushNamed(context, AppRoutes.rootPage);
 
             showMessage('Удалено');
             context.read<OrdersBloc>().makeDeletedFalse();

@@ -123,7 +123,7 @@ class _BodyState extends State<_Body> {
           context.read<OrdersBloc>().initialValuesDisplayed();
         } else if (state.blocProgress == BlocProgress.IS_SUCCESS &&
             state.isDeliveryPostSuccessfull) {
-          Navigator.pushNamed(context, AppRoutes.homePage);
+          Navigator.pushNamed(context, AppRoutes.rootPage);
 
           showMessage('Успех');
 
