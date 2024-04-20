@@ -10,9 +10,9 @@ import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/core/utils/all_models/all_models.dart';
 import 'package:safar/core/widgets/order_edit_or_delete_dialog.dart';
 import 'package:safar/gen/assets.gen.dart';
-import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
-import 'package:safar/ui/manage_order_page/manage_taxi_orders_page.dart';
-import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
+import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
+import 'package:safar/ui/manage_order_page/widgets/inqury_appbar.dart';
+import '../manage_order_page/taxi/manage_taxi_orders_page.dart';
 import 'widgets/orders_action_button.dart';
 
 class TaxiDetailsPageViewModel {

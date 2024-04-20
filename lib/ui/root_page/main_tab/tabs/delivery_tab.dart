@@ -6,8 +6,8 @@ import 'package:safar/core/colors/app_colors.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/widgets/tabs_no_data.dart';
 import 'package:safar/gen/assets.gen.dart';
-import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
-import 'package:safar/ui/home_page/widgets/delivery_orders_card.dart';
+import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
+import 'package:safar/ui/root_page/widgets/delivery_orders_card.dart';
 import '../widgets/search_and_filter_delivery.dart';
 
 class DeliveryTab extends StatelessWidget {

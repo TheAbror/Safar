@@ -10,7 +10,7 @@ import 'package:safar/core/db/shared_keys.dart';
 import 'package:safar/core/utils/account_type.dart';
 import 'package:safar/core/utils/all_models/all_models.dart';
 import 'package:safar/core/utils/all_models/auth.dart';
-import 'package:safar/ui/home_page/model/current_user.dart';
+import 'package:safar/ui/root_page/model/current_user.dart';
 
 part 'auth_state.dart';
 

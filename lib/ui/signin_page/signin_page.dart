@@ -1,16 +1,16 @@
+import 'bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:safar/core/dialogs/dialog_success_failure.dart';
-import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../core/utils/terms_and_conditions/terms_and_conditions_bottomsheet.dart';
-import 'bloc/auth_bloc.dart';
 import 'textfields/contact_info_field.dart';
 import 'textfields/sign_in_password_field.dart';
 import 'textfields/sign_in_username_field.dart';
 import 'package:safar/core/colors/app_colors.dart';
+import 'package:safar/core/routes/route_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bloc_progress/bloc_progress.dart';
+import 'package:safar/core/dialogs/dialog_success_failure.dart';
+import '../splash_page/terms_and_conditions/terms_and_conditions_bottomsheet.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});

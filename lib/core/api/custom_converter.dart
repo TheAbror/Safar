@@ -3,9 +3,9 @@
 import 'package:chopper/chopper.dart';
 import 'package:safar/core/utils/all_models/all_models.dart';
 import 'package:safar/core/utils/all_models/auth.dart';
-import 'package:safar/core/utils/terms_and_conditions/model/terms_request.dart';
-import 'package:safar/core/utils/terms_and_conditions/model/terms_response.dart';
 import 'package:safar/ui/app_updates_page/models/app_version_response.dart';
+import 'package:safar/ui/splash_page/terms_and_conditions/model/terms_request.dart';
+import 'package:safar/ui/splash_page/terms_and_conditions/model/terms_response.dart';
 
 class CustomDataConverter extends JsonConverter {
   @override

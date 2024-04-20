@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/colors/app_colors.dart';
-import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
+import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
 
 class PassengerNumberChoice extends StatelessWidget {
   final int index;

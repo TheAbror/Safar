@@ -4,59 +4,55 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
 import 'package:safar/core/box/current_user_box.dart';
 import 'package:safar/core/db/shared_keys.dart';
-import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
-import 'package:safar/ui/home_page/model/current_user.dart';
-import '../order_details_page/action/options/date_option.dart';
-import 'texts_and_titles/text_form_fields/additional_field.dart';
-import 'texts_and_titles/text_form_fields/taxi_fields_headline.dart';
-import 'texts_and_titles/text_form_fields/new_inquiry_description.dart';
-import 'texts_and_titles/text_form_fields/passenger_number_choice.dart';
-import 'widgets/from_to_fields.dart';
-import 'widgets/passenger_or_driver_fields.dart';
+import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
+import 'package:safar/ui/root_page/model/current_user.dart';
+import 'package:safar/ui/order_details_page/action/options/date_option.dart';
+import '../text_form_fields/additional_field.dart';
+import '../text_form_fields/new_inquiry_description.dart';
+import '../widgets/from_to_fields.dart';
 
-class ManageTaxiOrderFields extends StatefulWidget {
+class ManageDeliveryOrderFields extends StatefulWidget {
   final TextEditingController fromController;
   final TextEditingController toController;
   final TextEditingController exactLocationController;
   final TextEditingController exactDestinationController;
-  final TextEditingController commentsController;
   final TextEditingController offeredPriceController;
-  final TextEditingController dateController;
   final TextEditingController phoneNumberController;
+  final TextEditingController dateController;
+  final TextEditingController commentsController;
 
-  const ManageTaxiOrderFields({
+  const ManageDeliveryOrderFields({
     super.key,
     required this.fromController,
     required this.toController,
     required this.exactLocationController,
     required this.exactDestinationController,
-    required this.commentsController,
     required this.offeredPriceController,
-    required this.dateController,
     required this.phoneNumberController,
+    required this.dateController,
+    required this.commentsController,
   });
 
   @override
-  State<ManageTaxiOrderFields> createState() => _ManageTaxiOrderFieldsState();
+  State<ManageDeliveryOrderFields> createState() => _ManageDeliveryOrderFieldsState();
 }
 
-class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
+class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
   @override
   Widget build(BuildContext context) {
     CurrentUser? currentUser = boxCurrentUser.get(ShPrefKeys.currentUser);
     final number = currentUser?.number ?? 'Введите номер';
 
-    return BlocBuilder<OrdersBloc, OrdersState>(
-      builder: (context, state) {
-        return Container(
-          padding: EdgeInsets.all(10.w),
-          margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.onBackground,
-            borderRadius: BorderRadius.circular(16.r),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      margin: EdgeInsets.only(top: 8.h, right: 8.w, left: 8.w, bottom: 2.h),
+      padding: EdgeInsets.all(10.w),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onBackground,
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      child: BlocBuilder<OrdersBloc, OrdersState>(
+        builder: (context, state) {
+          return Column(
             children: [
               FromToFields(
                 hintText: 'Из',
@@ -69,14 +65,14 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                     heightRatio: 0.9,
                     isConfirmationNeeded: false,
                     title: 'Выберите регион',
-                    selectedValue: state.pickup,
+                    selectedValue: state.deliveryPickup,
                     initialList: ShPrefKeys.listOfStates,
                   );
 
                   if (result != null) {
-                    if (!mounted) return;
                     widget.fromController.text = result;
-                    context.read<OrdersBloc>().updateData(pickup: result);
+                    if (!mounted) return;
+                    context.read<OrdersBloc>().updateDeliveryData(pickup: result);
                     print(result);
                   }
                 },
@@ -93,15 +89,14 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                     heightRatio: 0.9,
                     isConfirmationNeeded: false,
                     title: 'Выберите регион',
-                    selectedValue: state.destination,
+                    selectedValue: state.deliveryDestination,
                     initialList: ShPrefKeys.listOfStates,
                   );
 
                   if (result != null) {
                     if (!mounted) return;
                     widget.toController.text = result;
-                    context.read<OrdersBloc>().updateData(destination: result);
-
+                    context.read<OrdersBloc>().updateDeliveryData(destination: result);
                     print(result);
                   }
                 },
@@ -111,7 +106,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                 thisController: widget.exactLocationController,
                 hintText: 'Место встречи : Необязательно',
                 onChanged: (value) {
-                  context.read<OrdersBloc>().updateData(pickUpReference: value);
+                  context.read<OrdersBloc>().updateDeliveryData(pickUpReference: value);
                   print(value);
                 },
               ),
@@ -120,39 +115,16 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                 thisController: widget.exactDestinationController,
                 hintText: 'Место назначения : Необязательно',
                 onChanged: (value) {
-                  context.read<OrdersBloc>().updateData(destinationReference: value);
+                  context.read<OrdersBloc>().updateDeliveryData(destinationReference: value);
                   print(value);
                 },
-              ),
-              TaxiFieldsHeadline(text: 'Создать заказ как:'),
-              PassengerOrDriverField(state: state),
-              TaxiFieldsHeadline(text: 'Количество пассажиров'),
-              SizedBox(
-                height: 48.w,
-                width: double.infinity,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  scrollDirection: Axis.horizontal,
-                  separatorBuilder: (BuildContext context, int index) => SizedBox(width: 20.w),
-                  itemBuilder: (context, index) {
-                    return PassengerNumberChoice(
-                      index: index,
-                      state: state,
-                      onTap: () {
-                        context.read<OrdersBloc>().updateData(numberOfPassengers: index + 1);
-                        print(index + 1);
-                      },
-                    );
-                  },
-                ),
               ),
               SizedBox(height: 8.h),
               OfferedPriceField(
                 thisController: widget.offeredPriceController,
                 hintText: 'Предложенная цена (ex: 200000 сум)',
                 onChanged: (value) {
-                  context.read<OrdersBloc>().updateData(offeredPrice: value);
+                  context.read<OrdersBloc>().updateDeliveryData(offeredPrice: value);
                   print(value);
                 },
               ),
@@ -165,28 +137,27 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                   if (value == null || value.isEmpty) {
                     value = number;
                   }
-                  context.read<OrdersBloc>().updateData(phoneNumber: value);
+                  context.read<OrdersBloc>().updateDeliveryData(phoneNumber: value);
                   print(value);
                 },
               ),
               SizedBox(height: 8.h),
               DateOption(
-                isDelivery: false,
+                isDelivery: true,
                 dateController: widget.dateController,
               ),
               SizedBox(height: 8.h),
               CommentsForDrier(
                 commentsController: widget.commentsController,
                 onChanged: (value) {
-                  context.read<OrdersBloc>().updateData(commentsForDriver: value);
+                  context.read<OrdersBloc>().updateDeliveryData(commentsForDriver: value);
                   print(value);
                 },
               ),
-              SizedBox(height: 10.h),
             ],
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

@@ -4,35 +4,38 @@ import 'package:safar/core/widgets/search_input.dart';
 import 'package:safar/core/widgets/search_settings.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/core/bottomsheet/primary_bottom_sheet.dart';
-import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
+import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
 
-class SearchAndFilterDelivery extends StatelessWidget {
+class SearchAndFilterTaxi extends StatelessWidget {
   final OrdersState state;
   final List<String> statusesList;
-  final TextEditingController searchDelivery;
+  final TextEditingController searchTaxi;
 
-  const SearchAndFilterDelivery({
+  const SearchAndFilterTaxi({
     super.key,
     required this.state,
     required this.statusesList,
-    required this.searchDelivery,
+    required this.searchTaxi,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
+      margin: EdgeInsets.only(top: 12.h, right: 8.w, left: 8.w),
       child: SearchInput(
         fillColor: Theme.of(context).colorScheme.onBackground,
         width: 344.w,
         hintText: 'Поиск',
+        controller: searchTaxi,
+        onChanged: (val) {
+          // context.read<InquiryBloc>().searchTaxi(val);
+        },
         suffixIcon: SearchSettings(
           color: AppColors.primary,
           onTap: () async {
-            // final selectedValue = state.listOfSelectedStatusesAssigned.isNotEmpty
-            //     ? state.listOfSelectedStatusesAssigned.last
+            // final selectedValue = state.listOfSelectedStatusesCreated.isNotEmpty
+            //     ? state.listOfSelectedStatusesCreated.last
             //     : '';
-
             final result = await PrimaryBottomSheet.show(
               context,
               isSearchNeeded: false,
@@ -45,14 +48,10 @@ class SearchAndFilterDelivery extends StatelessWidget {
 
             if (result != null) {
               if (!context.mounted) return;
-              // context.read<InquiryBloc>().changeStatusDelivery(result);
+              // context.read<InquiryBloc>().changeStatusTaxi(result);
             }
           },
         ),
-        controller: searchDelivery,
-        onChanged: (val) {
-          // context.read<InquiryBloc>().searchDelivery(val);
-        },
       ),
     );
   }

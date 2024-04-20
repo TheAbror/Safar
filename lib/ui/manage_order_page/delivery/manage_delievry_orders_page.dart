@@ -9,14 +9,14 @@ import 'package:safar/core/bloc_progress/bloc_progress.dart';
 import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/dialogs/dialog_success_failure.dart';
 import 'package:safar/core/routes/route_constants.dart';
-import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
-import 'package:safar/ui/home_page/widgets/buttons/add_item_button.dart';
-import 'package:safar/ui/manage_order_page/widgets/app_bar/inqury_appbar.dart';
+import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
+import 'package:safar/ui/root_page/widgets/buttons/add_item_button.dart';
+import 'package:safar/ui/manage_order_page/widgets/inqury_appbar.dart';
+import '../text_form_fields/submit_inquiry_button.dart';
+import '../widgets/amount_selection.dart';
+import '../widgets/card_number_and_remove.dart';
+import '../widgets/item_inquiry_title.dart';
 import 'manage_delivery_order_fields.dart';
-import 'texts_and_titles/submit_inquiry_button.dart';
-import 'widgets/amount_selection.dart';
-import 'widgets/card_number_and_remove.dart';
-import 'widgets/item_inquiry_title.dart';
 
 class ManagDeliveryOrdersPageViewModel {
   final int id;

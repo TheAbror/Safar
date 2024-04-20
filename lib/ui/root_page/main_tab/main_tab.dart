@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safar/ui/home_page/bloc/orders_bloc.dart';
-import 'package:safar/ui/home_page/main_tab/tabs/delivery_tab.dart';
-import 'package:safar/ui/home_page/main_tab/tabs/taxi_tab.dart';
+import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
+import 'package:safar/ui/root_page/main_tab/tabs/delivery_tab.dart';
+import 'package:safar/ui/root_page/main_tab/tabs/taxi_tab.dart';
 
 class MainTab extends StatefulWidget {
   final ScrollController scrollControllerAssigned;
