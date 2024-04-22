@@ -153,7 +153,6 @@ class _BodyState extends State<_Body> {
                             value: widget.model.destination,
                             fonsize: 18,
                           ),
-
                           TaxiOrderDescriptionAndValue(
                             description: 'Дата отправления: ',
                             value: DateFormat('dd-MM-yyyy, HH:mm')
@@ -184,10 +183,10 @@ class _BodyState extends State<_Body> {
                             description: 'Водитель: ',
                             value: widget.model.isDriver.toString(),
                           ),
-                          // TaxiOrderDescriptionAndValue(
-                          //   description: 'Статус: ',
-                          //   value: widget.model.status.value,
-                          // ),
+                          TaxiOrderDescriptionAndValue(
+                            description: 'Кем: ',
+                            value: widget.model.username,
+                          ),
                           SizedBox(height: 18.h),
                           SizedBox(height: 10.h),
                         ],

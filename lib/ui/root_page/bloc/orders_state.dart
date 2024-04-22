@@ -120,6 +120,7 @@ class OrdersState extends Equatable {
         isDriver: false,
         status: OrderStatus(key: '', value: ''),
         updatedAt: '',
+        username: '',
       ),
       deliveryOrderByID: DeliveryOrdersResponse(
         id: 0,
@@ -138,6 +139,7 @@ class OrdersState extends Equatable {
         isDriver: false,
         status: OrderStatus(key: '', value: ''),
         updatedAt: '',
+        username: '',
         createdByThisUser: false,
       ),
       isButtonEnabled: false,

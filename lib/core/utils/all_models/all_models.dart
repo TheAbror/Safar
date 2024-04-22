@@ -210,6 +210,8 @@ class TaxiOrdersResponse {
   String createdAt;
   @JsonKey(defaultValue: '', name: 'updated_at')
   String updatedAt;
+  @JsonKey(defaultValue: '')
+  String username;
   @JsonKey(defaultValue: 0)
   int user;
   @JsonKey(defaultValue: 0)
@@ -239,6 +241,7 @@ class TaxiOrdersResponse {
     required this.isDriver,
     required this.status,
     required this.updatedAt,
+    required this.username,
   });
 
   factory TaxiOrdersResponse.fromJson(Map<String, dynamic> json) =>
@@ -336,6 +339,8 @@ class DeliveryOrdersResponse {
   String createdAt;
   @JsonKey(defaultValue: '', name: 'updated_at')
   String updatedAt;
+  @JsonKey(defaultValue: '')
+  String username;
   @JsonKey(defaultValue: 0)
   int user;
   @JsonKey(defaultValue: 0)
@@ -366,6 +371,7 @@ class DeliveryOrdersResponse {
     required this.isDriver,
     required this.status,
     required this.updatedAt,
+    required this.username,
   });
 
   factory DeliveryOrdersResponse.fromJson(Map<String, dynamic> json) =>

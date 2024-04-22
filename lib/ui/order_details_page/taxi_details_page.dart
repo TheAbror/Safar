@@ -189,8 +189,11 @@ class _BodyState extends State<_Body> {
                             description: 'Статус: ',
                             value: widget.model.status.value,
                           ),
+                          TaxiOrderDescriptionAndValue(
+                            description: 'Кем: ',
+                            value: widget.model.username,
+                          ),
                           SizedBox(height: 18.h),
-                          SizedBox(height: 10.h),
                         ],
                       ),
                     ),

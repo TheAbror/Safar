@@ -142,6 +142,7 @@ TaxiOrdersResponse _$TaxiOrdersResponseFromJson(Map<String, dynamic> json) =>
       isDriver: json['is_driver'] as bool? ?? false,
       status: OrderStatus.fromJson(json['status'] as Map<String, dynamic>),
       updatedAt: json['updated_at'] as String? ?? '',
+      username: json['username'] as String? ?? '',
     );
 
 Map<String, dynamic> _$TaxiOrdersResponseToJson(TaxiOrdersResponse instance) =>
@@ -158,6 +159,7 @@ Map<String, dynamic> _$TaxiOrdersResponseToJson(TaxiOrdersResponse instance) =>
       'comments_for_driver': instance.commentForDriver,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+      'username': instance.username,
       'user': instance.user,
       'driver': instance.driver,
       'is_driver': instance.isDriver,
@@ -237,6 +239,7 @@ DeliveryOrdersResponse _$DeliveryOrdersResponseFromJson(
       isDriver: json['is_driver'] as bool? ?? false,
       status: OrderStatus.fromJson(json['status'] as Map<String, dynamic>),
       updatedAt: json['updated_at'] as String? ?? '',
+      username: json['username'] as String? ?? '',
     );
 
 Map<String, dynamic> _$DeliveryOrdersResponseToJson(
@@ -254,6 +257,7 @@ Map<String, dynamic> _$DeliveryOrdersResponseToJson(
       'comments_for_driver': instance.commentForDriver,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
+      'username': instance.username,
       'user': instance.user,
       'driver': instance.driver,
       'is_driver': instance.isDriver,

@@ -214,7 +214,7 @@ class DeliveryOrdersCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        model[index].user.toString(),
+                        model[index].username.toString(),
                         style: TextStyle(
                           fontSize: 14.sp,
                           overflow: TextOverflow.ellipsis,
