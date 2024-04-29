@@ -47,6 +47,7 @@ class HomeAppBar extends StatelessWidget {
                           }
                         },
                       );
+                      Navigator.pushNamed(context, AppRoutes.splashPage);
                     },
                   ),
                   BasicDialogAction(

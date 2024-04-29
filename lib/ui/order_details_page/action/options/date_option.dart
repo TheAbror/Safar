@@ -29,66 +29,71 @@ class _DateOptionState extends State<DateOption> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      focusNode: focus,
-      readOnly: true,
-      onTap: () async {
-        FocusScope.of(context).requestFocus(focus);
+    return SizedBox(
+      height: 55.h,
+      child: TextFormField(
+        focusNode: focus,
+        readOnly: true,
+        onTap: () async {
+          FocusScope.of(context).requestFocus(focus);
 
-        List<DateTime?>? date = await pickDate();
-        if (date == null || date.isEmpty) return;
+          List<DateTime?>? date = await pickDate();
+          if (date == null || date.isEmpty) return;
 
-        TimeOfDay? time = await pickTime();
-        if (time == null) return;
+          TimeOfDay? time = await pickTime();
+          if (time == null) return;
 
-        final newDateTime = DateTime(
-          date.first?.year ?? 0,
-          date.first?.month ?? 0,
-          date.first?.day ?? 0,
-          time.hour,
-          time.minute,
-        );
+          final newDateTime = DateTime(
+            date.first?.year ?? 0,
+            date.first?.month ?? 0,
+            date.first?.day ?? 0,
+            time.hour,
+            time.minute,
+          );
 
-        setState() => this.dateTime = newDateTime;
+          setState() => this.dateTime = newDateTime;
 
-        final formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss').format(newDateTime);
-        widget.isDelivery
-            ? context.read<OrdersBloc>().updateDeliveryData(date: formattedDateTime)
-            : context.read<OrdersBloc>().updateData(date: formattedDateTime);
+          final formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss').format(newDateTime);
+          widget.isDelivery
+              ? context.read<OrdersBloc>().updateDeliveryData(date: formattedDateTime)
+              : context.read<OrdersBloc>().updateData(date: formattedDateTime);
 
-        widget.dateController.text = DateFormat('dd-MM-yyyy, HH:mm').format(newDateTime);
-      },
-      // onChanged: widget.onChanged,
-      controller: widget.dateController,
-      textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-        filled: true,
-        border: InputBorder.none, // Remove border color
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-          borderRadius: BorderRadius.circular(12.r),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
-          borderRadius: BorderRadius.circular(12.r),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        hintText: 'Дата',
-        fillColor: Theme.of(context).colorScheme.surfaceTint,
-        hintStyle: const TextStyle(color: AppColors.textSecondary),
-        suffixIcon: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.h),
-          child: Assets.icons.staffIcons.calendar.svg(
-            colorFilter: ColorFilter.mode(
-              focus.hasFocus ? AppColors.primary : Colors.grey,
-              BlendMode.srcIn,
+          widget.dateController.text = DateFormat('dd-MM-yyyy, HH:mm').format(newDateTime);
+        },
+        // onChanged: widget.onChanged,
+        controller: widget.dateController,
+        textInputAction: TextInputAction.next,
+        decoration: InputDecoration(
+          filled: true,
+          contentPadding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 12.w),
+
+          border: InputBorder.none, // Remove border color
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primary, width: 0.5.w),
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          hintText: 'Дата',
+          fillColor: Theme.of(context).colorScheme.surfaceTint,
+          hintStyle: const TextStyle(color: AppColors.textSecondary),
+          suffixIcon: Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.h),
+            child: Assets.icons.staffIcons.calendar.svg(
+              colorFilter: ColorFilter.mode(
+                focus.hasFocus ? AppColors.primary : Colors.grey,
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ),

@@ -77,7 +77,7 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                   }
                 },
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 4.h),
               FromToFields(
                 hintText: 'В',
                 suffixIcon: true,
@@ -101,7 +101,7 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                   }
                 },
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 4.h),
               AdditionalField(
                 thisController: widget.exactLocationController,
                 hintText: 'Место встречи : Необязательно',
@@ -110,7 +110,7 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                   print(value);
                 },
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 4.h),
               AdditionalField(
                 thisController: widget.exactDestinationController,
                 hintText: 'Место назначения : Необязательно',
@@ -119,7 +119,7 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                   print(value);
                 },
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 4.h),
               OfferedPriceField(
                 thisController: widget.offeredPriceController,
                 hintText: 'Предложенная цена (ex: 200000 сум)',
@@ -128,7 +128,7 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                   print(value);
                 },
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 4.h),
               PhoneNumberField(
                 thisController: widget.phoneNumberController,
                 hintText: number,
@@ -141,12 +141,12 @@ class _ManageDeliveryOrderFieldsState extends State<ManageDeliveryOrderFields> {
                   print(value);
                 },
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 4.h),
               DateOption(
                 isDelivery: true,
                 dateController: widget.dateController,
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 4.h),
               CommentsForDrier(
                 commentsController: widget.commentsController,
                 onChanged: (value) {

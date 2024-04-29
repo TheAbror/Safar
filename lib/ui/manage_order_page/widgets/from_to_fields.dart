@@ -23,15 +23,18 @@ class FromToFields extends StatefulWidget {
 class _FromToFieldsState extends State<FromToFields> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      readOnly: true,
-      onTap: widget.onTap,
-      controller: widget.controller,
-      textInputAction: TextInputAction.next,
-      decoration: ToFromDecoration(
-        context,
-        widget.hintText,
-        widget.suffixIcon ?? false,
+    return SizedBox(
+      height: 50.h,
+      child: TextFormField(
+        readOnly: true,
+        onTap: widget.onTap,
+        controller: widget.controller,
+        textInputAction: TextInputAction.next,
+        decoration: ToFromDecoration(
+          context,
+          widget.hintText,
+          widget.suffixIcon ?? false,
+        ),
       ),
     );
   }
@@ -44,7 +47,8 @@ InputDecoration ToFromDecoration(
 ) {
   return InputDecoration(
     filled: true,
-    border: InputBorder.none, // Remove border color
+    contentPadding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 12.w),
+    border: InputBorder.none,
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(color: AppColors.stroke, width: 0.5.w),
       borderRadius: BorderRadius.circular(12),
@@ -65,16 +69,12 @@ InputDecoration ToFromDecoration(
     fillColor: Theme.of(context).colorScheme.surfaceTint,
     hintStyle: const TextStyle(color: AppColors.textSecondary),
     suffixIcon: suffixIcon
-        ? Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                alignment: Alignment.topRight,
-                height: 24.h,
-                width: 24.h,
-                child: const Icon(Icons.arrow_drop_down_outlined),
-              ),
-            ],
+        ? Container(
+            alignment: Alignment.topRight,
+            padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
+            height: 24.h,
+            width: 24.h,
+            child: const Icon(Icons.arrow_drop_down_outlined),
           )
         : SizedBox(),
   );

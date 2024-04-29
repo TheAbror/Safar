@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safar/ui/manage_order_page/widgets/from_to_fields.dart';
 import 'package:safar/ui/signin_page/textfields/contact_info_field.dart';
 
@@ -22,11 +23,14 @@ class AdditionalField extends StatefulWidget {
 class _AdditionalFieldState extends State<AdditionalField> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onChanged: widget.onChanged,
-      controller: widget.thisController,
-      textInputAction: TextInputAction.next,
-      decoration: ToFromDecoration(context, widget.hintText, false),
+    return SizedBox(
+      height: 55.h,
+      child: TextFormField(
+        onChanged: widget.onChanged,
+        controller: widget.thisController,
+        textInputAction: TextInputAction.next,
+        decoration: ToFromDecoration(context, widget.hintText, false),
+      ),
     );
   }
 }
@@ -50,17 +54,20 @@ class PhoneNumberField extends StatefulWidget {
 class _PhoneNumberFieldState extends State<PhoneNumberField> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      inputFormatters: [
-        LengthLimitingTextInputFormatter(9),
-      ],
-      keyboardType: TextInputType.number,
-      onChanged: widget.onChanged,
-      controller: widget.thisController,
-      textInputAction: TextInputAction.next,
-      decoration: SignDeocration(
-        context,
-        widget.hintText.replaceAll('+998', ''),
+    return SizedBox(
+      height: 55.h,
+      child: TextFormField(
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(9),
+        ],
+        keyboardType: TextInputType.number,
+        onChanged: widget.onChanged,
+        controller: widget.thisController,
+        textInputAction: TextInputAction.next,
+        decoration: SignDeocration(
+          context,
+          widget.hintText.replaceAll('+998', ''),
+        ),
       ),
     );
   }
@@ -85,15 +92,18 @@ class OfferedPriceField extends StatefulWidget {
 class _OfferedPriceFieldState extends State<OfferedPriceField> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      inputFormatters: [
-        LengthLimitingTextInputFormatter(8),
-      ],
-      keyboardType: TextInputType.number,
-      onChanged: widget.onChanged,
-      controller: widget.thisController,
-      textInputAction: TextInputAction.next,
-      decoration: ToFromDecoration(context, widget.hintText, false),
+    return SizedBox(
+      height: 55.h,
+      child: TextFormField(
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(8),
+        ],
+        keyboardType: TextInputType.number,
+        onChanged: widget.onChanged,
+        controller: widget.thisController,
+        textInputAction: TextInputAction.next,
+        decoration: ToFromDecoration(context, widget.hintText, false),
+      ),
     );
   }
 }
