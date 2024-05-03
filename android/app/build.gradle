@@ -48,7 +48,7 @@ android {
     defaultConfig {
         minSdkVersion 21
         multiDexEnabled true
-        applicationId "com.mySafar.app"
+        applicationId "uz.safar.app"
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

@@ -1,4 +1,4 @@
-package com.mySafar.app
+package uz.safar.app
 
 import io.flutter.embedding.android.FlutterActivity
 
