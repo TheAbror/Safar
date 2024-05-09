@@ -81,7 +81,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                   }
                 },
               ),
-              SizedBox(height: 4.h),
+              SizedBox(height: 6.h),
               FromToFields(
                 hintText: 'В',
                 suffixIcon: true,
@@ -106,7 +106,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                   }
                 },
               ),
-              SizedBox(height: 4.h),
+              SizedBox(height: 6.h),
               AdditionalField(
                 thisController: widget.exactLocationController,
                 hintText: 'Место встречи : Необязательно',
@@ -115,7 +115,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                   print(value);
                 },
               ),
-              SizedBox(height: 4.h),
+              SizedBox(height: 6.h),
               AdditionalField(
                 thisController: widget.exactDestinationController,
                 hintText: 'Место назначения : Необязательно',
@@ -147,7 +147,7 @@ class _ManageTaxiOrderFieldsState extends State<ManageTaxiOrderFields> {
                   },
                 ),
               ),
-              SizedBox(height: 4.h),
+              SizedBox(height: 6.h),
               OfferedPriceField(
                 thisController: widget.offeredPriceController,
                 hintText: 'Предложенная цена (ex: 200000 сум)',
