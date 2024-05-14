@@ -26,29 +26,29 @@ class SearchAndFilterDelivery extends StatelessWidget {
         fillColor: Theme.of(context).colorScheme.onBackground,
         width: 344.w,
         hintText: 'Поиск',
-        suffixIcon: SearchSettings(
-          color: AppColors.primary,
-          onTap: () async {
-            // final selectedValue = state.listOfSelectedStatusesAssigned.isNotEmpty
-            //     ? state.listOfSelectedStatusesAssigned.last
-            //     : '';
+        // suffixIcon: SearchSettings(
+        //   color: AppColors.primary,
+        //   onTap: () async {
+        //     // final selectedValue = state.listOfSelectedStatusesAssigned.isNotEmpty
+        //     //     ? state.listOfSelectedStatusesAssigned.last
+        //     //     : '';
 
-            final result = await PrimaryBottomSheet.show(
-              context,
-              isSearchNeeded: false,
-              isConfirmationNeeded: false,
-              heightRatio: 0.7,
-              title: 'Поиск',
-              selectedValue: 'selectedValue',
-              initialList: statusesList,
-            );
+        //     final result = await PrimaryBottomSheet.show(
+        //       context,
+        //       isSearchNeeded: false,
+        //       isConfirmationNeeded: false,
+        //       heightRatio: 0.7,
+        //       title: 'Поиск',
+        //       selectedValue: 'selectedValue',
+        //       initialList: statusesList,
+        //     );
 
-            if (result != null) {
-              if (!context.mounted) return;
-              // context.read<InquiryBloc>().changeStatusDelivery(result);
-            }
-          },
-        ),
+        //     if (result != null) {
+        //       if (!context.mounted) return;
+        //       // context.read<InquiryBloc>().changeStatusDelivery(result);
+        //     }
+        //   },
+        // ),
         controller: searchDelivery,
         onChanged: (val) {
           // context.read<InquiryBloc>().searchDelivery(val);

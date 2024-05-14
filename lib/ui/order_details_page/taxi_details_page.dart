@@ -204,10 +204,10 @@ class _BodyState extends State<_Body> {
                 ),
               ),
               // if (state.item.buttons.isNotEmpty)
-              OrdersActionButton(
-                id: 0,
-                // buttons: const [],
-              ),
+              // OrdersActionButton(
+              //   id: 0,
+              //   // buttons: const [],
+              // ),
             ],
           );
         },

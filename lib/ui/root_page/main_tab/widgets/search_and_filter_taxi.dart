@@ -30,28 +30,28 @@ class SearchAndFilterTaxi extends StatelessWidget {
         onChanged: (val) {
           // context.read<InquiryBloc>().searchTaxi(val);
         },
-        suffixIcon: SearchSettings(
-          color: AppColors.primary,
-          onTap: () async {
-            // final selectedValue = state.listOfSelectedStatusesCreated.isNotEmpty
-            //     ? state.listOfSelectedStatusesCreated.last
-            //     : '';
-            final result = await PrimaryBottomSheet.show(
-              context,
-              isSearchNeeded: false,
-              isConfirmationNeeded: false,
-              heightRatio: 0.7,
-              title: 'Поиск',
-              selectedValue: 'selectedValue',
-              initialList: statusesList,
-            );
+        // suffixIcon: SearchSettings(
+        //   color: AppColors.primary,
+        //   onTap: () async {
+        //     // final selectedValue = state.listOfSelectedStatusesCreated.isNotEmpty
+        //     //     ? state.listOfSelectedStatusesCreated.last
+        //     //     : '';
+        //     final result = await PrimaryBottomSheet.show(
+        //       context,
+        //       isSearchNeeded: false,
+        //       isConfirmationNeeded: false,
+        //       heightRatio: 0.7,
+        //       title: 'Поиск',
+        //       selectedValue: 'selectedValue',
+        //       initialList: statusesList,
+        //     );
 
-            if (result != null) {
-              if (!context.mounted) return;
-              // context.read<InquiryBloc>().changeStatusTaxi(result);
-            }
-          },
-        ),
+        //     if (result != null) {
+        //       if (!context.mounted) return;
+        //       // context.read<InquiryBloc>().changeStatusTaxi(result);
+        //     }
+        //   },
+        // ),
       ),
     );
   }
