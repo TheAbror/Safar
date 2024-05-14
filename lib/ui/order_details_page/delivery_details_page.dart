@@ -10,11 +10,11 @@ import 'package:safar/core/routes/route_constants.dart';
 import 'package:safar/core/utils/all_models/all_models.dart';
 import 'package:safar/core/widgets/order_edit_or_delete_dialog.dart';
 import 'package:safar/gen/assets.gen.dart';
+import 'package:safar/ui/manage_order_page/widgets/inqury_appbar.dart';
 import 'package:safar/ui/order_details_page/widgets/taxi_order_description_and_value.dart';
 import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
-import 'package:safar/ui/manage_order_page/widgets/inqury_appbar.dart';
+
 import '../manage_order_page/delivery/manage_delievry_orders_page.dart';
-import 'widgets/orders_action_button.dart';
 
 class DeliveryDetailsPageViewModel {
   final int index;
