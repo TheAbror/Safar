@@ -8,7 +8,6 @@ import 'package:safar/core/widgets/tabs_no_data.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
 import 'package:safar/ui/root_page/widgets/delivery_orders_card.dart';
-import '../widgets/search_and_filter_delivery.dart';
 
 class DeliveryTab extends StatelessWidget {
   final List<String> statusesList;
@@ -47,12 +46,13 @@ class DeliveryTab extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SearchAndFilterDelivery(
-                    state: state,
-                    statusesList: statusesList,
-                    searchDelivery: searchDelivery,
-                  ),
-                  _FilterCards(state, context),
+                  SizedBox(height: 20.h),
+                  // SearchAndFilterDelivery(
+                  //   state: state,
+                  //   statusesList: statusesList,
+                  //   searchDelivery: searchDelivery,
+                  // ),
+                  // _FilterCards(state, context),
                   if (state.deliveryOrdersList.results.isNotEmpty)
                     ListView.builder(
                       itemCount: state.deliveryOrdersList.results.length,

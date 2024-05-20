@@ -7,7 +7,6 @@ import 'package:safar/core/constants/something_went_wrong.dart';
 import 'package:safar/core/widgets/tabs_no_data.dart';
 import 'package:safar/gen/assets.gen.dart';
 import 'package:safar/ui/root_page/bloc/orders_bloc.dart';
-import 'package:safar/ui/root_page/main_tab/widgets/search_and_filter_taxi.dart';
 import 'package:safar/ui/root_page/widgets/taxi_orders_card.dart';
 
 class TaxiTab extends StatelessWidget {
@@ -49,13 +48,14 @@ class TaxiTab extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SearchAndFilterTaxi(
-                    state: state,
-                    statusesList: statusesList,
-                    searchTaxi: searchTaxi,
-                  ),
+                  SizedBox(height: 20.h),
+                  // SearchAndFilterTaxi(
+                  //   state: state,
+                  //   statusesList: statusesList,
+                  //   searchTaxi: searchTaxi,
+                  // ),
                   _FilterCards(state, context),
-                  CheckboxesForDriverAndUser(state: state),
+                  // CheckboxesForDriverAndUser(state: state),
                   if (state.taxiOrdersList.results.isNotEmpty)
                     ListView.builder(
                       itemCount: state.taxiOrdersList.results.length,

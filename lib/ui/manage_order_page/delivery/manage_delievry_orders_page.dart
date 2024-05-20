@@ -189,7 +189,7 @@ class _BodyState extends State<_Body> {
                 ontap: () => context.read<OrdersBloc>().addDeliveryItem(),
               ),
               SizedBox(height: 20.h),
-              PhotoUploader(context),
+              // PhotoUploader(context),
               SizedBox(height: 60.h),
             ],
           ),
