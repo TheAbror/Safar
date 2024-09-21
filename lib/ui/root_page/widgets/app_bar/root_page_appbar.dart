@@ -19,7 +19,7 @@ AppBar rootPage_appBar(context, String fullName, String role) {
           borderRadius: BorderRadius.circular(corex * 3.r),
         ),
         child: TabBar(
-          dividerColor: AppColors.iconSecondary,
+          dividerColor: Colors.transparent,
           labelPadding: const EdgeInsets.all(0),
           indicatorPadding: const EdgeInsets.all(0),
           labelColor: AppColors.textMain,

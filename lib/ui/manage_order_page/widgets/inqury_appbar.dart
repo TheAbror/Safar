@@ -11,10 +11,21 @@ AppBar order_appbar(
     elevation: 1,
     backgroundColor: Theme.of(context).colorScheme.onBackground,
     automaticallyImplyLeading: false,
-    title: Stack(
+    title: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
+        InkWell(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: Assets.icons.arrowLeft.svg(
+            colorFilter: ColorFilter.mode(
+              Theme.of(context).colorScheme.tertiary,
+              BlendMode.srcIn,
+            ),
+          ),
+        ),
+        Expanded(
           child: Center(
             child: Text(
               text,
@@ -27,25 +38,7 @@ AppBar order_appbar(
             ),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
-              icon: Assets.icons.arrowLeft.svg(
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).colorScheme.tertiary,
-                  BlendMode.srcIn,
-                ),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            widget,
-          ],
-        ),
+        widget,
       ],
     ),
   );

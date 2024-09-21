@@ -115,6 +115,25 @@ class _SignInPageState extends State<SignInPage> {
                         SizedBox(height: 5.h),
                         SignInPasswordField(passwordController: _passwordController),
                         _AgreeWithTermsText(state, context),
+                        // SizedBox(height: 10.h),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.end,
+                        //   children: [
+                        //     InkWell(
+                        //       onTap: () {
+                        //         Navigator.pushNamed(context, AppRoutes.rootPage);
+                        //       },
+                        //       child: Text(
+                        //         'Skip for now',
+                        //         style: TextStyle(
+                        //           color: AppColors.primary,
+                        //           decoration: TextDecoration.underline,
+                        //           decorationColor: AppColors.primary,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                         SizedBox(height: 250.h),
                       ],
                     ),
